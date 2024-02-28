@@ -2,7 +2,7 @@ import os
 import json
 
 # JSON data with services
-base_dir = "/Users/eyalrainitz/Desktop/Code/Inventory/aws_services"
+base_dir = ""
 
 with open("servicesBoto3.json",'r') as file:
     json_file = json.load(file)
