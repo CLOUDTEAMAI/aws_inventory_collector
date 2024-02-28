@@ -1,0 +1,5 @@
+{
+    "services": ["s3", "ec2"],
+    "namespaces": ["AWS/EC2","AWS/RDS","AWS/S3","AWS/Lambda","AWS/DynamoDB","AWS/ECS","AWS/ApiGateway","AWS/ELB","AWS/SNS","AWS/SQS"]
+}
+  

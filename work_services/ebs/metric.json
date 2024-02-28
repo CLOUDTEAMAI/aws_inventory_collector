@@ -1,0 +1,16 @@
+{
+    "metrics" : [
+        {"metricname":"VolumeIdleTime"            ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Seconds"},
+        {"metricname":"VolumeReadBytes"           ,"statistics":["Average","Sum","SampleCount","Minimum","Maximum"],"unit":"Bytes"},
+        {"metricname":"VolumeWriteBytes"          ,"statistics":["Average","Sum","SampleCount","Minimum","Maximum"],"unit":"Bytes"},
+        {"metricname":"VolumeReadOps"             ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"VolumeWriteOps"            ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"VolumeTotalReadTime"       ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Seconds"},
+        {"metricname":"VolumeQueueLength"         ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"VolumeTotalWriteTime"      ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"VolumeStalledIOCheck"      ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"VolumeThroughputPercentage","statistics":["Average","Minimum","Maximum"],"unit":"Percent"},
+        {"metricname":"VolumeConsumedReadWriteOps","statistics":["Average","Sum","Minimum","Maximum"],"unit":"Count"},
+        {"metricname":"BurstBalance"              ,"statistics":["Average","Sum","Minimum","Maximum"],"unit":"Percent" }
+    ]
+}
