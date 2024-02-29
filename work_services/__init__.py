@@ -19,6 +19,11 @@ from .account.account import *
 from .organizations.organizations import *
 from .amplify.amplify import *
 from .elb.elb import *
+from .internetgateway.internetgateway import *
+from .acl.acl import *
+from .storagegateway.storagegateway import *
+from .eip.eip import *
+from .eni.eni import *
 from .natgateway.natgateway import *
 from .securitygroup.securitygroup import *
 from .vpc.vpc import *
