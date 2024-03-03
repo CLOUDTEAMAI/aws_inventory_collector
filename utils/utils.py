@@ -13,6 +13,15 @@ def extract_common_info(arn, resource, region, account_id):
         'timegenerated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
+def extract_common_info_metrics(id,resource,label):
+    return {
+        'id': id,
+        'label': label,
+        'properties': str(resource),
+        'timegenerated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+    }
+
 
 def save_as_file_parquet(inventory,file_path,file_name):
     if len(inventory) != 0:
@@ -23,7 +32,18 @@ def save_as_file_parquet(inventory,file_path,file_name):
         # Save the DataFrame to a Parquet file
         df.to_parquet(file_path, index=False)
 
-
+def save_as_file_parquet_metric(inventory,file_path,file_name):
+    try:
+        if len(inventory) != 0:
+            df = pd.DataFrame(inventory)
+            file_path = os.path.join(file_path, file_name)
+            
+            # Ensure 'properties' is a string (JSON), as Parquet requires consistent data types
+            df['properties'] = df['properties'].apply(lambda x: json.dumps(x) if not isinstance(x, str) else x)  
+            # Save the DataFrame to a Parquet file
+            df.to_parquet(file_path, index=False)
+    except Exception as ex:
+        print(ex)
 
 def get_script_name_without_extension(script_path):
     """

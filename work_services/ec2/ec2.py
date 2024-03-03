@@ -9,11 +9,11 @@ from utils.utils import *
 
 
 cloudwatch = boto3.client('cloudwatch')
-
 cost_explorer = boto3.client('ce')
-# path_json_file = os.path.join(os.getcwd(), 'ec2/metric.json')
-# with open(path_json_file,'r') as file:
-#     json_file = json.load(file)
+
+path_json_file =  os.path.dirname(os.path.abspath(__file__))
+with open(f'{path_json_file}/metric.json','r') as file:
+    json_file = json.load(file)
 
 
     
@@ -22,7 +22,6 @@ def list_ec2(file_path,session,region):
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
     ec2_instances = []
-    # session = boto3.session.Session()
     vm = ec2.describe_instances()
     if len(vm['Reservations']) != 0:
         for i in vm['Reservations']:
@@ -34,12 +33,42 @@ def list_ec2(file_path,session,region):
     return ec2_instances
 
 
+def metrics_utill_ec2(file_path,session,region):
+    ec2 = session.client('ec2',region_name=region)
+    sts = session.client('sts')
+    account_id = sts.get_caller_identity()["Account"]
+    ec2_instances = []
+    instance_ids = []
+    vm = ec2.describe_instances()
+    for i in vm['Reservations']:
+        for instance in i['Instances']:
+            instance_ids.append(instance['InstanceId'])
+    
+
+    if len(instance_ids) != 0:
+        for j in instance_ids:
+            for metric in json_file['metrics']:
+            # item_object = extract_common_info()
+                item = get_resource_utilization_metric(session,j,metric['metricname'],metric['statistics'],metric['unit'],metric['nameDimensions'],metric['serviceType'])
+                ec2_instances.append(item)
+        save_as_file_parquet_metric(ec2_instances,file_path,generate_parquet_prefix(__file__,region,f'{account_id}-metrics'))
+
+
+    #         item = get_resource_utilization(session,instance_ids,metric['metricname'],metric['statistics'],metric['unit'],metric['nameDimensions'],metric['serviceType'])
+    #         ec2_instances.append(item)
+    #     for z in ec2_instances:
+    #         if isinstance(z, dict):
+    #             for key, value in z.items():
+    #     resources_list = [value for key, value in ec2_instances.items() if value is not None]
+    #     json_output = json.dumps(resources_list, indent=4)
+    #     save_as_file_parquet_metric(json_output,file_path,generate_parquet_prefix(__file__,region,f'{account_id}-metrics'))
 
 
 
 
 
 
+# ec2,metricname='CPUUtilization',name='InstanceId',satistics=['Average','Maximum'],unit='Percent')
 # def ec2_covrage(ec2):
 #     instance_coverage = []
 #     end_time = datetime.utcnow()

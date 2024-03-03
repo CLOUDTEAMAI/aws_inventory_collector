@@ -329,7 +329,7 @@
     "rum",
     "s3control",
     "s3outposts",
-    "sagemaker",
+    // "sagemaker",
     "sagemaker-a2i-runtime",
     "sagemaker-edge",
     "sagemaker-featurestore-runtime",

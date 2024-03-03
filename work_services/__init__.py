@@ -11,9 +11,14 @@ from .kinesis.kinesis import *
 from .ecs.ecs import *
 from .routetable.routetable import *
 from .efs.efs import *
+from .sagemaker.sagemaker import *
 from .workspaces.workspaces import *
 from .xray.xray import *
 from .eks.eks import *
+from .vpc_peering.vpc_peering import *
+from .vpc_endpoint.vpc_endpoint import *
+from .ssm.ssm import *
+from .shield.shield import *
 from .dynamodb.dynamodb import *
 from .account.account import *
 from .organizations.organizations import *
