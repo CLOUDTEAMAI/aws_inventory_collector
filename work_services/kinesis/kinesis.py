@@ -13,11 +13,11 @@ def list_kinesis(file_path,session,region):
     client = session.client('kinesis',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
-    client_list = client.list_streams()
+    client_list_stream = client.list_streams()
     
     client_list = []
-    if len(client_list['StreamNames']) != 0:
-        for i in client_list['StreamNames']:
+    if len(client_list_stream['StreamNames']) != 0:
+        for i in client_list_stream['StreamNames']:
             response_data = client.describe_stream(StreamName=i)['StreamDescription']
             arn = response_data['StreamARN']
             client_object = extract_common_info(arn,response_data,region,account_id)

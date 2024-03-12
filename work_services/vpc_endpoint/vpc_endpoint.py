@@ -10,7 +10,7 @@ from utils.utils import *
    
 
 def list_vpc_endpoint(file_path,session,region):
-    client = session.client('shield',region_name=region)
+    client = session.client('ec2',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
     client_list_object = client.describe_vpc_endpoints()

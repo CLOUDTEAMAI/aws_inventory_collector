@@ -13,7 +13,7 @@ def list_acl(file_path,session,region):
     client = session.client('ec2',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
-    client_list_object = client.describe_network_interfaces()
+    client_list_object = client.describe_network_acls()
     client_list = []
     if len(client_list_object['NetworkAcls']) != 0:
         for i in client_list_object['NetworkAcls']:

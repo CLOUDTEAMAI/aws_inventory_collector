@@ -13,11 +13,11 @@ def list_rekognition(file_path,session,region):
     client = session.client('rekognition',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
-    client_list = client.list_collections()
+    client_list_collections = client.list_collections()
     
     client_list = []
-    if len(client_list['CollectionIds']) != 0:
-        for i in client_list['CollectionIds']:
+    if len(client_list_collections['CollectionIds']) != 0:
+        for i in client_list_collections['CollectionIds']:
             describe_response = client.describe_collection(CollectionId=i)
             arn = describe_response['CollectionARN']
             client_object = extract_common_info(arn,describe_response,region,account_id)

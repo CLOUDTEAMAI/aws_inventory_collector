@@ -8,6 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytz
 import re
 from utils.utils import extract_common_info_metrics
+import ast
 
 
 def get_resource_utilization(session,ids: list,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=60):
@@ -61,6 +62,104 @@ def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: 
     runtime = (stop_timer - start_timer).total_seconds()
     print(f"{runtime % 60 :.3f}")
     return item
+
+
+
+def calculate_statistics(path_file,output_path,output_path2):
+    df = pd.read_parquet(path_file)
+    df2= pd.read_parquet(path_file)
+    cpu_df = df[df['label'] == 'CPUUtilization']
+    results = {}
+    results2 = {}
+    for index, row in cpu_df.iterrows():
+        # Deserialize the 'properties' field from a string to a list of dictionaries
+        # print(row['properties']) 
+        # properties = json.loads(row['properties'])
+        properties = ast.literal_eval(row['properties'])
+        
+        
+        # Calculate the statistics if properties is not empty
+        # if properties:
+        #     avg_average = sum(item["Average"] for item in properties) / len(properties)
+        #     min_average = sum(item["Minimum"] for item in properties) / len(properties)
+        #     max_average = sum(item["Maximum"] for item in properties) / len(properties)
+
+        #     max_avg_value = max(item["Average"] for item in properties)
+        #     rounded_max_avg_value = round(max_avg_value, 2)
+
+        # # Do similarly for 'Minimum' and 'Maximum' if needed
+        #     max_min_value = max(item["Minimum"] for item in properties)
+        #     rounded_max_min_value = round(max_min_value, 2)
+
+        #     max_max_value = max(item["Maximum"] for item in properties)
+        #     rounded_max_max_value = round(max_max_value, 2)
+
+
+        #     results[row['id']] = [avg_average, min_average, max_average]
+        #     df = pd.DataFrame(list(results.items()), columns=['id', 'statistics'])
+        #     df[['average', 'minimum', 'maximum']] = pd.DataFrame(df['statistics'].tolist(), index=df.index)
+        #     df.drop(columns=['statistics'], inplace=True)
+        #     df.to_parquet(output_path, index=False)
+
+    for index, row in cpu_df.iterrows():
+        # Deserialize the 'properties' field from a string to a list of dictionaries
+        # print(row['properties']) 
+        # properties = json.loads(row['properties'])
+        properties = ast.literal_eval(row['properties'])
+        
+        
+        # Calculate the statistics if properties is not empty
+        if properties:
+            avg_average = sum(item["Average"] for item in properties) / len(properties)
+            min_average = sum(item["Minimum"] for item in properties) / len(properties)
+            max_average = sum(item["Maximum"] for item in properties) / len(properties)
+
+            max_avg_entry = max(properties, key=lambda x: x["Average"])
+            max_avg_value, timestamp_max_avg = max_avg_entry["Average"], max_avg_entry["Timestamp"]
+            rounded_max_avg_value = round(max_avg_value, 2)
+
+        # Do similarly for 'Minimum' and 'Maximum' if needed
+            max_min_entry = max(properties, key=lambda x: x["Minimum"])
+            max_min_value, timestamp_max_min = max_min_entry["Minimum"], max_min_entry["Timestamp"]
+            rounded_max_min_value = round(max_min_value, 2)
+
+            # max_max_value = max(item["Maximum"] for item in properties)
+            max_max_entry = max(properties, key=lambda x: x["Maximum"])
+            max_max_value, timestamp_max_max = max_max_entry["Maximum"], max_max_entry["Timestamp"]
+            rounded_max_max_value = round(max_max_value, 2)
+
+
+
+
+            results[row['id']] = [rounded_max_avg_value,timestamp_max_avg, rounded_max_min_value,timestamp_max_min, rounded_max_max_value,timestamp_max_max]
+            df2 = pd.DataFrame(list(results.items()), columns=['id', 'statistics'])
+            df2[['average', 'date_avg','minimum','date_min', 'maximum_max','date']] = pd.DataFrame(df2['statistics'].tolist(), index=df2.index)
+            df2.drop(columns=['statistics'], inplace=True)
+            df2.to_parquet(output_path2, index=False)
+           
+        #     results2[row['id']] = {
+        #     'max_avg_value': rounded_max_avg_value,
+        #     'max_min_value': rounded_max_min_value,
+        #     'max_max_value': rounded_max_max_value
+        # }
+            
+
+
+            # res = pd.DataFrame(list(results2.items()), columns=['id', 'statistics'])
+            # res[['average', 'minimum', 'maximum']] = pd.DataFrame(df['statistics'].tolist(), index=df.index)
+            # res.drop(columns=['statistics'], inplace=True)
+            # res.to_parquet(output_path, index=False)
+            # results_df = pd.DataFrame.from_dict(results2, orient='index').reset_index()
+            # results_df.rename(columns={'index': 'id'}, inplace=True)
+
+            
+            # df.to_parquet(f'{output_path2}', index=False)
+    # print(results)
+    # return results
+
+
+    
+    
 
 # def get_resource_utilization_test(resources,metricname,statistics,unit,name,days=60):
 #     end_time = datetime.utcnow()

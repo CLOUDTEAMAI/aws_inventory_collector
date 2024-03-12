@@ -10,14 +10,14 @@ from utils.utils import *
    
 
 def list_redshift(file_path,session,region):
-    client = session.client('emr',region_name=region)
+    client = session.client('redshift',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
-    client_list = client.describe_clusters()
+    client_list_redshift = client.describe_clusters()
     
     client_list = []
-    if len(client_list['Clusters']) != 0:
-        for i in client_list['Clusters']:
+    if len(client_list_redshift['Clusters']) != 0:
+        for i in client_list_redshift['Clusters']:
             arn = i['ClusterNamespaceArn']
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

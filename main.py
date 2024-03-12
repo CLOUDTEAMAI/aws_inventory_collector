@@ -1,11 +1,11 @@
 
-from asyncio import as_completed
 from http import client
 import boto3
 import concurrent.futures
 from datetime import datetime, timedelta
 import pandas as pd
 import json
+from cloudwatch_logic import *
 from collector.collector_inventory import *
 # from work_services import *
 
@@ -36,25 +36,38 @@ def main():
                 # Process result or print
             except Exception as ex:
                 print(ex)
-    
 
-    # with concurrent.futures.ThreadPoolExecutor(max_workers=len(load_json['accounts'])) as executor:
-    #     futures = []
-    #     for account in load_json['accounts']:
-    #         future = executor.submit(
-    #             lambda acc=account: list_s3_buckets(uploads,get_aws_session(acc['account_id']))
-    #         )
-    #         futures.append(future)
-    #     for fu in concurrent.futures.as_completed(futures):
-    #         try:
-    #             result = future.result()
-    #             # print(result)
-    #         except Exception as ex:
-    #             print(ex)
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(load_json['accounts'])) as executor:
+        futures = []
+        for account in load_json['accounts']:
+            future = executor.submit(
+                lambda acc=account: list_s3_buckets(uploads,get_aws_session(acc['account_id']))
+            )
+            futures.append(future)
+        for fu in concurrent.futures.as_completed(futures):
+            try:
+                result = future.result()
+                # print(result)
+            except Exception as ex:
+                print(ex)
                 
 
     
+    # files_uploads_read = [f'{uploads}/ec2-eu-west-1-597320742842-metrics.parquet',f'{uploads}/ec2-eu-west-1-012772511166-metrics.parquet',
+    #                  f'{uploads}/ec2-eu-west-1-106884039378-metrics.parquet',f'{uploads}/ec2-eu-west-1-561825688699-metrics.parquet',
+    #                  f'{uploads}/ec2-eu-west-1-145173617099-metrics.parquet',f'{uploads}/ec2-eu-west-1-596850130446-metrics.parquet',
+    #                  f'{uploads}/ec2-eu-west-1-830533212225-metrics.parquet',f'{uploads}/ec2-eu-west-1-858255827095-metrics.parquet',
+    #                  f'{uploads}/ec2-eu-west-1-861696922348-metrics.parquet',f'{uploads}/ec2-eu-west-1-862992236389-metrics.parquet',]
+    # end_prefix = '.parquet'
+    # for name in files_uploads_read:
+    #     output1_avg = name.split('.')[0]
+    #     prefix = f'{output1_avg}-avg{end_prefix}'
+    #     prefix2 = f'{output1_avg}-max{end_prefix}'
+    #     calculate_statistics(name,prefix,prefix2)
+                
 
+                
     # readfile = f'{main_dir}/mama.json'
     # with open(f'{readfile}','r',encoding='utf-8',errors='ignore') as test_file:
     #     test = test_file.read()
@@ -85,3 +98,6 @@ def main():
    
 if __name__ == '__main__':
     main()
+
+
+

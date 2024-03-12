@@ -20,9 +20,6 @@ def list_rds(file_path,session,region):
     rds = session.client('rds',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
-    session = boto3.session.Session()
-    region = session.region_name
-    today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     rds_instances = []
     rds_list = rds.describe_db_instances()
     if len(rds_list['DBInstances']) != 0:
