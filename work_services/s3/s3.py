@@ -6,8 +6,8 @@ import json
 from utils.utils import *
 import os 
 
-cloudwatch = boto3.client('cloudwatch')
-cost_explorer = boto3.client('ce')
+# cloudwatch = boto3.client('cloudwatch')
+# cost_explorer = boto3.client('ce')
 # path_json_file = os.path.join(os.getcwd(), 'rds/metric.json')
 
 # with open(path_json_file,'r') as file:

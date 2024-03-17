@@ -11,32 +11,32 @@ from utils.utils import extract_common_info_metrics
 import ast
 
 
-def get_resource_utilization(session,ids: list,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=60):
-    cloudwatch = session.client('cloudwatch')
-    start_timer = datetime.now()
-    end_time = datetime.utcnow()
-    start_time = end_time - timedelta(days)
-    metrics_resources = []
+# def get_resource_utilization(session,ids: list,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=60):
+#     cloudwatch = session.client('cloudwatch')
+#     start_timer = datetime.now()
+#     end_time = datetime.utcnow()
+#     start_time = end_time - timedelta(days)
+#     metrics_resources = []
 
-    for resource in ids:
-        metrics = cloudwatch.get_metric_statistics(
-        Namespace  = 'AWS/' + serviceType , 
-        MetricName = metricname , 
-        Dimensions =[{'Name': name_dimensions ,'Value': resource}],
-        StartTime=start_time,
-        EndTime=end_time,
-        Period=86400,  
-        Statistics= statistics ,
-        Unit= unit
-    )
-        print(metrics['Datapoints'])
-        item = extract_common_info_metrics(resource,metrics['Datapoints'],metrics['Label'])
-        metrics_resources.append(item)
-    stop_timer = datetime.now()
-    runtime = (stop_timer - start_timer).total_seconds()
-    print(f"{runtime % 60 :.3f}")
-    # print(metrics_resources)
-    return metrics_resources
+#     for resource in ids:
+#         metrics = cloudwatch.get_metric_statistics(
+#         Namespace  = 'AWS/' + serviceType , 
+#         MetricName = metricname , 
+#         Dimensions =[{'Name': name_dimensions ,'Value': resource}],
+#         StartTime=start_time,
+#         EndTime=end_time,
+#         Period=86400,  
+#         Statistics= statistics ,
+#         Unit= unit
+#     )
+#         print(metrics['Datapoints'])
+#         item = extract_common_info_metrics(resource,metrics['Datapoints'],metrics['Label'])
+#         metrics_resources.append(item)
+#     stop_timer = datetime.now()
+#     runtime = (stop_timer - start_timer).total_seconds()
+#     print(f"{runtime % 60 :.3f}")
+#     # print(metrics_resources)
+#     return metrics_resources
 
 def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=60):
     cloudwatch = session.client('cloudwatch')
@@ -133,7 +133,7 @@ def calculate_statistics(path_file,output_path,output_path2):
 
             results[row['id']] = [rounded_max_avg_value,timestamp_max_avg, rounded_max_min_value,timestamp_max_min, rounded_max_max_value,timestamp_max_max]
             df2 = pd.DataFrame(list(results.items()), columns=['id', 'statistics'])
-            df2[['average', 'date_avg','minimum','date_min', 'maximum_max','date']] = pd.DataFrame(df2['statistics'].tolist(), index=df2.index)
+            df2[['average_max', 'date_avg','minimum','date_min', 'maximum_max','date']] = pd.DataFrame(df2['statistics'].tolist(), index=df2.index)
             df2.drop(columns=['statistics'], inplace=True)
             df2.to_parquet(output_path2, index=False)
            

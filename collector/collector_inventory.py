@@ -2,12 +2,22 @@ import boto3
 import json
 import concurrent.futures
 from work_services import *
+from cloudteam_logger import cloudteam_logger
+from pathlib import Path
 
+
+
+from cloudteam_logger import cloudteam_logger
+
+# parent = Path(__file__).parent
+# print(parent)
+# logger_obj = cloudteam_logger.ct_logging(f'{parent}/logs',"debug")
 
 def parallel_executor_inventory(main_dir,session,region):
 # Initialize functions clients for services you want to list resources from in parallel 
     tasks = {
          'ec2'                       : list_ec2,
+         'sqs'                      : list_sqs,
          'sns'                       : list_sns,
          'vpc'                       : list_vpc,
          'eni'                       : list_eni,
@@ -37,7 +47,6 @@ def parallel_executor_inventory(main_dir,session,region):
           'ecs'                      : list_ecs_clusters,
           'efs'                      : list_efs_file_systems,
           'rds'                      : list_rds,
-          'sqs'                      : list_sqs,
           'appintegrations'          : list_appintegrations,
           'application_insights'     : list_application_insights,
           'amp'                      : list_amp,
@@ -50,7 +59,6 @@ def parallel_executor_inventory(main_dir,session,region):
           'workspacesthinclient'     : list_workspaces_thin_client,
           'eks'                      : list_eks,
           'dynamo_db'                : list_dynamo,
-          'wisdom'                   : list_wisdom,
           'wellarchitected'          : list_well_architect,
           'wafv2'                    : list_wafv2,
           'waf'                      : list_waf,
@@ -58,7 +66,6 @@ def parallel_executor_inventory(main_dir,session,region):
           'apigatewayv2'             : list_apigatewayv2,
           'acm'                      : list_acm,
           'vpclattice'               : list_vpclattice,
-          'voiceid'                  : list_voiceid,
           'timestreamwrite'          : list_timestreamwrite,
           'route53'                  : list_route53,
           'accessanalyzer'           : list_accessanalyzer,
@@ -69,7 +76,10 @@ def parallel_executor_inventory(main_dir,session,region):
           'arc_zonal_shift'          : list_arc_zonal_shift,
           'autoscaling'              : list_autoscaling,
           'routetable'               : list_routetable,
-          'alexaforbusiness'         : list_alexaforbusiness,
+        #   'wisdom'                   : list_wisdom,
+        #   'alexaforbusiness'         : list_alexaforbusiness,
+        #   'voiceid'                  : list_voiceid,
+
           'appstream'                : list_appstream,
         #'amplifyuibuilder'           : list_amplifyuibuilder,
         #'applicationcostprofiler'    : list_applicationcostprofiler,
@@ -77,7 +87,6 @@ def parallel_executor_inventory(main_dir,session,region):
 
 
     }
-
     with concurrent.futures.ThreadPoolExecutor() as executor:
         future_to_task = {
             executor.submit(task,main_dir,session,region): name for name,task in tasks.items()
@@ -88,6 +97,7 @@ def parallel_executor_inventory(main_dir,session,region):
                 data = future.result()
                 print(f"{task_name} completed {region}, {data}")
             except Exception as exc:
+                print('---------------------------')
                 print(f"{task_name} generated an exception: {exc}")
 
 
@@ -108,11 +118,8 @@ def parallel_executor_inventory_s3(main_dir,session):
                 data = future.result()
                 print(f"{task_name} completed")
             except Exception as exc:
+                cloudteam_logger
                 print(f"{task_name} generated an exception: {exc}")
-
-
-
-
 
 
 def parallel_executor_inventory_metrics(main_dir,session):
@@ -131,7 +138,6 @@ def parallel_executor_inventory_metrics(main_dir,session):
                 print(f"{task_name} completed, {data}")
             except Exception as exc:
                 print(f"{task_name} generated an exception: {exc}")
-
 
 
 # Generic collector function

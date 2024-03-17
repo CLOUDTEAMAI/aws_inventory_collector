@@ -1,13 +1,18 @@
+from types import NoneType
 import boto3
 
 def regions_enabled(session):
-    account = session.client('account') 
-    sts = session.client('sts')
-    regions = account.list_regions()
-    available_regions  = session.get_available_regions('ec2')
-    regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
-    regions_name = [name['RegionName'] for name in regions_enabled]
-    return available_regions
+    regions_name = []
+    if session is not None:
+        account = session.client('account') 
+        sts = session.client('sts') 
+        account_id = sts.get_caller_identity()['Account']
+        regions = account.list_regions()
+        available_regions  = session.get_available_regions('ec2')
+        regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
+        regions_name = [name['RegionName'] for name in regions_enabled]
+        print(account_id)
+    return regions_name
 
 
 

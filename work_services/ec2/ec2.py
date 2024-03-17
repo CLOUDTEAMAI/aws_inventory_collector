@@ -8,8 +8,8 @@ import os
 from utils.utils import *
 
 
-cloudwatch = boto3.client('cloudwatch')
-cost_explorer = boto3.client('ce')
+# cloudwatch = boto3.client('cloudwatch')
+# cost_explorer = boto3.client('ce')
 
 path_json_file =  os.path.dirname(os.path.abspath(__file__))
 with open(f'{path_json_file}/metric.json','r') as file:

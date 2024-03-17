@@ -8,9 +8,9 @@ import os
 from utils.utils import *
 
 
-cloudwatch = boto3.client('cloudwatch')
+# cloudwatch = boto3.client('cloudwatch')
 
-cost_explorer = boto3.client('ce')
+# cost_explorer = boto3.client('ce')
 # path_json_file = os.path.join(os.getcwd(), 'ec2/metric.json')
 # with open(path_json_file,'r') as file:
 #     json_file = json.load(file)

@@ -6,8 +6,8 @@ import json
 from utils.utils import *
 import os 
 
-cloudwatch = boto3.client('cloudwatch')
-cost_explorer = boto3.client('ce')
+# cloudwatch = boto3.client('cloudwatch')
+# cost_explorer = boto3.client('ce')
 
 def list_workspaces(file_path,session,region):
     work = session.client('workspaces',region_name=region)
