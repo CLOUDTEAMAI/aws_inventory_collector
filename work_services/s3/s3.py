@@ -16,17 +16,19 @@ import os
 
 
 def list_s3_buckets(file_path,session,region=None):
-    sts = session.client('sts')
-    account_id = sts.get_caller_identity()["Account"]
-    s3 = session.client('s3')
-    s3_instances = []
-    buckets = s3.list_buckets()
-    for i in buckets['Buckets']:
-        arn = f"arn:aws:s3:::{i['Name']}"
-        s3_object = extract_common_info(arn,i,s3.get_bucket_location(Bucket=i['Name'])['LocationConstraint'],account_id)
-        s3_instances.append(s3_object)
-    save_as_file_parquet(s3_instances,file_path,generate_parquet_prefix(__file__,'global',account_id))
-    
-    return s3_instances
+    if session:
+        sts = session.client('sts')
+        account_id = sts.get_caller_identity()["Account"]
+        s3 = session.client('s3')
+        s3_instances = []
+        buckets = s3.list_buckets()
+        for i in buckets['Buckets']:
+            i['CreationDate'] = i['CreationDate'].isoformat()
+            arn = f"arn:aws:s3:::{i['Name']}"
+            s3_object = extract_common_info(arn,i,s3.get_bucket_location(Bucket=i['Name'])['LocationConstraint'],account_id)
+            s3_instances.append(s3_object)
+        save_as_file_parquet(s3_instances,file_path,generate_parquet_prefix(__file__,'global',account_id))
+        
+        return s3_instances
 
 

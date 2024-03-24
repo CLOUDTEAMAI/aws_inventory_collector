@@ -17,6 +17,10 @@ def list_workspaces_thin_client(file_path,session,region):
     inventory = work.list_devices()
     if len(inventory['devices']) != 0:
         for i in inventory['devices']:
+            i['lastConnectedAt'] = i['lastConnectedAt'].isoformat()
+            i['lastPostureAt'] = i['lastPostureAt'].isoformat()
+            i['createdAt'] = i['createdAt'].isoformat()
+            i['updatedAt'] = i['updatedAt'].isoformat()
             arn = i['arn']
             inventory_object = extract_common_info(arn,i,region,account_id)
             inventory_instances.append(inventory_object)

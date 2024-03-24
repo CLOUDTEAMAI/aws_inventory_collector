@@ -18,6 +18,8 @@ def list_shield(file_path,session,region):
     client_list = []
     if len(Subscription['Subscription']) != 0:
         for i in Subscription['Subscription']:
+            i['StartTime'] = i['StartTime'].isoformat()
+            i['EndTime'] = i['EndTime'].isoformat()
             arn = i['SubscriptionArn']
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

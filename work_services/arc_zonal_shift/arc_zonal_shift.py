@@ -11,6 +11,15 @@ def list_arc_zonal_shift(file_path,session,region):
     inventory = client.list_managed_resources()
     if len(inventory['items']) != 0:
         for i in inventory['items']:
+           
+           
+           for arc in i.get('autoshifts',[]):
+               arc['startTime'] = arc['startTime'].isformat()
+            
+           for zonal in i.get('zonalShifts',[]):
+                zonal['expiryTime'] = zonal['expiryTime'].isformat()
+                zonal['startTime'] = zonal['startTime'].isformat()
+
            query_details = client.get_named_query(NamedQueryId=i)
            arn = i['arn']
            inventory_object = extract_common_info(arn,query_details,region,account_id)

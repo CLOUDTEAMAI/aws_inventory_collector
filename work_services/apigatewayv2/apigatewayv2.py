@@ -11,6 +11,8 @@ def list_apigatewayv2(file_path,session,region):
     inventory = apigatewayv2_client.get_apis()
     if len(inventory['Items']) != 0:
         for i in inventory['Items']:
+           if 'CreatedDate' in i:
+               i['CreatedDate'] = i['CreatedDate'].isoformat()
            api_id = i['ApiId']
            arn = f"arn:aws:apigateway:{region}::/apis/{api_id}"
            inventory_object = extract_common_info(arn,i,region,account_id)

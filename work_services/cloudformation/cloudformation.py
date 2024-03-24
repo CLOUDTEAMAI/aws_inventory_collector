@@ -12,6 +12,16 @@ def list_cloudformation(file_path,session,region):
     resources = []
     if len(cloud_list['Stacks']) != 0:
         for i in cloud_list['Stacks']:
+
+            if 'CreationTime' in i:
+                i['CreationTime'] = i['CreationTime'].isoformat()
+            if 'DeletionTime' in i:
+                i['DeletionTime'] = i['DeletionTime'].isoformat()
+            if 'LastUpdatedTime' in i:
+                i['LastUpdatedTime'] = i['LastUpdatedTime'].isoformat()
+            if 'LastCheckTimestamp' in i['DriftInformation']:
+                i['DriftInformation']['LastCheckTimestamp'] =i['DriftInformation']['LastCheckTimestamp'].isoformat()
+            
             arn = i['StackId']
             resouce_object = extract_common_info(arn,i,region,account_id)
             resources.append(resouce_object)

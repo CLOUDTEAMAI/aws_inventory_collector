@@ -11,6 +11,12 @@ def list_appflow(file_path,session,region):
     inventory = appmesh.list_flows()
     if len(inventory['flows']) != 0:
         for i in inventory['flows']:
+           if 'createdAt' in i:
+               i['createdAt'] = i['createdAt'].isoformat()
+           if 'lastUpdatedAt' in i:
+               i['lastUpdatedAt'] = i['lastUpdatedAt'].isoformat()
+           if 'mostRecentExecutionTime' in i['lastRunExecutionDetails']:
+               i['lastRunExecutionDetails']['mostRecentExecutionTime'] = i['lastRunExecutionDetails']['mostRecentExecutionTime'].isoformat()
            flow_name = i['flowName']
            arn = f"arn:aws:appflow:{region}:{account_id}:flow/{flow_name}"
            inventory_object = extract_common_info(arn,i,region,account_id)

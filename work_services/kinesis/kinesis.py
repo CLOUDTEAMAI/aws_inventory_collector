@@ -19,6 +19,8 @@ def list_kinesis(file_path,session,region):
     if len(client_list_stream['StreamNames']) != 0:
         for i in client_list_stream['StreamNames']:
             response_data = client.describe_stream(StreamName=i)['StreamDescription']
+            if 'StreamCreationTimestamp' in response_data:
+                response_data['StreamCreationTimestamp'] = response_data['StreamCreationTimestamp'].isoformat()
             arn = response_data['StreamARN']
             client_object = extract_common_info(arn,response_data,region,account_id)
             client_list.append(client_object)

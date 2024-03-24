@@ -26,6 +26,19 @@ def list_ec2(file_path,session,region):
     if len(vm['Reservations']) != 0:
         for i in vm['Reservations']:
             for instance in i['Instances']:
+                instance['LaunchTime'] = instance['LaunchTime'].isoformat()
+                if 'UsageOperationUpdateTime' in instance:
+                    instance['UsageOperationUpdateTime'] = instance['UsageOperationUpdateTime'].isoformat()
+
+                for device in instance.get('BlockDeviceMappings', []):
+                    if 'Ebs' in device and 'AttachTime' in device['Ebs']:
+                        device['Ebs']['AttachTime'] = device['Ebs']['AttachTime'].isoformat()
+
+
+                for interface in instance.get('NetworkInterfaces', []):
+                    if 'Attachment' in interface and 'AttachTime' in interface['Attachment']:
+                        interface['Attachment']['AttachTime'] = interface['Attachment']['AttachTime'].isoformat()
+
                 arn = f"arn:aws:ec2:{region}:{account_id}:instance/{instance['InstanceId']}"
                 inventory_object = extract_common_info(arn,i,region,account_id)
             ec2_instances.append(inventory_object)
@@ -51,7 +64,7 @@ def metrics_utill_ec2(file_path,session,region):
             # item_object = extract_common_info()
                 item = get_resource_utilization_metric(session,j,metric['metricname'],metric['statistics'],metric['unit'],metric['nameDimensions'],metric['serviceType'])
                 ec2_instances.append(item)
-        save_as_file_parquet_metric(ec2_instances,file_path,generate_parquet_prefix(__file__,region,f'{account_id}-metrics'))
+        save_as_file_parquet(ec2_instances,file_path,generate_parquet_prefix(__file__,region,f'{account_id}-metrics'))
 
 
     #         item = get_resource_utilization(session,instance_ids,metric['metricname'],metric['statistics'],metric['unit'],metric['nameDimensions'],metric['serviceType'])

@@ -17,6 +17,15 @@ def list_natgateway(file_path,session,region):
     client_list = []
     if len(client_list_object['NatGateways']) != 0:
         for i in client_list_object['NatGateways']:
+            if 'CreateTime' in i:
+                i['CreateTime'] = i['CreateTime'].isoformat()
+            if 'DeleteTime' in i:
+                i['DeleteTime'] = i['DeleteTime'].isoformat()
+            if 'ProvisionedBandwidth' in i:
+                i['ProvisionedBandwidth']['ProvisionTime']  = i['ProvisionedBandwidth']['ProvisionTime'].isoformat()
+                i['ProvisionedBandwidth']['RequestTime']    = i['ProvisionedBandwidth']['RequestTime'].isoformat()
+
+            
             arn = f"arn:aws:ec2:{region}:{account_id}:natgateway/{i['NatGatewayId']}"
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

@@ -12,6 +12,8 @@ def list_voiceid(file_path,session,region):
         inventory = voiceid_client.list_domains()
         if len(inventory['DomainSummaries']) != 0:
             for i in inventory['DomainSummaries']:
+               i['CreatedAt'] = i['CreatedAt'].isoformat()
+               i['UpdatedAt'] = i['UpdatedAt'].isoformat()
                arn = i['Arn']
                inventory_object = extract_common_info(arn,i,region,account_id)
                inventory_instances.append(inventory_object)

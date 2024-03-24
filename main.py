@@ -1,57 +1,72 @@
-
 import boto3
 import concurrent.futures
 from datetime import datetime, timedelta
 import pandas as pd
 import json
+import os 
 from cloudwatch_logic import *
 from collector.collector_inventory import *
 from cloudteam_logger import cloudteam_logger
-# from work_services import *
+import threading
+# from db.db import *
 
-parent = Path(__file__).parent
-print(parent)
-logger_obj = cloudteam_logger.ct_logging(f'{parent}/logs',"debug")
-# change to reginal and non reginal
+
+
+lock = threading.Lock()
+
 def main():
     """
     The main function reads account information from a JSON file, creates AWS sessions for each account,
     and then runs parallel tasks to gather inventory and list S3 buckets for each account.
     """
-    start_timer = datetime.now()
-    end_time = datetime.utcnow()
     main_dir = os.path.dirname(os.path.abspath(__file__))
     uploads = main_dir + '/uploads'
+    logger_obj = cloudteam_logger.ct_logging(f'{main_dir}/logs','debug')
     f = open(f'{main_dir}/files/account.json')
     load_json = json.load(f)
-    try:
-        max_worker = len(load_json['accounts'])
-        if max_worker <= 1 or max_worker > 11:
-            max_worker = 10
-        with concurrent.futures.ThreadPoolExecutor(max_workers=max_worker) as executor:
-            futures_services = {
-                executor.submit(
-                    lambda acc=account, reg=region: parallel_executor_inventory(
-                        uploads, get_aws_session(acc['account_id'], reg), reg
-                    ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in load_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id']))
-            }
-            for future in concurrent.futures.as_completed(futures_services):
-                try:
-                    result = future.result()  # Corrected to call .result() on future
-                    # Process result or print
-                except Exception as ex:
-                    print(f'Error raisd in  \n {ex}')
-                    
-    except Exception as ex:
-        print(f'Error in end {ex}')
-        
+    start_timer = datetime.now()
+
+    get_all_accounts_inventory(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
     stop_timer = datetime.now()
-    runtime = (stop_timer - start_timer).total_seconds()
+    runtime = ((stop_timer - start_timer).total_seconds())/60
     print('---------------------------------------')
     print(f"{runtime}")
+    logger_obj.info(str(runtime))
+    try:
+        get_all_accounts_s3(main_dir=uploads,account_json=load_json,logger_obj=logger_obj)
+    except Exception as ex:
+        # logger_obj.error(str(ex))
+        print(str(ex))
 
-   
+    # insert_into_postgres()
+
+
+
+
+    # try:
+    #     max_worker = len(load_json['accounts'])
+    #     if max_worker <= 1 or max_worker > 11:
+    #         max_worker = 10
+    #     with concurrent.futures.ThreadPoolExecutor(max_workers=max_worker) as executor:
+    #         futures_services = {
+    #             executor.submit(
+    #                 lambda acc=account, reg=region: parallel_executor_inventory(
+    #                     logger_obj,uploads, get_aws_session(acc['account_id'], reg), reg
+    #                 ), account, region  # Defaulting acc and reg inside lambda
+    #             ): account for account in load_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id']))
+    #         }
+    #         for future in concurrent.futures.as_completed(futures_services):
+    #             try:
+    #                 result = future.result()  # Corrected to call .result() on future
+    #                 # Process result or print
+    #             except Exception as ex:
+    #                 print(f'Error raisd in  \n {ex}')
+    #                 with lock:
+    #                     logger_obj.error(ex)
+                    
+    # except Exception as ex:
+    #     print(f'Error in end {ex}')
+
     # with concurrent.futures.ThreadPoolExecutor(max_workers=len(load_json['accounts'])) as executor:
     #     futures = []
     #     for account in load_json['accounts']:
@@ -65,6 +80,8 @@ def main():
     #             # print(result)
     #         except Exception as ex:
     #             print(ex)
+    #             with lock:
+    #                 logger_obj.error(ex)
                 
 
     

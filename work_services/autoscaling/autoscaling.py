@@ -11,6 +11,10 @@ def list_autoscaling(file_path,session,region):
     inventory = client.describe_auto_scaling_groups()
     if len(inventory['AutoScalingGroups']) != 0:
         for i in inventory['AutoScalingGroups']:
+           
+           if 'CreatedTime' in i:
+               i['CreatedTime'] = i['CreatedTime'].isoformat()
+               
            arn = i['AutoScalingGroupARN']
            inventory_object = extract_common_info(arn,i,region,account_id)
            inventory_instances.append(inventory_object)

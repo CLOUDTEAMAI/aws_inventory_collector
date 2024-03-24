@@ -11,7 +11,7 @@ def regions_enabled(session):
         available_regions  = session.get_available_regions('ec2')
         regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
         regions_name = [name['RegionName'] for name in regions_enabled]
-        print(account_id)
+        
     return regions_name
 
 

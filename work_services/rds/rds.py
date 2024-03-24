@@ -24,6 +24,12 @@ def list_rds(file_path,session,region):
     rds_list = rds.describe_db_instances()
     if len(rds_list['DBInstances']) != 0:
         for i in rds_list['DBInstances']:
+            if 'InstanceCreateTime' in i:
+                i['InstanceCreateTime'] = i['InstanceCreateTime'].isoformat()
+            if 'LatestRestorableTime' in i:
+                i['LatestRestorableTime'] = i['LatestRestorableTime'].isoformat()
+            if 'ValidTill' in i['CertificateDetails']:
+                i['CertificateDetails']['ValidTill'] = i['CertificateDetails']['ValidTill'].isoformat()
             rds_object = extract_common_info(i['DBInstanceArn'],i,region,account_id)
             rds_instances.append(rds_object)
         save_as_file_parquet(rds_instances,file_path,generate_parquet_prefix(__file__,region,account_id))

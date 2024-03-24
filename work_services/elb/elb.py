@@ -10,6 +10,10 @@ def list_elb(file_path,session,region):
     resources = []
     if len(elb_list['LoadBalancerDescriptions']) != 0:
         for i in elb_list['LoadBalancerDescriptions']:
+
+            if 'CreatedTime' in i:
+                i['CreatedTime'] = i['CreatedTime'].isoformat()
+                
             arn = i['LoadBalancerArn']
             resouce_object = extract_common_info(arn,i,region,account_id)
             resources.append(resouce_object)

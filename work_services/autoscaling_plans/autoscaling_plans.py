@@ -17,6 +17,14 @@ def list_autoscaling_plans(file_path,session,region):
     client_list = []
     if len(repositories['ScalingPlans']) != 0:
         for repo in repositories['ScalingPlans']:
+
+            if 'StatusStartTime' in repo:
+                repo['StatusStartTime'] = repo['StatusStartTime'].isoformat()
+
+            if 'CreationTime' in repo:
+                repo['CreationTime'] = repo['CreationTime'].isoformat()
+
+                
             arn = repo['repositoryArn']
             client_object = extract_common_info(arn,repo,region,account_id)
             client_list.append(client_object)

@@ -10,6 +10,8 @@ def list_vpclattice(file_path,session,region):
     resources = []
     if len(client_list['items']) != 0:
         for i in client_list['items']:
+            i['createdAt']     = i['createdAt'].isoformat()
+            i['lastUpdatedAt'] = i['lastUpdatedAt'].isoformat()
             arn = i['arn']
             resouce_object = extract_common_info(arn,i,region,account_id)
             resources.append(resouce_object)

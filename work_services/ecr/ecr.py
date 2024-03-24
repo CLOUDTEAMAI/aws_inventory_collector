@@ -17,6 +17,8 @@ def list_ecr_repositories(file_path,session,region):
     ecr_repos = []
     if len(repositories['repositories']) != 0:
         for repo in repositories['repositories']:
+            if 'createdAt' in repo:
+                repo['createdAt'] = repo['createdAt'].isoformat()
             repo_arn = repo['repositoryArn']
             ecr_object = extract_common_info(repo_arn,repo,region,account_id)
             ecr_repos.append(ecr_object)

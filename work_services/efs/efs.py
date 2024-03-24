@@ -13,9 +13,13 @@ def list_efs_file_systems(file_path,session,region):
     account_id = sts.get_caller_identity()["Account"]
     efs = session.client('efs',region_name=region)
     file_systems = efs.describe_file_systems()
+    efs_instances = []
     if len(file_systems['FileSystems']) != 0:
-        efs_instances = []
         for fs in file_systems['FileSystems']:
+            if 'CreationTime' in fs:
+                fs['CreationTime'] = fs['CreationTime'].isoformat()
+            if 'SizeInBytes' in fs:
+                fs['SizeInBytes']['Timestamp'] = fs['SizeInBytes']['Timestamp'].isoformat()
             arn = f"arn:aws:elasticfilesystem:{region}:{account_id}:file-system/{fs['FileSystemId']}"
             efs_object = extract_common_info(arn,fs,region,account_id)
             efs_instances.append(efs_object)

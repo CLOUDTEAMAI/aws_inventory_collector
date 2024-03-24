@@ -17,6 +17,7 @@ def list_vpc_endpoint(file_path,session,region):
     client_list = []
     if len(client_list_object['VpcEndpoints']) != 0:
         for i in client_list_object['VpcEndpoints']:
+            i['CreationTimestamp'] = i['CreationTimestamp'].isoformat()
             arn = f"arn:aws:ec2:{region}:{account_id}:vpc-endpoint/{i['VpcEndpointId']}"
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

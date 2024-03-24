@@ -13,6 +13,8 @@ def list_lambda(file_path,session,region):
     lambda_list = lambda_client.list_functions()['Functions']
     resources = []
     for i in lambda_list:
+        if 'ApplyOn' in i['SnapStart'] and i['SnapStart']['ApplyOn'] == "None":
+            i['SnapStart']['ApplyOn'] = "null"
         arn = i.get('FunctionArn', 'Unknown ARN')
         inventory_object = extract_common_info(arn,i,region,account_id)
         resources.append(inventory_object)

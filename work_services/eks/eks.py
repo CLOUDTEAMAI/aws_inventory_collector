@@ -24,8 +24,14 @@ def list_eks(file_path,session,region):
     eks_clusters = eks.list_clusters()
     if len(eks_clusters['clusters']) != 0:
         for i in eks_clusters['clusters']:
-            eks_describe = eks.describe_cluster(name=i)
-            arn = f"{eks_describe['cluster']['arn']}"
+            eks_describe = eks.describe_cluster(name=i)['cluster']
+            if 'createdAt' in eks_describe:
+                eks_describe['createdAt'] = eks_describe['createdAt'].isoformat()
+            
+            if 'connectorConfig' in eks_describe:
+                eks_describe['connectorConfig']['activationExpiry'] = eks_describe['connectorConfig']['activationExpiry'].isoformat()
+            
+            arn = f"{eks_describe['arn']}"
             inventory_object = extract_common_info(arn,eks_describe,region,account_id)
             eks_instances.append(inventory_object)
         save_as_file_parquet(eks_instances,file_path,generate_parquet_prefix(__file__,region,account_id))

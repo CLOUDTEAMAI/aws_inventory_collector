@@ -18,7 +18,8 @@ def list_networkfirewall(file_path,session,region):
     if len(client_list['Firewalls']) != 0:
         for i in client_list['Firewalls']:
             arn = i['FirewallArn']
-            client_object = extract_common_info(arn,i,region,account_id)
+            firewall_description = client.describe_firewall(FirewallArn=arn)
+            client_object = extract_common_info(arn,firewall_description,region,account_id)
             client_list.append(client_object)
         save_as_file_parquet(client_list,file_path,generate_parquet_prefix(__file__,region,account_id))
     return client_list

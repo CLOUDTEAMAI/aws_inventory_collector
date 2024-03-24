@@ -4,11 +4,11 @@ from utils.utils import *
 
 
 def list_waf(file_path,session,region):
-    wafv2_client = session.client('waf',region_name=region)
+    wafv_client = session.client('waf',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
     inventory_instances = []
-    inventory = wafv2_client.list_web_acls()
+    inventory = wafv_client.list_web_acls()
     if len(inventory['WebACLs']) != 0:
         for i in inventory['WebACLs']:
            arn = i['ARN']

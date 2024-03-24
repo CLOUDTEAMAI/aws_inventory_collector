@@ -11,6 +11,8 @@ def list_timestreamwrite(file_path,session,region):
     inventory = timestream_write_client.list_databases()
     if len(inventory['Databases']) != 0:
         for i in inventory['Databases']:
+           i['CreationTime'] = i['CreationTime'].isoformat()
+           i['LastUpdatedTime'] = i['LastUpdatedTime'].isoformat()
            arn = i['Arn']
            inventory_object = extract_common_info(arn,i,region,account_id)
            inventory_instances.append(inventory_object)

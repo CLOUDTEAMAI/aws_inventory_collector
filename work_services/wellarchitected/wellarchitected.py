@@ -12,7 +12,9 @@ def list_well_architect(file_path,session,region):
         inventory = wa_client.list_workloads()['WorkloadSummaries']
         if len(inventory) != 0:
             for i in inventory:
-                wa = wa_client.get_workload(WorkloadId=i['WorkloadId'])
+                wa = wa_client.get_workload(WorkloadId=i['WorkloadId'])['Workload']
+                wa['UpdatedAt'] = wa['UpdatedAt'].isoformat()
+                wa['ReviewRestrictionDate'] = wa['ReviewRestrictionDate'].isoformat()
                 arn = wa['WorkloadId']
                 inventory_object = extract_common_info(arn,wa,region,account_id)
                 inventory_instances.append(inventory_object)

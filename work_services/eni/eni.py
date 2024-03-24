@@ -17,6 +17,8 @@ def list_eni(file_path,session,region):
     client_list = []
     if len(client_list_object['NetworkInterfaces']) != 0:
         for i in client_list_object['NetworkInterfaces']:
+            if 'Attachment' in i:
+                i['Attachment']['AttachTime'] = i['Attachment']['AttachTime'].isoformat()
             arn = f"arn:aws:ec2:{region}:{account_id}:network-interface/{i['NetworkInterfaceId']}"
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

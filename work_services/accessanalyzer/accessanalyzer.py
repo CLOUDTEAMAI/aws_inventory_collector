@@ -10,6 +10,10 @@ def list_accessanalyzer(file_path,session,region):
     resources = []
     if len(client_list['analyzers']) != 0:
         for i in client_list['analyzers']:
+            if 'lastResourceAnalyzedAt' in i:
+                i['lastResourceAnalyzedAt'] = i['lastResourceAnalyzedAt'].isoformat()
+            if 'createdAt' in i:
+                i['createdAt'] = i['createdAt'].isoformat()
             arn = i['arn']
             resouce_object = extract_common_info(arn,i,region,account_id)
             resources.append(resouce_object)

@@ -26,7 +26,9 @@ def list_xray(file_path,session,region):
         trace_summaries = response['TraceSummaries']
         if len(trace_summaries) != 0:
             for i in trace_summaries:
-                attributes       = i['Id']
+                attributes                    = i['Id']
+                i['StartTime']                = i['StartTime'].isoformat()
+                i['MatchedEventTime']         = i['MatchedEventTime'].isoformat()
                 inventory_object = extract_common_info(attributes,i,region,account_id)
                 inventory_instances.append(inventory_object)
             save_as_file_parquet(inventory_instances,file_path,generate_parquet_prefix(__file__,region,account_id))

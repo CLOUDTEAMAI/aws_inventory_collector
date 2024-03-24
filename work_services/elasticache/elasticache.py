@@ -9,6 +9,10 @@ def list_cache(file_path,session,region):
     resources = []
     if len(cache_list['CacheClusters']) != 0:
         for i in cache_list['CacheClusters']:
+            if 'CacheClusterCreateTime' in i:
+                i['CacheClusterCreateTime'] = i['CacheClusterCreateTime'].isoformat()
+            for nodes in i.get('CacheNodes',[]):
+                nodes['CacheNodeCreateTime'] = nodes['CacheNodeCreateTime'].isoformat()
             arn = i['ARN']
             resouce_object = extract_common_info(arn,i,region,account_id)
             resources.append(resouce_object)

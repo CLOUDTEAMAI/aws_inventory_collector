@@ -19,6 +19,15 @@ def list_emr(file_path,session,region):
     client_list = []
     if len(client_list_emr['Clusters']) != 0:
         for i in client_list_emr['Clusters']:
+
+            if 'Timeline' in i:
+                if 'CreationDateTime' in i['Timeline']:
+                    i['Timeline']['CreationDateTime'] = i['Timeline']['CreationDateTime'].isoformat()
+                if 'ReadyDateTime' in i['Timeline']:
+                    i['Timeline']['ReadyDateTime'] = i['Timeline']['ReadyDateTime'].isoformat()
+                if 'EndDateTime' in i['Timeline']:
+                    i['Timeline']['EndDateTime'] = i['Timeline']['EndDateTime'].isoformat()
+                
             arn = i['ClusterArn']
             client_object = extract_common_info(arn,i,region,account_id)
             client_list.append(client_object)

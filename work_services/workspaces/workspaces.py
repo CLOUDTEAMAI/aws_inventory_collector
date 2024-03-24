@@ -17,6 +17,10 @@ def list_workspaces(file_path,session,region):
     inventory = work.describe_workspaces()
     if len(inventory['Workspaces']) != 0:
         for i in inventory['Workspaces']:
+            if 'StandbyWorkspacesProperties' in i:
+                i['RecoverySnapshotTime'] = i['RecoverySnapshotTime'].isoformat()
+            if 'DataReplicationSettings' in i:
+                i['DataReplicationSettings'] = i['DataReplicationSettings'].isoformat()
             arn = f"arn:aws:workspaces:{region}:{account_id}:workspace/{i['WorkspaceId']}"
             inventory_object = extract_common_info(arn,i,region,account_id)
             inventory_instances.append(inventory_object)

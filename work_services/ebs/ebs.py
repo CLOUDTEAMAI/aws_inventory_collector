@@ -23,6 +23,12 @@ def list_volumes(file_path,session,region):
     volumes = ec2.describe_volumes()['Volumes']
     volumes_list = []
     for i in volumes:
+
+        for vol in i.get('Attachments',[]):
+            vol['AttachTime'] = vol['AttachTime'].isoformat()
+
+        vol['CreateTime'] = vol['CreateTime'].isformat()
+        
         arn = f"arn:aws:ec2:{region}:{account_id}:volume/{i['VolumeId']}"
         object_volume = extract_common_info(arn,i,region,account_id)
         volumes_list.append(object_volume)

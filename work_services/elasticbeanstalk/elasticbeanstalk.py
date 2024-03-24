@@ -11,6 +11,11 @@ def list_elasticbeanstalk(file_path,session,region):
     elasticbeanstalk_list_object = []
     if len(elasticbeanstalk_list['Applications']) != 0:
         for i in elasticbeanstalk_list['Applications']:
+
+            if 'DateCreated' in i:
+                i['DateCreated'] = i['DateCreated'].isoformat()
+            if 'DateUpdated' in i:
+                i['DateUpdated'] = i['DateUpdated'].isoformat()
             arn = i['ApplicationArn']
             object_elastic = extract_common_info(arn,i,region,account_id)
             elasticbeanstalk_list_object.append(object_elastic)
