@@ -1,7 +1,7 @@
 import pandas as pd
 import psycopg2
 import os
-
+from cloudteam_logger import cloudteam_logger
 
 
 

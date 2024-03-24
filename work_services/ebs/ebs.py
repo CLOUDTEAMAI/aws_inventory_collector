@@ -27,7 +27,7 @@ def list_volumes(file_path,session,region):
         for vol in i.get('Attachments',[]):
             vol['AttachTime'] = vol['AttachTime'].isoformat()
 
-        vol['CreateTime'] = vol['CreateTime'].isformat()
+        i['CreateTime'] = i['CreateTime'].isoformat()
         
         arn = f"arn:aws:ec2:{region}:{account_id}:volume/{i['VolumeId']}"
         object_volume = extract_common_info(arn,i,region,account_id)
@@ -82,13 +82,13 @@ def is_candidate_for_upgrade(volumes):
                 gp2_volumes.append(volume_object)
     return gp2_volumes
 
-def ebs_utiliztion(volumes):
+# def ebs_utiliztion(volumes):
   
-  ebs_metric_list = []
-#   ebs_nitro_utiliztion = []
-  for ebs in json_file['metrics']:
-    ebs_metric_list.append(get_resource_utilization_parallel(volumes,metricname=ebs['metricname'],name='VolumeId',statistics=ebs['statistics'],unit=ebs['unit']))
-  return  ebs_metric_list
+#   ebs_metric_list = []
+# #   ebs_nitro_utiliztion = []
+#   for ebs in json_file['metrics']:
+#     ebs_metric_list.append(get_resource_utilization_parallel(volumes,metricname=ebs['metricname'],name='VolumeId',statistics=ebs['statistics'],unit=ebs['unit']))
+#   return  ebs_metric_list
     
 
 

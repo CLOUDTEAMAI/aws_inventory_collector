@@ -8,7 +8,7 @@ from cloudwatch_logic import *
 from collector.collector_inventory import *
 from cloudteam_logger import cloudteam_logger
 import threading
-# from db.db import *
+from db.database_manager import DatabaseManager
 
 
 
@@ -27,6 +27,7 @@ def main():
     start_timer = datetime.now()
 
     get_all_accounts_inventory(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
+    
     stop_timer = datetime.now()
     runtime = ((stop_timer - start_timer).total_seconds())/60
     print('---------------------------------------')
@@ -38,9 +39,11 @@ def main():
         # logger_obj.error(str(ex))
         print(str(ex))
 
-    # insert_into_postgres()
-
-
+    db_manager = DatabaseManager()
+    db_manager.create_table("db_telit_secureWISE")
+    data_list = db_manager.load_data_from_dir_parquet(uploads)
+    db_manager.insert_data("db_telit_secureWISE", data_list, update_on_conflict=True)
+    db_manager.close_connection()
 
 
     # try:
