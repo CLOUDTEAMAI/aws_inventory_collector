@@ -40,6 +40,8 @@ import ast
 
 def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=60):
     cloudwatch = session.client('cloudwatch')
+    sts = session.client('sts')
+    account_id = sts.get_caller_identity()["Account"]    
     start_timer = datetime.now()
     end_time = datetime.utcnow()
     start_time = end_time - timedelta(days)
@@ -50,14 +52,14 @@ def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: 
     Dimensions =[{'Name': name_dimensions ,'Value': ids}],
     StartTime=start_time,
     EndTime=end_time,
-    Period=86400,  
+    Period=3600,  
     Statistics= statistics ,
     Unit= unit
     )
     for i in metrics['Datapoints']:
         i['Timestamp'] = i['Timestamp'].isoformat()
 
-    item = extract_common_info_metrics(ids,metrics['Datapoints'],metrics['Label'])
+    item = extract_common_info_metrics(account_id,ids,metrics['Datapoints'],metrics['Label'])
     stop_timer = datetime.now()
     runtime = (stop_timer - start_timer).total_seconds()
     print(f"{runtime % 60 :.3f}")

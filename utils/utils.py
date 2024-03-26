@@ -14,11 +14,12 @@ def extract_common_info(arn, resource, region, account_id):
         "timegenerated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-def extract_common_info_metrics(id,resource,label):
+def extract_common_info_metrics(account_id,id,resource,label):
     return {
         'id': id,
+        'account_id':account_id,
         'label': label,
-        'properties': str(resource),
+        'properties': resource,
         'timegenerated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
     }

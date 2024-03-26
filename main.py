@@ -27,23 +27,44 @@ def main():
     start_timer = datetime.now()
 
     get_all_accounts_inventory(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
-    
+    start_timer = datetime.now()
     stop_timer = datetime.now()
     runtime = ((stop_timer - start_timer).total_seconds())/60
     print('---------------------------------------')
     print(f"{runtime}")
-    logger_obj.info(str(runtime))
+    try:
+        logger_obj.info(str(runtime))
+    except Exception as ex:
+        print(ex)
     try:
         get_all_accounts_s3(main_dir=uploads,account_json=load_json,logger_obj=logger_obj)
     except Exception as ex:
-        # logger_obj.error(str(ex))
+        logger_obj.error(str(ex))
         print(str(ex))
 
+    # get_all_accounts_metrics(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
+    
+    # start_timer = datetime.now()
+   
     db_manager = DatabaseManager()
-    db_manager.create_table("db_telit_secureWISE")
+    db_manager.create_table_collector("cloudteamdb_sapiens")
+    # db_manager.create_table_metric("db_telit_secureWISE_metric")
     data_list = db_manager.load_data_from_dir_parquet(uploads)
-    db_manager.insert_data("db_telit_secureWISE", data_list, update_on_conflict=True)
+    db_manager.insert_data_collector("cloudteamdb_sapiens", data_list, update_on_conflict=True)
+    # db_manager.insert_data_metric("db_telit_secureWISE_metric", data_list, update_on_conflict=True)
     db_manager.close_connection()
+    stop_timer = datetime.now()
+    runtime = ((stop_timer - start_timer).total_seconds())/60
+    print('---------------------------------------')
+    print(f"{runtime}")
+
+
+
+
+
+
+
+
 
 
     # try:

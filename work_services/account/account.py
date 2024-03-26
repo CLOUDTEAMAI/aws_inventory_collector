@@ -12,7 +12,7 @@ def regions_enabled(session):
         regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
         regions_name = [name['RegionName'] for name in regions_enabled]
         
-    return regions_name
+    return available_regions
 
 
 
