@@ -3,10 +3,10 @@ from utils.utils import *
 
 
 
-def list_voiceid(file_path,session,region):
+def list_voiceid(file_path,session,region,time_generated,account):
     voiceid_client = session.client('voice-id',region_name=region)
-    sts = session.client('sts')
-    account_id = sts.get_caller_identity()["Account"]
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ","_")
     inventory_instances = []
     try:
         inventory = voiceid_client.list_domains()
@@ -15,7 +15,7 @@ def list_voiceid(file_path,session,region):
                i['CreatedAt'] = i['CreatedAt'].isoformat()
                i['UpdatedAt'] = i['UpdatedAt'].isoformat()
                arn = i['Arn']
-               inventory_object = extract_common_info(arn,i,region,account_id)
+               inventory_object = extract_common_info(arn,i,region,account_id,time_generated,account_name)
                inventory_instances.append(inventory_object)
             save_as_file_parquet(inventory_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
         return inventory_instances

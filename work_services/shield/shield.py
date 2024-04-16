@@ -9,10 +9,10 @@ from utils.utils import *
 
    
 
-def list_shield(file_path,session,region):
+def list_shield(file_path,session,region,time_generated,account):
     client = session.client('shield',region_name=region)
-    sts = session.client('sts')
-    account_id = sts.get_caller_identity()["Account"]
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ","_")
     # client_list_object = client.list_protections()
     Subscription = client.describe_subscription()
     client_list = []
@@ -21,7 +21,7 @@ def list_shield(file_path,session,region):
             i['StartTime'] = i['StartTime'].isoformat()
             i['EndTime'] = i['EndTime'].isoformat()
             arn = i['SubscriptionArn']
-            client_object = extract_common_info(arn,i,region,account_id)
+            client_object = extract_common_info(arn,i,region,account_id,time_generated,account)
             client_list.append(client_object)
         save_as_file_parquet(client_list,file_path,generate_parquet_prefix(__file__,region,account_id))
     return client_list

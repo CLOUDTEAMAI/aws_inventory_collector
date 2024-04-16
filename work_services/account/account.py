@@ -1,5 +1,5 @@
-from types import NoneType
 import boto3
+# import aioboto3
 
 def regions_enabled(session):
     regions_name = []
@@ -7,16 +7,25 @@ def regions_enabled(session):
         account = session.client('account') 
         sts = session.client('sts') 
         account_id = sts.get_caller_identity()['Account']
-        regions = account.list_regions()
-        available_regions  = session.get_available_regions('ec2')
-        regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
-        regions_name = [name['RegionName'] for name in regions_enabled]
+        try:
+            # regions = account.list_regions()
+            available_regions  = session.get_available_regions('ec2')
+            # regions_enabled = [region for region in regions['Regions'] if region['RegionOptStatus'] in ['ENABLED_BY_DEFAULT', 'ENABLED']]
+            # regions_name = [name['RegionName'] for name in regions_enabled]
+        except Exception as ex:
+            print(ex)
+        regions_name = ['us-east-1', 'us-east-2', 'us-west-1',
+                        'us-west-2', 'af-south-1', 'ap-east-1',
+                        'ap-south-1', 'ap-northeast-3', 'ap-northeast-2',
+                        'ap-southeast-1', 'ap-southeast-2', 'ap-northeast-1',
+                        'ca-central-1', 'eu-central-1', 'eu-west-1', 'eu-west-2',
+                        'eu-south-1', 'eu-west-3', 'eu-north-1', 'me-south-1', 'sa-east-1']
         
-    return available_regions
+    return regions_name
 
 
 
-def get_credentials_assume_role(account_id, role_name, external_id=None):
+def get_credentials_assume_role(account_id, role_name="Cloudteam-FinOps", external_id=None):
     try:
         role_arn = 'arn:aws:iam::' + account_id + ':role/' + role_name
         sts_client = boto3.client('sts')
@@ -33,7 +42,7 @@ def get_credentials_assume_role(account_id, role_name, external_id=None):
         return None
 
 
-def get_aws_session(account_id,region=None):
+def get_aws_session(account_id,region=None,role_name="Cloudteam-FinOps"):
     """
     This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and
     then uses those credentials to create a new `boto3` session
@@ -45,7 +54,6 @@ def get_aws_session(account_id,region=None):
         external_id:
     """
     try:
-        role_name = 'Cloudteam-FinOps'
         credentials = get_credentials_assume_role(
             account_id, role_name)
         if credentials is not None:
@@ -59,6 +67,24 @@ def get_aws_session(account_id,region=None):
         # log.error(f"Error occurred get credentials: {e}")
         return None
     
+# async def async_get_aws_session(account_id, region=None, role_name='Cloudteam-FinOps'):
+#     credentials =  get_credentials_assume_role(account_id, role_name, region)
+#     if credentials:
+#         return [
+#             aioboto3.Session(
+#             aws_access_key_id=credentials['AccessKeyId'],
+#             aws_secret_access_key=credentials['SecretAccessKey'],
+#             aws_session_token=credentials['SessionToken'],
+#             region_name=region
+#         ),
+#         boto3.Session(
+#             aws_access_key_id=credentials['AccessKeyId'],
+#             aws_secret_access_key=credentials['SecretAccessKey'],
+#             aws_session_token=credentials['SessionToken'],
+#             region_name=region
+#         )
+#         ]
+#     return None
 
 
 

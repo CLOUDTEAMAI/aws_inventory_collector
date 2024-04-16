@@ -4,36 +4,47 @@ import pandas as pd
 import json
 import os
 import ast
+import asyncio
 
-def extract_common_info(arn, resource, region, account_id):
+def extract_common_info(arn, resource, region, account_id,timegenerated,account_name):
     return {
         "arn": arn,
         "account_id": account_id,
+        "account_name": account_name,
         "region": region,
         "properties": resource,
-        "timegenerated": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "timegenerated": timegenerated or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-def extract_common_info_metrics(account_id,id,resource,label):
+def extract_common_info_metrics(account_id,id,resource,label,timegenerated,account_name):
     return {
         'id': id,
         'account_id':account_id,
+        'account_name':account_name,
         'label': label,
         'properties': resource,
-        'timegenerated': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        'timegenerated': timegenerated or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
     }
 
-
+def datetime_converter(o):
+    try:
+        if isinstance(o, datetime):
+            return o.__str__()
+    except Exception as ex:
+        print(f"datetime_convertor function faild \n {ex}")
+    
 def save_as_file_parquet(inventory,file_path,file_name):
-    if len(inventory) != 0:
-        df = pd.DataFrame(inventory)
-        file_path = os.path.join(file_path, file_name)
-        # Ensure 'properties' is a string (JSON), as Parquet requires consistent data types
-        df['properties'] = df['properties'].apply(lambda x: json.dumps(x) if not isinstance(x, str) else x)   
-        # Save the DataFrame to a Parquet file
-        df.to_parquet(file_path, index=False)
-
+    try:
+        if len(inventory) != 0:
+            df = pd.DataFrame(inventory)
+            file_path = os.path.join(file_path, file_name)
+            # Ensure 'properties' is a string (JSON), as Parquet requires consistent data types
+            df['properties'] = df['properties'].apply(lambda x: json.dumps(x, default=datetime_converter) if not isinstance(x, str) else x)
+            # Save the DataFrame to a Parquet file
+            df.to_parquet(file_path, index=False,engine='pyarrow')
+    except Exception as ex:
+        print(f"save_as_file_parquet function faild \n{ex}")
 
 
 def get_script_name_without_extension(script_path):

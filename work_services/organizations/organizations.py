@@ -1,7 +1,7 @@
 import boto3
 import os
 from utils.utils import *
-def get_accounts_in_org(file_path,session):
+def get_accounts_in_org(file_path,session,time_generated):
     org_collector = []
     org_client = session.client('organizations')
     try:
@@ -10,7 +10,7 @@ def get_accounts_in_org(file_path,session):
             arn = acc['Arn']
             if 'JoinedTimestamp' in acc:
                 acc['JoinedTimestamp'] = acc['JoinedTimestamp'].isoformat()
-            client_object = extract_common_info(arn,acc,None,acc['Id'])
+            client_object = extract_common_info(arn,acc,None,acc['Id'],time_generated)
             org_collector.append(client_object)
         save_as_file_parquet(org_collector,file_path,generate_parquet_prefix(__file__,'global',acc['Id']))
 

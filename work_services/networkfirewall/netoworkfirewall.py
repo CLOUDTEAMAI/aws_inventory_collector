@@ -9,7 +9,7 @@ from utils.utils import *
 
    
 
-def list_networkfirewall(file_path,session,region):
+def list_networkfirewall(file_path,session,region,time_generated):
     client = session.client('network-firewall',region_name=region)
     sts = session.client('sts')
     account_id = sts.get_caller_identity()["Account"]
@@ -19,7 +19,7 @@ def list_networkfirewall(file_path,session,region):
         for i in client_list['Firewalls']:
             arn = i['FirewallArn']
             firewall_description = client.describe_firewall(FirewallArn=arn)
-            client_object = extract_common_info(arn,firewall_description,region,account_id)
+            client_object = extract_common_info(arn,firewall_description,region,account_id,time_generated)
             client_list.append(client_object)
         save_as_file_parquet(client_list,file_path,generate_parquet_prefix(__file__,region,account_id))
     return client_list

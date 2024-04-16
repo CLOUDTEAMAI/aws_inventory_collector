@@ -16,6 +16,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+path/*
 lib64/
 parts/
 sdist/
@@ -27,6 +28,7 @@ share/python-wheels/
 *.egg
 files/*
 logs/*
+query_data/*
 
 MANIFEST
 

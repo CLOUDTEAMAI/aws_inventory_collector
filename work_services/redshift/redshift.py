@@ -9,10 +9,10 @@ from utils.utils import *
 
    
 
-def list_redshift(file_path,session,region):
+def list_redshift(file_path,session,region,time_generated,account):
     client = session.client('redshift',region_name=region)
-    sts = session.client('sts')
-    account_id = sts.get_caller_identity()["Account"]
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ","_")
     client_list_redshift = client.describe_clusters()
     
     client_list = []
@@ -35,7 +35,7 @@ def list_redshift(file_path,session,region):
                 i['CustomDomainCertificateExpiryDate'] = i['CustomDomainCertificateExpiryDate'].isoformat()
 
             arn = i['ClusterNamespaceArn']
-            client_object = extract_common_info(arn,i,region,account_id)
+            client_object = extract_common_info(arn,i,region,account_id,time_generated,account_name)
             client_list.append(client_object)
         save_as_file_parquet(client_list,file_path,generate_parquet_prefix(__file__,region,account_id))
     return client_list
