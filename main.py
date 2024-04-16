@@ -28,9 +28,9 @@ def main():
 
 
 
-
+    #  arranging all os configs such as path of file runing or create folders if not exist
     main_dir = os.path.dirname(os.path.abspath(__file__))
-    create_folder_if_not_exist([f'{main_dir}/uploads',f'{main_dir}/files',f'{main_dir}/logs'])
+    create_folder_if_not_exist([f'{main_dir}/uploads',f'{main_dir}/files',f'{main_dir}/logs',f'{main_dir}/uploads/metrics'])
     uploads = f'{main_dir}/uploads'
     time_generated = os.environ.get('TIME_GENERATED_SCRIPT')
     if time_generated == None:
@@ -40,7 +40,7 @@ def main():
     f = open(f'{main_dir}/files/account.json')
     load_json = json.load(f)
 
-    # load_json = json.load(load_json)
+    # Start collecting all the data from client environment
     start_timer = datetime.now()
     try:
         get_all_accounts_inventory(main_dir=uploads,logger_obj=logger_obj,account_json=load_json,time_generated=time_generated)
@@ -59,8 +59,11 @@ def main():
         logger_obj.error(str(ex))
         print(f"faild to write logger s3 {ex}")
 
-    get_all_accounts_metrics(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
+    get_all_accounts_metrics(main_dir=f"{uploads}/metrics",logger_obj=logger_obj,account_json=load_json)
     
+    # Finsihed Collecting All the Data
+
+
     start_timer = datetime.now()
     
     if os.environ.get('MANUAL_INSERT_TO_DB') and os.environ.get('TABLE_NAME'):
