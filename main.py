@@ -69,7 +69,7 @@ def main():
         data_list = db_manager.load_data_from_dir_parquet(uploads)
         db_manager.insert_data_collector(os.environ.get('TABLE_NAME'), data_list, update_on_conflict=True)
         query_result = f"{main_dir}/query_data"
-        db_manager.generate_data_from_all_queries(os.environ.get('TABLE_NAME'),query_result,"db_sapiens_emea_metric")
+        db_manager.generate_data_from_all_queries(os.environ.get('TABLE_NAME'),query_result,os.environ.get('TABLE_NAME_METRIC'))
         db_manager.close_connection()
 
 
