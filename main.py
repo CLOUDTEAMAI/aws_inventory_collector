@@ -31,7 +31,7 @@ def main():
 
     main_dir = os.path.dirname(os.path.abspath(__file__))
     create_folder_if_not_exist([f'{main_dir}/uploads',f'{main_dir}/files',f'{main_dir}/logs'])
-
+    uploads = f'{main_dir}/uploads'
     time_generated = os.environ.get('TIME_GENERATED_SCRIPT')
     if time_generated == None:
         time_generated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -43,8 +43,8 @@ def main():
     # load_json = json.load(load_json)
     start_timer = datetime.now()
     try:
-        print('test')
         get_all_accounts_inventory(main_dir=uploads,logger_obj=logger_obj,account_json=load_json,time_generated=time_generated)
+        print("Finished Collecting")
     except Exception as ex:
         print(f"faild to execute get_all_accounts_inventory \n{ex}")
     start_timer = datetime.now()
@@ -53,37 +53,26 @@ def main():
     print('---------------------------------------')
     print(f"{runtime}")
     try:
-        # logger_obj.info(f"{runtime}")
-        # logger_obj.info(f"Finished Collecting")
-        print("Finished Collecting")
-    except Exception as ex:
-        print(f"faild to write logger services \n{ex}")
-    try:
-        # get_all_accounts_s3(main_dir=uploads,account_json=load_json,logger_obj=logger_obj,time_generated=time_generated)
+        get_all_accounts_s3(main_dir=uploads,account_json=load_json,logger_obj=logger_obj,time_generated=time_generated)
         print("Finished Collecting S3")
     except Exception as ex:
         logger_obj.error(str(ex))
         print(f"faild to write logger s3 {ex}")
 
-    # get_all_accounts_metrics(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
+    get_all_accounts_metrics(main_dir=uploads,logger_obj=logger_obj,account_json=load_json)
     
     start_timer = datetime.now()
-   
-    db_manager = DatabaseManager()
-    # db_manager.create_table_collector("db_gloat")
-    # db_manager.create_table_pricing("ec2_pricing_table")
-    # db_manager.create_table_metric("db_sapiens_emea_metric")
-    # data_list = db_manager.load_data_from_dir_parquet(uploads)
-    # db_manager.insert_data_collector("db_gloat", data_list, update_on_conflict=True)
-    # db_manager.insert_data_metric("db_sapiens_emea_metric", data_list, update_on_conflict=True)
-    # db_manager.insert_data_pricing("ec2_pricing_table",data_list, update_on_conflict=True)
-    query_result = f"{main_dir}/query_data"
-
-
-    # db_manager.get_stopped_ec2_ebs("db_sapiens_emea",f"{main_dir}/query_data/query1")
     
-    # db_manager.generate_data_from_all_queries("db_gloat",query_result,"db_sapiens_emea_metric")
-    # db_manager.close_connection()
+    if os.environ.get('MANUAL_INSERT_TO_DB') and os.environ.get('TABLE_NAME'):
+        db_manager = DatabaseManager()
+        db_manager.create_table_collector(os.environ.get('TABLE_NAME'))
+        data_list = db_manager.load_data_from_dir_parquet(uploads)
+        db_manager.insert_data_collector(os.environ.get('TABLE_NAME'), data_list, update_on_conflict=True)
+        query_result = f"{main_dir}/query_data"
+        db_manager.generate_data_from_all_queries(os.environ.get('TABLE_NAME'),query_result,"db_sapiens_emea_metric")
+        db_manager.close_connection()
+
+
     stop_timer = datetime.now()
     runtime = ((stop_timer - start_timer).total_seconds())/60
     print('---------------------------------------')
@@ -92,7 +81,8 @@ def main():
 
 
 
-
+if __name__ == '__main__':
+    main()
 
 
 
@@ -183,8 +173,7 @@ def main():
   
     
    
-if __name__ == '__main__':
-    main()
+
 
 # def main1():
 #     main_dir = os.path.dirname(os.path.abspath(__file__))
