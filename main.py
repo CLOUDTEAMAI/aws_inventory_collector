@@ -15,14 +15,22 @@ from db.database_manager import DatabaseManager
 
 
 lock = threading.Lock()
+def create_folder_if_not_exist(list_dir_path):
+    for i in list_dir_path:
+        if not os.path.exists(i):
+            os.mkdir(i)
 
 def main():
     """
     The main function reads account information from a JSON file, creates AWS sessions for each account,
     and then runs parallel tasks to gather inventory and list S3 buckets for each account.
     """
+
+
+
+
     main_dir = os.path.dirname(os.path.abspath(__file__))
-    uploads = main_dir + '/uploads'
+    create_folder_if_not_exist([f'{main_dir}/uploads',f'{main_dir}/files',f'{main_dir}/logs'])
 
     time_generated = os.environ.get('TIME_GENERATED_SCRIPT')
     if time_generated == None:
