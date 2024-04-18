@@ -25,7 +25,7 @@ The diagram above illustrates the flow of data through our application, showing 
 1. **Clone the Repository**: Clone this repository to your local machine or server.
 2. **Install Dependencies**: Run `pip install -r requirements.txt` to install required Python packages.
 3. **Configure AWS CLI**: Ensure AWS CLI is configured with access to the necessary AWS accounts.
-4. **Export ENV variables**: `export MANUAL_INSERT_TO_DB` `export TABLE_NAME` `export TABLE_NAME_METRIC` 
+4. **Export ENV variables**: `export MANUAL_INSERT_TO_DB`,`export TABLE_NAME`,`export TABLE_NAME_METRIC`.`TIME_GENERATED_SCRIPT` 
 5. **Run the Collector**: Execute `python main.py` to start the collection process. Check the logs for progress and results.
 
 
