@@ -32,3 +32,17 @@ The diagram above illustrates the flow of data through our application, showing 
 
 ## Performance
 1. **change worker** will effect the runinng time for faster running increase the worker count and if suffer from over utillization change the worker count for less then default
+
+
+
+
+## Docker
+1. **volume create to attach docker**: docker volume create {volume_name}
+2. **docker build image**: docker build -t {image_name} .
+1. **docker run collector**: docker run -e AWS_ACCESS_KEY_ID={client_access_key} \
+-e AWS_SECRET_ACCESS_KEY={client_secret_key} \
+-e AWS_DEFAULT_REGION={region} \
+-v {volume_name}:/app/uploads \
+-v /Users/{user}/Desktop/Code/accounts/account2.json:/app/files/account.json \ # for using the accounts.json for give the process to run over the specific client with this json
+--cpus=2 # can limit the process utillization
+-it {image_name}
