@@ -697,10 +697,111 @@ and properties->>'State'!='in-use';
             df.to_csv(f"{target_dir}/unattached_volumes.csv",index=False)
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/unattached_volumes.xlsx", index=False)
+    def get_ec2_without_autoscaling_group(self,table_name,metric_table_name,target_dir,output_type="csv"):
+        query_test = f"""   
+WITH Unnested AS (
+    SELECT
+        resource_id,
+        label,
+        account_id,
+        account_name,
+        (jsonb_array_elements(properties)->>'Timestamp')::timestamp WITH TIME ZONE AS metric_timestamp,
+        ROUND((jsonb_array_elements(properties)->>'Average')::NUMERIC, 2) AS average,
+        ROUND((jsonb_array_elements(properties)->>'Maximum')::NUMERIC, 2) AS maximum
+    FROM 
+        {metric_table_name}
+    WHERE 
+        properties::jsonb @> '[{{"Unit": "Percent"}}]' and label = 'CPUUtilization'
+),
+Filtered AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        average,
+        maximum,
+        EXTRACT(DAY FROM (CURRENT_TIMESTAMP - metric_timestamp)) AS days_ago
+    FROM Unnested
+),
+Metrics AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 20), 2) AS max_20_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 20), 2) AS avg_20_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 40), 2) AS max_40_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 40), 2) AS avg_40_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 60), 2) AS max_60_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 60), 2) AS avg_60_days,
+        COUNT(*) FILTER (WHERE maximum > 50 ) AS count_over_50_max_cpu
+    FROM 
+        Filtered
+    GROUP BY 
+        resource_id, account_id, account_name, label
+),
+Instances AS (
+    SELECT 
+        account_id,
+        account_name,
+        region,
+        split_part(arn, '/', 2) AS instance_id,
+        properties_data ->> 'InstanceType' AS instance_type,
+        properties_data -> 'State' ->> 'Name' AS state,
+        properties_data ->> 'PlatformDetails' AS os_type,
+        tag->>'Value' AS instance_name,
+        CASE 
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[0-2]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to t3 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'c[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to c6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'r[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to r6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'm[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to m6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[3-4]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'c[5-7]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'r[5-7]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'm[5-7]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'i[3-4]%' THEN 'Current generation'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[3-4]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'c[6-7]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'r[6-7]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'm[6-7]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'i[0-4]%' THEN 'Not a candidate'
+            WHEN properties_data ->> 'InstanceType' LIKE '%a' THEN 'Candidate for AMD'
+            ELSE 'Not a candidate'
+        END AS upgrade_option,
+        CASE 
+            WHEN properties_data ->> 'InstanceType' !~ '.*[ag]$' AND properties_data ->> 'InstanceType' !~ '.*[0-9]g.*' and properties_data ->> 'InstanceType' !~ '.*i[0-9]' THEN true
+            ELSE false
+        END AS amd_candidate
+    FROM 
+        {table_name},
+        jsonb_array_elements(properties->'Instances') AS properties_data,
+        jsonb_array_elements(properties_data->'Tags') AS tag
+    WHERE tag->>'Key' = 'Name'
+      AND NOT EXISTS (
+          -- Assuming there's a tag that identifies Auto Scaling instances, e.g., "aws:autoscaling:groupName"
+          SELECT 1 FROM jsonb_array_elements(properties_data->'Tags') t
+          WHERE t->>'Key' = 'aws:autoscaling:groupName'
+      )
+)
+SELECT 
+    m.*,
+    i.region,
+    i.instance_id,
+    i.instance_name,
+    i.instance_type,
+    i.state,
+    i.os_type,
+    i.upgrade_option,
+    i.amd_candidate
+FROM 
+    Metrics m
+JOIN 
+    Instances i ON m.resource_id = i.instance_id AND m.account_id = i.account_id
+ORDER BY 
+    m.account_id, i.upgrade_option, i.instance_type, i.region, i.amd_candidate DESC, m.max_20_days, m.label;
+        """
+        df = pd.read_sql_query(query_test,self.connection)
+        if output_type == "csv":
+            df.to_csv(f"{target_dir}/get_ec2_without_autoscaling_group.csv",index=False)
+        elif output_type == "xlsx":
+            df.to_excel(f"{target_dir}/get_ec2_without_autoscaling_group.xlsx", index=False)
 # def load_data_from_parquet(self, target_dir):
     #     for filename in os.listdir(target_dir):
     #         if filename.endswith('.parquet'):
     #             filepath = os.path.join(target_dir, filename)
     #             df = pd.read_parquet(filepath)
-    #             return df    
-    
+    #             return df
