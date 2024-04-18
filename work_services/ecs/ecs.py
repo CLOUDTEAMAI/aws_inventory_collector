@@ -21,7 +21,7 @@ def list_ecs_clusters(file_path,session,region,time_generated,account):
             ecs_object = extract_common_info(cluster_arn,clusters_info,region,account_id,time_generated,account_name)
             ecs_clusters.append(ecs_object)
         save_as_file_parquet(ecs_clusters,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return ecs_clusters
+    # return ecs_clusters
 
 
 

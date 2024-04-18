@@ -15,4 +15,4 @@ def list_elbv2(file_path,session,region,time_generated,account):
             resouce_object = extract_common_info(arn,i,region,account_id,time_generated,account_name)
             resources.append(resouce_object)
         save_as_file_parquet(resources,file_path,generate_parquet_prefix(__file__,region,account_id))
-        return resources
+        # return resources

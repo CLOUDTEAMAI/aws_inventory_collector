@@ -5,6 +5,7 @@ import json
 import os
 import ast
 import asyncio
+from memory_profiler import profile
 
 def extract_common_info(arn, resource, region, account_id,timegenerated,account_name):
     return {
@@ -33,7 +34,7 @@ def datetime_converter(o):
             return o.__str__()
     except Exception as ex:
         print(f"datetime_convertor function faild \n {ex}")
-    
+
 def save_as_file_parquet(inventory,file_path,file_name):
     try:
         if len(inventory) != 0:

@@ -33,7 +33,7 @@ def list_rds(file_path,session,region,time_generated,account):
             rds_object = extract_common_info(i['DBInstanceArn'],i,region,account_id,time_generated,account_name)
             rds_instances.append(rds_object)
         save_as_file_parquet(rds_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return rds_instances
+    # return rds_instances
 
 
 # def rds_utiliztion(rds):

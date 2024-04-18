@@ -1,7 +1,6 @@
 import pandas as pd
 import psycopg2
 import os
-import abc
 
 
 
@@ -248,12 +247,11 @@ WHERE
     
     def get_autoscaling_recommendation_with_metric(self,table_name,metric_table_name,target_dir,output_type="csv"):
         query_test  = f"""
-  
-  WITH Metrics AS (
+WITH Metrics AS (
     SELECT
         resource_id,
         account_id,
-        account_name,
+		account_name,
         label,
         ROUND(MAX(maximum) FILTER (WHERE days_ago <= 20), 2) AS max_20_days,
         ROUND(AVG(average) FILTER (WHERE days_ago <= 20), 2) AS avg_20_days,
@@ -266,6 +264,7 @@ WHERE
         SELECT
             resource_id,
             account_id,
+			account_name,
             label,
             (jsonb_array_elements(properties)->>'Timestamp')::timestamp WITH TIME ZONE AS metric_timestamp,
             ROUND((jsonb_array_elements(properties)->>'Average')::NUMERIC, 2) AS average,
@@ -277,11 +276,12 @@ WHERE
             properties::jsonb @> '[{{"Unit": "Percent"}}]' and label = 'CPUUtilization'
     ) AS Unnested
     GROUP BY 
-        resource_id, account_id, label
+        resource_id, account_id,account_name, label
 ),
 AutoScalingInstances AS (
     SELECT 
         emea.account_id,
+		emea.account_name,
         emea.region,
         instance_data->>'InstanceId' AS instance_id,
         instance_data->>'InstanceType' AS instance_type,
@@ -492,7 +492,7 @@ Metrics AS (
     FROM 
         Filtered
     GROUP BY 
-        resource_id, account_id, label
+        resource_id, account_id,account_name, label
 ),
 Instances AS (
     SELECT 
@@ -618,13 +618,16 @@ SELECT
         function_to_exe = [
             (self.get_stopped_ec2_ebs,                        [table_name, target_dir, output_type]),
             (self.unattached_eip,                             [table_name, target_dir, output_type]),
+            (self.unattached_eip,                             [table_name, target_dir, output_type]),
+            (self.unattached_volume,                             [table_name, target_dir, output_type]),
+            (self.unattached_eip_eni,                         [table_name, target_dir, output_type]),
             (self.get_rds,                                    [table_name, target_dir, output_type]),
             (self.get_autoscaling,                            [table_name, target_dir, output_type]),
-            # (self.get_autoscaling_recommendation_with_metric, [table_name, metric_table_name, target_dir, output_type]),
+            (self.get_autoscaling_recommendation_with_metric, [table_name, metric_table_name, target_dir, output_type]),
             (self.get_gp2_to_gp3,                             [table_name, target_dir, output_type]),
             (self.get_snapshots,                              [table_name, target_dir, output_type]),
             (self.get_snapshots_price,                        [table_name, target_dir, output_type]),
-            # (self.get_ec2_recommendations_with_metric,        [table_name, metric_table_name, target_dir, output_type]),
+            (self.get_ec2_recommendations_with_metric,        [table_name, metric_table_name, target_dir, output_type]),
             (self.get_ec2_recoomendations_by_generation,      [table_name, target_dir, output_type])
         ]
 
@@ -641,6 +644,59 @@ WHERE arn LIKE '%eip%' AND (properties->> 'NetworkInterfaceId' IS NUll OR proper
             df.to_csv(f"{target_dir}/unattached_eip.csv",index=False)
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/unattached_eip.xlsx", index=False)
+
+
+    def unattached_eip_eni(self,table_name,target_dir,output_type="csv"):
+        query_test = f"""
+        SELECT main.*, nics.*
+FROM 
+    (SELECT arn,
+            account_id,
+            region,
+            properties->> 'NetworkInterfaceId' AS nic_id,
+            properties->> 'AssociationId' AS association_id
+     FROM {table_name}
+     WHERE arn LIKE '%eip%'
+           AND (properties->> 'NetworkInterfaceId' IS NULL OR properties->> 'AssociationId' IS NULL)
+    ) AS main
+LEFT JOIN 
+    (SELECT arn, 
+            account_id,
+            region,
+            properties
+     FROM {table_name}
+     WHERE arn LIKE '%eni-%' 
+           AND properties->>'Status' != 'in-use'
+    ) AS nics 
+ON main.account_id = nics.account_id AND main.region = nics.region
+        """
+        df = pd.read_sql_query(query_test,self.connection)
+        if output_type == "csv":
+            df.to_csv(f"{target_dir}/unattached_eip_eni.csv",index=False)
+        elif output_type == "xlsx":
+            df.to_excel(f"{target_dir}/unattached_eip_eni.xlsx", index=False)
+    def unattached_volume(self,table_name,target_dir,output_type="csv"):
+        query_test = f"""   
+SELECT
+	arn,
+	account_id
+	account_name,
+	region,
+	properties->>'Iops' as volume_iops,
+	properties->>'Size' as volume_size,
+	properties->>'VolumeType' as volume_type,
+	tag->>'Value' AS volume_name
+FROM 
+	{table_name},
+	jsonb_array_elements(properties->'Tags') AS tag
+where arn like '%volume%' and tag->>'Key' = 'Name'
+and properties->>'State'!='in-use';
+        """
+        df = pd.read_sql_query(query_test,self.connection)
+        if output_type == "csv":
+            df.to_csv(f"{target_dir}/unattached_volumes.csv",index=False)
+        elif output_type == "xlsx":
+            df.to_excel(f"{target_dir}/unattached_volumes.xlsx", index=False)
 # def load_data_from_parquet(self, target_dir):
     #     for filename in os.listdir(target_dir):
     #         if filename.endswith('.parquet'):

@@ -13,7 +13,7 @@ import ast
 
 
 
-def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,days=30,account=dict):
+def get_resource_utilization_metric(session,ids: str,metricname:str,statistics: list,unit:str,name_dimensions: str,serviceType: str,account,days=30):
     cloudwatch = session.client('cloudwatch')
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ","_")   

@@ -33,4 +33,4 @@ def list_appstream(file_path, session, region,time_generated,account):
             file_path,
             generate_parquet_prefix(__file__, region, account_id),
         )
-    return inventory_instances
+    # return inventory_instances

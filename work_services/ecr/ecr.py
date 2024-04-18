@@ -23,7 +23,7 @@ def list_ecr_repositories(file_path,session,region,time_generated,account):
             ecr_object = extract_common_info(repo_arn,repo,region,account_id,time_generated,account_name)
             ecr_repos.append(ecr_object)
         save_as_file_parquet(ecr_repos,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return ecr_repos
+    # return ecr_repos
 
 
 async def async_list_ecr(file_path, session, region, time_generated):

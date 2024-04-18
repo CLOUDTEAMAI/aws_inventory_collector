@@ -19,4 +19,4 @@ def list_application_autoscaling(file_path,session,region,time_generated,account
                 inventory_instances.append(inventory_object)
     if len(inventory['ScalableTargets']) != 0:
         save_as_file_parquet(inventory_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return inventory_instances
+    # return inventory_instances

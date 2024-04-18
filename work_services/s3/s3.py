@@ -33,7 +33,7 @@ def list_s3_buckets(file_path,session,region=None,time_generated=None,account=No
             s3_instances.append(s3_object)
         save_as_file_parquet(s3_instances,file_path,generate_parquet_prefix(__file__,'global',account_id))
         
-        return s3_instances
+        # return s3_instances
 
 
 

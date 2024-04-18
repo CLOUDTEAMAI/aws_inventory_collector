@@ -35,7 +35,7 @@ def list_eks(file_path,session,region,time_generated,account):
             inventory_object = extract_common_info(arn,eks_describe,region,account_id,time_generated,account_name)
             eks_instances.append(inventory_object)
         save_as_file_parquet(eks_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return eks_instances
+    # return eks_instances
 
 
 

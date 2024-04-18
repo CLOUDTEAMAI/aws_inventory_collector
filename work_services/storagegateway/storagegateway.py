@@ -21,6 +21,6 @@ def list_storagegateway(file_path,session,region,time_generated):
             client_object = extract_common_info(arn,i,region,account_id,time_generated)
             client_list.append(client_object)
         save_as_file_parquet(client_list,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return client_list
+    # return client_list
 
 

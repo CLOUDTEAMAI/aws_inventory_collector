@@ -34,7 +34,7 @@ def list_dynamo(file_path,session,region,time_generated,account):
             object_client   = extract_common_info(arn,info_tables,region,account_id,time_generated,account_name)
             dynamodb_list.append(object_client)
         save_as_file_parquet(dynamodb_list,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return dynamodb_list
+    # return dynamodb_list
 
 
 

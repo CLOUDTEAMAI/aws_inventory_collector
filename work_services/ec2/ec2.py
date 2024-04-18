@@ -6,7 +6,8 @@ import json
 from cloudwatch_logic import *
 import os 
 from utils.utils import *
-
+import gc
+from memory_profiler import profile
 
 # cloudwatch = boto3.client('cloudwatch')
 # cost_explorer = boto3.client('ce')
@@ -16,7 +17,6 @@ with open(f'{path_json_file}/metric.json','r') as file:
     json_file = json.load(file)
 
 
-    
 def list_ec2(file_path,session,region,time_generated,account):
     ec2 = session.client('ec2',region_name=region)
     account_id = account['account_id']
@@ -43,6 +43,8 @@ def list_ec2(file_path,session,region,time_generated,account):
                 inventory_object = extract_common_info(arn,i,region,account_id,time_generated,account_name)
             ec2_instances.append(inventory_object)
         save_as_file_parquet(ec2_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
+    del ec2,vm
+    gc.collect() 
     # return ec2_instances
 
 

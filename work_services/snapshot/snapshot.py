@@ -6,11 +6,11 @@ import json
 from cloudwatch_logic import *
 import os 
 from utils.utils import *
+import gc
+from memory_profiler import profile
 
 
 
-
-    
 def list_ec2_snapshots(file_path,session,region,time_generated,account):
     ec2 = session.client('ec2',region_name=region)
     account_id = account['account_id']
@@ -27,7 +27,9 @@ def list_ec2_snapshots(file_path,session,region,time_generated,account):
             inventory_object = extract_common_info(arn,i,region,account_id,time_generated,account_name)
             ec2_instances.append(inventory_object)
         save_as_file_parquet(ec2_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return ec2_instances
+    del ec2,snapshots_client
+    gc.collect()
+    # return ec2_instances
 
 
 

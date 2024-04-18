@@ -24,7 +24,7 @@ def list_efs_file_systems(file_path,session,region,time_generated,account):
             efs_object = extract_common_info(arn,fs,region,account_id,time_generated,account_name)
             efs_instances.append(efs_object)
         save_as_file_parquet(efs_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-        return efs_instances
+        # return efs_instances
     
 
 async def async_list_efs_file_systems(file_path, session, region, time_generated):

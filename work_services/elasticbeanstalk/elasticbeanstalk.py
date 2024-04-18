@@ -20,7 +20,7 @@ def list_elasticbeanstalk(file_path,session,region,time_generated,account):
             object_elastic = extract_common_info(arn,i,region,account_id,time_generated,account_name)
             elasticbeanstalk_list_object.append(object_elastic)
         save_as_file_parquet(elasticbeanstalk_list_object,file_path,generate_parquet_prefix(__file__,region,account_id))
-        return elasticbeanstalk_list_object
+        # return elasticbeanstalk_list_object
     
 
 async def async_list_elasticbeanstalk(file_path, session, region, time_generated):
