@@ -11,21 +11,27 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-uploads/*.parquet
+uploads/*
 downloads/
 eggs/
 .eggs/
 lib/
+path/*
 lib64/
 parts/
 sdist/
 var/
 wheels/
+query_data/*
 share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-files/account.json
+
+files/*
+logs/*
+query_data/*
+
 MANIFEST
 
 # PyInstaller

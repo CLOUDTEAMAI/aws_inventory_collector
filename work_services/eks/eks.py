@@ -8,32 +8,60 @@ import os
 from utils.utils import *
 
 
-cloudwatch = boto3.client('cloudwatch')
+# cloudwatch = boto3.client('cloudwatch')
 
-cost_explorer = boto3.client('ce')
+# cost_explorer = boto3.client('ce')
 # path_json_file = os.path.join(os.getcwd(), 'ec2/metric.json')
 # with open(path_json_file,'r') as file:
 #     json_file = json.load(file)
 
 
-def list_eks(file_path,session,region):
+def list_eks(file_path,session,region,time_generated,account):
     eks = session.client('eks',region_name=region)
-    sts = session.client('sts')
-    account_id = sts.get_caller_identity()["Account"]
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ","_")
     eks_instances = []
     eks_clusters = eks.list_clusters()
     if len(eks_clusters['clusters']) != 0:
         for i in eks_clusters['clusters']:
-            eks_describe = eks.describe_cluster(name=i)
-            arn = f"{eks_describe['cluster']['arn']}"
-            inventory_object = extract_common_info(arn,eks_describe,region,account_id)
+            eks_describe = eks.describe_cluster(name=i)['cluster']
+            if 'createdAt' in eks_describe:
+                eks_describe['createdAt'] = eks_describe['createdAt'].isoformat()
+            
+            if 'connectorConfig' in eks_describe:
+                eks_describe['connectorConfig']['activationExpiry'] = eks_describe['connectorConfig']['activationExpiry'].isoformat()
+            
+            arn = f"{eks_describe['arn']}"
+            inventory_object = extract_common_info(arn,eks_describe,region,account_id,time_generated,account_name)
             eks_instances.append(inventory_object)
         save_as_file_parquet(eks_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
-    return eks_instances
+    # return eks_instances
 
 
 
-
+async def async_list_eks(file_path, session, region, time_generated):
+    try:
+        client_list = []
+        eks_client = session[1].client('eks',region_name=region)
+        clinet_account =  session[1].client('sts')
+        account_id = clinet_account.get_caller_identity()["Account"]
+        async with session[0].client('eks') as boto3_client:
+            paginator = boto3_client.get_paginator('list_clusters')
+            async for page in paginator.paginate():
+                for i in page['clusters']:
+                    eks_describe = eks_client.describe_cluster(name=i)['cluster']
+                    if 'createdAt' in eks_describe:
+                        eks_describe['createdAt'] = eks_describe['createdAt'].isoformat()
+                    if 'connectorConfig' in eks_describe:
+                        eks_describe['connectorConfig']['activationExpiry'] = eks_describe['connectorConfig']['activationExpiry'].isoformat()
+                    arn = f"{eks_describe['arn']}"
+                    inventory_object = extract_common_info(arn, eks_describe, region, account_id, time_generated)
+                    client_list.append(inventory_object)
+    except Exception as ex:
+            print(ex)
+    finally:
+        if len(client_list) != 0:
+                save_as_file_parquet(client_list, file_path, generate_parquet_prefix(__file__, region, account_id))
 
 
 
