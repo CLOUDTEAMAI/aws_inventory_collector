@@ -26,7 +26,7 @@ The diagram above illustrates the flow of data through our application, showing 
 2. **Install Dependencies**: Run `pip install -r requirements.txt` to install required Python packages.
 3. **Configure AWS CLI**: Ensure AWS CLI is configured with access to the necessary AWS accounts.
 4. **Export ENV variables**: `export MANUAL_INSERT_TO_DB`,`export TABLE_NAME`,`export TABLE_NAME_METRIC`.`TIME_GENERATED_SCRIPT`
-5. **Account File**: ```json{"accounts": [{"account_name": "account_client_name","account_id": "xxxxxxxxxxx","account_role":"account_role"},{"account_client_name": "Maxim Sidorenko""account_id":"xxxxxxxxxx","account_role":"account_role"}]}```
+5. **Account File**: ```{"accounts": [{"account_name": "account_client_name","account_id": "xxxxxxxxxxx","account_role":"account_role"},{"account_client_name": "Maxim Sidorenko""account_id":"xxxxxxxxxx","account_role":"account_role"}]}```
 6. **Run the Collector**: Execute `python main.py` to start the collection process. Check the logs for progress and results.
 7. **outputs**: services Outputs parquet will be saved in uploads directory and metric will be in uploads/metrics
 
