@@ -55,7 +55,8 @@ docker run -e AWS_ACCESS_KEY_ID={client_access_key} \
 -e AWS_SECRET_ACCESS_KEY={client_secret_key} \
 -e AWS_DEFAULT_REGION={region} \
 -v {volume_name}:/app/uploads \
--v /Users/{user}/Desktop/Code/accounts/account2.json:/app/files/account.json \ # for using the accounts.json for give the process to run over the specific client with this json \
+# for using the accounts.json for give the process to run over the specific client with this json 
+-v /Users/{user}/Desktop/Code/accounts/account2.json:/app/files/account.json \ 
 --cpus=2 \ # can limit the process utillization
 --memory="2g" \ # can limit the process utillization
 -it {image_name}
