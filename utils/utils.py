@@ -5,7 +5,6 @@ import json
 import os
 import ast
 import asyncio
-from memory_profiler import profile
 
 def extract_common_info(arn, resource, region, account_id,timegenerated,account_name):
     return {

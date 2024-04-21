@@ -4,7 +4,6 @@ import concurrent.futures
 from work_services import *
 from cloudteam_logger import cloudteam_logger
 import threading
-from memory_profiler import profile
 import gc
 lock = threading.Lock()
 

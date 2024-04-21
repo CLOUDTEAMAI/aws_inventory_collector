@@ -629,7 +629,7 @@ SELECT
             (self.get_snapshots,                              [table_name, target_dir, output_type]),
             (self.get_snapshots_price,                        [table_name, target_dir, output_type]),
             (self.get_ec2_recommendations_with_metric,        [table_name, metric_table_name, target_dir, output_type]),
-            (self.get_ec2_recomendations_by_generation,      [table_name, target_dir, output_type])
+            (self.get_ec2_recomendations_by_generation,       [table_name, target_dir, output_type])
         ]
 
         for func, args in function_to_exe:
