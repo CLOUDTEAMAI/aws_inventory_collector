@@ -38,6 +38,7 @@ The diagram above illustrates the flow of data through our application, showing 
 
 
 
+
 ## Docker
 1. **volume create to attach docker**: `docker volume create {volume_name}`
 2. **docker build image**: `docker build -t {image_name} .`
@@ -48,7 +49,8 @@ docker run -e AWS_ACCESS_KEY_ID={client_access_key} \
 -e AWS_DEFAULT_REGION={region} \
 -v {volume_name}:/app/uploads \
 -v /Users/{user}/Desktop/Code/accounts/account2.json:/app/files/account.json \ # for using the accounts.json for give the process to run over the specific client with this json \
---cpus=2 # can limit the process utillization
+--cpus=2 \ # can limit the process utillization
+--memory="2g"
 -it {image_name}
 
 
