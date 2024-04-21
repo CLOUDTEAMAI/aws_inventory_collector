@@ -53,6 +53,7 @@ def get_all_accounts_inventory(logger_obj,main_dir: str,account_json: list,time_
 def parallel_executor_inventory(logger_obj,main_dir: str,session,region: str,time_generated: datetime,account):
 # Initialize functions clients for services you want to list resources from in parallel 
     tasks = {
+         'logs'                      : list_logs_groups,
          'ec2'                       : list_ec2,
          'ami'                       : list_ami,
          'snapshot'                  : list_ec2_snapshots,
@@ -65,12 +66,9 @@ def parallel_executor_inventory(logger_obj,main_dir: str,session,region: str,tim
          'vpc_endpoint'              : list_vpc_endpoint,
          'ssm'                       : list_ssm,
          'shield'                    : list_shield,
-        #  'acl'                       : list_acl,
          'internetgateway'           : list_internetgateway,
          'eip'                       : list_eip,
          'natgateway'                : list_natgateway,
-        # #  'securitygroup'             : list_securitygroup,
-        # #   'cloudformation'           : list_cloudformation,
           'redshift'                 : list_redshift,
           'emr'                      : list_emr,
           'kinesis'                  : list_kinesis,
@@ -98,7 +96,6 @@ def parallel_executor_inventory(logger_obj,main_dir: str,session,region: str,tim
           'workspacesthinclient'     : list_workspaces_thin_client,
           'eks'                      : list_eks,
           'dynamo_db'                : list_dynamo,
-        #   'wellarchitected'          : list_well_architect,
           'wafv2'                    : list_wafv2,
           'waf'                      : list_waf,
           'appconfig'                : list_appconfig,
@@ -118,6 +115,11 @@ def parallel_executor_inventory(logger_obj,main_dir: str,session,region: str,tim
           'wisdom'                   : list_wisdom,
           'voiceid'                  : list_voiceid,
           'appstream'                : list_appstream,
+        #  'acl'                       : list_acl,
+        #  'securitygroup'             : list_securitygroup,
+        #   'cloudformation'           : list_cloudformation,
+        #   'wellarchitected'          : list_well_architect,
+
 
     }
         #'amplifyuibuilder'           : list_amplifyuibuilder,
