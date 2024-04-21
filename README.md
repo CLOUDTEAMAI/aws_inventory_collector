@@ -30,8 +30,8 @@ The diagram above illustrates the flow of data through our application, showing 
 ```json
 {
     "accounts": [
-        {"account_name": "account_client_name","account_id":"xxxxxxxxxx","account_role":"account_role"},
-        {"account_name": "account_client_name","account_id":"xxxxxxxxxx","account_role":"account_role"}
+        {"account_name": "account_client_name","account_id":"xxxxxxxxxx","account_role":"account_role_name"},
+        {"account_name": "account_client_name","account_id":"xxxxxxxxxx","account_role":"account_role_name"}
     ]
 }
 ```
