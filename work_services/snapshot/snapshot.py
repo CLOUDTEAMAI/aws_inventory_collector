@@ -7,7 +7,6 @@ from cloudwatch_logic import *
 import os 
 from utils.utils import *
 import gc
-from memory_profiler import profile
 
 
 

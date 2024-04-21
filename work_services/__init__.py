@@ -22,6 +22,7 @@ from .vpc_endpoint.vpc_endpoint import *
 from .ssm.ssm import *
 from .shield.shield import *
 from .dynamodb.dynamodb import *
+from .logs.logs import *
 from .account.account import *
 from .organizations.organizations import *
 from .amplify.amplify import *

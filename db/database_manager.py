@@ -560,7 +560,7 @@ ORDER BY
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/get_ec2_recommendations_with_metric.xlsx", index=False)
 
-    def get_ec2_recoomendations_by_generation(self,table_name,target_dir,output_type="csv"):
+    def get_ec2_recomendations_by_generation(self,table_name,target_dir,output_type="csv"):
         query_test = f"""
 SELECT 
         account_id,
@@ -593,9 +593,9 @@ SELECT
 """
         df = pd.read_sql_query(query_test,self.connection)
         if output_type == "csv":
-            df.to_csv(f"{target_dir}/get_ec2_recoomendations_by_generation.csv",index=False)
+            df.to_csv(f"{target_dir}/get_ec2_recomendations_by_generation.csv",index=False)
         elif output_type == "xlsx":
-            df.to_excel(f"{target_dir}/get_ec2_recoomendations_by_generation.xlsx", index=False)
+            df.to_excel(f"{target_dir}/get_ec2_recomendations_by_generation.xlsx", index=False)
 
     def load_data_from_dir_parquet(self,target_dir):
         dataframes = []
@@ -629,7 +629,7 @@ SELECT
             (self.get_snapshots,                              [table_name, target_dir, output_type]),
             (self.get_snapshots_price,                        [table_name, target_dir, output_type]),
             (self.get_ec2_recommendations_with_metric,        [table_name, metric_table_name, target_dir, output_type]),
-            (self.get_ec2_recoomendations_by_generation,      [table_name, target_dir, output_type])
+            (self.get_ec2_recomendations_by_generation,       [table_name, target_dir, output_type])
         ]
 
         for func, args in function_to_exe:
