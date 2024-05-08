@@ -17,7 +17,15 @@ from cloudwatch_logic import *
 path_json_file =  os.path.dirname(os.path.abspath(__file__))
 file = open(f'{path_json_file}/metric.json','r')
 json_file = json.load(file)
-
+storage_types = [
+        'StandardStorage'
+        # ,
+        # {'Name':'StorageType','Value':'IntelligentTieringStorage'},
+        # {'Name':'StorageType','Value':'StandardIAStorage'},
+        # {'Name':'StorageType','Value':'OneZoneIAStorage'},
+        # {'Name':'StorageType','Value':'GlacierStorage'},
+        # {'Name':'StorageType','Value':'DeepArchiveStorage'}
+    ]
 
 def list_s3_buckets(file_path,session,region=None,time_generated=None,account=None):
     if session:
@@ -25,13 +33,24 @@ def list_s3_buckets(file_path,session,region=None,time_generated=None,account=No
         account_name = str(account['account_name']).replace(" ","_")
         s3 = session.client('s3')
         s3_instances = []
-        buckets = s3.list_buckets()
-        for i in buckets['Buckets']:
-            i['CreationDate'] = i['CreationDate'].isoformat()
-            arn = f"arn:aws:s3:::{i['Name']}"
-            s3_object = extract_common_info(arn,i,s3.get_bucket_location(Bucket=i['Name'])['LocationConstraint'],account_id,time_generated,account_name)
-            s3_instances.append(s3_object)
-        save_as_file_parquet(s3_instances,file_path,generate_parquet_prefix(__file__,'global',account_id))
+        try:
+            buckets = s3.list_buckets()
+        except Exception as ex:
+            buckets = []
+        if len(buckets) != 0:
+            for i in buckets['Buckets']:
+                i['CreationDate'] = i['CreationDate'].isoformat()
+                arn = f"arn:aws:s3:::{i['Name']}"
+                try:
+                    bucket_location = s3.get_bucket_location(Bucket=i['Name'])['LocationConstraint']
+                    s3_object = extract_common_info(arn,i,bucket_location,account_id,time_generated,account_name)
+                    s3_instances.append(s3_object)
+                except Exception as ex:
+                    print(ex)
+                    s3_object = extract_common_info(arn,i,None,account_id,time_generated,account_name)
+                    s3_instances.append(s3_object)
+            save_as_file_parquet(s3_instances,file_path,generate_parquet_prefix(__file__,'global',account_id))
+            return None
         
         # return s3_instances
 
@@ -80,6 +99,31 @@ def metrics_utill_s3(file_path,session):
             # item_object = extract_common_info()
                 item = get_resource_utilization_metric(session,j,metric['metricname'],metric['statistics'],metric['unit'],metric['nameDimensions'],metric['serviceType'])
                 client_instances_metrics.append(item)
+        save_as_file_parquet(client_instances_metrics,file_path,generate_parquet_prefix(__file__,'Metric',f'{account_id}-metrics'))
+
+
+
+
+def metrics_s3(file_path,session,account):
+    client = session.client('s3')
+    sts = session.client('sts')
+    account_id = sts.get_caller_identity()["Account"]
+    client_instances = []
+    client_instances_metrics = []
+    client_items = client.list_buckets()
+    for i in client_items['Buckets']:
+      client_instances.append(i['Name'])
+    if len(client_instances) != 0:
+        for j in client_instances:
+            for metric in json_file['metrics']:
+                for k in storage_types:
+            # item_object = extract_common_info()
+                    item = get_resource_utilization_metric(
+                        session=session,ids=j,
+                        metricname=metric['metricname'],statistics=metric['statistics'],
+                        unit=metric['unit'],name_dimensions=metric['nameDimensions'],
+                        serviceType=metric['serviceType'],storageType=k,account=account)
+                    client_instances_metrics.append(item)
         save_as_file_parquet(client_instances_metrics,file_path,generate_parquet_prefix(__file__,'Metric',f'{account_id}-metrics'))
 
 

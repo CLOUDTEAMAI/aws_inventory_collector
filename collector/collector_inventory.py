@@ -125,7 +125,7 @@ def parallel_executor_inventory(logger_obj,main_dir: str,session,region: str,tim
         #'applicationcostprofiler'    : list_applicationcostprofiler,
         #'autoscaling_plans'          : 
         # 'alexaforbusiness'         : list_alexaforbusiness,
-    max_worker =  2
+    max_worker =  3
     with concurrent.futures.ThreadPoolExecutor(max_worker) as executor:
         future_to_task = {
             executor.submit(task,main_dir,session,region,time_generated,account): name for name,task in tasks.items()
@@ -150,7 +150,6 @@ def parallel_executor_inventory_metrics(logger_obj,main_dir,session,region,accou
     tasks = {
         'ec2_metrics'                 : metrics_utill_ec2
     }
-   
     with concurrent.futures.ThreadPoolExecutor() as executor:
         future_to_task = {
             executor.submit(task,main_dir,session,region,account): name for name,task in tasks.items()
@@ -259,7 +258,7 @@ def get_all_accounts_s3(main_dir: str,account_json: list,logger_obj,time_generat
                     )
             )
             futures.append(future)
-        for fu in concurrent.futures.as_completed(futures):
+        for future in concurrent.futures.as_completed(futures):
             try:
                 result = future.result()
                 del result

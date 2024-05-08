@@ -8,7 +8,7 @@ class DatabaseManager:
     def __init__(self):
         self.os_env_dict = {
             "dbname":  "eyaltest",#os.environ.get('POSTGRESSQL_DBNAME'),
-            "host":    "localhost", #os.environ.get('POSTGRESSQL_HOST'),
+            "host":    "localhost",#"host.docker.internal",#"localhost" #os.environ.get('POSTGRESSQL_HOST'),
             "user":     "eyalrainitz",#os.environ.get('POSTGRESSQL_USER'),
             "password": None #os.environ.get('POSTGRESSQL_PASSWORD')
         }
@@ -20,6 +20,7 @@ class DatabaseManager:
         create_table_query = f"""
         CREATE TABLE IF NOT EXISTS {table_name} (
             region TEXT,
+            os_type TEXT,
             instance_type TEXT,
             family_instance TEXT,
             memory FLOAT,
@@ -115,6 +116,7 @@ class DatabaseManager:
             insert_query = f"""
             INSERT INTO {table_name} (
             region,
+            os_type,
             instance_type,
             family_instance,
             memory,
@@ -123,12 +125,13 @@ class DatabaseManager:
             price_per_hour,
             price_per_day,
             price_per_month)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
         else:
             insert_query = f"""
             INSERT INTO {table_name} (
             region,
+            os_type,
             instance_type,
             family_instance,
             memory,
@@ -137,14 +140,14 @@ class DatabaseManager:
             price_per_hour,
             price_per_day,
             price_per_month)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
 
         for index, row in data.iterrows():
             try:
                 self.cursor.execute(
                     insert_query,
-                    (row['region'],
+                    (row['region'],row['os_type'],
                       row['instance_type'], row['family_instance'],
                       row['memory'], row['cpu'],
                       row['cpu_architecture'], row['price_per_hour'],
@@ -560,6 +563,158 @@ ORDER BY
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/get_ec2_recommendations_with_metric.xlsx", index=False)
 
+    def get_ec2_recommendations_with_metric_with_new_generation(self,table_name,metric_table_name,target_dir,output_type="csv"):
+        query_test  = f"""
+WITH Unnested AS (
+    SELECT
+        resource_id,
+        label,
+        account_id,
+        account_name,
+        (jsonb_array_elements(properties)->>'Timestamp')::timestamp WITH TIME ZONE AS metric_timestamp,
+        ROUND((jsonb_array_elements(properties)->>'Average')::NUMERIC, 2) AS average,
+        ROUND((jsonb_array_elements(properties)->>'Maximum')::NUMERIC, 2) AS maximum
+    FROM 
+        {metric_table_name}
+    WHERE 
+        properties::jsonb @> '[{{"Unit": "Percent"}}]' and label = 'CPUUtilization'
+),
+Filtered AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        average,
+        maximum,
+        EXTRACT(DAY FROM (CURRENT_TIMESTAMP - metric_timestamp)) AS days_ago
+    FROM Unnested
+),
+Metrics AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 20), 2) AS max_20_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 20), 2) AS avg_20_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 40), 2) AS max_40_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 40), 2) AS avg_40_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 60), 2) AS max_60_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 60), 2) AS avg_60_days,
+        COUNT(*) FILTER (WHERE maximum BETWEEN 50 AND 60) AS count_50_60_max_cpu
+    FROM 
+        Filtered
+    GROUP BY 
+        resource_id, account_id, account_name, label
+),
+Instances AS (
+    SELECT DISTINCT ON (instance_id)
+        account_id,
+        account_name,
+        region,
+        split_part(arn, '/', 2) AS instance_id,
+        properties_data ->> 'InstanceType' AS instance_type,
+        properties_data -> 'State' ->> 'Name' AS state,
+        CASE
+            WHEN properties_data ->> 'PlatformDetails' = 'Linux/UNIX' THEN 'Linux/UNIX'
+            WHEN properties_data ->> 'PlatformDetails' = 'Red Hat Enterprise Linux' THEN 'RHEL'
+            ELSE properties_data ->> 'PlatformDetails'
+        END AS os_type,
+        tag->>'Value' AS instance_name,
+        CASE 
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[0-2]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to t3 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'c[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to c6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'r[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to r6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 'm[0-4]%' AND properties_data ->> 'InstanceType' NOT LIKE '%g' THEN 'Upgrade recommended to m6 family'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[3-4]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'c[5-7]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'r[5-7]%' OR properties_data ->> 'InstanceType' SIMILAR TO 'm[5-7]%' THEN 'Current generation'
+            WHEN properties_data ->> 'InstanceType' SIMILAR TO 't[3-4]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'c[6-7]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'r[6-7]g%' OR properties_data ->> 'InstanceType' SIMILAR TO 'm[6-7]g%' THEN 'Not a candidate'
+            WHEN properties_data ->> 'InstanceType' LIKE '%a' THEN 'Candidate for AMD'
+            ELSE 'Not a candidate'
+        END AS upgrade_option,
+        CASE 
+            WHEN properties_data ->> 'InstanceType' !~ '.*[ag]$' AND properties_data ->> 'InstanceType' !~ '.*[0-9]g.*' THEN true
+            ELSE false
+        END AS amd_candidate
+    FROM 
+        {table_name},
+        jsonb_array_elements(properties->'Instances') AS properties_data,
+        jsonb_array_elements(properties_data->'Tags') AS tag
+    WHERE tag->>'Key' = 'Name'
+)
+SELECT DISTINCT
+    m.*,
+    i.region,
+    i.instance_id,
+    i.instance_name,
+    i.instance_type,
+    i.state,
+    i.os_type,
+    -- i.upgrade_option,
+    i.amd_candidate,
+    CASE 
+        WHEN i.instance_type SIMILAR TO 't[0-2]%' THEN 
+            REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 't3a')  -- Update from t0-t2 to t3
+        WHEN i.instance_type SIMILAR TO 'c[0-4]%' THEN 
+            REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'c5a')  -- Update from c0-c4 to c5
+        WHEN i.instance_type SIMILAR TO 'm[0-4]%' THEN 
+            REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'm5a')  -- Update from m0-m4 to m5
+        WHEN i.instance_type SIMILAR TO 'r[0-4]%' THEN 
+            REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'r5a')  -- Update from r0-r4 to r5
+        WHEN i.instance_type LIKE '%a.%' THEN 
+            i.instance_type  -- No change needed, 'a.' is already present
+        WHEN i.instance_type LIKE '%i.%' THEN 
+            REPLACE(i.instance_type, 'i.', 'a.')  -- Replace 'i.' with 'a.'
+        WHEN i.instance_type ~ '\.' THEN 
+            CONCAT(SPLIT_PART(i.instance_type, '.', 1), 'a.', SPLIT_PART(i.instance_type, '.', 2))  -- Append 'a.' to the instance type
+        ELSE 
+            'N/A' 
+    END AS change_size_amd_new_genertion,
+    ROUND((p.price_per_hour * 24)::NUMERIC, 2) AS price_per_day,
+    ROUND((p.price_per_hour * 24 * 30.4)::NUMERIC, 2) AS price_per_month,
+    ROUND((amd_p.price_per_hour * 24)::NUMERIC, 2) AS amd_price_per_day,
+    ROUND((amd_p.price_per_hour * 24 * 30.4)::NUMERIC, 2) AS amd_price_per_month,
+    ROUND((amd_p.price_per_hour * 24 * 30.4/2)::NUMERIC, 2) AS amd_changed_price_per_month,
+    ROUND(((p.price_per_hour * 24 * 30.4)-(amd_p.price_per_hour * 24 * 30.4/2))::NUMERIC, 2) AS in_change_size_saving,
+    ROUND(((p.price_per_hour * 24 * 30.4)-(amd_p.price_per_hour * 24 * 30.4))::NUMERIC, 2) AS in_change_to_amd_saving,
+    COALESCE(ROUND((change_size_amd_p.price_per_hour * 24 * 30.4)::NUMERIC, 2), ROUND((amd_p.price_per_hour * 24 * 30.4)::NUMERIC, 2)) AS change_size_amd_price_per_month
+FROM 
+    Metrics m
+JOIN 
+    Instances i ON m.resource_id = i.instance_id AND m.account_id = i.account_id
+JOIN
+    ec2_pricing_table p ON i.instance_type = p.instance_type AND i.region = p.region AND i.os_type = p.os_type
+LEFT JOIN
+    ec2_pricing_table amd_p ON CONCAT(SPLIT_PART(i.instance_type, '.', 1), 'a.', SPLIT_PART(i.instance_type, '.', 2)) = amd_p.instance_type AND i.region = amd_p.region AND i.os_type = amd_p.os_type
+LEFT JOIN
+    ec2_pricing_table change_size_amd_p ON 
+        CASE 
+            WHEN i.instance_type SIMILAR TO 't[0-2]%' THEN 
+                REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 't3a')  -- Update from t0-t2 to t3
+            WHEN i.instance_type SIMILAR TO 'c[0-4]%' THEN 
+                REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'c5a')  -- Update from c0-c4 to c5
+            WHEN i.instance_type SIMILAR TO 'm[0-4]%' THEN 
+                REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'm5a')  -- Update from m0-m4 to m5
+            WHEN i.instance_type SIMILAR TO 'r[0-4]%' THEN 
+                REPLACE(i.instance_type, SUBSTRING(i.instance_type FROM 1 FOR 2), 'r5a')  -- Update from r0-r4 to r5
+            WHEN i.instance_type LIKE '%a.%' THEN 
+                i.instance_type  -- No change needed, 'a.' is already present
+            WHEN i.instance_type LIKE '%i.%' THEN 
+                REPLACE(i.instance_type, 'i.', 'a.')  -- Replace 'i.' with 'a.'
+            WHEN i.instance_type ~ '\.' THEN 
+                CONCAT(SPLIT_PART(i.instance_type, '.', 1), 'a.', SPLIT_PART(i.instance_type, '.', 2))  -- Append 'a.' to the instance type
+            ELSE 
+                'N/A' 
+        END = change_size_amd_p.instance_type AND i.region = change_size_amd_p.region AND i.os_type = change_size_amd_p.os_type
+ORDER BY 
+    m.account_id, i.instance_type, i.region, i.amd_candidate DESC, m.max_20_days, m.label;
+"""     
+        df = pd.read_sql_query(query_test,self.connection)
+        if output_type == "csv":
+            df.to_csv(f"{target_dir}/get_ec2_recommendations_with_metric_with_new_generation.csv",index=False)
+        elif output_type == "xlsx":
+            df.to_excel(f"{target_dir}/get_ec2_recommendations_with_metric_with_new_generation.xlsx", index=False)
+
     def get_ec2_recomendations_by_generation(self,table_name,target_dir,output_type="csv"):
         query_test = f"""
 SELECT 
@@ -618,17 +773,18 @@ SELECT
         function_to_exe = [
             (self.get_stopped_ec2_ebs,                        [table_name, target_dir, output_type]),
             (self.unattached_eip,                             [table_name, target_dir, output_type]),
-            (self.unattached_eip,                             [table_name, target_dir, output_type]),
             (self.unattached_volume,                          [table_name, target_dir, output_type]),
             (self.unattached_eip_eni,                         [table_name, target_dir, output_type]),
             (self.get_rds,                                    [table_name, target_dir, output_type]),
             (self.get_autoscaling,                            [table_name, target_dir, output_type]),
             (self.get_autoscaling_recommendation_with_metric, [table_name, metric_table_name, target_dir, output_type]),
             (self.get_ec2_without_autoscaling_group,          [table_name, metric_table_name, target_dir, output_type]),
+            (self.all_ec2_query,                              [table_name, metric_table_name, target_dir, output_type]),
             (self.get_gp2_to_gp3,                             [table_name, target_dir, output_type]),
             (self.get_snapshots,                              [table_name, target_dir, output_type]),
             (self.get_snapshots_price,                        [table_name, target_dir, output_type]),
             (self.get_ec2_recommendations_with_metric,        [table_name, metric_table_name, target_dir, output_type]),
+            (self.get_ec2_recommendations_with_metric_with_new_generation,        [table_name, metric_table_name, target_dir, output_type]),
             (self.get_ec2_recomendations_by_generation,       [table_name, target_dir, output_type])
         ]
 
@@ -637,7 +793,13 @@ SELECT
 
     def unattached_eip(self,table_name,target_dir,output_type="csv"):
         query_test = f"""
-SELECT * FROM {table_name}
+SELECT 
+arn,
+account_id,
+account_name,
+region,
+properties
+FROM {table_name}
 WHERE arn LIKE '%eip%' AND (properties->> 'NetworkInterfaceId' IS NUll OR properties->> 'AssociationId' IS NULL)
 """
         df = pd.read_sql_query(query_test,self.connection)
@@ -653,6 +815,7 @@ WHERE arn LIKE '%eip%' AND (properties->> 'NetworkInterfaceId' IS NUll OR proper
 FROM 
     (SELECT arn,
             account_id,
+            account_name,
             region,
             properties->> 'NetworkInterfaceId' AS nic_id,
             properties->> 'AssociationId' AS association_id
@@ -676,11 +839,12 @@ ON main.account_id = nics.account_id AND main.region = nics.region
             df.to_csv(f"{target_dir}/unattached_eip_eni.csv",index=False)
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/unattached_eip_eni.xlsx", index=False)
+
     def unattached_volume(self,table_name,target_dir,output_type="csv"):
         query_test = f"""   
 SELECT
 	arn,
-	account_id
+	account_id,
 	account_name,
 	region,
 	properties->>'Iops' as volume_iops,
@@ -698,6 +862,96 @@ and properties->>'State'!='in-use';
             df.to_csv(f"{target_dir}/unattached_volumes.csv",index=False)
         elif output_type == "xlsx":
             df.to_excel(f"{target_dir}/unattached_volumes.xlsx", index=False)
+
+    def all_ec2_query(self,table_name,metric_table_name,target_dir,output_type="csv"):
+        query_test = f"""   
+WITH Unnested AS (
+    SELECT
+        resource_id,
+        label,
+        account_id,
+        account_name,
+        (jsonb_array_elements(properties)->>'Timestamp')::timestamp WITH TIME ZONE AS metric_timestamp,
+        ROUND((jsonb_array_elements(properties)->>'Average')::NUMERIC, 2) AS average,
+        ROUND((jsonb_array_elements(properties)->>'Maximum')::NUMERIC, 2) AS maximum
+    FROM 
+        {metric_table_name}
+    WHERE 
+        properties::jsonb @> '[{{"Unit": "Percent"}}]' and label = 'CPUUtilization'
+),
+Filtered AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        average,
+        maximum,
+        EXTRACT(DAY FROM (CURRENT_TIMESTAMP - metric_timestamp)) AS days_ago
+    FROM Unnested
+),
+Metrics AS (
+    SELECT
+        resource_id,
+        account_id,
+        account_name,
+        label,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 20), 2) AS max_20_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 20), 2) AS avg_20_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 40), 2) AS max_40_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 40), 2) AS avg_40_days,
+        ROUND(MAX(maximum) FILTER (WHERE days_ago <= 60), 2) AS max_60_days,
+        ROUND(AVG(average) FILTER (WHERE days_ago <= 60), 2) AS avg_60_days,
+        COUNT(*) FILTER (WHERE maximum > 50) AS count_over_50_max_cpu
+    FROM 
+        Filtered
+    GROUP BY 
+        resource_id, account_id, account_name, label
+),
+Instances AS (
+    SELECT 
+        account_id,
+        account_name,
+        region,
+        split_part(arn, '/', 2) AS instance_id,
+        properties_data ->> 'InstanceType' AS instance_type,
+        properties_data -> 'State' ->> 'Name' AS state,
+        properties_data ->> 'PlatformDetails' AS os_type,
+        tag->>'Value' AS instance_name
+    FROM 
+        {table_name} ,
+        jsonb_array_elements(properties->'Instances') AS properties_data,
+        jsonb_array_elements(properties_data->'Tags') AS tag
+    WHERE tag->>'Key' = 'Name'
+      AND NOT EXISTS (
+          SELECT 1 FROM jsonb_array_elements(properties_data->'Tags') t
+          WHERE t->>'Key' = 'aws:autoscaling:groupName'
+      )
+)
+SELECT 
+    i.*,
+    m.resource_id,
+    m.label,
+    m.max_20_days,
+    m.avg_20_days,
+    m.max_40_days,
+    m.avg_40_days,
+    m.max_60_days,
+    m.avg_60_days,
+    m.count_over_50_max_cpu
+FROM 
+    Instances i
+LEFT JOIN 
+    Metrics m ON i.instance_id = m.resource_id AND i.account_id = m.account_id
+ORDER BY 
+    i.account_id, i.instance_type, i.region, i.state, m.label;
+        """
+        df = pd.read_sql_query(query_test,self.connection)
+        if output_type == "csv":
+            df.to_csv(f"{target_dir}/all_ec2_query.csv",index=False)
+        elif output_type == "xlsx":
+            df.to_excel(f"{target_dir}/all_ec2_query.xlsx", index=False)
+
     def get_ec2_without_autoscaling_group(self,table_name,metric_table_name,target_dir,output_type="csv"):
         query_test = f"""   
 WITH Unnested AS (
