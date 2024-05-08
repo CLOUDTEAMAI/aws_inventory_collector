@@ -38,8 +38,11 @@ def main():
         time_generated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     logger_obj = cloudteam_logger.ct_logging(f'{main_dir}/logs','debug')
-    f = open(f'{main_dir}/files/account.json')
-    load_json = json.load(f)
+    try:
+        f = open(f'{main_dir}/files/account.json')
+        load_json = json.load(f)
+    except Exception as ex:
+        print("Cant read json")
 
     # Start collecting all the data from client environment
     start_timer = datetime.now()
@@ -73,17 +76,35 @@ def main():
         if os.environ.get('TABLE_NAME'):
             db_manager.create_table_collector(os.environ.get('TABLE_NAME'))
             data_list = db_manager.load_data_from_dir_parquet(uploads)
-            db_manager.insert_data_collector(os.environ.get('TABLE_NAME'), data_list, update_on_conflict=True)
+            db_manager.insert_data_collector(
+                os.environ.get('TABLE_NAME'),
+                data_list,
+                update_on_conflict=True)
         
         if  os.environ.get('TABLE_NAME_METRIC'):
             db_manager.create_table_metric(os.environ.get('TABLE_NAME_METRIC'))
             data_list_metric = db_manager.load_data_from_dir_parquet(f"{uploads}/metrics")
-            db_manager.insert_data_metric(os.environ.get('TABLE_NAME_METRIC'), data_list_metric, update_on_conflict=True)
+            db_manager.insert_data_metric(
+                os.environ.get('TABLE_NAME_METRIC'),
+                data_list_metric,
+                update_on_conflict=True)
         
+
+        if os.environ.get('TABLE_NAME_PRICING'):
+            db_manager.create_table_pricing(os.environ.get('TABLE_NAME_PRICING'))
+            data_list = db_manager.load_data_from_dir_parquet(uploads)
+            db_manager.insert_data_pricing(
+                os.environ.get('TABLE_NAME_PRICING'),
+                data_list,
+                update_on_conflict=True)
+
+
         if os.environ.get('TABLE_NAME_METRIC') and os.environ.get('TABLE_NAME'):
             sleep(5)
             query_result = f"{main_dir}/query_data"
-            db_manager.generate_data_from_all_queries(os.environ.get('TABLE_NAME'),query_result,os.environ.get('TABLE_NAME_METRIC'))
+            db_manager.generate_data_from_all_queries(
+                os.environ.get('TABLE_NAME'),
+                query_result,os.environ.get('TABLE_NAME_METRIC'))
             db_manager.close_connection()
 
 
