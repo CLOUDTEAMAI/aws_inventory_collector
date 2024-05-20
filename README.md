@@ -7,7 +7,7 @@
 
 Here is an overview of our project architecture:
 
-![Project Architecture Diagram](Readme/collector.svg?raw=true)
+![Project Architecture Diagram](imgs/collector.svg?raw=true)
 
 The diagram above illustrates the flow of data through our application, showing the interaction between different services.
 
@@ -58,7 +58,7 @@ docker run -e AWS_ACCESS_KEY_ID={client_access_key} \
 # for using the accounts.json for give the process to run over the specific client with this json 
 -v /Users/{user}/Desktop/Code/accounts/account2.json:/app/files/account.json \ 
 --cpus=2 \ # can limit the process utillization
---memory="2g" \ # can limit the process utillization
+--memory="2G" \ # can limit the process utillization
 -it {image_name}
 
 
