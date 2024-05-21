@@ -14,14 +14,14 @@ def inventory_collector(uploads_directory, logger, accounts_json, time_generated
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
 
-    # global scraping per account
-    try:
-        get_all_accounts_global_inventory(main_dir=uploads_directory, logger_obj=logger,
-                                          account_json=accounts_json, time_generated=time_generated)
-        print("Finished Collecting global inventory")
-    except Exception as ex:
-        # logger_obj.error(str(ex))
-        print(f"Failed to write logger global inventory {ex}")
+    # # global scraping per account
+    # try:
+    #     get_all_accounts_global_inventory(main_dir=uploads_directory, logger_obj=logger,
+    #                                       account_json=accounts_json, time_generated=time_generated)
+    #     print("Finished Collecting global inventory")
+    # except Exception as ex:
+    #     # logger_obj.error(str(ex))
+    #     print(f"Failed to write logger global inventory {ex}")
 
 
 def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated):
@@ -163,10 +163,26 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         #   'cloudformation'           : list_cloudformation,
         #   'wellarchitected'          : list_well_architect,
     }
+    if region == 'us-east-1':
+        global_tasks = {
+            'accounts': list_accounts,
+            's3': list_s3_buckets,
+            'wafv2': list_wafv2,
+            'route53': list_route53,
+            'shield': list_shield,
+            'shieldprotections': list_shield_protections,
+            'cloudfront': list_cloudfront,
+            'savingsplans': list_savingsplans
+        }
+    elif region == 'us-west-2':
+        global_tasks = {'globalaccelerator': list_globalaccelerator}
+    else:
+        global_tasks = {}
     # 'amplifyuibuilder'           : list_amplifyuibuilder,
     # 'applicationcostprofiler'    : list_applicationcostprofiler,
     # 'alexaforbusiness'         : list_alexaforbusiness,
     max_worker = 8
+    tasks.update(global_tasks)
     with ThreadPoolExecutor(max_worker) as executor:
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
@@ -187,64 +203,64 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         del future_to_task
 
 
-def get_all_accounts_global_inventory(logger_obj, main_dir: str, account_json: list, time_generated):
-    try:
-        max_worker = 8
-        with ThreadPoolExecutor(max_workers=max_worker) as executor:
-            futures_services = {
-                executor.submit(
-                    lambda acc=account, reg='us-east-1': parallel_executor_global_inventory(
-                        logger_obj, main_dir,
-                        get_aws_session(acc['account_id'],
-                                        reg, role_name=acc['account_role']),
-                        reg,
-                        time_generated,
-                        complete_aws_account(acc)
-                    ), account  # Defaulting acc and reg inside lambda
-                ): account for account in account_json['accounts']
-            }
-            for future in as_completed(futures_services):
-                try:
-                    future.result()  # Corrected to call .result() on future
-                except Exception as ex:
-                    print(f'Error raised in \n {ex}')
-                    with lock:
-                        logger_obj.error(str(ex))
+# def get_all_accounts_global_inventory(logger_obj, main_dir: str, account_json: list, time_generated):
+#     try:
+#         max_worker = 8
+#         with ThreadPoolExecutor(max_workers=max_worker) as executor:
+#             futures_services = {
+#                 executor.submit(
+#                     lambda acc=account, reg='us-east-1': parallel_executor_global_inventory(
+#                         logger_obj, main_dir,
+#                         get_aws_session(acc['account_id'],
+#                                         reg, role_name=acc['account_role']),
+#                         reg,
+#                         time_generated,
+#                         complete_aws_account(acc)
+#                     ), account  # Defaulting acc and reg inside lambda
+#                 ): account for account in account_json['accounts']
+#             }
+#             for future in as_completed(futures_services):
+#                 try:
+#                     future.result()  # Corrected to call .result() on future
+#                 except Exception as ex:
+#                     print(f'Error raised in \n {ex}')
+#                     with lock:
+#                         logger_obj.error(str(ex))
 
-    except Exception as ex:
-        print(f'Error in end {ex}')
+#     except Exception as ex:
+#         print(f'Error in end {ex}')
 
 
-def parallel_executor_global_inventory(logger_obj, main_dir: str, session, region, time_generated: datetime, account):
-    # Initialize functions clients for services you want to list resources from in parallel
-    tasks = {
-        'accounts': list_accounts,
-        's3': list_s3_buckets,
-        'wafv2': list_wafv2,
-        'route53': list_route53,
-        'shield': list_shield,
-        'shieldprotections': list_shield_protections,
-        'globalaccelerator': list_globalaccelerator,
-        'cloudfront': list_cloudfront,
-        'savingsplans': list_savingsplans
-    }
-    region = 'us-east-1'
-    max_worker = 8
-    with ThreadPoolExecutor(max_worker) as executor:
-        future_to_task = {
-            executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
-        }
-        for future in as_completed(future_to_task):
-            task_name = future_to_task[future]
-            try:
-                data = future.result()
-                print(f"{task_name} completed {region}, {data}")
-                del data
-            except Exception as exc:
-                print(f"{task_name} generated an exception: {exc}")
-                account_id = account['account_id']
-                with lock:
-                    logger_obj.error(
-                        f'{account_id} {region} {task_name} {str(exc)}')
-                del exc
-        del future_to_task
+# def parallel_executor_global_inventory(logger_obj, main_dir: str, session, region, time_generated: datetime, account):
+#     # Initialize functions clients for services you want to list resources from in parallel
+#     tasks = {
+#         'accounts': list_accounts,
+#         's3': list_s3_buckets,
+#         'wafv2': list_wafv2,
+#         'route53': list_route53,
+#         'shield': list_shield,
+#         'shieldprotections': list_shield_protections,
+#         'globalaccelerator': list_globalaccelerator,
+#         'cloudfront': list_cloudfront,
+#         'savingsplans': list_savingsplans
+#     }
+#     region = 'us-east-1'
+#     max_worker = 8
+#     with ThreadPoolExecutor(max_worker) as executor:
+#         future_to_task = {
+#             executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
+#         }
+#         for future in as_completed(future_to_task):
+#             task_name = future_to_task[future]
+#             try:
+#                 data = future.result()
+#                 print(f"{task_name} completed {region}, {data}")
+#                 del data
+#             except Exception as exc:
+#                 print(f"{task_name} generated an exception: {exc}")
+#                 account_id = account['account_id']
+#                 with lock:
+#                     logger_obj.error(
+#                         f'{account_id} {region} {task_name} {str(exc)}')
+#                 del exc
+#         del future_to_task

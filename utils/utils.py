@@ -17,7 +17,7 @@ def create_folder_if_not_exist(list_dir_path):
             mkdir(i)
 
 
-def chunk_list(data, chunk_size=500):
+def chunk_list(data, chunk_size=499):
     for i in range(0, len(data), chunk_size):
         yield data[i:i + chunk_size]
 
@@ -181,6 +181,7 @@ def generate_parquet_prefix(script_path, region, account_id, idx):
 
 def cw_build_metrics_queries(resource_ids, namespace, metric_name, dimensions_name, dimensions, statistics, granularity):
     query_list = []
+    query_idx = {}
     for i, resource_id in enumerate([f'{resource_id}@{stat}' for stat in statistics for resource_id in resource_ids], start=1):
         dimensions_template = [
             {
@@ -188,58 +189,130 @@ def cw_build_metrics_queries(resource_ids, namespace, metric_name, dimensions_na
                 "Value": resource_id.split("@")[0]
             }
         ]
-        for dimension in dimensions:
-            dimensions_template.append(dimension)
-        query_list.append(
-            {
-                'Id': f'a{i}',
-                'MetricStat': {
-                    'Metric': {
-                        'Namespace': namespace,
-                        'MetricName': metric_name,
-                        'Dimensions': dimensions_template
-                    },
-                    'Period': granularity,
-                    'Stat': resource_id.split("@")[1]
+        dimensions_addons = [{"Name": key, "Value": value}
+                             for dimension in dimensions for key, value in dimensions.items()]
+        dimenstions_ready = dimensions_template + dimensions_addons
+        content = {
+            'Id': f'a{i}',
+            'MetricStat': {
+                'Metric': {
+                    'Namespace': namespace,
+                    'MetricName': metric_name,
+                    'Dimensions': dimenstions_ready
                 },
-                'ReturnData': True
+                'Period': granularity,
+                'Stat': resource_id.split("@")[1]
+            },
+            'ReturnData': True
+        }
+        query_idx[f'a{i}'] = content
+        query_list.append(content)
+    return query_list, query_idx
+
+
+def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimensions_name, dimensions, statistics, granularity, custom_type_value, addons):
+    query_list = []
+    enum_list = []
+    query_idx = {}
+    if addons['type'] in custom_type_value.keys():
+        for cluster in addons['nodes']:
+            for node in cluster['nodes']:
+                for stat in statistics:
+                    enum_list.append(
+                        f"{cluster[custom_type_value[addons['type']]['parent']]}@{stat}@{node}")
+
+    for i, resource_id in enumerate(enum_list, start=1):
+        childs_addons = []
+        dimensions_template = [
+            {
+                "Name": dimensions_name,
+                "Value": resource_id.split("@")[0]
             }
-        )
-    return query_list
+        ]
+        dimensions_addons = [{"Name": key, "Value": value}
+                             for dimension in dimensions for key, value in dimensions.items()]
+        if resource_id.split("@")[2]:
+            nodes_addons = [
+                {"Name": custom_type_value[addons['type']]['comparison_value'], "Value": resource_id.split("@")[2]}]
+        dimenstions_ready = dimensions_template + \
+            dimensions_addons + nodes_addons + childs_addons
+        content = {
+            'Id': f'a{i}',
+            'MetricStat': {
+                'Metric': {
+                    'Namespace': namespace,
+                    'MetricName': metric_name,
+                    'Dimensions': dimenstions_ready
+                },
+                'Period': granularity,
+                'Stat': resource_id.split("@")[1]
+            },
+            'ReturnData': True
+        }
+        query_idx[f'a{i}'] = content
+        query_list.append(content)
+    return query_list, query_idx
 
 
-def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated):
+def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated, addons={}):
     client = session.client('cloudwatch', region_name=region)
     account_id = account['account_id']
     end_time = datetime.utcnow()
     query = []
     resource_metrics_list = []
+    custom_type_value = {
+        'elasticache': {
+            'parent': 'CacheClusterId',
+            'comparison_value': 'CacheNodeId'
+        },
+        'transitgateway': {
+            'parent': 'TransitGatewayId',
+            'comparison_value': 'TransitGatewayAttachment'
+        },
+        "privatelinkendpoints": {
+            'parent': 'VpcId',
+            'comparison_value': 'VpcEndpointId',
+            'childs': ['Endpoint Type', 'Service Name']
+        }
+    }
     for metric in metrics:
         start_time = end_time - timedelta(metric['days_ago'])
-        query = cw_build_metrics_queries(inventory, metric['aws_namespace'],
-                                         metric['aws_metric_name'], metric['aws_dimensions_name'], metric.get('aws_dimensions', []), metric['aws_statistics'], metric['granularity_seconds'])
-        response = client.get_metric_data(
-            MetricDataQueries=query,
-            StartTime=start_time,
-            EndTime=end_time
-        )
-        for result in response.get('MetricDataResults', []):
-            for timestamp, value in zip(result['Timestamps'], result['Values']):
-                resource_metrics_list.append(
-                    {
-                        'account_id': account_id,
-                        'region': region,
-                        'timegenerated': timegenerated,
-                        'resource_id': result['Label'].split(' ')[0],
-                        'namespace': metric["aws_namespace"],
-                        'metric': metric['aws_metric_name'],
-                        'instance': '',
-                        'unit': metric['aws_unit'],
-                        'aggregation': result['Label'].split(' ')[1],
-                        'value': value,
-                        'timestamp': timestamp.isoformat(),
-                        'granularity_sec': metric['granularity_seconds'],
-                        'days_ago': metric['days_ago']
-                    }
-                )
+        query, query_idx = cw_build_metrics_queries_custom(inventory, metric['aws_namespace'],
+                                                           metric['aws_metric_name'], metric['aws_dimensions_name'], metric.get('aws_dimensions', []), metric['aws_statistics'], metric['granularity_seconds'], custom_type_value, addons) if addons else cw_build_metrics_queries(inventory, metric['aws_namespace'],
+                                                                                                                                                                                                                                                                                   metric['aws_metric_name'], metric['aws_dimensions_name'], metric.get('aws_dimensions', []), metric['aws_statistics'], metric['granularity_seconds'])
+        for sublist in chunk_list(query):
+            response = client.get_metric_data(
+                MetricDataQueries=sublist,
+                StartTime=start_time,
+                EndTime=end_time
+            )
+            for result in response.get('MetricDataResults', []):
+                for timestamp, value in zip(result['Timestamps'], result['Values']):
+                    if addons.get('type') in custom_type_value.keys():
+                        for dimension in query_idx[result['Id']]['MetricStat']['Metric']['Dimensions']:
+                            if custom_type_value[addons['type']].get('comparison_value', None) is not None:
+                                comparison_value = custom_type_value[addons['type']
+                                                                     ]['comparison_value']
+                            # elif childs
+                            if dimension['Name'] == comparison_value:
+                                instance_value = dimension['Value']
+                    else:
+                        instance_value = ''
+                    resource_metrics_list.append(
+                        {
+                            'account_id': account_id,
+                            'region': region,
+                            'timegenerated': timegenerated,
+                            'resource_id': query_idx[result['Id']]['MetricStat']['Metric']['Dimensions'][0]['Value'],
+                            'namespace': metric["aws_namespace"],
+                            'metric': metric['aws_metric_name'],
+                            'instance': instance_value if instance_value else '',
+                            'unit': metric['aws_unit'],
+                            'aggregation': query_idx[result['Id']]['MetricStat']['Stat'],
+                            'value': value,
+                            'timestamp': timestamp.isoformat(),
+                            'granularity_sec': metric['granularity_seconds'],
+                            'days_ago': metric['days_ago']
+                        }
+                    )
     return resource_metrics_list

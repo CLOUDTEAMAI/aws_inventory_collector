@@ -89,7 +89,6 @@ def get_credentials_assume_role(account_id, role_name="Cloudteam-FinOps", region
         sts_client = client('sts')
         assumed_role_object = sts_client.assume_role(
             RoleArn=role_arn,
-            DurationSeconds=3600,
             RoleSessionName="CLOUDTEAM-FINOPS",
             # ExternalId=external_id
         )

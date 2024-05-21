@@ -1,5 +1,5 @@
 from inspect import stack
-from utils.utils import extract_common_info, save_as_file_parquet, save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
+from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
 def list_efs_file_systems(file_path, session, region, time_generated, account):

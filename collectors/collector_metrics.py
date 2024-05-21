@@ -40,9 +40,13 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'ec2_instances_metrics': ec2_instances_metrics,
         'ebs_volumes_metrics': ebs_volumes_metrics,
         'efs_filesystem_metrics': efs_filesystem_metrics,
+        'fsx_filesystem_metrics': fsx_filesystem_metrics,
         'rds_instances_metrics': rds_instances_metrics,
         'rds_proxies_metrics': rds_proxies_metrics,
-        'dynamodb_tables_metrics': dynamodb_tables_metrics
+        'elasticache_metrics': elasticache_metrics,
+        'dynamodb_tables_metrics': dynamodb_tables_metrics,
+        'transitgateway_metrics': transitgateway_metrics,
+        'transitgateway_attachments_metrics': transitgateway_attachments_metrics
     }
     with ThreadPoolExecutor() as executor:
         future_to_task = {
@@ -76,12 +80,13 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
                     account['account_id'], role_name=account['account_role'])
                 regions = regions_enabled(session)
                 for region in regions:
+                    session = get_aws_session(
+                        account['account_id'], role_name=account['account_role'], region=region)
                     future = executor.submit(
                         lambda acc=account, reg=region: parallel_executor_inventory_metrics(
                             logger_obj,
                             main_dir,
-                            get_aws_session(
-                                acc['account_id'], reg, role_name=acc['account_role']),
+                            session,
                             reg,
                             complete_aws_account(acc),
                             time_generated,

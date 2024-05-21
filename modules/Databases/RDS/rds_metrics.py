@@ -36,8 +36,8 @@ def rds_proxies_metrics(file_path, session, region, account, metrics, time_gener
     while True:
         try:
             inventory = []
-            response = client.describe_db_proxy_endpoints(
-                Marker=next_token) if next_token else client.describe_db_proxy_endpoints()
+            response = client.describe_db_proxies(
+                Marker=next_token) if next_token else client.describe_db_proxies()
             for resource in response.get('DBProxies', []):
                 inventory.append(resource['DBProxyName'])
             if inventory:
