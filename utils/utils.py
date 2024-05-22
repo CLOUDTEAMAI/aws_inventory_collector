@@ -1,7 +1,7 @@
 import json
 from os import path, mkdir
 from datetime import datetime, timedelta
-import pandas as pd
+from pandas import DataFrame
 
 
 def remove_duplicates(dicts):
@@ -155,7 +155,7 @@ def save_as_file_parquet(inventory, file_path, file_name):
     """
     try:
         if inventory:
-            df = pd.DataFrame(inventory)
+            df = DataFrame(inventory)
             file_path = path.join(file_path, file_name)
             # Ensure 'properties' is a string (JSON), as Parquet requires consistent data types
             df['properties'] = df['properties'].apply(lambda x: json.dumps(
@@ -169,7 +169,7 @@ def save_as_file_parquet(inventory, file_path, file_name):
 def save_as_file_parquet_metrics(metrics, file_path, file_name):
     try:
         if metrics:
-            df = pd.DataFrame(metrics)
+            df = DataFrame(metrics)
             file_path = path.join(file_path, file_name)
             df.to_parquet(file_path, index=False)
     except Exception as ex:
@@ -288,6 +288,10 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
             'parent': 'TransitGatewayId',
             'comparison_value': 'TransitGatewayAttachment'
         },
+        'cloudhsmv2': {
+            'parent': 'ClusterId',
+            'comparison_value': 'HsmId'
+        },
         "privatelinkendpoints": {
             'parent': 'VpcId',
             'comparison_value': 'VPC Endpoint Id',
@@ -315,6 +319,9 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
                             # elif childs
                             if dimension['Name'] == comparison_value:
                                 instance_value = dimension['Value']
+                            else:
+                                instance_value = query_idx[result['Id']
+                                                           ]['MetricStat']['Metric']['Dimensions'][0]['Value']
                     else:
                         instance_value = ''
                     resource_metrics_list.append(

@@ -40,6 +40,8 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'ebs_volumes_metrics': ebs_volumes_metrics,
         'functions_metrics': functions_metrics,
         'efs_filesystem_metrics': efs_filesystem_metrics,
+        'ecr_metrics': ecr_metrics,
+        'cloudhsmv2_metrics': cloudhsmv2_metrics,
         'fsx_filesystem_metrics': fsx_filesystem_metrics,
         'rds_instances_metrics': rds_instances_metrics,
         'rds_proxies_metrics': rds_proxies_metrics,
@@ -48,6 +50,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'sqs_metrics': sqs_metrics,
         'sns_metrics': sns_metrics,
         'vpcendpoint_metrics': vpcendpoint_metrics,
+        'natgateway_metrics': natgateway_metrics,
         'transitgateway_metrics': transitgateway_metrics,
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics
     }

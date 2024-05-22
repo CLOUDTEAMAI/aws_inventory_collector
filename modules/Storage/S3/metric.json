@@ -1,7 +1,0 @@
-{
-    "metrics" : [
-        {"nameDimensions":"BucketName","serviceType":"S3","metricname":"BucketSizeBytes","statistics":["Average"],"unit":"Bytes"}
-    ]
-}
-
-   
