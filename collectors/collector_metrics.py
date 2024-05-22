@@ -50,6 +50,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'sqs_metrics': sqs_metrics,
         'sns_metrics': sns_metrics,
         'vpcendpoint_metrics': vpcendpoint_metrics,
+        'route53_metrics': route53_metrics,
         'natgateway_metrics': natgateway_metrics,
         'transitgateway_metrics': transitgateway_metrics,
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics

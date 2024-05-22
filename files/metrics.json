@@ -775,5 +775,21 @@
                 "Sum"
             ]
         }
+    ],
+    "AWS/Route53": [
+        {
+            "days_ago": 3,
+            "granularity_seconds": 86400,
+            "list_function": "route53_metrics",
+            "aws_dimensions_name": "HostedZoneId",
+            "aws_metric_name": "DNSQueries",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Minimum",
+                "Sum"
+            ]
+        }
     ]
 }
