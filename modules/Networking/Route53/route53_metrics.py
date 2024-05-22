@@ -13,7 +13,7 @@ def route53_metrics(file_path, session, region, account, metrics, time_generated
             response = client.list_hosted_zones(
                 Marker=next_token) if next_token else client.list_hosted_zones()
             for resource in response.get('HostedZones', []):
-                inventory.append(resource['Id'])
+                inventory.append(resource['Id'].split('/')[-1])
             if inventory:
                 metrics = get_resource_utilization_metric(
                     session, region, inventory, account, metrics, time_generated)

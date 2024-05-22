@@ -55,7 +55,7 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
 
 def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account):
     # Initialize functions clients for services you want to list resources from in parallel
-    tasks = {
+    functions_map = {
         'logs': list_logs_groups,
         'ec2': list_ec2,
         'ami': list_ami,
@@ -178,11 +178,12 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         global_tasks = {'globalaccelerator': list_globalaccelerator}
     else:
         global_tasks = {}
+    tasks = {**functions_map, **global_tasks}
     # 'amplifyuibuilder'           : list_amplifyuibuilder,
     # 'applicationcostprofiler'    : list_applicationcostprofiler,
     # 'alexaforbusiness'         : list_alexaforbusiness,
+
     max_worker = 8
-    tasks.update(global_tasks)
     with ThreadPoolExecutor(max_worker) as executor:
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()

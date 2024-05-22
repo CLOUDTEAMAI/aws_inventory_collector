@@ -17,6 +17,36 @@ def metrics_collector(uploads_directory, logger, accounts_json, time_generated, 
 
 def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):
     tasks = {}
+    functionsz_map = {
+        'ec2_instances_metrics': ec2_instances_metrics,
+        'ebs_volumes_metrics': ebs_volumes_metrics,
+        'functions_metrics': functions_metrics,
+        'efs_filesystem_metrics': efs_filesystem_metrics,
+        'ecr_metrics': ecr_metrics,
+        'cloudhsmv2_metrics': cloudhsmv2_metrics,
+        'fsx_filesystem_metrics': fsx_filesystem_metrics,
+        'rds_instances_metrics': rds_instances_metrics,
+        'rds_proxies_metrics': rds_proxies_metrics,
+        'elasticache_metrics': elasticache_metrics,
+        'dynamodb_tables_metrics': dynamodb_tables_metrics,
+        'sqs_metrics': sqs_metrics,
+        'sns_metrics': sns_metrics,
+        'route53_metrics': route53_metrics,
+        'vpcendpoint_metrics': vpcendpoint_metrics,
+        'natgateway_metrics': natgateway_metrics,
+        'transitgateway_metrics': transitgateway_metrics,
+        'transitgateway_attachments_metrics': transitgateway_attachments_metrics
+    }
+    if region == 'us-east-1':
+        global_tasks = {
+            'route53_metrics': route53_metrics
+        }
+    else:
+        global_tasks = {}
+    functions_map = {**functionsz_map, **global_tasks}
+    # elif region == 'us-west-2':
+    #     global_tasks = {'globalaccelerator': list_globalaccelerator}
+
     for namespace in metrics:
         for metric in metrics[namespace]:
             tasks[metric['list_function']] = []
@@ -35,26 +65,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
                     "aws_statistics": metric['aws_statistics']
                 }
             )
-    functions_map = {
-        'ec2_instances_metrics': ec2_instances_metrics,
-        'ebs_volumes_metrics': ebs_volumes_metrics,
-        'functions_metrics': functions_metrics,
-        'efs_filesystem_metrics': efs_filesystem_metrics,
-        'ecr_metrics': ecr_metrics,
-        'cloudhsmv2_metrics': cloudhsmv2_metrics,
-        'fsx_filesystem_metrics': fsx_filesystem_metrics,
-        'rds_instances_metrics': rds_instances_metrics,
-        'rds_proxies_metrics': rds_proxies_metrics,
-        'elasticache_metrics': elasticache_metrics,
-        'dynamodb_tables_metrics': dynamodb_tables_metrics,
-        'sqs_metrics': sqs_metrics,
-        'sns_metrics': sns_metrics,
-        'vpcendpoint_metrics': vpcendpoint_metrics,
-        'route53_metrics': route53_metrics,
-        'natgateway_metrics': natgateway_metrics,
-        'transitgateway_metrics': transitgateway_metrics,
-        'transitgateway_attachments_metrics': transitgateway_attachments_metrics
-    }
+
     with ThreadPoolExecutor() as executor:
         future_to_task = {
             executor.submit(functions_map[name], main_dir, session, region, account, task, time_generated): name for name, task in tasks.items()

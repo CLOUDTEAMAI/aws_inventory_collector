@@ -3471,7 +3471,7 @@
         "kind": 2,
         "importPath": "collectors.collector_inventory",
         "description": "collectors.collector_inventory",
-        "peekOfCode": "def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account):\n    # Initialize functions clients for services you want to list resources from in parallel\n    tasks = {\n        'logs': list_logs_groups,\n        'ec2': list_ec2,\n        'ami': list_ami,\n        'snapshot': list_ec2_snapshots,\n        'snapshots_fsr': list_ec2_snapshots_fsr,\n        'sqs': list_sqs,\n        'sns': list_sns,",
+        "peekOfCode": "def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account):\n    # Initialize functions clients for services you want to list resources from in parallel\n    functions_map = {\n        'logs': list_logs_groups,\n        'ec2': list_ec2,\n        'ami': list_ami,\n        'snapshot': list_ec2_snapshots,\n        'snapshots_fsr': list_ec2_snapshots_fsr,\n        'sqs': list_sqs,\n        'sns': list_sns,",
         "detail": "collectors.collector_inventory",
         "documentation": {}
     },
@@ -3498,7 +3498,7 @@
         "kind": 2,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}\n    for namespace in metrics:\n        for metric in metrics[namespace]:\n            tasks[metric['list_function']] = []\n    for namespace in metrics:\n        for metric in metrics[namespace]:\n            tasks[metric['list_function']].append(\n                {\n                    \"days_ago\": metric['days_ago'],",
+        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}\n    functionsz_map = {\n        'ec2_instances_metrics': ec2_instances_metrics,\n        'ebs_volumes_metrics': ebs_volumes_metrics,\n        'functions_metrics': functions_metrics,\n        'efs_filesystem_metrics': efs_filesystem_metrics,\n        'ecr_metrics': ecr_metrics,\n        'cloudhsmv2_metrics': cloudhsmv2_metrics,\n        'fsx_filesystem_metrics': fsx_filesystem_metrics,",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
