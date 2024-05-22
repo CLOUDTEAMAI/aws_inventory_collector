@@ -1,6 +1,5 @@
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from threading import Lock
-# from modules import *
 from .metrics import *
 
 lock = Lock()
@@ -39,12 +38,16 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
     functions_map = {
         'ec2_instances_metrics': ec2_instances_metrics,
         'ebs_volumes_metrics': ebs_volumes_metrics,
+        'functions_metrics': functions_metrics,
         'efs_filesystem_metrics': efs_filesystem_metrics,
         'fsx_filesystem_metrics': fsx_filesystem_metrics,
         'rds_instances_metrics': rds_instances_metrics,
         'rds_proxies_metrics': rds_proxies_metrics,
         'elasticache_metrics': elasticache_metrics,
         'dynamodb_tables_metrics': dynamodb_tables_metrics,
+        'sqs_metrics': sqs_metrics,
+        'sns_metrics': sns_metrics,
+        'vpcendpoint_metrics': vpcendpoint_metrics,
         'transitgateway_metrics': transitgateway_metrics,
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics
     }
@@ -80,10 +83,9 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
                     account['account_id'], role_name=account['account_role'])
                 regions = regions_enabled(session)
                 for region in regions:
-                    session = get_aws_session(
-                        account['account_id'], role_name=account['account_role'], region=region)
                     future = executor.submit(
-                        lambda acc=account, reg=region: parallel_executor_inventory_metrics(
+                        lambda session=get_aws_session(
+                            account['account_id'], role_name=account['account_role'], region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
                             logger_obj,
                             main_dir,
                             session,

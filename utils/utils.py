@@ -4,6 +4,18 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 
+def remove_duplicates(dicts):
+    seen = set()
+    unique_dicts = []
+    for d in dicts:
+        # Convert dictionary to a sorted tuple of items
+        items_tuple = tuple(sorted(d.items()))
+        if items_tuple not in seen:
+            seen.add(items_tuple)
+            unique_dicts.append(d)
+    return unique_dicts
+
+
 def create_folder_if_not_exist(list_dir_path):
     """
     The function `create_folder_if_not_exist` checks if a list of directories exist and creates them if
@@ -218,24 +230,31 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
         for cluster in addons['nodes']:
             for node in cluster['nodes']:
                 for stat in statistics:
-                    enum_list.append(
-                        f"{cluster[custom_type_value[addons['type']]['parent']]}@{stat}@{node}")
+                    line = f"{cluster[custom_type_value[addons['type']]['parent']]}@{stat}@{node}"
+                    for key, value in cluster.get('items', {}).get(node, {}).items():
+                        line = line + f"@{value}"
+                    enum_list.append(line)
 
     for i, resource_id in enumerate(enum_list, start=1):
-        childs_addons = []
+        items_addons = []
+        resource_id_splitted_array = resource_id.split("@")
         dimensions_template = [
             {
                 "Name": dimensions_name,
-                "Value": resource_id.split("@")[0]
+                "Value": resource_id_splitted_array[0] if dimensions_name != custom_type_value[addons['type']]['comparison_value'] else resource_id_splitted_array[2]
             }
         ]
         dimensions_addons = [{"Name": key, "Value": value}
                              for dimension in dimensions for key, value in dimensions.items()]
-        if resource_id.split("@")[2]:
+        if resource_id_splitted_array[2]:
             nodes_addons = [
-                {"Name": custom_type_value[addons['type']]['comparison_value'], "Value": resource_id.split("@")[2]}]
-        dimenstions_ready = dimensions_template + \
-            dimensions_addons + nodes_addons + childs_addons
+                {"Name": custom_type_value[addons['type']]['comparison_value'], "Value": resource_id_splitted_array[2]}]
+        if len(resource_id_splitted_array) > 3:
+            for cluster in addons['nodes']:
+                for key, value in cluster.get('items', {}).get(resource_id_splitted_array[2], {}).items():
+                    items_addons.append({"Name": key, "Value": value})
+        dimenstions_ready = remove_duplicates((dimensions_template +
+                                              dimensions_addons + nodes_addons + items_addons))
         content = {
             'Id': f'a{i}',
             'MetricStat': {
@@ -245,7 +264,7 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
                     'Dimensions': dimenstions_ready
                 },
                 'Period': granularity,
-                'Stat': resource_id.split("@")[1]
+                'Stat': resource_id_splitted_array[1]
             },
             'ReturnData': True
         }
@@ -271,8 +290,8 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
         },
         "privatelinkendpoints": {
             'parent': 'VpcId',
-            'comparison_value': 'VpcEndpointId',
-            'childs': ['Endpoint Type', 'Service Name']
+            'comparison_value': 'VPC Endpoint Id',
+            'items': ['Endpoint Type', 'Service Name', 'Vpc Id']
         }
     }
     for metric in metrics:
