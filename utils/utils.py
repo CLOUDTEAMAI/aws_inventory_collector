@@ -194,6 +194,10 @@ def generate_parquet_prefix(script_path, region, account_id, idx):
 def cw_build_metrics_queries(resource_ids, namespace, metric_name, dimensions_name, dimensions, statistics, granularity):
     query_list = []
     query_idx = {}
+    dimensions_addons = []
+    for dimension in dimensions:
+        for key, value in dimension.items():
+            dimensions_addons.append({"Name": key, "Value": value})
     for i, resource_id in enumerate([f'{resource_id}@{stat}' for stat in statistics for resource_id in resource_ids], start=1):
         dimensions_template = [
             {
@@ -201,8 +205,6 @@ def cw_build_metrics_queries(resource_ids, namespace, metric_name, dimensions_na
                 "Value": resource_id.split("@")[0]
             }
         ]
-        dimensions_addons = [{"Name": key, "Value": value}
-                             for dimension in dimensions for key, value in dimensions.items()]
         dimenstions_ready = dimensions_template + dimensions_addons
         content = {
             'Id': f'a{i}',
@@ -226,6 +228,10 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
     query_list = []
     enum_list = []
     query_idx = {}
+    dimensions_addons = []
+    for dimension in dimensions:
+        for key, value in dimension.items():
+            dimensions_addons.append({"Name": key, "Value": value})
     if addons['type'] in custom_type_value.keys():
         for cluster in addons['nodes']:
             for node in cluster['nodes']:
@@ -244,8 +250,6 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
                 "Value": resource_id_splitted_array[0] if dimensions_name != custom_type_value[addons['type']]['comparison_value'] else resource_id_splitted_array[2]
             }
         ]
-        dimensions_addons = [{"Name": key, "Value": value}
-                             for dimension in dimensions for key, value in dimensions.items()]
         if resource_id_splitted_array[2]:
             nodes_addons = [
                 {"Name": custom_type_value[addons['type']]['comparison_value'], "Value": resource_id_splitted_array[2]}]

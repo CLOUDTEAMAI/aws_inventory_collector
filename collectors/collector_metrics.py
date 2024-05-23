@@ -17,6 +17,7 @@ def metrics_collector(uploads_directory, logger, accounts_json, time_generated, 
 
 def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):
     tasks = {}
+    global_tasks = {}
     functionsz_map = {
         'ec2_instances_metrics': ec2_instances_metrics,
         'ebs_volumes_metrics': ebs_volumes_metrics,
@@ -31,7 +32,6 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'dynamodb_tables_metrics': dynamodb_tables_metrics,
         'sqs_metrics': sqs_metrics,
         'sns_metrics': sns_metrics,
-        'route53_metrics': route53_metrics,
         'vpcendpoint_metrics': vpcendpoint_metrics,
         'natgateway_metrics': natgateway_metrics,
         'transitgateway_metrics': transitgateway_metrics,
@@ -39,32 +39,36 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
     }
     if region == 'us-east-1':
         global_tasks = {
-            'route53_metrics': route53_metrics
+            'route53_metrics': route53_metrics,
+            'cloudfront_metrics': cloudfront_metrics,
+            's3_metrics': s3_metrics
         }
-    else:
-        global_tasks = {}
     functions_map = {**functionsz_map, **global_tasks}
     # elif region == 'us-west-2':
     #     global_tasks = {'globalaccelerator': list_globalaccelerator}
 
-    for namespace in metrics:
-        for metric in metrics[namespace]:
-            tasks[metric['list_function']] = []
+    # for namespace in metrics:
+    #     for metric in metrics[namespace]:
+    #         if metric['list_function'] in functions_map.keys():
+    #             tasks[metric['list_function']] = []
 
     for namespace in metrics:
         for metric in metrics[namespace]:
-            tasks[metric['list_function']].append(
-                {
-                    "days_ago": metric['days_ago'],
-                    "granularity_seconds": metric['granularity_seconds'],
-                    "aws_namespace": namespace,
-                    "aws_dimensions": metric.get('aws_dimensions', []),
-                    "aws_dimensions_name": metric['aws_dimensions_name'],
-                    "aws_metric_name": metric['aws_metric_name'],
-                    "aws_unit": metric['aws_unit'],
-                    "aws_statistics": metric['aws_statistics']
-                }
-            )
+            if metric['list_function'] in functions_map.keys():
+                if not tasks.get(metric['list_function']):
+                    tasks[metric['list_function']] = []
+                tasks[metric['list_function']].append(
+                    {
+                        "days_ago": metric['days_ago'],
+                        "granularity_seconds": metric['granularity_seconds'],
+                        "aws_namespace": namespace,
+                        "aws_dimensions": metric.get('aws_dimensions', []),
+                        "aws_dimensions_name": metric['aws_dimensions_name'],
+                        "aws_metric_name": metric['aws_metric_name'],
+                        "aws_unit": metric['aws_unit'],
+                        "aws_statistics": metric['aws_statistics']
+                    }
+                )
 
     with ThreadPoolExecutor() as executor:
         future_to_task = {

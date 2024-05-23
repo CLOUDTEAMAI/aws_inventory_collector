@@ -14,7 +14,6 @@ def list_cloudfront(file_path, session, region, time_generated, account):
             response = client.list_distributions(
                 Marker=next_token) if next_token else client.list_distributions()
             for resource in response['DistributionList'].get('Items', []):
-                events_counter = 0
                 arn = resource.get('ARN', '')
                 if 'LastModifiedTime' in resource:
                     resource['LastModifiedTime'] = resource['LastModifiedTime'].isoformat()
