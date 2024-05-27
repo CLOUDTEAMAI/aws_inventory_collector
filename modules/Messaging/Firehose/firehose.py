@@ -3,7 +3,7 @@ from utils.utils import extract_common_info, save_as_file_parquet, generate_parq
 
 
 def list_firehose(file_path, session, region, time_generated, account):
-    HasMoreDeliveryStreams = None
+    next_token = None
     idx = 0
     client = session.client('firehose', region_name=region)
     account_id = account['account_id']
@@ -13,12 +13,12 @@ def list_firehose(file_path, session, region, time_generated, account):
         try:
             inventory = []
             response = client.list_delivery_streams(
-                ExclusiveStartDeliveryStreamName=HasMoreDeliveryStreams) if HasMoreDeliveryStreams else client.list_delivery_streams()
-            for stream in response.get('Streams', []):
-                streams.append(stream['StreamArn'])
-            HasMoreDeliveryStreams = response.get(
+                ExclusiveStartDeliveryStreamName=next_token) if next_token else client.list_delivery_streams()
+            for stream in response.get('DeliveryStreamNames', []):
+                streams.append(stream)
+            next_token = response.get(
                 'HasMoreDeliveryStreams', None)
-            if not HasMoreDeliveryStreams:
+            if not next_token:
                 break
         except Exception as e:
             print(e)

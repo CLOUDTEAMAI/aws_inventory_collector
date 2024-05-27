@@ -300,6 +300,14 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
             'parent': 'VpcId',
             'comparison_value': 'VPC Endpoint Id',
             'items': ['Endpoint Type', 'Service Name', 'Vpc Id']
+        },
+        "elbv2-application": {
+            'parent': 'TargetGroupName',
+            'comparison_value': 'LoadBalancer'
+        },
+        "msk-nodes": {
+            'parent': 'Cluster Name',
+            'comparison_value': 'Broker ID'
         }
     }
     for metric in metrics:

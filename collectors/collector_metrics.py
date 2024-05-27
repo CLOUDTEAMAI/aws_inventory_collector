@@ -32,10 +32,15 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'dynamodb_tables_metrics': dynamodb_tables_metrics,
         'sqs_metrics': sqs_metrics,
         'sns_metrics': sns_metrics,
+        'msk_nodes_metrics': msk_nodes_metrics,
         'vpcendpoint_metrics': vpcendpoint_metrics,
         'natgateway_metrics': natgateway_metrics,
+        'elb_metrics': elb_metrics,
+        'elbv2_network_metrics': elbv2_network_metrics,
+        'elbv2_application_metrics': elbv2_application_metrics,
         'transitgateway_metrics': transitgateway_metrics,
-        'transitgateway_attachments_metrics': transitgateway_attachments_metrics
+        'transitgateway_attachments_metrics': transitgateway_attachments_metrics,
+        'transferfamily_metrics': transferfamily_metrics
     }
     if region == 'us-east-1':
         global_tasks = {

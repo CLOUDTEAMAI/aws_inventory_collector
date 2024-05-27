@@ -7,13 +7,16 @@ from modules.Databases.ElastiCache.elasticache_metrics import *
 from modules.Databases.DynamoDB.dynamodb_metrics import *
 from modules.Networking.CloudFront.cloudfront_metrics import *
 from modules.Networking.TransitGateway.transitgateway_metrics import *
-from modules.Networking.VPC.vpc_metrics import *
+from modules.Networking.ELB.elb_metrics import *
 from modules.Networking.NATGateway.natgateway_metrics import *
 from modules.Networking.Route53.route53_metrics import *
+from modules.Networking.VPC.vpc_metrics import *
+from modules.Management.account.account import regions_enabled, get_aws_session, complete_aws_account
 from modules.Messaging.SQS.sqs_metrics import *
 from modules.Messaging.SNS.sns_metrics import *
-from modules.Management.account.account import regions_enabled, get_aws_session, complete_aws_account
+from modules.Messaging.Kafka.kafka_metrics import *
 from modules.Security.CloudHSM.cloudhsm_metrics import *
 from modules.Storage.EFS.efs_metrics import *
 from modules.Storage.FSx.fsx_metrics import *
 from modules.Storage.S3.s3_metrics import *
+from modules.Storage.TransferFamily.transferfamily_metrics import *
