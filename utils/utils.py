@@ -34,6 +34,18 @@ def chunk_list(data, chunk_size=499):
         yield data[i:i + chunk_size]
 
 
+def list_az(session, region):
+    try:
+        inventory = []
+        client = session.client('ec2', region_name=region)
+        response = client.describe_availability_zones()
+        for zone in response['AvailabilityZones']:
+            inventory.append(zone['ZoneName'])
+    except Exception as e:
+        print(e)
+    return inventory
+
+
 def extract_common_info(arn, resource, region, account_id, timegenerated, account_name=""):
     """
     The function `extract_common_info` takes specific parameters and returns a dictionary containing
@@ -308,6 +320,10 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
         "msk-nodes": {
             'parent': 'Cluster Name',
             'comparison_value': 'Broker ID'
+        },
+        "networkfirewall": {
+            'parent': 'FirewallName',
+            'comparison_value': 'AvailabilityZone'
         }
     }
     for metric in metrics:
