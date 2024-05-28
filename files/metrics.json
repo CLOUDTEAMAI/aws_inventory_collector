@@ -21,8 +21,7 @@
             "aws_metric_name": "NetworkOut",
             "aws_unit": "Bytes",
             "aws_statistics": [
-                "Average",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -35,8 +34,7 @@
             "aws_statistics": [
                 "Average",
                 "Maximum",
-                "Minimum",
-                "Sum"
+                "Minimum"
             ]
         },
         {
@@ -864,6 +862,39 @@
             "granularity_seconds": 21600,
             "list_function": "elbv2_application_metrics",
             "aws_dimensions_name": "TargetGroup",
+            "aws_metric_name": "HTTPCode_Target_2XX_Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_application_metrics",
+            "aws_dimensions_name": "TargetGroup",
+            "aws_metric_name": "HTTPCode_Target_3XX_Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_application_metrics",
+            "aws_dimensions_name": "TargetGroup",
+            "aws_metric_name": "HTTPCode_Target_4XX_Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_application_metrics",
+            "aws_dimensions_name": "TargetGroup",
             "aws_metric_name": "HTTPCode_Target_5XX_Count",
             "aws_unit": "Count",
             "aws_statistics": [
@@ -878,6 +909,17 @@
             "list_function": "transferfamily_metrics",
             "aws_dimensions_name": "ServerId",
             "aws_metric_name": "BytesIn",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "transferfamily_metrics",
+            "aws_dimensions_name": "ServerId",
+            "aws_metric_name": "BytesOut",
             "aws_unit": "Count",
             "aws_statistics": [
                 "Sum"
@@ -973,6 +1015,43 @@
                     "Engine": "Stateful"
                 }
             ],
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ES": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "opensearch_metrics",
+            "aws_dimensions_name": "DomainName",
+            "aws_metric_name": "2xx",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "opensearch_metrics",
+            "aws_dimensions_name": "DomainName",
+            "aws_metric_name": "3xx",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Route53Resolver": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "route53_resolver_metrics",
+            "aws_dimensions_name": "EndpointId",
+            "aws_metric_name": "OutboundQueryVolume",
             "aws_unit": "Count",
             "aws_statistics": [
                 "Sum"

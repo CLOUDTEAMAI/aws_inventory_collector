@@ -1021,51 +1021,27 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
@@ -1254,6 +1230,510 @@
     },
     {
         "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1597,15 +2077,7 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
+        "label": "save_as_file_parquet_metrics",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1621,7 +2093,7 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1629,39 +2101,7 @@
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
+        "label": "list_az",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1710,342 +2150,6 @@
     },
     {
         "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -4556,12 +4660,48 @@
         "documentation": {}
     },
     {
+        "label": "list_elasticsearch_domains",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.ElasticSearch.elasticsearch",
+        "description": "modules.MachineLearning.ElasticSearch.elasticsearch",
+        "peekOfCode": "def list_elasticsearch_domains(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('es', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    inventory = []\n    names = []\n    response = client.list_domain_names()\n    for resource in response.get('DomainNames', []):",
+        "detail": "modules.MachineLearning.ElasticSearch.elasticsearch",
+        "documentation": {}
+    },
+    {
+        "label": "networkfirewall_metrics",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.ElasticSearch.elasticsearch_metrics",
+        "description": "modules.MachineLearning.ElasticSearch.elasticsearch_metrics",
+        "peekOfCode": "def networkfirewall_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('network-firewall', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            gw_idx = 0\n            inventory = []\n            addons = {\"type\": \"opensearch\"}",
+        "detail": "modules.MachineLearning.ElasticSearch.elasticsearch_metrics",
+        "documentation": {}
+    },
+    {
         "label": "list_opensearch_domains",
         "kind": 2,
         "importPath": "modules.MachineLearning.OpenSearch.opensearch",
         "description": "modules.MachineLearning.OpenSearch.opensearch",
         "peekOfCode": "def list_opensearch_domains(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('opensearch', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    inventory = []\n    names = []\n    response = client.list_domain_names()\n    for resource in response.get('DomainNames', []):",
         "detail": "modules.MachineLearning.OpenSearch.opensearch",
+        "documentation": {}
+    },
+    {
+        "label": "list_opensearch_nodes",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.OpenSearch.opensearch",
+        "description": "modules.MachineLearning.OpenSearch.opensearch",
+        "peekOfCode": "def list_opensearch_nodes(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('opensearch', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    inventory = []\n    names = []\n    response = client.list_domain_names()\n    for resource in response.get('DomainNames', []):",
+        "detail": "modules.MachineLearning.OpenSearch.opensearch",
+        "documentation": {}
+    },
+    {
+        "label": "opensearch_metrics",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.OpenSearch.opensearch_metrics",
+        "description": "modules.MachineLearning.OpenSearch.opensearch_metrics",
+        "peekOfCode": "def opensearch_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('opensearch', region_name=region)\n    account_id = account['account_id']\n    response = client.list_domain_names()\n    names = []\n    for resource in response.get('DomainNames', []):\n        names.append(resource['DomainName'])\n    while True:",
+        "detail": "modules.MachineLearning.OpenSearch.opensearch_metrics",
         "documentation": {}
     },
     {
@@ -5015,11 +5155,29 @@
         "documentation": {}
     },
     {
+        "label": "list_route53_resolver",
+        "kind": 2,
+        "importPath": "modules.Networking.Route53.route53",
+        "description": "modules.Networking.Route53.route53",
+        "peekOfCode": "def list_route53_resolver(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53resolver', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_resolver_endpoints(",
+        "detail": "modules.Networking.Route53.route53",
+        "documentation": {}
+    },
+    {
         "label": "route53_metrics",
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53_metrics",
         "description": "modules.Networking.Route53.route53_metrics",
         "peekOfCode": "def route53_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('route53', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_hosted_zones(\n                Marker=next_token) if next_token else client.list_hosted_zones()",
+        "detail": "modules.Networking.Route53.route53_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "route53_resolver_metrics",
+        "kind": 2,
+        "importPath": "modules.Networking.Route53.route53_metrics",
+        "description": "modules.Networking.Route53.route53_metrics",
+        "peekOfCode": "def route53_resolver_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('route53resolver', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_resolver_endpoints(\n                NextToken=next_token) if next_token else client.list_resolver_endpoints()",
         "detail": "modules.Networking.Route53.route53_metrics",
         "documentation": {}
     },

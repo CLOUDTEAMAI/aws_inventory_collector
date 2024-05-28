@@ -13,6 +13,7 @@ from modules.Networking.NetworkFirewall.networkfirewall_metrics import *
 from modules.Networking.Route53.route53_metrics import *
 from modules.Networking.VPC.vpc_metrics import *
 from modules.Management.account.account import regions_enabled, get_aws_session, complete_aws_account
+from modules.MachineLearning.OpenSearch.opensearch_metrics import *
 from modules.Messaging.SQS.sqs_metrics import *
 from modules.Messaging.SNS.sns_metrics import *
 from modules.Messaging.Kafka.kafka_metrics import *

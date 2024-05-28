@@ -324,6 +324,11 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
         "networkfirewall": {
             'parent': 'FirewallName',
             'comparison_value': 'AvailabilityZone'
+        },
+        'opensearch': {
+            'parent': 'DomainName',
+            'comparison_value': 'NodeId',
+            'items': ['ClientId']
         }
     }
     for metric in metrics:
