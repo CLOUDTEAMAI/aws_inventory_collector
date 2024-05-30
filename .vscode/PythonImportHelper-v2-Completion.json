@@ -4556,7 +4556,7 @@
         "kind": 2,
         "importPath": "modules.Databases.Neptune.neptune",
         "description": "modules.Databases.Neptune.neptune",
-        "peekOfCode": "def list_neptune(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('neptune', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            nodes_counter = 0",
+        "peekOfCode": "def list_neptune(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('neptune', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_db_clusters(",
         "detail": "modules.Databases.Neptune.neptune",
         "documentation": {}
     },
@@ -4565,7 +4565,7 @@
         "kind": 2,
         "importPath": "modules.Databases.Neptune.neptune",
         "description": "modules.Databases.Neptune.neptune",
-        "peekOfCode": "def list_neptune_instances(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('neptune', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            nodes_counter = 0",
+        "peekOfCode": "def list_neptune_instances(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('neptune', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_db_instances(",
         "detail": "modules.Databases.Neptune.neptune",
         "documentation": {}
     },

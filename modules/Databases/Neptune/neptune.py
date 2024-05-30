@@ -11,7 +11,6 @@ def list_neptune(file_path, session, region, time_generated, account):
     while True:
         try:
             inventory = []
-            nodes_counter = 0
             response = client.describe_db_clusters(
                 Marker=next_token) if next_token else client.describe_db_clusters()
             for resource in response.get('DBClusters', []):
@@ -54,7 +53,6 @@ def list_neptune_instances(file_path, session, region, time_generated, account):
     while True:
         try:
             inventory = []
-            nodes_counter = 0
             response = client.describe_db_instances(
                 Marker=next_token) if next_token else client.describe_db_instances()
             for resource in response.get('DBInstances', []):
