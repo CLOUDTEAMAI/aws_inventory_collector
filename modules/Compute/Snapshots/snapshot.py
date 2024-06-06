@@ -43,7 +43,7 @@ def list_ec2_snapshots(file_path, session, region, time_generated, account):
                 if 'RestoreExpiryTime' in resource:
                     resource['RestoreExpiryTime'] = resource['RestoreExpiryTime'].isoformat(
                     )
-                arn = f"arn:aws:ec2:{region}::{resource['SnapshotId']}"
+                arn = f"arn:aws:ec2:{region}:{account_id}:snapshot/{resource['SnapshotId']}"
                 inventory_object = extract_common_info(
                     arn, resource, region, account_id, time_generated, account_name)
                 inventory.append(inventory_object)
@@ -83,7 +83,7 @@ def list_ec2_snapshots_fsr(file_path, session, region, time_generated, account):
                 if 'DisabledTime' in resource:
                     resource['DisabledTime'] = resource['DisabledTime'].isoformat(
                     )
-                arn = f"arn:aws:ec2:{region}::{resource['SnapshotId']}:fsr"
+                arn = f"arn:aws:ec2:{region}:{account_id}:snapshot/{resource['SnapshotId']}-FSR"
                 inventory_object = extract_common_info(
                     arn, resource, region, account_id, time_generated, account_name)
                 inventory.append(inventory_object)

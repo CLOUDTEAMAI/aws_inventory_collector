@@ -5,17 +5,17 @@ from .metrics import *
 lock = Lock()
 
 
-def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics):
+def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):
     # regional scraping per account
     try:
         get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,
-                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics)
+                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)
         print("Finished Collecting regional inventory")
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
 
 
-def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):
+def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics, threads=4):
     tasks = {}
     global_tasks = {}
     functionsz_map = {
@@ -98,13 +98,9 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
                         f'{account_id} {region} {task_name} {str(exc)}')
 
 
-def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics):
+def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics, threads=4):
     try:
-        max_worker = len(account_json['accounts'])
-        if max_worker > 6:
-            max_worker = 5
-
-        with ThreadPoolExecutor(max_workers=max_worker) as executor:
+        with ThreadPoolExecutor(max_workers=threads) as executor:
             futures_services = {}
             for account in account_json['accounts']:
                 session = get_aws_session(
@@ -120,7 +116,8 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
                             reg,
                             complete_aws_account(acc),
                             time_generated,
-                            metrics
+                            metrics,
+                            threads
                         )
                     )
                     futures_services[future] = account

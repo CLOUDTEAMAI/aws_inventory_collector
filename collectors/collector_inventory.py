@@ -5,11 +5,11 @@ from modules import *
 lock = Lock()
 
 
-def inventory_collector(uploads_directory, logger, accounts_json, time_generated):
+def inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):
     # regional scraping per account
     try:
         get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,
-                                            account_json=accounts_json, time_generated=time_generated)
+                                            account_json=accounts_json, time_generated=time_generated, threads=threads)
         print("Finished Collecting regional inventory")
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
@@ -24,10 +24,9 @@ def inventory_collector(uploads_directory, logger, accounts_json, time_generated
     #     print(f"Failed to write logger global inventory {ex}")
 
 
-def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated):
+def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):
     try:
-        max_worker = 8
-        with ThreadPoolExecutor(max_workers=max_worker) as executor:
+        with ThreadPoolExecutor(max_workers=threads) as executor:
             futures_services = {
                 executor.submit(
                     lambda acc=account, reg=region: parallel_executor_regional_inventory(
@@ -36,7 +35,8 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
                                         reg, role_name=acc['account_role']),
                         reg,
                         time_generated,
-                        complete_aws_account(acc)
+                        complete_aws_account(acc),
+                        threads
                     ), account, region  # Defaulting acc and reg inside lambda
                 ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account['account_role']))
             }
@@ -53,7 +53,7 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
         print(f'Error in end {ex}')
 
 
-def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account):
+def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account, threads=4):
     # Initialize functions clients for services you want to list resources from in parallel
     functions_map = {
         'logs': list_logs_groups,
@@ -188,8 +188,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
     # 'applicationcostprofiler'    : list_applicationcostprofiler,
     # 'alexaforbusiness'         : list_alexaforbusiness,
 
-    max_worker = 8
-    with ThreadPoolExecutor(max_worker) as executor:
+    with ThreadPoolExecutor(threads) as executor:
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
         }

@@ -255,20 +255,6 @@
             "granularity_seconds": 21600,
             "list_function": "ebs_volumes_metrics",
             "aws_dimensions_name": "VolumeId",
-            "aws_metric_name": "VolumeIdleTime",
-            "aws_unit": "Seconds",
-            "aws_statistics": [
-                "Average",
-                "Maximum",
-                "Minimum",
-                "Sum"
-            ]
-        },
-        {
-            "days_ago": 30,
-            "granularity_seconds": 21600,
-            "list_function": "ebs_volumes_metrics",
-            "aws_dimensions_name": "VolumeId",
             "aws_metric_name": "VolumeReadOps",
             "aws_unit": "Count",
             "aws_statistics": [
