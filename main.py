@@ -13,7 +13,7 @@ def main():
     and then runs parallel tasks to gather inventory and list S3 buckets for each account.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'inventory')
+    mode = environ.get('MODE', 'metrics')
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',

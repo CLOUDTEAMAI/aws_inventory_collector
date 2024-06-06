@@ -84,7 +84,8 @@ def list_dynamodb(file_path, session, region, time_generated, account):
                 if 'TableClassSummary' in info_tables:
                     info_tables['TableClassSummary']['LastUpdateDateTime'] = info_tables['TableClassSummary']['LastUpdateDateTime'].isoformat(
                     )
-                arn = info_tables['TableArn']
+                arn = info_tables.get(
+                    'TableArn', f"arn:aws:dynamodb:{region}:{account_id}:{info_tables.get('ResourceId')}")
                 inventory_object = extract_common_info(
                     arn, info_tables, region, account_id, time_generated, account_name)
                 inventory.append(inventory_object)
