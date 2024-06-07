@@ -1,5 +1,5 @@
 from .RouteTable.routetable import *
-from .ClientVPN.clientvpn import *
+from .VPN.vpn import *
 from .ELB.elb import *
 from .InternetGateway.internetgateway import *
 from .ACL.acl import *

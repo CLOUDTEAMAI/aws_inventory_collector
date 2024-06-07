@@ -66,6 +66,8 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'sns_subscriptions': list_sns_subscriptions,
         'vpc': list_vpc,
         'eni': list_eni,
+        'vpn_gateway': list_vpn_gateway,
+        'vpn_connections': list_vpn_connections,
         'clientvpn': list_clientvpn,
         'sagemaker': list_sagemaker,
         'ssm': list_ssm,

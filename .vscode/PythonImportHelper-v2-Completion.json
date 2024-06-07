@@ -2805,54 +2805,6 @@
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
         "label": "extract_common_info",
         "importPath": "utils.utils",
         "description": "utils.utils",
@@ -3142,6 +3094,54 @@
     },
     {
         "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -4984,24 +4984,6 @@
         "documentation": {}
     },
     {
-        "label": "list_clientvpn",
-        "kind": 2,
-        "importPath": "modules.Networking.ClientVPN.clientvpn",
-        "description": "modules.Networking.ClientVPN.clientvpn",
-        "peekOfCode": "def list_clientvpn(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_client_vpn_endpoints(",
-        "detail": "modules.Networking.ClientVPN.clientvpn",
-        "documentation": {}
-    },
-    {
-        "label": "clientvpn_metrics",
-        "kind": 2,
-        "importPath": "modules.Networking.ClientVPN.clientvpn_metrics",
-        "description": "modules.Networking.ClientVPN.clientvpn_metrics",
-        "peekOfCode": "def clientvpn_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_client_vpn_endpoints(\n                NextToken=next_token) if next_token else client.describe_client_vpn_endpoints()",
-        "detail": "modules.Networking.ClientVPN.clientvpn_metrics",
-        "documentation": {}
-    },
-    {
         "label": "list_cloudfront",
         "kind": 2,
         "importPath": "modules.Networking.CloudFront.cloudfront",
@@ -5269,6 +5251,51 @@
         "description": "modules.Networking.VPC.vpc_metrics",
         "peekOfCode": "def vpcendpoint_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    account_id = account['account_id']\n    while True:\n        try:\n            vpe_idx = 0\n            client = session.client('ec2', region_name=region)\n            inventory = []\n            addons = {\"type\": \"privatelinkendpoints\"}",
         "detail": "modules.Networking.VPC.vpc_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "list_vpn_gateway",
+        "kind": 2,
+        "importPath": "modules.Networking.VPN.vpn",
+        "description": "modules.Networking.VPN.vpn",
+        "peekOfCode": "def list_vpn_gateway(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_vpn_gateways(",
+        "detail": "modules.Networking.VPN.vpn",
+        "documentation": {}
+    },
+    {
+        "label": "list_vpn_connections",
+        "kind": 2,
+        "importPath": "modules.Networking.VPN.vpn",
+        "description": "modules.Networking.VPN.vpn",
+        "peekOfCode": "def list_vpn_connections(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_vpn_connections(",
+        "detail": "modules.Networking.VPN.vpn",
+        "documentation": {}
+    },
+    {
+        "label": "list_clientvpn",
+        "kind": 2,
+        "importPath": "modules.Networking.VPN.vpn",
+        "description": "modules.Networking.VPN.vpn",
+        "peekOfCode": "def list_clientvpn(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_client_vpn_endpoints(",
+        "detail": "modules.Networking.VPN.vpn",
+        "documentation": {}
+    },
+    {
+        "label": "vpn_metrics",
+        "kind": 2,
+        "importPath": "modules.Networking.VPN.vpn_metrics",
+        "description": "modules.Networking.VPN.vpn_metrics",
+        "peekOfCode": "def vpn_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_vpn_connections(\n                NextToken=next_token) if next_token else client.describe_vpn_connections()",
+        "detail": "modules.Networking.VPN.vpn_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "clientvpn_metrics",
+        "kind": 2,
+        "importPath": "modules.Networking.VPN.vpn_metrics",
+        "description": "modules.Networking.VPN.vpn_metrics",
+        "peekOfCode": "def clientvpn_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_client_vpn_endpoints(\n                NextToken=next_token) if next_token else client.describe_client_vpn_endpoints()",
+        "detail": "modules.Networking.VPN.vpn_metrics",
         "documentation": {}
     },
     {

@@ -816,6 +816,30 @@
             ]
         }
     ],
+    "AWS/VPN": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpn_metrics",
+            "aws_dimensions_name": "TunnelIpAddress",
+            "aws_metric_name": "TunnelDataIn",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpn_metrics",
+            "aws_dimensions_name": "TunnelIpAddress",
+            "aws_metric_name": "TunnelDataOut",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
     "AWS/ELB": [
         {
             "days_ago": 30,

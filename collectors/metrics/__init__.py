@@ -12,6 +12,7 @@ from modules.Networking.NATGateway.natgateway_metrics import *
 from modules.Networking.NetworkFirewall.networkfirewall_metrics import *
 from modules.Networking.Route53.route53_metrics import *
 from modules.Networking.VPC.vpc_metrics import *
+from modules.Networking.VPN.vpn_metrics import *
 from modules.Management.account.account import regions_enabled, get_aws_session, complete_aws_account
 from modules.MachineLearning.OpenSearch.opensearch_metrics import *
 from modules.Messaging.SQS.sqs_metrics import *
