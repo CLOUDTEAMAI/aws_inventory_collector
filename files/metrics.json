@@ -9,8 +9,7 @@
             "aws_unit": "Percent",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Minimum"
+                "Maximum"
             ]
         },
         {
@@ -33,8 +32,7 @@
             "aws_unit": "Operations",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Minimum"
+                "Maximum"
             ]
         },
         {
@@ -47,7 +45,6 @@
             "aws_statistics": [
                 "Average",
                 "Maximum",
-                "Minimum",
                 "Sum"
             ]
         }
@@ -73,8 +70,7 @@
             "aws_unit": "Milliseconds",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -98,7 +94,6 @@
             "aws_metric_name": "ClientConnections",
             "aws_unit": "Count",
             "aws_statistics": [
-                "Average",
                 "Maximum",
                 "Sum"
             ]
@@ -112,8 +107,7 @@
             "aws_unit": "Bytes",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -190,7 +184,6 @@
             "aws_metric_name": "DataReadOperations",
             "aws_unit": "Operations",
             "aws_statistics": [
-                "Average",
                 "Maximum",
                 "Sum"
             ]
@@ -203,7 +196,6 @@
             "aws_metric_name": "DataWriteOperations",
             "aws_unit": "Operations",
             "aws_statistics": [
-                "Average",
                 "Maximum",
                 "Sum"
             ]
@@ -216,7 +208,6 @@
             "aws_metric_name": "MetadataOperations",
             "aws_unit": "Operations",
             "aws_statistics": [
-                "Average",
                 "Maximum",
                 "Sum"
             ]
@@ -231,8 +222,7 @@
             "aws_statistics": [
                 "Average",
                 "Maximum",
-                "Minimum",
-                "Sum"
+                "Minimum"
             ]
         },
         {
@@ -259,8 +249,7 @@
             "aws_unit": "Count",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -272,8 +261,7 @@
             "aws_unit": "Count",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -285,8 +273,7 @@
             "aws_unit": "Bytes",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         }
     ],
@@ -326,8 +313,7 @@
             "aws_unit": "Percentage",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Minimum"
+                "Maximum"
             ]
         },
         {
@@ -340,8 +326,7 @@
             "aws_statistics": [
                 "Average",
                 "Maximum",
-                "Minimum",
-                "Sum"
+                "Minimum"
             ]
         },
         {
@@ -353,9 +338,7 @@
             "aws_unit": "Bytes",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Minimum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -367,8 +350,7 @@
             "aws_unit": "Operations",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         },
         {
@@ -380,8 +362,7 @@
             "aws_unit": "Operations",
             "aws_statistics": [
                 "Average",
-                "Maximum",
-                "Sum"
+                "Maximum"
             ]
         }
     ],
@@ -670,30 +651,8 @@
             "granularity_seconds": 21600,
             "list_function": "cloudfront_metrics",
             "aws_dimensions_name": "DistributionId",
-            "aws_metric_name": "Requests",
-            "aws_unit": "Count",
-            "aws_statistics": [
-                "Sum"
-            ]
-        },
-        {
-            "days_ago": 30,
-            "granularity_seconds": 21600,
-            "list_function": "cloudfront_metrics",
-            "aws_dimensions_name": "DistributionId",
             "aws_metric_name": "TotalErrorRate",
             "aws_unit": "Percent",
-            "aws_statistics": [
-                "Sum"
-            ]
-        },
-        {
-            "days_ago": 30,
-            "granularity_seconds": 21600,
-            "list_function": "cloudfront_metrics",
-            "aws_dimensions_name": "DistributionId",
-            "aws_metric_name": "BytesUploaded",
-            "aws_unit": "Bytes",
             "aws_statistics": [
                 "Sum"
             ]
