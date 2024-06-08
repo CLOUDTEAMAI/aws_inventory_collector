@@ -48,6 +48,9 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics,
         'transferfamily_metrics': transferfamily_metrics
     }
+    functionsz_map = {
+        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics
+    }
     if region == 'us-east-1':
         global_tasks = {
             'route53_metrics': route53_metrics,

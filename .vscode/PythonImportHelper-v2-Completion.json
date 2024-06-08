@@ -41,15 +41,6 @@
         "documentation": {}
     },
     {
-        "label": "threading",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
-        "documentation": {}
-    },
-    {
         "label": "Lock",
         "importPath": "threading",
         "description": "threading",
@@ -63,14 +54,6 @@
         "description": "threading",
         "isExtraImport": true,
         "detail": "threading",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "modules",
-        "description": "modules",
-        "isExtraImport": true,
-        "detail": "modules",
         "documentation": {}
     },
     {
@@ -92,14 +75,6 @@
     },
     {
         "label": "mkdir",
-        "importPath": "os",
-        "description": "os",
-        "isExtraImport": true,
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "getpid",
         "importPath": "os",
         "description": "os",
         "isExtraImport": true,
@@ -3790,12 +3765,19 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
+        "label": "Session",
+        "importPath": "boto3",
+        "description": "boto3",
         "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
+        "detail": "boto3",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "importPath": "boto3",
+        "description": "boto3",
+        "isExtraImport": true,
+        "detail": "boto3",
         "documentation": {}
     },
     {
@@ -3852,15 +3834,6 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -3869,23 +3842,6 @@
         "description": "pandas",
         "isExtraImport": true,
         "detail": "pandas",
-        "documentation": {}
-    },
-    {
-        "label": "psutil",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "psutil",
-        "description": "psutil",
-        "detail": "psutil",
-        "documentation": {}
-    },
-    {
-        "label": "Process",
-        "importPath": "psutil",
-        "description": "psutil",
-        "isExtraImport": true,
-        "detail": "psutil",
         "documentation": {}
     },
     {
@@ -3989,7 +3945,7 @@
         "kind": 5,
         "importPath": "files.accountsgenerator",
         "description": "files.accountsgenerator",
-        "peekOfCode": "customer = 'shufersal'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
+        "peekOfCode": "customer = 'sapiens-it'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
         "detail": "files.accountsgenerator",
         "documentation": {}
     },
@@ -4268,7 +4224,16 @@
         "kind": 2,
         "importPath": "modules.Compute.EC2.ec2_metrics",
         "description": "modules.Compute.EC2.ec2_metrics",
-        "peekOfCode": "def ec2_instances_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account.get('account_name', '')).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_instances(",
+        "peekOfCode": "def ec2_instances_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_instances(\n                NextToken=next_token) if next_token else client.describe_instances()",
+        "detail": "modules.Compute.EC2.ec2_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "ec2_instances_cwagent_metrics",
+        "kind": 2,
+        "importPath": "modules.Compute.EC2.ec2_metrics",
+        "description": "modules.Compute.EC2.ec2_metrics",
+        "peekOfCode": "def ec2_instances_cwagent_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('cloudwatch', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_metrics(\n                NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')",
         "detail": "modules.Compute.EC2.ec2_metrics",
         "documentation": {}
     },
@@ -4783,6 +4748,15 @@
         "description": "modules.Management.account.account",
         "peekOfCode": "def get_aws_session(account_id, region='us-east-1', role_name=\"Cloudteam-FinOps\"):\n    \"\"\"\n    This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and\n    then uses those credentials to create a new `boto3` session\n    :param account_id: The AWS account ID of the account you want to assume a role in\n    :param role_name: The name of the role you want to assume\n    :param external_id: the external id from CloudHiro\n    :return: A session object that can be used to make API calls to the account specified in the role_name parameter.\n        external_id:\n    \"\"\"",
         "detail": "modules.Management.account.account",
+        "documentation": {}
+    },
+    {
+        "label": "list_account_name",
+        "kind": 2,
+        "importPath": "modules.Management.accounts.accounts",
+        "description": "modules.Management.accounts.accounts",
+        "peekOfCode": "def list_account_name(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('iam')\n    account_id = account['account_id']\n    account_name = str(account.get('account_name')).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_account_aliases().get('AccountAliases', [])",
+        "detail": "modules.Management.accounts.accounts",
         "documentation": {}
     },
     {
@@ -5650,38 +5624,74 @@
         "documentation": {}
     },
     {
-        "label": "get_resource_utilization_metric",
+        "label": "cw_build_metrics_queries_ready",
         "kind": 2,
         "importPath": "utils.utils",
         "description": "utils.utils",
-        "peekOfCode": "def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated, addons={}):\n    client = session.client('cloudwatch', region_name=region)\n    account_id = account['account_id']\n    end_time = datetime.utcnow()\n    query = []\n    resource_metrics_list = []\n    custom_type_value = {\n        'elasticache': {\n            'parent': 'CacheClusterId',\n            'comparison_value': 'CacheNodeId'",
+        "peekOfCode": "def cw_build_metrics_queries_ready(metrics_list, granularity):\n    query_list = []\n    for i, metric in enumerate(metrics_list, start=1):\n        content = {\n            'Id': f'a{i}',\n            'MetricStat': {\n                'Metric': {\n                    'Namespace': metric['Namespace'],\n                    'MetricName': metric['MetricName'],\n                    'Dimensions': metric['Dimensions']",
         "detail": "utils.utils",
         "documentation": {}
     },
     {
-        "label": "get_memory_usage",
+        "label": "get_resource_utilization_metric",
+        "kind": 2,
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "peekOfCode": "def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated, addons={}, metrics_list=[]):\n    client = session.client('cloudwatch', region_name=region)\n    account_id = account['account_id']\n    end_time = datetime.utcnow()\n    query = []\n    resource_metrics_list = []\n    custom_type_value = {\n        'elasticache': {\n            'parent': 'CacheClusterId',\n            'comparison_value': 'CacheNodeId'",
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_credentials_assume_role",
         "kind": 2,
         "importPath": "bdika",
         "description": "bdika",
-        "peekOfCode": "def get_memory_usage():\n    process = Process(getpid())\n    return process.memory_info().rss\n# Measure memory usage before importing boto3\nmemory_before = get_memory_usage()\nprint(f\"Memory usage before importing modules: {memory_before / (1024*1024):.2f} MB\")\n# Import boto3\nimport boto3\nimport concurrent.futures\nimport datetime",
+        "peekOfCode": "def get_credentials_assume_role(account_id, role_name=\"Cloudteam-FinOps\", region='us-east-1', external_id=None):\n    \"\"\"\n    The function `get_credentials_assume_role` assumes an AWS IAM role in a specified account and\n    returns the temporary credentials.\n    :param account_id: The `account_id` parameter is the unique identifier for the AWS account for which\n    you want to assume a role. It is used to construct the ARN (Amazon Resource Name) of the role that\n    you want to assume within that account\n    :param role_name: The `role_name` parameter in the `get_credentials_assume_role` function is a\n    string that represents the name of the IAM role that you want to assume in the AWS account specified\n    by `account_id`. By default, the `role_name` is set to \"Cloudteam-FinOps\", defaults to",
         "detail": "bdika",
         "documentation": {}
     },
     {
-        "label": "memory_before",
-        "kind": 5,
+        "label": "get_aws_session",
+        "kind": 2,
         "importPath": "bdika",
         "description": "bdika",
-        "peekOfCode": "memory_before = get_memory_usage()\nprint(f\"Memory usage before importing modules: {memory_before / (1024*1024):.2f} MB\")\n# Import boto3\nimport boto3\nimport concurrent.futures\nimport datetime\nimport pandas as pd\nimport json\nimport os\nimport threading",
+        "peekOfCode": "def get_aws_session(account_id, region='us-east-1', role_name=\"Cloudteam-FinOps\"):\n    \"\"\"\n    This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and\n    then uses those credentials to create a new `boto3` session\n    :param account_id: The AWS account ID of the account you want to assume a role in\n    :param role_name: The name of the role you want to assume\n    :param external_id: the external id from CloudHiro\n    :return: A session object that can be used to make API calls to the account specified in the role_name parameter.\n        external_id:\n    \"\"\"",
         "detail": "bdika",
         "documentation": {}
     },
     {
-        "label": "memory_after",
+        "label": "inv",
         "kind": 5,
         "importPath": "bdika",
         "description": "bdika",
-        "peekOfCode": "memory_after = get_memory_usage()\nprint(f\"Memory usage after importing modules: {memory_after / (1024*1024):.2f} MB\")",
+        "peekOfCode": "inv = []\nnext_token = None\nsession = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)",
+        "detail": "bdika",
+        "documentation": {}
+    },
+    {
+        "label": "next_token",
+        "kind": 5,
+        "importPath": "bdika",
+        "description": "bdika",
+        "peekOfCode": "next_token = None\nsession = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:",
+        "detail": "bdika",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "kind": 5,
+        "importPath": "bdika",
+        "description": "bdika",
+        "peekOfCode": "session = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:\n            break",
+        "detail": "bdika",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "bdika",
+        "description": "bdika",
+        "peekOfCode": "client = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:\n            break\n    except Exception:",
         "detail": "bdika",
         "documentation": {}
     },

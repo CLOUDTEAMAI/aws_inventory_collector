@@ -7,7 +7,6 @@ def ec2_instances_metrics(file_path, session, region, account, metrics, time_gen
     idx = 0
     client = session.client('ec2', region_name=region)
     account_id = account['account_id']
-    account_name = str(account.get('account_name', '')).replace(" ", "_")
     while True:
         try:
             inventory = []
@@ -19,6 +18,35 @@ def ec2_instances_metrics(file_path, session, region, account, metrics, time_gen
             if inventory:
                 metrics = get_resource_utilization_metric(
                     session, region, inventory, account, metrics, time_generated)
+                save_as_file_parquet_metrics(metrics, file_path, generate_parquet_prefix(
+                    str(stack()[0][3]), region, f'{account_id}-metrics', idx))
+            next_token = response.get('NextToken', None)
+            idx = idx + 1
+            if not next_token:
+                break
+        except Exception as e:
+            print(e)
+            break
+
+
+def ec2_instances_cwagent_metrics(file_path, session, region, account, metrics, time_generated):
+    next_token = None
+    idx = 0
+    client = session.client('cloudwatch', region_name=region)
+    account_id = account['account_id']
+    while True:
+        try:
+            inventory = []
+            response = client.list_metrics(
+                NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')
+            for resource in response.get('Metrics', []):
+                if resource.get('MetricName') in ('disk_used_percent', 'swap_used_percent', 'mem_used_percent'):
+                    for stat in ('Maximum', 'Average'):
+                        resource['Stat'] = stat
+                        inventory.append(resource)
+            if inventory:
+                metrics = get_resource_utilization_metric(
+                    session, region, inventory, account, metrics, time_generated, metrics_list=inventory)
                 save_as_file_parquet_metrics(metrics, file_path, generate_parquet_prefix(
                     str(stack()[0][3]), region, f'{account_id}-metrics', idx))
             next_token = response.get('NextToken', None)

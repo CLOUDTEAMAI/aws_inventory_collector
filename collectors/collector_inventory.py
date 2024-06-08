@@ -1,6 +1,6 @@
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from threading import Lock
-from modules import *
+from .inventory import *
 
 lock = Lock()
 
@@ -135,7 +135,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'dynamodb': list_dynamodb,
         'dynamodb_streams': list_dynamodb_streams,
         'dax': list_dax,
-        'neptune': list_neptune,
+        # 'neptune': list_neptune,
         'neptune_instances': list_neptune_instances,
         'waf': list_waf,
         'appconfig': list_appconfig,
@@ -172,6 +172,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
     }
     if region == 'us-east-1':
         global_tasks = {
+            'account_name': list_account_name,
             'accounts': list_accounts,
             's3': list_s3_buckets,
             'wafv2': list_wafv2,

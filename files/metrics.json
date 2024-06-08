@@ -1,4 +1,17 @@
 {
+    "CWAgent": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_cwagent_metrics",
+            "aws_dimensions_name": "all",
+            "aws_metric_name": "all",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
     "AWS/EC2": [
         {
             "days_ago": 30,
