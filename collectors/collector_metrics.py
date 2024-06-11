@@ -48,9 +48,6 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics,
         'transferfamily_metrics': transferfamily_metrics
     }
-    functionsz_map = {
-        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics
-    }
     if region == 'us-east-1':
         global_tasks = {
             'route53_metrics': route53_metrics,
@@ -110,22 +107,23 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
             for account in account_json['accounts']:
                 session = get_aws_session(
                     account['account_id'], role_name=account['account_role'])
-                regions = regions_enabled(session)
-                for region in regions:
-                    future = executor.submit(
-                        lambda session=get_aws_session(
-                            account['account_id'], role_name=account['account_role'], region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
-                            logger_obj,
-                            main_dir,
-                            session,
-                            reg,
-                            complete_aws_account(acc),
-                            time_generated,
-                            metrics,
-                            threads
+                if session is not None:
+                    regions = regions_enabled(session)
+                    for region in regions:
+                        future = executor.submit(
+                            lambda session=get_aws_session(
+                                account['account_id'], role_name=account['account_role'], region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
+                                logger_obj,
+                                main_dir,
+                                session,
+                                reg,
+                                complete_aws_account(acc),
+                                time_generated,
+                                metrics,
+                                threads
+                            )
                         )
-                    )
-                    futures_services[future] = account
+                        futures_services[future] = account
 
             for future in as_completed(futures_services):
                 try:

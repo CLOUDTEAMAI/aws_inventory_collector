@@ -38,7 +38,7 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
                         complete_aws_account(acc),
                         threads
                     ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account['account_role']))
+                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account['account_role'])) if get_aws_session(account['account_id'], role_name=account['account_role']) is not None
             }
             for future in as_completed(futures_services):
                 try:
@@ -136,7 +136,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'dynamodb_streams': list_dynamodb_streams,
         'dax': list_dax,
         # 'neptune': list_neptune,
-        'neptune_instances': list_neptune_instances,
+        # 'neptune_instances': list_neptune_instances,
         'waf': list_waf,
         'appconfig': list_appconfig,
         'apigatewayv2': list_apigatewayv2,

@@ -3927,7 +3927,7 @@
         "kind": 2,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics, threads=4):\n    try:\n        with ThreadPoolExecutor(max_workers=threads) as executor:\n            futures_services = {}\n            for account in account_json['accounts']:\n                session = get_aws_session(\n                    account['account_id'], role_name=account['account_role'])\n                regions = regions_enabled(session)\n                for region in regions:\n                    future = executor.submit(",
+        "peekOfCode": "def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics, threads=4):\n    try:\n        with ThreadPoolExecutor(max_workers=threads) as executor:\n            futures_services = {}\n            for account in account_json['accounts']:\n                session = get_aws_session(\n                    account['account_id'], role_name=account['account_role'])\n                if session is not None:\n                    regions = regions_enabled(session)\n                    for region in regions:",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
@@ -5709,7 +5709,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'metrics')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'inventory')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
         "detail": "main",
         "documentation": {}
     }

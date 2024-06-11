@@ -13,14 +13,14 @@ def main():
     and then runs parallel tasks to gather inventory and list S3 buckets for each account.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'metrics')
+    mode = environ.get('MODE', 'inventory')
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',
                                f'{main_dir}/logs'])
     time_generated = environ.get(
         'TIME_GENERATED_SCRIPT', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    threads = environ.get('THREADS_NUMBER', 4)
+    threads = int(environ.get('THREADS_NUMBER', 4))
     logger_obj = cloudteam_logger.ct_logging(f'{main_dir}/logs', 'debug')
 
     with open(f'{main_dir}/files/accounts.json', encoding="UTF-8") as file:
