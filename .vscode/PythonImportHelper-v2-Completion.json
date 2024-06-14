@@ -3909,7 +3909,7 @@
         "kind": 2,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,\n                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics, threads=4):\n    tasks = {}",
+        "peekOfCode": "def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,\n                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
@@ -3918,7 +3918,7 @@
         "kind": 2,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics, threads=4):\n    tasks = {}\n    global_tasks = {}\n    functionsz_map = {\n        'ec2_instances_metrics': ec2_instances_metrics,\n        'ebs_volumes_metrics': ebs_volumes_metrics,\n        'functions_metrics': functions_metrics,\n        'efs_filesystem_metrics': efs_filesystem_metrics,\n        'ecr_metrics': ecr_metrics,\n        'cloudhsmv2_metrics': cloudhsmv2_metrics,",
+        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}\n    global_tasks = {}\n    functionsz_map = {\n        'ec2_instances_metrics': ec2_instances_metrics,\n        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics,\n        'ebs_volumes_metrics': ebs_volumes_metrics,\n        'functions_metrics': functions_metrics,\n        'efs_filesystem_metrics': efs_filesystem_metrics,\n        'ecr_metrics': ecr_metrics,",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
@@ -3936,7 +3936,7 @@
         "kind": 5,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "lock = Lock()\ndef metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,\n                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics, threads=4):",
+        "peekOfCode": "lock = Lock()\ndef metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,\n                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
@@ -5628,7 +5628,7 @@
         "kind": 2,
         "importPath": "utils.utils",
         "description": "utils.utils",
-        "peekOfCode": "def cw_build_metrics_queries_ready(metrics_list, granularity):\n    query_list = []\n    for i, metric in enumerate(metrics_list, start=1):\n        content = {\n            'Id': f'a{i}',\n            'MetricStat': {\n                'Metric': {\n                    'Namespace': metric['Namespace'],\n                    'MetricName': metric['MetricName'],\n                    'Dimensions': metric['Dimensions']",
+        "peekOfCode": "def cw_build_metrics_queries_ready(metrics_list, granularity):\n    query_list = []\n    query_idx = {}\n    for i, metric in enumerate(metrics_list, start=1):\n        content = {\n            'Id': f'a{i}',\n            'MetricStat': {\n                'Metric': {\n                    'Namespace': metric['Namespace'],\n                    'MetricName': metric['MetricName'],",
         "detail": "utils.utils",
         "documentation": {}
     },
@@ -5709,7 +5709,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'inventory')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'metrics')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
         "detail": "main",
         "documentation": {}
     }

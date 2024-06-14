@@ -291,6 +291,7 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
 
 def cw_build_metrics_queries_ready(metrics_list, granularity):
     query_list = []
+    query_idx = {}
     for i, metric in enumerate(metrics_list, start=1):
         content = {
             'Id': f'a{i}',
@@ -305,8 +306,9 @@ def cw_build_metrics_queries_ready(metrics_list, granularity):
             },
             'ReturnData': True
         }
+        query_idx[f'a{i}'] = content
         query_list.append(content)
-    return query_list
+    return query_list, query_idx
 
 
 def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated, addons={}, metrics_list=[]):
@@ -358,7 +360,7 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
                                                                metric['aws_metric_name'], metric['aws_dimensions_name'], metric.get('aws_dimensions', []), metric['aws_statistics'], metric['granularity_seconds'], custom_type_value, addons) if addons else cw_build_metrics_queries(inventory, metric['aws_namespace'],
                                                                                                                                                                                                                                                                                        metric['aws_metric_name'], metric['aws_dimensions_name'], metric.get('aws_dimensions', []), metric['aws_statistics'], metric['granularity_seconds'])
         else:
-            query = cw_build_metrics_queries_ready(
+            query, query_idx = cw_build_metrics_queries_ready(
                 metrics_list, metric['granularity_seconds'])
         for sublist in chunk_list(query):
             response = client.get_metric_data(

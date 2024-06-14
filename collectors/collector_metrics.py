@@ -15,11 +15,12 @@ def metrics_collector(uploads_directory, logger, accounts_json, time_generated, 
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
 
 
-def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics, threads=4):
+def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):
     tasks = {}
     global_tasks = {}
     functionsz_map = {
         'ec2_instances_metrics': ec2_instances_metrics,
+        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics,
         'ebs_volumes_metrics': ebs_volumes_metrics,
         'functions_metrics': functions_metrics,
         'efs_filesystem_metrics': efs_filesystem_metrics,
@@ -119,8 +120,7 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
                                 reg,
                                 complete_aws_account(acc),
                                 time_generated,
-                                metrics,
-                                threads
+                                metrics
                             )
                         )
                         futures_services[future] = account
