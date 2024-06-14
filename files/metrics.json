@@ -323,7 +323,7 @@
             "list_function": "rds_instances_metrics",
             "aws_dimensions_name": "DBInstanceIdentifier",
             "aws_metric_name": "CPUUtilization",
-            "aws_unit": "Percentage",
+            "aws_unit": "Percent",
             "aws_statistics": [
                 "Average",
                 "Maximum"
