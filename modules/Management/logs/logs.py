@@ -13,10 +13,10 @@ def list_logs_groups(file_path, session, region, time_generated, account):
             inventory = []
             response = client.describe_log_groups(
                 nextToken=next_token) if next_token else client.describe_log_groups()
-            for i in response.get('logGroups', []):
-                arn = i['arn']
+            for resource in response.get('logGroups', []):
+                arn = resource['arn']
                 inventory_object = extract_common_info(
-                    arn, i, region, account_id, time_generated, account_name)
+                    arn, resource, region, account_id, time_generated, account_name)
                 inventory.append(inventory_object)
             save_as_file_parquet(inventory, file_path, generate_parquet_prefix(
                 str(stack()[0][3]), region, account_id, idx))
