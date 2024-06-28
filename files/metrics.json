@@ -1017,5 +1017,42 @@
                 "Sum"
             ]
         }
+    ],
+    "AWS/DataSync": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "datasync_agents_metrics",
+            "aws_dimensions_name": "AgentId",
+            "aws_metric_name": "FilesTransferred",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/AmplifyHosting": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "amplify_metrics",
+            "aws_dimensions_name": "App",
+            "aws_metric_name": "BytesUploaded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "amplify_metrics",
+            "aws_dimensions_name": "App",
+            "aws_metric_name": "BytesDownloaded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
     ]
 }

@@ -4,6 +4,7 @@ from datetime import datetime
 from cloudteam_logger import cloudteam_logger
 from collectors.collector_inventory import inventory_collector
 from collectors.collector_metrics import metrics_collector
+from collectors.collector_sizing import sizing_collector
 from utils.utils import create_folder_if_not_exist
 
 
@@ -13,7 +14,7 @@ def main():
     and then runs parallel tasks to gather inventory and list S3 buckets for each account.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'metrics')
+    mode = environ.get('MODE', 'inventory')
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',
@@ -34,6 +35,9 @@ def main():
             metrics_list = load(file)
         metrics_collector(uploads_directory=uploads, logger=logger_obj,
                           accounts_json=load_json, time_generated=time_generated, metrics=metrics_list, threads=threads)
+    elif mode.lower() == 'sizing':
+        sizing_collector(uploads_directory=uploads, logger=logger_obj,
+                         accounts_json=load_json, time_generated=time_generated, threads=threads)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+from modules.Applications.Amplify.amplify_metrics import *
 from modules.Compute.EC2.ec2_metrics import *
 from modules.Compute.EBS.ebs_metrics import *
 from modules.Compute.Functions.functions_metrics import *
@@ -20,6 +21,7 @@ from modules.Messaging.SNS.sns_metrics import *
 from modules.Messaging.Kafka.kafka_metrics import *
 from modules.Messaging.MQ.mq_metrics import *
 from modules.Security.CloudHSM.cloudhsm_metrics import *
+from modules.Storage.DataSync.datasync_metrics import *
 from modules.Storage.EFS.efs_metrics import *
 from modules.Storage.FSx.fsx_metrics import *
 from modules.Storage.S3.s3_metrics import *

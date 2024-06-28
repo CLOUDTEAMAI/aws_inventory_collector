@@ -24,6 +24,8 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'ebs_volumes_metrics': ebs_volumes_metrics,
         'functions_metrics': functions_metrics,
         'efs_filesystem_metrics': efs_filesystem_metrics,
+        'amplify_metrics': amplify_metrics,
+        'datasync_agents_metrics': datasync_agents_metrics,
         'ecr_metrics': ecr_metrics,
         'cloudhsmv2_metrics': cloudhsmv2_metrics,
         'fsx_filesystem_metrics': fsx_filesystem_metrics,

@@ -249,3 +249,51 @@ def list_rds_proxy_endpoints(file_path, session, region, time_generated, account
         except Exception as e:
             print(e)
             break
+
+
+def list_rds_sizing(file_path, session, region, time_generated, account):
+    next_token = None
+    idx = 0
+    client = session.client('rds', region_name=region)
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ", "_")
+    engines = []
+    engines_default_list = ['aurora-mysql', 'aurora-postgresql', 'db2-ae', 'db2-se',
+                            'mariadb', 'mysql', 'oracle-ee', 'oracle-ee-cdb', 'oracle-se2', 'oracle-se2-cdb', 'postgres', 'sqlserver-ee', 'sqlserver-se', 'sqlserver-ex', 'sqlserver-web']
+    while True:
+        try:
+            response = client.describe_db_engine_versions(
+                Marker=next_token) if next_token else client.describe_db_engine_versions()
+            for resource in response.get('DBEngineVersions', []):
+                engines.append(resource.get('Engine', ''))
+            next_token = response.get('Marker', None)
+            if not next_token:
+                break
+        except Exception as e:
+            print(e)
+            break
+    engines_list = list(set(engines_default_list + engines))
+    for engine in engines_list:
+        next_token = None
+        inventory = []
+        engine_instances = []
+        while True:
+            try:
+                response = client.describe_orderable_db_instance_options(
+                    Engine=engine, Marker=next_token) if next_token else client.describe_orderable_db_instance_options(Engine=engine)
+                for resource in response.get('OrderableDBInstanceOptions', []):
+                    engine_instances.append(
+                        resource.get('DBInstanceClass'))
+                next_token = response.get('Marker', None)
+                if not next_token:
+                    break
+            except Exception as e:
+                print(e)
+                break
+        arn = f"arn:aws:rds:{region}:{account_id}:scaling-options/{engine}"
+        inventory_object = extract_common_info(
+            arn, {"instance_types": list(set(engine_instances))}, region, account_id, time_generated, account_name)
+        inventory.append(inventory_object)
+        save_as_file_parquet(inventory, file_path, generate_parquet_prefix(
+            str(stack()[0][3]), region, account_id, idx))
+        idx = idx + 1

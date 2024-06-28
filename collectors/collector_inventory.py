@@ -14,15 +14,6 @@ def inventory_collector(uploads_directory, logger, accounts_json, time_generated
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
 
-    # # global scraping per account
-    # try:
-    #     get_all_accounts_global_inventory(main_dir=uploads_directory, logger_obj=logger,
-    #                                       account_json=accounts_json, time_generated=time_generated)
-    #     print("Finished Collecting global inventory")
-    # except Exception as ex:
-    #     # logger_obj.error(str(ex))
-    #     print(f"Failed to write logger global inventory {ex}")
-
 
 def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):
     try:
@@ -79,6 +70,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'elasticsearch_reservations': list_elasticsearch_reservations,
         'memorydb_reservations': list_memorydb_reservations,
         'elasticcache_reservations': list_elasticcache_reservations,
+        'elasticache_sizing': list_cache_sizing,
         'redshift_reservations': list_redshift_reservations,
         'opensearch': list_opensearch_domains,
         'elasticsearch': list_elasticsearch_domains,
@@ -111,6 +103,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'ecr_images': list_ecr_repositories_images,
         'ecs': list_ecs_clusters,
         'efs': list_efs_file_systems,
+        'datasync_agents': list_datasync_agents,
         'rds': list_rds,
         'rds_global': list_rds_global,
         'rds_instances': list_rds_instances,

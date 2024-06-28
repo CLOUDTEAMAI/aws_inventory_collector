@@ -41,6 +41,30 @@
         "documentation": {}
     },
     {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
         "label": "Lock",
         "importPath": "threading",
         "description": "threading",
@@ -1020,6 +1044,54 @@
         "documentation": {}
     },
     {
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
+        "isExtraImport": true,
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
+        "isExtraImport": true,
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
+        "isExtraImport": true,
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
         "label": "extract_common_info",
         "importPath": "utils.utils",
         "description": "utils.utils",
@@ -1068,15 +1140,7 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
+        "label": "save_as_file_parquet_metrics",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1085,6 +1149,14 @@
     },
     {
         "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -3501,6 +3573,54 @@
     },
     {
         "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -3765,22 +3885,6 @@
         "documentation": {}
     },
     {
-        "label": "Session",
-        "importPath": "boto3",
-        "description": "boto3",
-        "isExtraImport": true,
-        "detail": "boto3",
-        "documentation": {}
-    },
-    {
-        "label": "client",
-        "importPath": "boto3",
-        "description": "boto3",
-        "isExtraImport": true,
-        "detail": "boto3",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -3845,6 +3949,30 @@
         "documentation": {}
     },
     {
+        "label": "client",
+        "importPath": "kubernetes",
+        "description": "kubernetes",
+        "isExtraImport": true,
+        "detail": "kubernetes",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "kubernetes",
+        "description": "kubernetes",
+        "isExtraImport": true,
+        "detail": "kubernetes",
+        "documentation": {}
+    },
+    {
+        "label": "stream",
+        "importPath": "kubernetes.stream",
+        "description": "kubernetes.stream",
+        "isExtraImport": true,
+        "detail": "kubernetes.stream",
+        "documentation": {}
+    },
+    {
         "label": "cloudteam_logger",
         "importPath": "cloudteam_logger",
         "description": "cloudteam_logger",
@@ -3869,11 +3997,19 @@
         "documentation": {}
     },
     {
+        "label": "sizing_collector",
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "isExtraImport": true,
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
         "label": "inventory_collector",
         "kind": 2,
         "importPath": "collectors.collector_inventory",
         "description": "collectors.collector_inventory",
-        "peekOfCode": "def inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,\n                                            account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\n    # # global scraping per account\n    # try:",
+        "peekOfCode": "def inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,\n                                            account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):\n    try:",
         "detail": "collectors.collector_inventory",
         "documentation": {}
     },
@@ -3900,7 +4036,7 @@
         "kind": 5,
         "importPath": "collectors.collector_inventory",
         "description": "collectors.collector_inventory",
-        "peekOfCode": "lock = Lock()\ndef inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,\n                                            account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\n    # # global scraping per account",
+        "peekOfCode": "lock = Lock()\ndef inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,\n                                            account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional inventory\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_inventory \\n{ex}\")\ndef get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):",
         "detail": "collectors.collector_inventory",
         "documentation": {}
     },
@@ -3918,7 +4054,7 @@
         "kind": 2,
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
-        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}\n    global_tasks = {}\n    functionsz_map = {\n        'ec2_instances_metrics': ec2_instances_metrics,\n        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics,\n        'ebs_volumes_metrics': ebs_volumes_metrics,\n        'functions_metrics': functions_metrics,\n        'efs_filesystem_metrics': efs_filesystem_metrics,\n        'ecr_metrics': ecr_metrics,",
+        "peekOfCode": "def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, account, time_generated, metrics):\n    tasks = {}\n    global_tasks = {}\n    functionsz_map = {\n        'ec2_instances_metrics': ec2_instances_metrics,\n        'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics,\n        'ebs_volumes_metrics': ebs_volumes_metrics,\n        'functions_metrics': functions_metrics,\n        'efs_filesystem_metrics': efs_filesystem_metrics,\n        'amplify_metrics': amplify_metrics,",
         "detail": "collectors.collector_metrics",
         "documentation": {}
     },
@@ -3941,11 +4077,47 @@
         "documentation": {}
     },
     {
+        "label": "sizing_collector",
+        "kind": 2,
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "peekOfCode": "def sizing_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_sizing(main_dir=uploads_directory, logger_obj=logger,\n                                         account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional sizing\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_sizing \\n{ex}\")\ndef get_all_accounts_regional_sizing(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):\n    try:",
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_accounts_regional_sizing",
+        "kind": 2,
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "peekOfCode": "def get_all_accounts_regional_sizing(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):\n    try:\n        with ThreadPoolExecutor(max_workers=threads) as executor:\n            futures_services = {\n                executor.submit(\n                    lambda acc=account, reg=region: parallel_executor_regional_sizing(\n                        logger_obj, main_dir,\n                        get_aws_session(acc['account_id'],\n                                        reg, role_name=acc['account_role']),\n                        reg,",
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
+        "label": "parallel_executor_regional_sizing",
+        "kind": 2,
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "peekOfCode": "def parallel_executor_regional_sizing(logger_obj, main_dir: str, session, region: str, time_generated, account, threads=4):\n    tasks = {\n        'rds_sizing': list_rds_sizing,\n    }\n    with ThreadPoolExecutor(threads) as executor:\n        future_to_task = {\n            executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()\n        }\n        for future in as_completed(future_to_task):\n            task_name = future_to_task[future]",
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "kind": 5,
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "peekOfCode": "lock = Lock()\ndef sizing_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):\n    # regional scraping per account\n    try:\n        get_all_accounts_regional_sizing(main_dir=uploads_directory, logger_obj=logger,\n                                         account_json=accounts_json, time_generated=time_generated, threads=threads)\n        print(\"Finished Collecting regional sizing\")\n    except Exception as ex:\n        print(f\"Failed to execute get_all_accounts_regional_sizing \\n{ex}\")\ndef get_all_accounts_regional_sizing(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):",
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
         "label": "customer",
         "kind": 5,
         "importPath": "files.accountsgenerator",
         "description": "files.accountsgenerator",
-        "peekOfCode": "customer = 'sapiens-it'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
+        "peekOfCode": "customer = 'gravyty'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
         "detail": "files.accountsgenerator",
         "documentation": {}
     },
@@ -4001,6 +4173,15 @@
         "description": "modules.Applications.Amplify.amplify",
         "peekOfCode": "def list_amplify(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_amplify` retrieves a list of Amplify apps using the AWS Amplify client and saves\n    the information to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_amplify` function is the path where the\n    output file will be saved. It should be a string representing the file path where the Parquet file\n    will be stored\n    :param session: The `session` parameter in the `list_amplify` function is typically an instance of a\n    boto3 session that is used to create a client for the AWS Amplify service in a specific region. It\n    allows you to interact with AWS services using the credentials and configuration provided in the",
         "detail": "modules.Applications.Amplify.amplify",
+        "documentation": {}
+    },
+    {
+        "label": "amplify_metrics",
+        "kind": 2,
+        "importPath": "modules.Applications.Amplify.amplify_metrics",
+        "description": "modules.Applications.Amplify.amplify_metrics",
+        "peekOfCode": "def amplify_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('amplify', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_apps(\n                NextToken=next_token) if next_token else client.list_apps()",
+        "detail": "modules.Applications.Amplify.amplify_metrics",
         "documentation": {}
     },
     {
@@ -4499,6 +4680,15 @@
         "documentation": {}
     },
     {
+        "label": "list_cache_sizing",
+        "kind": 2,
+        "importPath": "modules.Databases.ElastiCache.elasticache",
+        "description": "modules.Databases.ElastiCache.elasticache",
+        "peekOfCode": "def list_cache_sizing(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('elasticache', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            clusters = client.describe_cache_clusters(",
+        "detail": "modules.Databases.ElastiCache.elasticache",
+        "documentation": {}
+    },
+    {
         "label": "elasticache_metrics",
         "kind": 2,
         "importPath": "modules.Databases.ElastiCache.elasticache_metrics",
@@ -4585,6 +4775,15 @@
         "importPath": "modules.Databases.RDS.rds",
         "description": "modules.Databases.RDS.rds",
         "peekOfCode": "def list_rds_proxy_endpoints(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('rds', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_db_proxy_endpoints(",
+        "detail": "modules.Databases.RDS.rds",
+        "documentation": {}
+    },
+    {
+        "label": "list_rds_sizing",
+        "kind": 2,
+        "importPath": "modules.Databases.RDS.rds",
+        "description": "modules.Databases.RDS.rds",
+        "peekOfCode": "def list_rds_sizing(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('rds', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    engines = []\n    engines_default_list = ['aurora-mysql', 'aurora-postgresql', 'db2-ae', 'db2-se',\n                            'mariadb', 'mysql', 'oracle-ee', 'oracle-ee-cdb', 'oracle-se2', 'oracle-se2-cdb', 'postgres', 'sqlserver-ee', 'sqlserver-se', 'sqlserver-ex', 'sqlserver-web']\n    while True:",
         "detail": "modules.Databases.RDS.rds",
         "documentation": {}
     },
@@ -5408,6 +5607,24 @@
         "documentation": {}
     },
     {
+        "label": "list_datasync_agents",
+        "kind": 2,
+        "importPath": "modules.Storage.DataSync.datasync",
+        "description": "modules.Storage.DataSync.datasync",
+        "peekOfCode": "def list_datasync_agents(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('datasync', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_agents(",
+        "detail": "modules.Storage.DataSync.datasync",
+        "documentation": {}
+    },
+    {
+        "label": "datasync_agents_metrics",
+        "kind": 2,
+        "importPath": "modules.Storage.DataSync.datasync_metrics",
+        "description": "modules.Storage.DataSync.datasync_metrics",
+        "peekOfCode": "def datasync_agents_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('datasync', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_agents(\n                NextToken=next_token) if next_token else client.list_agents()",
+        "detail": "modules.Storage.DataSync.datasync_metrics",
+        "documentation": {}
+    },
+    {
         "label": "list_efs_file_systems",
         "kind": 2,
         "importPath": "modules.Storage.EFS.efs",
@@ -5642,56 +5859,11 @@
         "documentation": {}
     },
     {
-        "label": "get_credentials_assume_role",
+        "label": "list_pods_and_env_vars",
         "kind": 2,
         "importPath": "bdika",
         "description": "bdika",
-        "peekOfCode": "def get_credentials_assume_role(account_id, role_name=\"Cloudteam-FinOps\", region='us-east-1', external_id=None):\n    \"\"\"\n    The function `get_credentials_assume_role` assumes an AWS IAM role in a specified account and\n    returns the temporary credentials.\n    :param account_id: The `account_id` parameter is the unique identifier for the AWS account for which\n    you want to assume a role. It is used to construct the ARN (Amazon Resource Name) of the role that\n    you want to assume within that account\n    :param role_name: The `role_name` parameter in the `get_credentials_assume_role` function is a\n    string that represents the name of the IAM role that you want to assume in the AWS account specified\n    by `account_id`. By default, the `role_name` is set to \"Cloudteam-FinOps\", defaults to",
-        "detail": "bdika",
-        "documentation": {}
-    },
-    {
-        "label": "get_aws_session",
-        "kind": 2,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "def get_aws_session(account_id, region='us-east-1', role_name=\"Cloudteam-FinOps\"):\n    \"\"\"\n    This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and\n    then uses those credentials to create a new `boto3` session\n    :param account_id: The AWS account ID of the account you want to assume a role in\n    :param role_name: The name of the role you want to assume\n    :param external_id: the external id from CloudHiro\n    :return: A session object that can be used to make API calls to the account specified in the role_name parameter.\n        external_id:\n    \"\"\"",
-        "detail": "bdika",
-        "documentation": {}
-    },
-    {
-        "label": "inv",
-        "kind": 5,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "inv = []\nnext_token = None\nsession = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)",
-        "detail": "bdika",
-        "documentation": {}
-    },
-    {
-        "label": "next_token",
-        "kind": 5,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "next_token = None\nsession = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:",
-        "detail": "bdika",
-        "documentation": {}
-    },
-    {
-        "label": "session",
-        "kind": 5,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "session = get_aws_session('598939805063', 'af-south-1')\nclient = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:\n            break",
-        "detail": "bdika",
-        "documentation": {}
-    },
-    {
-        "label": "client",
-        "kind": 5,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "client = session.client('cloudwatch')\nwhile True:\n    try:\n        response = client.list_metrics(\n            NextToken=next_token, Namespace='CWAgent') if next_token else client.list_metrics(Namespace='CWAgent')\n        inv.append(response)\n        next_token = response.get('NextToken', None)\n        if not next_token:\n            break\n    except Exception:",
+        "peekOfCode": "def list_pods_and_env_vars():\n    # Load kubeconfig and initialize client\n    config.load_kube_config()\n    v1 = client.CoreV1Api()\n    # Get all namespaces\n    namespaces = v1.list_namespace()\n    for ns in namespaces.items:\n        namespace = ns.metadata.name\n        print(f\"Namespace: {namespace}\")\n        # Get all pods in the current namespace",
         "detail": "bdika",
         "documentation": {}
     },
@@ -5709,7 +5881,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'metrics')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'inventory')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
         "detail": "main",
         "documentation": {}
     }
