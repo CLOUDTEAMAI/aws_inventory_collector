@@ -370,6 +370,7 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
             )
             for result in response.get('MetricDataResults', []):
                 for timestamp, value in zip(result['Timestamps'], result['Values']):
+                    instance_value = ''
                     if addons.get('type') in custom_type_value.keys():
                         for dimension in query_idx[result['Id']]['MetricStat']['Metric']['Dimensions']:
                             if custom_type_value[addons['type']].get('comparison_value', None) is not None:
@@ -381,6 +382,10 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
                             else:
                                 instance_value = query_idx[result['Id']
                                                            ]['MetricStat']['Metric']['Dimensions'][0]['Value']
+                    elif query_idx[result['Id']]['MetricStat']['Metric']['Namespace'] == 'CWAgent' and "disk" in query_idx[result['Id']]['MetricStat']['Metric']['MetricName']:
+                        for dimension_check in query_idx[result['Id']]['MetricStat']['Metric']['Dimensions']:
+                            if dimension_check['Name'] == 'InstanceId':
+                                instance_value = dimension_check['Value']
                     else:
                         instance_value = ''
                     resource_metrics_list.append(
