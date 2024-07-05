@@ -42,8 +42,9 @@ def ec2_instances_cwagent_metrics(file_path, session, region, account, metrics, 
             for resource in response.get('Metrics', []):
                 if resource.get('MetricName') in ('disk_used_percent', 'swap_used_percent', 'mem_used_percent'):
                     for stat in ('Maximum', 'Average'):
-                        resource['Stat'] = stat
-                        inventory.append(resource)
+                        tmp_resource = resource
+                        tmp_resource['Stat'] = stat
+                        inventory.append(tmp_resource.copy())
             if inventory:
                 metrics = get_resource_utilization_metric(
                     session, region, inventory, account, metrics, time_generated, metrics_list=inventory)
