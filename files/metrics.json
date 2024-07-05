@@ -258,11 +258,25 @@
             "granularity_seconds": 21600,
             "list_function": "ebs_volumes_metrics",
             "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeIdleTime",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
             "aws_metric_name": "VolumeReadOps",
             "aws_unit": "Count",
             "aws_statistics": [
                 "Average",
-                "Maximum"
+                "Maximum",
+                "Sum"
             ]
         },
         {
@@ -274,7 +288,21 @@
             "aws_unit": "Count",
             "aws_statistics": [
                 "Average",
-                "Maximum"
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeReadBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
             ]
         },
         {
@@ -286,7 +314,8 @@
             "aws_unit": "Bytes",
             "aws_statistics": [
                 "Average",
-                "Maximum"
+                "Maximum",
+                "Sum"
             ]
         }
     ],
@@ -1052,6 +1081,44 @@
             "aws_unit": "Count",
             "aws_statistics": [
                 "Sum"
+            ]
+        }
+    ],
+    "AWS/WorkSpaces": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "CPUUsage",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "MemoryUsage",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "UserConnected",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
             ]
         }
     ]
