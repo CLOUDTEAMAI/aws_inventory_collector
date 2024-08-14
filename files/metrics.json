@@ -462,6 +462,21 @@
             ]
         }
     ],
+    "AWS/PrivateLinkServices": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpcendpointservices_metrics",
+            "aws_dimensions_name": "VPC Endpoint Id",
+            "aws_metric_name": "BytesProcessed",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
     "AWS/DynamoDB": [
         {
             "days_ago": 30,

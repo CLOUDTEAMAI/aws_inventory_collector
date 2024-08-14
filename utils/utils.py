@@ -335,6 +335,11 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
             'comparison_value': 'VPC Endpoint Id',
             'items': ['Endpoint Type', 'Service Name', 'Vpc Id']
         },
+        "privatelinkservices": {
+            'parent': 'Service Id',
+            'comparison_value': 'VPC Endpoint Id',
+            'items': ['Service Id']
+        },
         "elbv2-application": {
             'parent': 'TargetGroupName',
             'comparison_value': 'LoadBalancer'

@@ -41,6 +41,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'route53_resolver_metrics': route53_resolver_metrics,
         'msk_nodes_metrics': msk_nodes_metrics,
         'vpcendpoint_metrics': vpcendpoint_metrics,
+        'vpcendpointservices_metrics': vpcendpointservices_metrics,
         'clientvpn_metrics': clientvpn_metrics,
         'vpn_metrics': vpn_metrics,
         'networkfirewall_metrics': networkfirewall_metrics,

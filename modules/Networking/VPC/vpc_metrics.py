@@ -54,3 +54,55 @@ def vpcendpoint_metrics(file_path, session, region, account, metrics, time_gener
         except Exception as e:
             print(e)
             break
+
+
+def vpcendpointservices_metrics(file_path, session, region, account, metrics, time_generated):
+    next_token = None
+    idx = 0
+    account_id = account['account_id']
+    while True:
+        try:
+            vpe_idx = 0
+            client = session.client('ec2', region_name=region)
+            inventory = []
+            addons = {"type": "privatelinkservices"}
+            addons['nodes'] = []
+            vpes_idx = {}
+            response = client.describe_vpc_endpoint_connections(
+                NextToken=next_token) if next_token else client.describe_vpc_endpoint_connections()
+            for resource in response.get('VpcEndpointConnections', []):
+                inventory.append(resource['ServiceId'])
+                if resource['ServiceId'] in vpes_idx:
+                    addons['nodes'][vpes_idx[resource['ServiceId']]]['nodes'].append(
+                        resource.get('VpcEndpointId', ''))
+                    if not addons['nodes'][vpes_idx[resource['ServiceId']]].get('items', []):
+                        addons['nodes'][vpes_idx[resource['ServiceId']]
+                                        ]['items'] = {}
+                    addons['nodes'][vpes_idx[resource['ServiceId']]]['items'][resource.get('VpcEndpointId', '')] = {
+                        'Service Id': resource['ServiceId']
+                    }
+                else:
+                    vpes_idx[resource['ServiceId']] = vpe_idx
+                    addons['nodes'].append(
+                        {"Service Id": resource['ServiceId'], "nodes": []})
+                    addons['nodes'][vpes_idx[resource['ServiceId']]]['nodes'].append(
+                        resource.get('VpcEndpointId', ''))
+                    if not addons['nodes'][vpes_idx[resource['ServiceId']]].get('items', []):
+                        addons['nodes'][vpes_idx[resource['ServiceId']]
+                                        ]['items'] = {}
+                    addons['nodes'][vpes_idx[resource['ServiceId']]]['items'][resource.get('VpcEndpointId', '')] = {
+                        'Service Id': resource['ServiceId']
+                    }
+                    vpe_idx = vpe_idx + 1
+            if inventory:
+                metrics = get_resource_utilization_metric(
+                    session, region, inventory, account, metrics, time_generated, addons)
+                save_as_file_parquet_metrics(metrics, file_path, generate_parquet_prefix(
+                    str(stack()[0][3]), region, f'{account_id}-metrics', idx))
+            next_token = response.get('NextToken', None)
+            idx = idx + 1
+            if not next_token:
+                break
+        except Exception as e:
+            print(e)
+            break
