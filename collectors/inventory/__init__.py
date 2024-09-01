@@ -85,6 +85,7 @@ from modules.Security.CloudHSM.cloudhsm import *
 from modules.Security.SecurityGroup.securitygroup import *
 from modules.Security.Shield.shield import *
 from modules.Security.WAF.waf import *
+from modules.Security.Secrets.secret import *
 from modules.Storage.DataSync.datasync import *
 from modules.Storage.EFS.efs import *
 from modules.Storage.FSx.fsx import *

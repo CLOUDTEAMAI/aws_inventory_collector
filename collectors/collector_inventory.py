@@ -129,6 +129,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'dynamodb': list_dynamodb,
         'dynamodb_streams': list_dynamodb_streams,
         'dax': list_dax,
+        'secrets': list_secrets,
         # 'neptune': list_neptune,
         # 'neptune_instances': list_neptune_instances,
         'waf': list_waf,

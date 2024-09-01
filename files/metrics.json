@@ -392,7 +392,8 @@
             "aws_unit": "Operations",
             "aws_statistics": [
                 "Average",
-                "Maximum"
+                "Maximum",
+                "Sum"
             ]
         },
         {
@@ -404,7 +405,47 @@
             "aws_unit": "Operations",
             "aws_statistics": [
                 "Average",
-                "Maximum"
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "SwapUsage",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "ReadThroughput",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "WriteThroughput",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
             ]
         }
     ],
@@ -802,6 +843,28 @@
             "list_function": "firehose_metrics",
             "aws_dimensions_name": "DeliveryStreamName",
             "aws_metric_name": "DataReadFromKinesisStream.Records",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "firehose_metrics",
+            "aws_dimensions_name": "DeliveryStreamName",
+            "aws_metric_name": "DeliveryToElasticsearch.Bytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "firehose_metrics",
+            "aws_dimensions_name": "DeliveryStreamName",
+            "aws_metric_name": "DeliveryToS3.Bytes",
             "aws_unit": "Count",
             "aws_statistics": [
                 "Sum"
