@@ -72,7 +72,7 @@ def list_clientvpn(file_path, session, region, time_generated, account):
             response = client.describe_client_vpn_endpoints(
                 NextToken=next_token) if next_token else client.describe_client_vpn_endpoints()
             for resource in response.get('ClientVpnEndpoints', []):
-                arn = f"arn:aws:ec2:{region}:{account_id}:client-vpn-endpoint/{resource['ClientVpnEndpointId']}"
+                arn = f"arn:aws:client-vpn:{region}:{account_id}:endpoint/{resource['ClientVpnEndpointId']}"
                 inventory_object = extract_common_info(
                     arn, resource, region, account_id, time_generated, account_name)
                 inventory.append(inventory_object)

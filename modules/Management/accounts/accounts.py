@@ -11,9 +11,10 @@ def list_account_name(file_path, session, region, time_generated, account):
     while True:
         try:
             inventory = []
-            response = client.list_account_aliases().get('AccountAliases', [])
+            response = client.list_account_aliases()
             arn = f"account/{account_id}"
             if response:
+                response = response.get('AccountAliases', [])
                 resource = {
                     "id": account_id,
                     "name": response[0]

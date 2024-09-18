@@ -102,6 +102,24 @@ def list_dynamodb(file_path, session, region, time_generated, account):
 
 
 def list_dynamodb_streams(file_path, session, region, time_generated, account):
+    """
+    The function `list_dynamodb_streams` retrieves and processes information about DynamoDB streams,
+    saving the data as Parquet files.
+
+    :param file_path: The `file_path` parameter is the file path where the output will be saved. It is
+    the location where the function will save the data retrieved from DynamoDB streams
+    :param session: The `session` parameter in the `list_dynamodb_streams` function is an object that
+    represents the current session. It is typically created using the `boto3.Session` class from the AWS
+    SDK for Python (Boto3). This session object stores configuration information such as credentials,
+    region, and
+    :param region: The `region` parameter in the `list_dynamodb_streams` function is used to specify the
+    AWS region where the DynamoDB streams are located. This parameter is required to create a client
+    session for the DynamoDB Streams service in the specified region
+    :param time_generated: The `time_generated` parameter in the `list_dynamodb_streams` function is
+    used to specify the time at which the inventory information is generated. This parameter is likely
+    used to timestamp the inventory objects created during the execution of the function
+    :param account: The `list_dynamodb_streams` function takes in several parameters:
+    """
     next_token = None
     idx = 0
     client = session.client('dynamodbstreams', region_name=region)
@@ -151,6 +169,22 @@ def list_dynamodb_streams(file_path, session, region, time_generated, account):
 
 
 def list_dax(file_path, session, region, time_generated, account):
+    """
+    The function `list_dax` retrieves information about DAX clusters, formats the data, and saves it to
+    a Parquet file.
+
+    :param file_path: The `file_path` parameter is the path where the output file will be saved. It is a
+    string that represents the location where the generated data will be stored
+    :param session: The `session` parameter in the `list_dax` function is used to create a session with
+    the AWS service using the AWS SDK for Python (Boto3). It is typically an instance of `boto3.Session`
+    class that manages the configuration state and allows you to create service clients and
+    :param region: Region is the geographical area in which the AWS resources are located. It is a
+    required parameter for AWS services to know where to deploy resources and perform operations.
+    Examples of regions include us-east-1, eu-west-1, ap-southeast-2, etc
+    :param time_generated: Time when the inventory is generated. It is used to timestamp the inventory
+    items
+    :param account: The `list_dax` function takes several parameters:
+    """
     next_token = None
     idx = 0
     client = session.client('dax', region_name=region)

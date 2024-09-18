@@ -59,6 +59,26 @@ def list_cache(file_path, session, region, time_generated, account):
 
 
 def list_cache_sizing(file_path, session, region, time_generated, account):
+    """
+    This Python function retrieves information about cache clusters and their node type modifications,
+    saves the data as Parquet files, and handles exceptions during the process.
+
+    :param file_path: The `file_path` parameter is the file path where the cache sizing information will
+    be saved. It is the location where the output data will be stored, typically in a file format like
+    Parquet
+    :param session: The `session` parameter in the `list_cache_sizing` function is an object that
+    represents the connection to the AWS services. It is typically created using the `boto3.Session`
+    class and is used to make API calls to AWS services like Elasticache in this case. The `session`
+    :param region: The `region` parameter in the `list_cache_sizing` function is used to specify the AWS
+    region where the ElastiCache client will be created. This region is where the ElastiCache service
+    will be accessed to retrieve information about cache clusters and their configurations. It is
+    important to provide the correct
+    :param time_generated: Time when the cache sizing information is generated
+    :param account: The `account` parameter seems to be a dictionary containing information about an
+    account. It includes keys such as 'account_id' and 'account_name'. This information is used within
+    the `list_cache_sizing` function to extract relevant details for cache clusters and their node type
+    modifications. If you have a
+    """
     next_token = None
     idx = 0
     client = session.client('elasticache', region_name=region)

@@ -59,6 +59,30 @@ def list_ec2_snapshots(file_path, session, region, time_generated, account):
 
 
 def list_ec2_snapshots_fsr(file_path, session, region, time_generated, account):
+    """
+    This Python function lists EC2 snapshots with fast snapshot restores, extracts common information,
+    and saves the data as Parquet files.
+
+    :param file_path: The `file_path` parameter in the `list_ec2_snapshots_fsr` function represents the
+    path where the output file will be saved. It is the location on the file system where the function
+    will write the results of the EC2 snapshot inventory. This parameter should be a string that
+    specifies the
+    :param session: The `session` parameter in the `list_ec2_snapshots_fsr` function is typically an AWS
+    session object that is used to create a client for the EC2 service in a specific region. This
+    session object is usually created using the `boto3` library in Python and is used to
+    :param region: The `region` parameter in the `list_ec2_snapshots_fsr` function is used to specify
+    the AWS region in which the EC2 snapshots and fast snapshot restores are being described. This
+    parameter helps the function to make API calls to the specified region to retrieve information about
+    fast snapshot restores associated with
+    :param time_generated: The `time_generated` parameter in the `list_ec2_snapshots_fsr` function
+    likely represents the timestamp or datetime when the operation is being executed or when the
+    snapshots are being processed. This parameter is used in the function to capture the time at which
+    certain events related to Fast Snapshot Restores (
+    :param account: The `account` parameter in the `list_ec2_snapshots_fsr` function seems to be a
+    dictionary containing information about the AWS account. It likely includes keys such as
+    'account_id' and 'account_name' to identify the AWS account associated with the session. This
+    information is used within the
+    """
     next_token = None
     idx = 0
     client = session.client('ec2', region_name=region)

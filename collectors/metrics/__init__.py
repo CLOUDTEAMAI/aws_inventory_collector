@@ -1,4 +1,5 @@
 from modules.Applications.Amplify.amplify_metrics import *
+from modules.API.APIGateway.apigateway_metrics import *
 from modules.Compute.EC2.ec2_metrics import *
 from modules.Compute.EBS.ebs_metrics import *
 from modules.Compute.Functions.functions_metrics import *

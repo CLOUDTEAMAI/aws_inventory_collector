@@ -56,6 +56,29 @@ def list_ecr_repositories(file_path, session, region, time_generated, account):
 
 
 def list_ecr_repositories_images(file_path, session, region, time_generated, account):
+    """
+    This Python function retrieves information about ECR repositories and their images, then saves the
+    data as Parquet files.
+
+    :param file_path: The `file_path` parameter is the file path where the output data will be saved. It
+    is the location where the Parquet files containing the inventory information will be stored
+    :param session: The `session` parameter in the `list_ecr_repositories_images` function is typically
+    an instance of a boto3 session that allows you to create service clients for AWS services. It is
+    used to create a client for the Amazon Elastic Container Registry (ECR) service in the specified
+    region. This
+    :param region: The `region` parameter in the `list_ecr_repositories_images` function is used to
+    specify the AWS region where the Amazon ECR (Elastic Container Registry) resources are located. This
+    parameter is required to create a client for the ECR service in the specified region and to retrieve
+    information about
+    :param time_generated: The `time_generated` parameter in the `list_ecr_repositories_images` function
+    is used to specify the timestamp or datetime when the inventory of ECR repositories and images is
+    being generated. This parameter is likely used to track when the data was collected or to include a
+    timestamp in the output file names
+    :param account: The `account` parameter seems to be a dictionary containing information about an AWS
+    account. It likely includes keys such as 'account_id' and 'account_name'. This information is used
+    within the `list_ecr_repositories_images` function to retrieve and process data related to ECR
+    repositories within that AWS
+    """
     next_token = None
     idx = 0
     client = session.client('ecr', region_name=region)

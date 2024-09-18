@@ -252,6 +252,47 @@
             ]
         }
     ],
+    "AWS/ApiGateway": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "5XXError",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "4XXError",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
     "AWS/EBS": [
         {
             "days_ago": 30,
@@ -575,6 +616,42 @@
             "list_function": "elasticache_metrics",
             "aws_dimensions_name": "CacheClusterId",
             "aws_metric_name": "CacheHits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CacheMisses",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CurrItems",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "Evictions",
             "aws_unit": "Count",
             "aws_statistics": [
                 "Maximum",

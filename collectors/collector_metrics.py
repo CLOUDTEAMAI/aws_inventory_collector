@@ -20,6 +20,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
     global_tasks = {}
     functionsz_map = {
         'workspaces_metrics': workspaces_metrics,
+        'apigateway_metrics': apigateway_metrics,
         'ec2_instances_metrics': ec2_instances_metrics,
         'ec2_instances_cwagent_metrics': ec2_instances_cwagent_metrics,
         'ebs_volumes_metrics': ebs_volumes_metrics,

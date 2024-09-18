@@ -3,6 +3,25 @@ from utils.utils import extract_common_info, save_as_file_parquet, generate_parq
 
 
 def list_batch_compute(file_path, session, region, time_generated, account):
+    """
+    This Python function iterates through compute environments using the AWS Batch client, extracts
+    common information, and saves the data as a Parquet file.
+
+    :param file_path: The `file_path` parameter is the path where the output files will be saved. It is
+    a string that represents the directory or file path where the results of the batch compute operation
+    will be stored
+    :param session: The `session` parameter in the `list_batch_compute` function is typically an
+    instance of a boto3 session that allows you to create service clients for AWS services. It is used
+    to create a client for the AWS Batch service in the specified region
+    :param region: Region is a string representing the AWS region where the compute environments are
+    located. It is used to specify the region when creating a client for the AWS Batch service
+    :param time_generated: Time_generated is a timestamp indicating when the computation was generated.
+    It is used in the function to track the time at which the inventory information was collected
+    :param account: The `account` parameter in the `list_batch_compute` function seems to be a
+    dictionary containing information about an account. It likely includes keys such as 'account_id' and
+    'account_name'. This information is used within the function to extract specific details and perform
+    operations related to the account being processed
+    """
     next_token = None
     idx = 0
     client = session.client('batch', region_name=region)
@@ -30,6 +49,25 @@ def list_batch_compute(file_path, session, region, time_generated, account):
 
 
 def list_batch_jobs(file_path, session, region, time_generated, account):
+    """
+    The function `list_batch_jobs` retrieves information about job queues and jobs from AWS Batch and
+    saves the data as Parquet files.
+
+    :param file_path: The `file_path` parameter in the `list_batch_jobs` function is the path where the
+    output file will be saved. It is the location where the Parquet file containing the job inventory
+    information will be stored
+    :param session: The `session` parameter in the `list_batch_jobs` function is typically an instance
+    of `boto3.Session` that is used to create a client for AWS Batch service. It allows you to make API
+    calls to AWS Batch using the specified region. You can create a session like this:
+    :param region: The `region` parameter in the `list_batch_jobs` function is used to specify the AWS
+    region where the Batch service is located. This parameter is required to create a client for the
+    Batch service in the specified region and to perform operations related to Batch jobs within that
+    region
+    :param time_generated: Time_generated is a parameter that represents the timestamp or time at which
+    the batch jobs were generated or executed. It is used in the function `list_batch_jobs` to capture
+    the time information related to the batch jobs being processed
+    :param account: The `list_batch_jobs` function takes several parameters:
+    """
     next_token = None
     idx = 0
     client = session.client('batch', region_name=region)
