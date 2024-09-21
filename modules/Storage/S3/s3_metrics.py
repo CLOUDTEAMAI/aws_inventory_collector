@@ -18,7 +18,7 @@ def s3_metrics(file_path, session, region, account, metrics, time_generated):
                     session, region, inventory, account, metrics, time_generated)
                 save_as_file_parquet_metrics(metrics, file_path, generate_parquet_prefix(
                     str(stack()[0][3]), region, f'{account_id}-metrics', idx))
-            next_token = response.get('nextToken', None)
+            next_token = response.get('ContinuationToken', None)
             idx = idx + 1
             if not next_token:
                 break

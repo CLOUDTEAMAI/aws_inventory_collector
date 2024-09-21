@@ -28,7 +28,7 @@ def list_s3_buckets(file_path, session, region='us-east-1', time_generated=None,
                     inventory.append(s3_object)
             save_as_file_parquet(inventory, file_path, generate_parquet_prefix(
                 str(stack()[0][3]), 'global', account_id, idx))
-            next_token = response.get('NextToken', None)
+            next_token = response.get('ContinuationToken', None)
             idx = idx + 1
             if not next_token:
                 break
