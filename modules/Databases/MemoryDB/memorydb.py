@@ -58,3 +58,54 @@ def list_memorydb(file_path, session, region, time_generated, account):
         except Exception as e:
             print(e)
             break
+
+
+def list_memorydb_snapshots(file_path, session, region, time_generated, account):
+    """
+    This Python function retrieves and processes memoryDB snapshots, saving the information in a Parquet
+    file.
+
+    :param file_path: The `file_path` parameter is the file path where the snapshots will be saved. It
+    is the location on the file system where the function will write the snapshot data
+    :param session: The `session` parameter in the `list_memorydb_snapshots` function is typically an
+    instance of a boto3 session that allows you to create service clients for AWS services. It is used
+    to create a client for the MemoryDB service in the specified region. This client is then used to
+    interact with
+    :param region: Region is a string representing the geographical region where the MemoryDB snapshots
+    are located. It is used to specify the AWS region for the client session
+    :param time_generated: Time when the snapshots were generated
+    :param account: The `account` parameter in the `list_memorydb_snapshots` function seems to be a
+    dictionary containing information about an account. It likely includes keys such as 'account_id' and
+    'account_name' which are used within the function to extract relevant information for processing
+    MemoryDB snapshots
+    """
+    next_token = None
+    idx = 0
+    client = session.client('memorydb', region_name=region)
+    account_id = account['account_id']
+    account_name = str(account['account_name']).replace(" ", "_")
+    while True:
+        try:
+            inventory = []
+            response = client.describe_snapshots(
+                NextToken=next_token, ShowDetail=True) if next_token else client.describe_snapshots(ShowDetail=True)
+            for resource in response.get('Snapshots', []):
+                counter = 0
+                arn = resource.get('ARN', '')
+                for shard in response.get('Shards', []):
+                    if 'SnapshotCreationTime' in shard:
+                        resource['Shards'][counter]['SnapshotCreationTime'] = shard['SnapshotCreationTime'].isoformat(
+                        )
+                    counter = counter + 1
+                inventory_object = extract_common_info(
+                    arn, resource, region, account_id, time_generated, account_name)
+                inventory.append(inventory_object)
+            save_as_file_parquet(inventory, file_path, generate_parquet_prefix(
+                str(stack()[0][3]), region, account_id, idx))
+            next_token = response.get('NextToken', None)
+            idx = idx + 1
+            if not next_token:
+                break
+        except Exception as e:
+            print(e)
+            break

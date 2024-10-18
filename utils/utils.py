@@ -240,6 +240,7 @@ def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimens
     query_list = []
     enum_list = []
     query_idx = {}
+    nodes_addons = []
     dimensions_addons = []
     for dimension in dimensions:
         for key, value in dimension.items():
@@ -356,6 +357,14 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
             'parent': 'DomainName',
             'comparison_value': 'NodeId',
             'items': ['ClientId']
+        },
+        'sagemaker_endpoint': {
+            'parent': 'EndpointName',
+            'comparison_value': 'VariantName'
+        },
+        'directconnect_vif': {
+            'parent': 'ConnectionId',
+            'comparison_value': 'VirtualInterfaceId'
         }
     }
     for metric in metrics:
@@ -374,6 +383,7 @@ def get_resource_utilization_metric(session, region, inventory, account, metrics
                 EndTime=end_time
             )
             for result in response.get('MetricDataResults', []):
+                comparison_value = None
                 for timestamp, value in zip(result['Timestamps'], result['Values']):
                     instance_value = ''
                     if addons.get('type') in custom_type_value.keys():

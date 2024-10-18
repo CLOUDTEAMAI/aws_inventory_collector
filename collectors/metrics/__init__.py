@@ -5,10 +5,12 @@ from modules.Compute.EBS.ebs_metrics import *
 from modules.Compute.Functions.functions_metrics import *
 from modules.Compute.Workspaces.workspaces_metrics import *
 from modules.Containers.ECR.ecr_metrics import *
+from modules.Databases.DocDB.docdb_metrics import *
 from modules.Databases.RDS.rds_metrics import *
 from modules.Databases.ElastiCache.elasticache_metrics import *
 from modules.Databases.DynamoDB.dynamodb_metrics import *
 from modules.Networking.CloudFront.cloudfront_metrics import *
+from modules.Networking.DirectConnect.directconnect_metrics import *
 from modules.Networking.TransitGateway.transitgateway_metrics import *
 from modules.Networking.ELB.elb_metrics import *
 from modules.Networking.NATGateway.natgateway_metrics import *
@@ -18,6 +20,7 @@ from modules.Networking.VPC.vpc_metrics import *
 from modules.Networking.VPN.vpn_metrics import *
 from modules.Management.account.account import regions_enabled, get_aws_session, complete_aws_account
 from modules.MachineLearning.OpenSearch.opensearch_metrics import *
+from modules.MachineLearning.SageMaker.sagemaker_metrics import *
 from modules.Messaging.SQS.sqs_metrics import *
 from modules.Messaging.SNS.sns_metrics import *
 from modules.Messaging.Kafka.kafka_metrics import *

@@ -1091,387 +1091,83 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
+        "label": "stack",
+        "importPath": "inspect",
+        "description": "inspect",
         "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
+        "detail": "inspect",
         "documentation": {}
     },
     {
@@ -1516,78 +1212,6 @@
     },
     {
         "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1739,30 +1363,6 @@
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
         "label": "extract_common_info",
         "importPath": "utils.utils",
         "description": "utils.utils",
@@ -1835,7 +1435,15 @@
         "documentation": {}
     },
     {
-        "label": "save_as_file_parquet_metrics",
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -1844,14 +1452,6 @@
     },
     {
         "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -2164,6 +1764,1622 @@
     },
     {
         "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "list_az",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet_metrics",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_resource_utilization_metric",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -2323,926 +3539,6 @@
         "documentation": {}
     },
     {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "list_az",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet_metrics",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_resource_utilization_metric",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "extract_common_info",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_as_file_parquet",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
-        "label": "generate_parquet_prefix",
-        "importPath": "utils.utils",
-        "description": "utils.utils",
-        "isExtraImport": true,
-        "detail": "utils.utils",
-        "documentation": {}
-    },
-    {
         "label": "save_as_file_parquet_metrics",
         "importPath": "utils.utils",
         "description": "utils.utils",
@@ -3572,6 +3868,30 @@
     },
     {
         "label": "get_resource_utilization_metric",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_common_info",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_as_file_parquet",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_parquet_prefix",
         "importPath": "utils.utils",
         "description": "utils.utils",
         "isExtraImport": true,
@@ -3987,6 +4307,22 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "boto3",
+        "description": "boto3",
+        "isExtraImport": true,
+        "detail": "boto3",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "importPath": "boto3",
+        "description": "boto3",
+        "isExtraImport": true,
+        "detail": "boto3",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -4091,6 +4427,32 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPBasicAuth",
+        "importPath": "requests.auth",
+        "description": "requests.auth",
+        "isExtraImport": true,
+        "detail": "requests.auth",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "inventory_collector",
         "kind": 2,
         "importPath": "collectors.collector_inventory",
@@ -4113,7 +4475,7 @@
         "kind": 2,
         "importPath": "collectors.collector_inventory",
         "description": "collectors.collector_inventory",
-        "peekOfCode": "def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account, threads=4):\n    # Initialize functions clients for services you want to list resources from in parallel\n    functions_map = {\n        'logs': list_logs_groups,\n        'ec2': list_ec2,\n        'ami': list_ami,\n        'snapshot': list_ec2_snapshots,\n        'snapshots_fsr': list_ec2_snapshots_fsr,\n        'sqs': list_sqs,\n        'sns': list_sns,",
+        "peekOfCode": "def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, region: str, time_generated: datetime, account, threads=4):\n    # Initialize functions clients for services you want to list resources from in parallel\n    functions_map = {\n        'dlm': list_dlm,\n        'logs': list_logs_groups,\n        'ec2': list_ec2,\n        'ami': list_ami,\n        'snapshot': list_ec2_snapshots,\n        'snapshots_fsr': list_ec2_snapshots_fsr,\n        'sqs': list_sqs,",
         "detail": "collectors.collector_inventory",
         "documentation": {}
     },
@@ -4203,7 +4565,7 @@
         "kind": 5,
         "importPath": "files.accountsgenerator",
         "description": "files.accountsgenerator",
-        "peekOfCode": "customer = 'passportcard'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
+        "peekOfCode": "customer = 'sapiens-all'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
         "detail": "files.accountsgenerator",
         "documentation": {}
     },
@@ -4730,6 +5092,69 @@
         "documentation": {}
     },
     {
+        "label": "list_docdb_global",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb_global(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists global clusters in Amazon DocumentDB and saves the information to a\n    Parquet file.\n    :param file_path: The `file_path` parameter in the `list_docdb_global` function is the path where\n    the output file will be saved. It is the location on the file system where the function will write\n    the results of the `describe_global_clusters` API call for Amazon DocumentDB\n    :param session: The `session` parameter in the `list_docdb_global` function is typically an instance\n    of `boto3.Session` that is used to create a client for interacting with AWS services. It is used to\n    make API calls to Amazon DocumentDB (DocDB) in the specified AWS region",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "list_docdb",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists information about DocumentDB clusters and saves it to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_docdb` function is the path where the\n    output file will be saved. It should be a valid file path on the system where the function is being\n    executed\n    :param session: The `session` parameter in the `list_docdb` function is typically an instance of\n    `boto3.Session` that is used to create a client for interacting with AWS services. It allows you to\n    configure credentials, region, and other settings for making API calls to AWS services like Amazon\n    DocumentDB",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "list_docdb_instances",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb_instances(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Amazon DocumentDB instances, extracts relevant information, and saves it\n    in a Parquet file.\n    :param file_path: The `file_path` parameter is a string that represents the path where the output\n    file will be saved. It should specify the directory and filename where the output will be stored\n    :param session: The `session` parameter in the `list_docdb_instances` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to create a client for Amazon DocumentDB (docdb) service in the specified AWS region\n    :param region: The `region` parameter in the `list_docdb_instances` function is used to specify the",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "list_docdb_cluster_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb_cluster_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists DocDB cluster snapshots and saves the information to a Parquet file.\n    :param file_path: The `file_path` parameter is a string that represents the file path where the\n    output data will be saved. It should point to the location where you want to store the results of\n    listing DocDB cluster snapshots\n    :param session: The `session` parameter in the `list_docdb_cluster_snapshots` function is typically\n    an instance of a boto3 session that allows you to create service clients for AWS services. It is\n    used to create a client for the Amazon DocumentDB service in the specified region. This client is\n    then used to",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "list_docdb_elastic_cluster",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb_elastic_cluster(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists DocDB Elastic clusters, retrieves cluster information, and saves the data\n    to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_docdb_elastic_cluster` function is the path\n    where the inventory data will be saved as a file. It should be a string representing the file path\n    where the data will be stored\n    :param session: The `session` parameter in the `list_docdb_elastic_cluster` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to create a client for the Amazon DocumentDB (DocDB) service in a specific AWS region",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "list_docdb_elastic_cluster_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb",
+        "description": "modules.Databases.DocDB.docdb",
+        "peekOfCode": "def list_docdb_elastic_cluster_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists DocDB Elastic cluster snapshots and saves the information to a file in\n    Parquet format.\n    :param file_path: The `file_path` parameter in the `list_docdb_elastic_cluster_snapshots` function\n    is the path where the output files will be saved. It is the location on the file system where the\n    Parquet files containing the cluster snapshots information will be stored\n    :param session: The `session` parameter in the `list_docdb_elastic_cluster_snapshots` function is\n    typically an instance of a boto3 session that allows you to create service clients for AWS services.\n    It is used to create a client for the Amazon DocumentDB (DocDB) service in a specific region",
+        "detail": "modules.Databases.DocDB.docdb",
+        "documentation": {}
+    },
+    {
+        "label": "docdb_metrics",
+        "kind": 2,
+        "importPath": "modules.Databases.DocDB.docdb_metrics",
+        "description": "modules.Databases.DocDB.docdb_metrics",
+        "peekOfCode": "def docdb_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    This Python function retrieves metrics for Amazon DocumentDB clusters and saves them to a Parquet\n    file.\n    :param file_path: The `file_path` parameter in the `docdb_metrics` function is a string that\n    represents the path where the metrics data will be saved as a file. This could be a file path on the\n    local file system or a cloud storage location, depending on the implementation\n    :param session: The `session` parameter in the `docdb_metrics` function is typically an instance of\n    a boto3 session that allows you to create service clients for AWS services. It is used to interact\n    with the Amazon DocumentDB service in the specified AWS region",
+        "detail": "modules.Databases.DocDB.docdb_metrics",
+        "documentation": {}
+    },
+    {
         "label": "list_dynamodb",
         "kind": 2,
         "importPath": "modules.Databases.DynamoDB.dynamodb",
@@ -4775,11 +5200,38 @@
         "documentation": {}
     },
     {
+        "label": "list_cache_serverless",
+        "kind": 2,
+        "importPath": "modules.Databases.ElastiCache.elasticache",
+        "description": "modules.Databases.ElastiCache.elasticache",
+        "peekOfCode": "def list_cache_serverless(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists and caches serverless resources using AWS Elasticache client.\n    :param file_path: The `file_path` parameter in the `list_cache_serverless` function is the path\n    where the inventory data will be saved as a file. It is the location where the function will write\n    the inventory information in Parquet format\n    :param session: The `session` parameter in the `list_cache_serverless` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to interact with AWS Elasticache in the specified region\n    :param region: The `region` parameter in the `list_cache_serverless` function is used to specify the",
+        "detail": "modules.Databases.ElastiCache.elasticache",
+        "documentation": {}
+    },
+    {
         "label": "list_cache_sizing",
         "kind": 2,
         "importPath": "modules.Databases.ElastiCache.elasticache",
         "description": "modules.Databases.ElastiCache.elasticache",
         "peekOfCode": "def list_cache_sizing(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves information about cache clusters and their node type modifications,\n    saves the data as Parquet files, and handles exceptions during the process.\n    :param file_path: The `file_path` parameter is the file path where the cache sizing information will\n    be saved. It is the location where the output data will be stored, typically in a file format like\n    Parquet\n    :param session: The `session` parameter in the `list_cache_sizing` function is an object that\n    represents the connection to the AWS services. It is typically created using the `boto3.Session`\n    class and is used to make API calls to AWS services like Elasticache in this case. The `session`",
+        "detail": "modules.Databases.ElastiCache.elasticache",
+        "documentation": {}
+    },
+    {
+        "label": "list_cache_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.ElastiCache.elasticache",
+        "description": "modules.Databases.ElastiCache.elasticache",
+        "peekOfCode": "def list_cache_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and processes cache snapshots from an AWS ElastiCache instance,\n    saving the information to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_cache_snapshots` function is the path where\n    the cache snapshots inventory will be saved as a file. It is the location where the Parquet file\n    containing the cache snapshots information will be stored\n    :param session: The `session` parameter in the `list_cache_snapshots` function is typically an AWS\n    session object that is used to create clients for various AWS services. It is used to interact with\n    the AWS Elasticache service in the specified region",
+        "detail": "modules.Databases.ElastiCache.elasticache",
+        "documentation": {}
+    },
+    {
+        "label": "list_cache_serverless_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.ElastiCache.elasticache",
+        "description": "modules.Databases.ElastiCache.elasticache",
+        "peekOfCode": "def list_cache_serverless_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists and caches serverless snapshots from an Elasticache client using provided\n    parameters.\n    :param file_path: The `file_path` parameter in the `list_cache_serverless_snapshots` function is the\n    path where the snapshots inventory data will be saved as a file. It should be a valid file path on\n    the system where the function is being executed\n    :param session: The `session` parameter in the `list_cache_serverless_snapshots` function is\n    typically an AWS session object that is used to create clients for AWS services. It is commonly\n    created using the `boto3.Session` class and is used to interact with AWS services in a specific",
         "detail": "modules.Databases.ElastiCache.elasticache",
         "documentation": {}
     },
@@ -4793,12 +5245,57 @@
         "documentation": {}
     },
     {
+        "label": "list_keyspaces",
+        "kind": 2,
+        "importPath": "modules.Databases.Keyspaces.keyspace",
+        "description": "modules.Databases.Keyspaces.keyspace",
+        "peekOfCode": "def list_keyspaces(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists keyspaces using the AWS Keyspaces client and saves the inventory\n    information as Parquet files.\n    :param file_path: The `file_path` parameter is a string that represents the file path where the\n    output will be saved. It is the location where the list of keyspaces will be stored in a file\n    :param session: The `session` parameter in the `list_keyspaces` function is typically an instance of\n    a boto3 session that is used to create a client for interacting with AWS services. It allows you to\n    make API calls to AWS services like keyspaces in this case\n    :param region: The `region` parameter in the `list_keyspaces` function is used to specify the AWS",
+        "detail": "modules.Databases.Keyspaces.keyspace",
+        "documentation": {}
+    },
+    {
+        "label": "list_keyspaces_tables",
+        "kind": 2,
+        "importPath": "modules.Databases.Keyspaces.keyspace",
+        "description": "modules.Databases.Keyspaces.keyspace",
+        "peekOfCode": "def list_keyspaces_tables(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_keyspaces_tables` retrieves information about keyspaces and tables from a\n    Keyspaces service and saves the data in Parquet format.\n    :param file_path: The `file_path` parameter in the `list_keyspaces_tables` function is the path\n    where the output file will be saved. It should be a string representing the file path where the\n    Parquet file will be stored\n    :param session: The `session` parameter in the `list_keyspaces_tables` function is typically an\n    instance of a boto3 session that is used to create a client for interacting with AWS services. It\n    allows you to configure credentials, region, and other settings for making API calls to AWS services",
+        "detail": "modules.Databases.Keyspaces.keyspace",
+        "documentation": {}
+    },
+    {
+        "label": "list_keyspaces_tables_autoscaling",
+        "kind": 2,
+        "importPath": "modules.Databases.Keyspaces.keyspace",
+        "description": "modules.Databases.Keyspaces.keyspace",
+        "peekOfCode": "def list_keyspaces_tables_autoscaling(file_path, session, region, time_generated, account):\n    next_token = None\n    sub_next_token = None\n    idx = 0\n    client = session.client('keyspaces', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []",
+        "detail": "modules.Databases.Keyspaces.keyspace",
+        "documentation": {}
+    },
+    {
         "label": "list_memorydb",
         "kind": 2,
         "importPath": "modules.Databases.MemoryDB.memorydb",
         "description": "modules.Databases.MemoryDB.memorydb",
         "peekOfCode": "def list_memorydb(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves information about MemoryDB clusters and saves it to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_memorydb` function is the path where the\n    inventory data will be saved as a Parquet file. This parameter should be a string representing the\n    file path where you want to store the data\n    :param session: The `session` parameter in the `list_memorydb` function is an object representing\n    the session used to interact with AWS services. It is typically created using the `boto3.Session`\n    class and contains the necessary credentials and configuration to make API calls to AWS services\n    :param region: The `region` parameter in the `list_memorydb` function is used to specify the AWS",
         "detail": "modules.Databases.MemoryDB.memorydb",
+        "documentation": {}
+    },
+    {
+        "label": "list_memorydb_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.MemoryDB.memorydb",
+        "description": "modules.Databases.MemoryDB.memorydb",
+        "peekOfCode": "def list_memorydb_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and processes memoryDB snapshots, saving the information in a Parquet\n    file.\n    :param file_path: The `file_path` parameter is the file path where the snapshots will be saved. It\n    is the location on the file system where the function will write the snapshot data\n    :param session: The `session` parameter in the `list_memorydb_snapshots` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to create a client for the MemoryDB service in the specified region. This client is then used to\n    interact with",
+        "detail": "modules.Databases.MemoryDB.memorydb",
+        "documentation": {}
+    },
+    {
+        "label": "memorydb_metrics",
+        "kind": 2,
+        "importPath": "modules.Databases.MemoryDB.memorydb_metrics",
+        "description": "modules.Databases.MemoryDB.memorydb_metrics",
+        "peekOfCode": "def memorydb_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('docdb', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_clusters(\n                NextToken=next_token, ShowShardDetails=True) if next_token else client.describe_clusters(ShowShardDetails=True)",
+        "detail": "modules.Databases.MemoryDB.memorydb_metrics",
         "documentation": {}
     },
     {
@@ -4816,6 +5313,15 @@
         "importPath": "modules.Databases.Neptune.neptune",
         "description": "modules.Databases.Neptune.neptune",
         "peekOfCode": "def list_neptune_instances(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Neptune instances, retrieves their information, and saves it in a Parquet\n    file.\n    :param file_path: The `file_path` parameter is the file path where the Neptune instances inventory\n    will be saved. It should be a valid file path on the system where the script is running\n    :param session: The `session` parameter in the `list_neptune_instances` function is an object\n    representing the current session. It is typically created using the `boto3.Session` class and is\n    used to interact with AWS services. This object stores configuration options such as credentials,\n    region, and other settings needed to",
+        "detail": "modules.Databases.Neptune.neptune",
+        "documentation": {}
+    },
+    {
+        "label": "list_neptune_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.Neptune.neptune",
+        "description": "modules.Databases.Neptune.neptune",
+        "peekOfCode": "def list_neptune_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Neptune instances, retrieves their information, and saves it in a Parquet\n    file.\n    :param file_path: The `file_path` parameter is the file path where the Neptune instances inventory\n    will be saved. It should be a valid file path on the system where the script is running\n    :param session: The `session` parameter in the `list_neptune_instances` function is an object\n    representing the current session. It is typically created using the `boto3.Session` class and is\n    used to interact with AWS services. This object stores configuration options such as credentials,\n    region, and other settings needed to",
         "detail": "modules.Databases.Neptune.neptune",
         "documentation": {}
     },
@@ -4914,8 +5420,53 @@
         "kind": 2,
         "importPath": "modules.Databases.Redshift.redshift",
         "description": "modules.Databases.Redshift.redshift",
-        "peekOfCode": "def list_redshift_serverless(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('redshift-serverless', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_workgroups(",
+        "peekOfCode": "def list_redshift_serverless(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Redshift serverless workgroups and saves the information to a Parquet\n    file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on the system where you want to save the output data\n    :param session: The `session` parameter in the `list_redshift_serverless` function is typically an\n    instance of a boto3 session that is used to create a client for the Redshift Serverless service in\n    AWS. It allows you to make API calls to the Redshift Serverless service in the specified AWS region\n    :param region: Region is the AWS region where the Redshift Serverless service is located. It",
         "detail": "modules.Databases.Redshift.redshift",
+        "documentation": {}
+    },
+    {
+        "label": "list_redshift_cluster_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.Redshift.redshift",
+        "description": "modules.Databases.Redshift.redshift",
+        "peekOfCode": "def list_redshift_cluster_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and processes Redshift cluster snapshots, saving the information in a\n    Parquet file.\n    :param file_path: The `file_path` parameter in the `list_redshift_cluster_snapshots` function\n    represents the path where the output files will be saved. It should be a string that specifies the\n    directory or file path where the generated data will be stored\n    :param session: The `session` parameter in the `list_redshift_cluster_snapshots` function is an AWS\n    session object that is used to create a Redshift client in a specific region. It is typically\n    created using the `boto3.Session` class and is used for making API calls to AWS services",
+        "detail": "modules.Databases.Redshift.redshift",
+        "documentation": {}
+    },
+    {
+        "label": "list_redshift_serverless_snapshots",
+        "kind": 2,
+        "importPath": "modules.Databases.Redshift.redshift",
+        "description": "modules.Databases.Redshift.redshift",
+        "peekOfCode": "def list_redshift_serverless_snapshots(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Redshift Serverless snapshots and saves the information to a file\n    in Parquet format.\n    :param file_path: The `file_path` parameter in the `list_redshift_serverless_snapshots`\n    function is the path where the output snapshots inventory will be saved as a Parquet file. It should\n    be a valid file path on the system where the code is running\n    :param session: The `session` parameter in the `list_redshift_serverless_snapshots` function\n    is typically an instance of a boto3 session that is used to create a client for the AWS service. It\n    allows you to make API calls to the Redshift Serverless service in the specified region",
+        "detail": "modules.Databases.Redshift.redshift",
+        "documentation": {}
+    },
+    {
+        "label": "list_timestream_influxdb_instances",
+        "kind": 2,
+        "importPath": "modules.Databases.Timestream.timestream",
+        "description": "modules.Databases.Timestream.timestream",
+        "peekOfCode": "def list_timestream_influxdb_instances(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Timestream InfluxDB instances and saves the information to a Parquet\n    file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path including the file name and extension where the data\n    will be stored\n    :param session: The `session` parameter in the `list_timestream_influxdb_instances` function is\n    typically an instance of a boto3 session that is used to create a client for the AWS service. It\n    allows you to make API calls to the AWS Timestream InfluxDB service in the specified region",
+        "detail": "modules.Databases.Timestream.timestream",
+        "documentation": {}
+    },
+    {
+        "label": "list_timestream_write_databases",
+        "kind": 2,
+        "importPath": "modules.Databases.Timestream.timestream",
+        "description": "modules.Databases.Timestream.timestream",
+        "peekOfCode": "def list_timestream_write_databases(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists databases in Amazon Timestream, extracts common information, and saves\n    the inventory as Parquet files.\n    :param file_path: The `file_path` parameter is the file path where the output will be saved. It is\n    the location on the file system where the Parquet files containing the extracted information will be\n    stored\n    :param session: The `session` parameter in the `list_timestream_write_databases` function is\n    typically an AWS session object that is used to create a client for interacting with AWS Timestream\n    Write service in a specific region. It is used to make API calls to AWS Timestream Write service",
+        "detail": "modules.Databases.Timestream.timestream",
+        "documentation": {}
+    },
+    {
+        "label": "list_timestream_write_tables",
+        "kind": 2,
+        "importPath": "modules.Databases.Timestream.timestream",
+        "description": "modules.Databases.Timestream.timestream",
+        "peekOfCode": "def list_timestream_write_tables(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function iterates through TimeStream databases and tables, extracts information, and\n    saves it as a Parquet file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on your system where you want to save the output file\n    :param session: The `session` parameter in the `list_timestream_write_tables` function is typically\n    an AWS session object that is used to create a client for the AWS Timestream Write service. This\n    session object is usually created using the `boto3` library in Python and contains the necessary\n    credentials and",
+        "detail": "modules.Databases.Timestream.timestream",
         "documentation": {}
     },
     {
@@ -4934,6 +5485,15 @@
         "description": "modules.MachineLearning.ElasticSearch.elasticsearch_metrics",
         "peekOfCode": "def networkfirewall_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('network-firewall', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            gw_idx = 0\n            inventory = []\n            addons = {\"type\": \"opensearch\"}",
         "detail": "modules.MachineLearning.ElasticSearch.elasticsearch_metrics",
+        "documentation": {}
+    },
+    {
+        "label": "list_mwaa",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.MWAA.mwaa",
+        "description": "modules.MachineLearning.MWAA.mwaa",
+        "peekOfCode": "def list_mwaa(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and processes information about MWAA environments and saves the data\n    in a Parquet file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on the system where you want to save the file\n    :param session: The `session` parameter in the `list_mwaa` function is an AWS session object that is\n    used to create a client for the Amazon Managed Workflows for Apache Airflow (MWAA) service. This\n    session object is typically created using the `boto3` library in Python and is\n    :param region: The `region` parameter in the `list_mwaa` function is used to specify the AWS region",
+        "detail": "modules.MachineLearning.MWAA.mwaa",
         "documentation": {}
     },
     {
@@ -4973,11 +5533,11 @@
         "documentation": {}
     },
     {
-        "label": "list_sagemaker",
+        "label": "list_sagemaker_cluster",
         "kind": 2,
         "importPath": "modules.MachineLearning.SageMaker.sagemaker",
         "description": "modules.MachineLearning.SageMaker.sagemaker",
-        "peekOfCode": "def list_sagemaker(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker clusters, extracts common information, and saves the data as\n    Parquet files.\n    :param file_path: The `file_path` parameter in the `list_sagemaker` function is the path where the\n    inventory data will be saved as a file. It is the location where the Parquet file containing the\n    extracted information about SageMaker clusters will be stored\n    :param session: The `session` parameter in the `list_sagemaker` function is an object representing\n    the current session. It is typically created using the `boto3.Session` class and is used to create\n    clients and resources for AWS services",
+        "peekOfCode": "def list_sagemaker_cluster(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker clusters, extracts common information, and saves the data as\n    Parquet files.\n    :param file_path: The `file_path` parameter in the `list_sagemaker` function is the path where the\n    inventory data will be saved as a file. It is the location where the Parquet file containing the\n    extracted information about SageMaker clusters will be stored\n    :param session: The `session` parameter in the `list_sagemaker` function is an object representing\n    the current session. It is typically created using the `boto3.Session` class and is used to create\n    clients and resources for AWS services",
         "detail": "modules.MachineLearning.SageMaker.sagemaker",
         "documentation": {}
     },
@@ -4988,6 +5548,60 @@
         "description": "modules.MachineLearning.SageMaker.sagemaker",
         "peekOfCode": "def list_sagemaker_domain(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker domains, extracts common information, and saves the data as\n    Parquet files.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_domain` function is the path\n    where the output file will be saved. It should be a string representing the file path where the\n    inventory data will be stored\n    :param session: The `session` parameter in the `list_sagemaker_domain` function is typically an\n    instance of a boto3 session that is used to create a client for interacting with AWS services. It\n    allows you to configure credentials, region, and other settings for making API calls to AWS services",
         "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "list_sagemaker_notebook_instance",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker",
+        "description": "modules.MachineLearning.SageMaker.sagemaker",
+        "peekOfCode": "def list_sagemaker_notebook_instance(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker notebook instances, extracts common information, and saves the\n    data as a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_notebook_instance` function is\n    the path where the inventory data will be saved as a Parquet file. It should be a string\n    representing the file path where you want to store the inventory information\n    :param session: The `session` parameter in the `list_sagemaker_notebook_instance` function is\n    typically an instance of a boto3 session that is used to create a client for interacting with AWS\n    services. It allows you to make API calls to Amazon SageMaker services in this case",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "list_sagemaker_endpoint",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker",
+        "description": "modules.MachineLearning.SageMaker.sagemaker",
+        "peekOfCode": "def list_sagemaker_endpoint(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_sagemaker_endpoint` retrieves and processes information about SageMaker\n    endpoints, formatting the data and saving it to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_endpoint` function is the path\n    where the inventory data will be saved as a file. It is the location where the Parquet file\n    containing the endpoint information will be stored\n    :param session: The `session` parameter in the `list_sagemaker_endpoint` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to create a client for the Amazon SageMaker service in the specified region",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "list_sagemaker_models",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker",
+        "description": "modules.MachineLearning.SageMaker.sagemaker",
+        "peekOfCode": "def list_sagemaker_models(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker models, retrieves their details, and saves the information in a\n    Parquet file.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_models` function is the path\n    where the inventory data will be saved as a file. It should be a string representing the file path\n    where you want to save the inventory data\n    :param session: The `session` parameter in the `list_sagemaker_models` function is typically an\n    instance of a boto3 session that is used to create a client for interacting with AWS services. It\n    allows you to make API calls to Amazon SageMaker in this case",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "list_sagemaker_training_jobs",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker",
+        "description": "modules.MachineLearning.SageMaker.sagemaker",
+        "peekOfCode": "def list_sagemaker_training_jobs(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists SageMaker training jobs, retrieves detailed information for each job, and\n    saves the data in Parquet format.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_training_jobs` function is the\n    path where the output file will be saved. This should be a valid file path on your system where you\n    want to store the data retrieved from SageMaker training jobs\n    :param session: The `session` parameter in the `list_sagemaker_training_jobs` function is typically\n    an instance of a boto3 session that allows you to create service clients for AWS services. It is\n    used to create a client for the Amazon SageMaker service in the specified region. This client is",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "list_sagemaker_hpt_jobs",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker",
+        "description": "modules.MachineLearning.SageMaker.sagemaker",
+        "peekOfCode": "def list_sagemaker_hpt_jobs(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_sagemaker_hpt_jobs` retrieves and processes information about SageMaker\n    hyperparameter tuning jobs.\n    :param file_path: The `file_path` parameter in the `list_sagemaker_hpt_jobs` function is the path\n    where you want to save the output file containing information about SageMaker Hyperparameter Tuning\n    Jobs. This file will be saved in Parquet format\n    :param session: The `session` parameter in the `list_sagemaker_hpt_jobs` function is typically an\n    instance of a boto3 session that allows you to create service clients for AWS services. It is used\n    to create a client for the Amazon SageMaker service in the specified region. This client is then",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker",
+        "documentation": {}
+    },
+    {
+        "label": "sagemaker_endpoint_metrics",
+        "kind": 2,
+        "importPath": "modules.MachineLearning.SageMaker.sagemaker_metrics",
+        "description": "modules.MachineLearning.SageMaker.sagemaker_metrics",
+        "peekOfCode": "def sagemaker_endpoint_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    This Python function retrieves metrics for SageMaker endpoints and saves them to a file in Parquet\n    format.\n    :param file_path: The `file_path` parameter in the `sagemaker_endpoint_metrics` function is the path\n    where the metrics data will be saved as a file. It is the location where the Parquet file containing\n    the metrics will be stored\n    :param session: The `session` parameter in the `sagemaker_endpoint_metrics` function is typically an\n    instance of a boto3 session that is used to create a client for interacting with AWS services. It\n    allows you to make API calls to Amazon SageMaker in this case",
+        "detail": "modules.MachineLearning.SageMaker.sagemaker_metrics",
         "documentation": {}
     },
     {
@@ -5270,6 +5884,33 @@
         "documentation": {}
     },
     {
+        "label": "list_directconnect_connections",
+        "kind": 2,
+        "importPath": "modules.Networking.DirectConnect.directconnect",
+        "description": "modules.Networking.DirectConnect.directconnect",
+        "peekOfCode": "def list_directconnect_connections(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and saves information about Direct Connect connections to a file in\n    Parquet format.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path including the file name and extension where the data\n    will be stored\n    :param session: The `session` parameter in the `list_directconnect_connections` function is\n    typically an instance of the `boto3.Session` class that represents your AWS session. It is used to\n    create a client for the AWS Direct Connect service in the specified region. This session object",
+        "detail": "modules.Networking.DirectConnect.directconnect",
+        "documentation": {}
+    },
+    {
+        "label": "list_directconnect_interfaces",
+        "kind": 2,
+        "importPath": "modules.Networking.DirectConnect.directconnect",
+        "description": "modules.Networking.DirectConnect.directconnect",
+        "peekOfCode": "def list_directconnect_interfaces(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function retrieves and saves information about Direct Connect interfaces for a specified\n    account and region.\n    :param file_path: The `file_path` parameter in the `list_directconnect_interfaces` function is the\n    path where the output file will be saved. It is the location on the file system where the Parquet\n    file containing the extracted Direct Connect interface information will be stored\n    :param session: The `session` parameter in the `list_directconnect_interfaces` function is typically\n    an instance of the `boto3.Session` class that is used to create a client for AWS services. It is\n    used to make API calls to the AWS Direct Connect service in this case. The `session.client('",
+        "detail": "modules.Networking.DirectConnect.directconnect",
+        "documentation": {}
+    },
+    {
+        "label": "dx_vif_metrics",
+        "kind": 2,
+        "importPath": "modules.Networking.DirectConnect.directconnect_metrics",
+        "description": "modules.Networking.DirectConnect.directconnect_metrics",
+        "peekOfCode": "def dx_vif_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    The function `dx_vif_metrics` retrieves Direct Connect VIF metrics for a specified account and\n    region and saves them to a file in Parquet format.\n    :param file_path: The `file_path` parameter is a string that represents the path where the metrics\n    data will be saved as a file. It should include the file name and extension (e.g.,\n    \"metrics_data.csv\")\n    :param session: The `session` parameter in the `dx_vif_metrics` function is typically an instance of\n    a boto3 session that allows you to create service clients for AWS services. It is used to interact\n    with the AWS Direct Connect service in this function",
+        "detail": "modules.Networking.DirectConnect.directconnect_metrics",
+        "documentation": {}
+    },
+    {
         "label": "list_eip",
         "kind": 2,
         "importPath": "modules.Networking.EIP.eip",
@@ -5293,6 +5934,15 @@
         "importPath": "modules.Networking.ELB.elb",
         "description": "modules.Networking.ELB.elb",
         "peekOfCode": "def list_elbv2(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('elbv2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_load_balancers(",
+        "detail": "modules.Networking.ELB.elb",
+        "documentation": {}
+    },
+    {
+        "label": "list_elbv2_target_group",
+        "kind": 2,
+        "importPath": "modules.Networking.ELB.elb",
+        "description": "modules.Networking.ELB.elb",
+        "peekOfCode": "def list_elbv2_target_group(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('elbv2', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.describe_target_groups(",
         "detail": "modules.Networking.ELB.elb",
         "documentation": {}
     },
@@ -5410,6 +6060,24 @@
         "importPath": "modules.Networking.Route53.route53",
         "description": "modules.Networking.Route53.route53",
         "peekOfCode": "def list_route53_resolver(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53resolver', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_resolver_endpoints(",
+        "detail": "modules.Networking.Route53.route53",
+        "documentation": {}
+    },
+    {
+        "label": "list_route53_profiles",
+        "kind": 2,
+        "importPath": "modules.Networking.Route53.route53",
+        "description": "modules.Networking.Route53.route53",
+        "peekOfCode": "def list_route53_profiles(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53profiles', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_profiles(",
+        "detail": "modules.Networking.Route53.route53",
+        "documentation": {}
+    },
+    {
+        "label": "list_route53_profiles_associations",
+        "kind": 2,
+        "importPath": "modules.Networking.Route53.route53",
+        "description": "modules.Networking.Route53.route53",
+        "peekOfCode": "def list_route53_profiles_associations(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53profiles', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_profile_associations(",
         "detail": "modules.Networking.Route53.route53",
         "documentation": {}
     },
@@ -5580,7 +6248,7 @@
         "kind": 2,
         "importPath": "modules.Networking.VPN.vpn_metrics",
         "description": "modules.Networking.VPN.vpn_metrics",
-        "peekOfCode": "def vpn_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_vpn_connections(\n                NextToken=next_token) if next_token else client.describe_vpn_connections()",
+        "peekOfCode": "def vpn_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    This Python function retrieves VPN connection information, extracts tunnel IP addresses, fetches\n    resource utilization metrics, and saves the metrics to a Parquet file.\n    :param file_path: The `file_path` parameter in the `vpn_metrics` function is the file path where the\n    metrics data will be saved. It is the location where the metrics will be stored in a file, typically\n    in a specific format like Parquet\n    :param session: The `session` parameter in the `vpn_metrics` function is typically an instance of a\n    boto3 session that is used to create a client for interacting with AWS services. It is used to make\n    API calls to AWS services like EC2 in this case",
         "detail": "modules.Networking.VPN.vpn_metrics",
         "documentation": {}
     },
@@ -5589,7 +6257,7 @@
         "kind": 2,
         "importPath": "modules.Networking.VPN.vpn_metrics",
         "description": "modules.Networking.VPN.vpn_metrics",
-        "peekOfCode": "def clientvpn_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('ec2', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.describe_client_vpn_endpoints(\n                NextToken=next_token) if next_token else client.describe_client_vpn_endpoints()",
+        "peekOfCode": "def clientvpn_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    This Python function retrieves metrics for client VPN endpoints and saves them to a Parquet file.\n    :param file_path: The `file_path` parameter in the `clientvpn_metrics` function is a string that\n    represents the path where the metrics data will be saved as a file. This could be a file path on the\n    local file system or a network location where the file will be stored\n    :param session: The `session` parameter in the `clientvpn_metrics` function is typically an instance\n    of a boto3 session that allows you to create service clients. It is used to interact with AWS\n    services like EC2 in the specified region\n    :param region: The `region` parameter in the `clientvpn_metrics` function is used to specify the AWS",
         "detail": "modules.Networking.VPN.vpn_metrics",
         "documentation": {}
     },
@@ -5747,6 +6415,15 @@
         "documentation": {}
     },
     {
+        "label": "list_dlm",
+        "kind": 2,
+        "importPath": "modules.Storage.DLM.dlm",
+        "description": "modules.Storage.DLM.dlm",
+        "peekOfCode": "def list_dlm(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_dlm` retrieves and processes AWS DLM lifecycle policies, saving the information\n    to a Parquet file.\n    :param file_path: The `file_path` parameter in the `list_dlm` function represents the path where the\n    output file will be saved. This should be a valid file path on your system where you want to store\n    the data retrieved by the function\n    :param session: The `session` parameter in the `list_dlm` function is an AWS session object that is\n    used to create a client for the AWS Data Lifecycle Manager (DLM) service. It is typically created\n    using the `boto3.Session` class and is used to interact with AWS services within a",
+        "detail": "modules.Storage.DLM.dlm",
+        "documentation": {}
+    },
+    {
         "label": "list_datasync_agents",
         "kind": 2,
         "importPath": "modules.Storage.DataSync.datasync",
@@ -5841,7 +6518,7 @@
         "kind": 2,
         "importPath": "modules.Storage.StorageGateway.storagegateway",
         "description": "modules.Storage.StorageGateway.storagegateway",
-        "peekOfCode": "def list_storagegateway(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('storagegateway', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_gateways(",
+        "peekOfCode": "def list_storagegateway(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_storagegateway` retrieves information about storage gateways and saves it in a\n    Parquet file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on the system where the code is running\n    :param session: The `session` parameter in the `list_storagegateway` function is typically an\n    instance of a boto3 session that is used to create a client for AWS services. It allows you to make\n    API calls to AWS services using the credentials and configuration provided in the session\n    :param region: The `region` parameter in the `list_storagegateway` function is used to specify the",
         "detail": "modules.Storage.StorageGateway.storagegateway",
         "documentation": {}
     },
@@ -5976,7 +6653,7 @@
         "kind": 2,
         "importPath": "utils.utils",
         "description": "utils.utils",
-        "peekOfCode": "def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimensions_name, dimensions, statistics, granularity, custom_type_value, addons):\n    query_list = []\n    enum_list = []\n    query_idx = {}\n    dimensions_addons = []\n    for dimension in dimensions:\n        for key, value in dimension.items():\n            dimensions_addons.append({\"Name\": key, \"Value\": value})\n    if addons['type'] in custom_type_value.keys():\n        for cluster in addons['nodes']:",
+        "peekOfCode": "def cw_build_metrics_queries_custom(resource_ids, namespace, metric_name, dimensions_name, dimensions, statistics, granularity, custom_type_value, addons):\n    query_list = []\n    enum_list = []\n    query_idx = {}\n    nodes_addons = []\n    dimensions_addons = []\n    for dimension in dimensions:\n        for key, value in dimension.items():\n            dimensions_addons.append({\"Name\": key, \"Value\": value})\n    if addons['type'] in custom_type_value.keys():",
         "detail": "utils.utils",
         "documentation": {}
     },
@@ -6012,8 +6689,125 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather inventory and list S3 buckets for each account.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'metrics')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'inventory')\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "register_snapshot_repo",
+        "kind": 2,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "def register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"\n    payload = {\n        \"type\": \"s3\",\n        \"settings\": {\n            \"bucket\": S3_BUCKET_NAME,\n            \"region\": AWS_REGION,\n        }\n    }\n    response = requests.put(url, auth=HTTPBasicAuth(",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "take_snapshot",
+        "kind": 2,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "def take_snapshot():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}/{SNAPSHOT_NAME}\"\n    payload = {\n        \"indices\": \"*\",  # Use \"*\" to snapshot all indices\n        \"ignore_unavailable\": True,\n        \"include_global_state\": False\n    }\n    response = requests.put(url, auth=HTTPBasicAuth(\n        OS_USERNAME, OS_PASSWORD), json=payload)\n    if response.status_code == 200:",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "save_snapshot_metadata",
+        "kind": 2,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "def save_snapshot_metadata():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}/{SNAPSHOT_NAME}\"\n    response = requests.get(url, auth=HTTPBasicAuth(OS_USERNAME, OS_PASSWORD))\n    if response.status_code == 200:\n        snapshot_data = response.json()\n        with open(LOCAL_SNAPSHOT_FILE, 'w') as f:\n            json.dump(snapshot_data, f, indent=4)\n        print(f\"Snapshot metadata saved to '{LOCAL_SNAPSHOT_FILE}'.\")\n    else:\n        print(f\"Failed to fetch snapshot metadata: {response.text}\")",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_credentials_assume_role",
+        "kind": 2,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "def get_credentials_assume_role(account_id, role_name=\"Cloudteam-FinOps\", region='us-east-1', external_id=None):\n    \"\"\"\n    The function `get_credentials_assume_role` assumes an AWS IAM role in a specified account and\n    returns the temporary credentials.\n    :param account_id: The `account_id` parameter is the unique identifier for the AWS account for which\n    you want to assume a role. It is used to construct the ARN (Amazon Resource Name) of the role that\n    you want to assume within that account\n    :param role_name: The `role_name` parameter in the `get_credentials_assume_role` function is a\n    string that represents the name of the IAM role that you want to assume in the AWS account specified\n    by `account_id`. By default, the `role_name` is set to \"Cloudteam-FinOps\", defaults to",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_aws_session",
+        "kind": 2,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "def get_aws_session(account_id, region='us-east-1', role_name=\"Cloudteam-FinOps\"):\n    \"\"\"\n    This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and\n    then uses those credentials to create a new `boto3` session\n    :param account_id: The AWS account ID of the account you want to assume a role in\n    :param role_name: The name of the role you want to assume\n    :param external_id: the external id from CloudHiro\n    :return: A session object that can be used to make API calls to the account specified in the role_name parameter.\n        external_id:\n    \"\"\"",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "DOMAIN_ENDPOINT",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "DOMAIN_ENDPOINT = 'https://vpc-dev-regional-euc1-os-j6m6l3phd73iznm4hzy4oyis4y.eu-central-1.es.amazonaws.com'\nREPO_NAME = 'my-snapshot-repo'\n# Unique snapshot name with timestamp\nSNAPSHOT_NAME = 'snapshot-{timestamp}'.format(timestamp=int(time.time()))\nS3_BUCKET_NAME = 'os-test-euc1-migration'\n# Local file to store the snapshot metadata\nLOCAL_SNAPSHOT_FILE = 'snapshot_metadata.json'\nAWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "REPO_NAME",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "REPO_NAME = 'my-snapshot-repo'\n# Unique snapshot name with timestamp\nSNAPSHOT_NAME = 'snapshot-{timestamp}'.format(timestamp=int(time.time()))\nS3_BUCKET_NAME = 'os-test-euc1-migration'\n# Local file to store the snapshot metadata\nLOCAL_SNAPSHOT_FILE = 'snapshot_metadata.json'\nAWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "SNAPSHOT_NAME",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "SNAPSHOT_NAME = 'snapshot-{timestamp}'.format(timestamp=int(time.time()))\nS3_BUCKET_NAME = 'os-test-euc1-migration'\n# Local file to store the snapshot metadata\nLOCAL_SNAPSHOT_FILE = 'snapshot_metadata.json'\nAWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "S3_BUCKET_NAME",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "S3_BUCKET_NAME = 'os-test-euc1-migration'\n# Local file to store the snapshot metadata\nLOCAL_SNAPSHOT_FILE = 'snapshot_metadata.json'\nAWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "LOCAL_SNAPSHOT_FILE",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "LOCAL_SNAPSHOT_FILE = 'snapshot_metadata.json'\nAWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"\n    payload = {\n        \"type\": \"s3\",",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "AWS_REGION",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "AWS_REGION = 'eu-central-1'\n# OpenSearch Credentials (Basic Authentication)\nOS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"\n    payload = {\n        \"type\": \"s3\",\n        \"settings\": {",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "OS_USERNAME",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "OS_USERNAME = 'devops'\nOS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"\n    payload = {\n        \"type\": \"s3\",\n        \"settings\": {\n            \"bucket\": S3_BUCKET_NAME,\n            \"region\": AWS_REGION,",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "OS_PASSWORD",
+        "kind": 5,
+        "importPath": "os",
+        "description": "os",
+        "peekOfCode": "OS_PASSWORD = 't%Z3rVdt6sfcEGUEMesoXL!!'\n# Register the snapshot repository (S3)\ndef register_snapshot_repo():\n    url = f\"{DOMAIN_ENDPOINT}/_snapshot/{REPO_NAME}\"\n    payload = {\n        \"type\": \"s3\",\n        \"settings\": {\n            \"bucket\": S3_BUCKET_NAME,\n            \"region\": AWS_REGION,\n        }",
+        "detail": "os",
         "documentation": {}
     }
 ]

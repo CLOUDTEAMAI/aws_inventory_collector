@@ -48,11 +48,14 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         'networkfirewall_metrics': networkfirewall_metrics,
         'natgateway_metrics': natgateway_metrics,
         'elb_metrics': elb_metrics,
+        'docdb_metrics': docdb_metrics,
         'elbv2_network_metrics': elbv2_network_metrics,
         'elbv2_application_metrics': elbv2_application_metrics,
         'transitgateway_metrics': transitgateway_metrics,
         'transitgateway_attachments_metrics': transitgateway_attachments_metrics,
-        'transferfamily_metrics': transferfamily_metrics
+        'transferfamily_metrics': transferfamily_metrics,
+        'sagemaker_endpoint_metrics': sagemaker_endpoint_metrics,
+        'dx_vif_metrics': dx_vif_metrics
     }
     if region == 'us-east-1':
         global_tasks = {
@@ -61,6 +64,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
             's3_metrics': s3_metrics
         }
     functions_map = {**functionsz_map, **global_tasks}
+    functions_map = {'sagemaker_endpoint_metrics': sagemaker_endpoint_metrics}
     # elif region == 'us-west-2':
     #     global_tasks = {'globalaccelerator': list_globalaccelerator}
 

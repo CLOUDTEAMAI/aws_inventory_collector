@@ -360,6 +360,129 @@
             ]
         }
     ],
+    "AWS/DX": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dx_vif_metrics",
+            "aws_dimensions_name": "ConnectionId",
+            "aws_metric_name": "VirtualInterfacePpsIngress",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dx_vif_metrics",
+            "aws_dimensions_name": "ConnectionId",
+            "aws_metric_name": "VirtualInterfaceBpsEgress",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/DocDB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "CPUUtilization",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "DatabaseConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "FreeStorageSpace",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        }
+    ],
+    "AWS/SageMaker": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocations",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocation5XXErrors",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocation4XXErrors",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "/aws/sagemaker/Endpoints": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "LoadedModelCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
     "AWS/RDS": [
         {
             "days_ago": 30,

@@ -14,3 +14,4 @@ from .TransitGateway.transitgateway import *
 from .GlobalAccelerators.globalaccelerator import *
 from .CloudFront.cloudfront import *
 from .NetworkFirewall.networkfirewall import *
+from .DirectConnect.directconnect import *

@@ -11,10 +11,10 @@ from utils.utils import create_folder_if_not_exist
 def main():
     """
     The main function reads account information from a JSON file, creates AWS sessions for each account,
-    and then runs parallel tasks to gather inventory and list S3 buckets for each account.
+    and then runs parallel tasks to gather information about each mode.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'metrics')
+    mode = environ.get('MODE', 'inventory')
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',

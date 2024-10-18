@@ -1,3 +1,4 @@
+from .DocDB.docdb import *
 from .RDS.rds import *
 from .Redshift.redshift import *
 from .DynamoDB.dynamodb import *
@@ -6,3 +7,5 @@ from .Athena.athena import *
 from .MemoryDB.memorydb import *
 from .DMS.dms import *
 from .Neptune.neptune import *
+from .Keyspaces.keyspace import *
+from .Timestream.timestream import *

@@ -26,6 +26,7 @@ from modules.Containers.ECR.ecr import *
 from modules.Containers.ECS.ecs import *
 from modules.Containers.EKS.eks import *
 from modules.Databases.Athena.athena import *
+from modules.Databases.DocDB.docdb import *
 from modules.Databases.DMS.dms import *
 from modules.Databases.DynamoDB.dynamodb import *
 from modules.Databases.ElastiCache.elasticache import *
@@ -33,6 +34,9 @@ from modules.Databases.MemoryDB.memorydb import *
 from modules.Databases.Neptune.neptune import *
 from modules.Databases.RDS.rds import *
 from modules.Databases.Redshift.redshift import *
+from modules.Databases.Keyspaces.keyspace import *
+from modules.Databases.Timestream.timestream import *
+from modules.MachineLearning.MWAA.mwaa import *
 from modules.MachineLearning.ElasticSearch.elasticsearch import *
 from modules.MachineLearning.Kendra.kendra import *
 from modules.MachineLearning.OpenSearch.opensearch import *
@@ -61,6 +65,7 @@ from modules.Monitoring.XRay.xray import *
 from modules.Networking.ACL.acl import *
 from modules.Networking.Arc_Zonal_Shift.arc_zonal_shift import *
 from modules.Networking.CloudFront.cloudfront import *
+from modules.Networking.DirectConnect.directconnect import *
 from modules.Networking.EIP.eip import *
 from modules.Networking.ELB.elb import *
 from modules.Networking.ENI.eni import *
@@ -86,6 +91,7 @@ from modules.Security.SecurityGroup.securitygroup import *
 from modules.Security.Shield.shield import *
 from modules.Security.WAF.waf import *
 from modules.Security.Secrets.secret import *
+from modules.Storage.DLM.dlm import *
 from modules.Storage.DataSync.datasync import *
 from modules.Storage.EFS.efs import *
 from modules.Storage.FSx.fsx import *
