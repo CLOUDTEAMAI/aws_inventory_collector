@@ -1,6 +1,7 @@
 from modules.API.APIGateway.apigateway import *
 from modules.API.AppSync.appsync import *
 from modules.Applications.Amplify.amplify import *
+from modules.Applications.Appflow.appflow import *
 from modules.Applications.AppIntegrations.appintegrations import *
 from modules.Applications.ApplicationAutoScaling.applicationautoscaling import *
 from modules.Applications.ApplicationCostProfiler.applicationcostprofiler import *

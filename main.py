@@ -14,7 +14,7 @@ def main():
     and then runs parallel tasks to gather information about each mode.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'inventory')
+    mode = environ.get('MODE', 'metrics').lower()
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',
@@ -27,15 +27,15 @@ def main():
     with open(f'{main_dir}/files/accounts.json', encoding="UTF-8") as file:
         load_json = load(file)
 
-    if mode.lower() == 'inventory':
+    if mode == 'inventory':
         inventory_collector(uploads_directory=uploads, logger=logger_obj,
                             accounts_json=load_json, time_generated=time_generated, threads=threads)
-    elif mode.lower() in ('metric', 'metrics'):
+    elif mode in ('metric', 'metrics'):
         with open(f'{main_dir}/files/metrics.json', encoding="UTF-8") as file:
             metrics_list = load(file)
         metrics_collector(uploads_directory=uploads, logger=logger_obj,
                           accounts_json=load_json, time_generated=time_generated, metrics=metrics_list, threads=threads)
-    elif mode.lower() == 'sizing':
+    elif mode == 'sizing':
         sizing_collector(uploads_directory=uploads, logger=logger_obj,
                          accounts_json=load_json, time_generated=time_generated, threads=threads)
 

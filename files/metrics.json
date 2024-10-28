@@ -388,6 +388,47 @@
             ]
         }
     ],
+    "AWS/AppFlow": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsStarted",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsFailed",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsSucceeded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
     "AWS/DocDB": [
         {
             "days_ago": 30,

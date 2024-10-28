@@ -289,6 +289,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         global_tasks = {
             'account_name': list_account_name,
             'accounts': list_accounts,
+            'organization': list_org,
             's3': list_s3_buckets,
             'wafv2': list_wafv2,
             'route53': list_route53,

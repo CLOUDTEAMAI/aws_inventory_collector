@@ -39,9 +39,9 @@ def dx_vif_metrics(file_path, session, region, account, metrics, time_generated)
             inventory = []
             addons = {"type": "directconnect_vif"}
             addons['nodes'] = []
-            response = client.list_endpoints(
-                NextToken=next_token) if next_token else client.list_endpoints()
-            for resource in response.get('connections', []):
+            response = client.describe_virtual_interfaces(
+                NextToken=next_token) if next_token else client.describe_virtual_interfaces()
+            for resource in response.get('virtualInterfaces', []):
                 inventory.append(resource["connectionId"])
                 addons['nodes'].append(
                     {"ConnectionId": resource["connectionId"], "nodes": []})
