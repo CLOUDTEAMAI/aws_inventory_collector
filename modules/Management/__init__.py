@@ -6,3 +6,4 @@ from .cloudformation.cloudformation import *
 from .accessanalyzer.accessanalyzer import *
 # from .wellarchitected.wellarchitected import *
 from .auditmanager.auditmanager import *
+from .support.support import *

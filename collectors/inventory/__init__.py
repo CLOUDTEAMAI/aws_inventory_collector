@@ -52,6 +52,7 @@ from modules.Management.cloudformation.cloudformation import *
 from modules.Management.logs.logs import *
 from modules.Management.organizations.organizations import *
 from modules.Management.wellarchitected.wellarchitected import *
+from modules.Management.support.support import *
 from modules.Messaging.Firehose.firehose import *
 from modules.Messaging.Kafka.kafka import *
 from modules.Messaging.Kinesis.kinesis import *
@@ -80,7 +81,6 @@ from modules.Networking.TransitGateway.transitgateway import *
 from modules.Networking.VPC.vpc import *
 from modules.Networking.VPN.vpn import *
 from modules.Other.alexaforbusiness.alexaforbusiness import *
-from modules.Other.appflow.appflow import *
 from modules.Other.snowball.snowball import *
 from modules.Other.timestreamwrite.timestreamwrite import *
 from modules.Other.translate.translate import *

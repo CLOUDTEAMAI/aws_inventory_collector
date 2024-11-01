@@ -298,10 +298,24 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
             'cloudfront': list_cloudfront,
             'savingsplans': list_savingsplans
         }
+    elif region == 'us-east-2':
+        global_tasks = {
+            'support': list_account_support
+        }
     elif region == 'us-west-2':
         global_tasks = {'globalaccelerator': list_globalaccelerator}
     else:
         global_tasks = {}
+    functions_map = {}
+    global_tasks = {}
+    if region == 'us-east-1':
+        global_tasks = {
+            'organization': list_org,
+        }
+    if region == 'us-east-2':
+        global_tasks = {
+            'support': list_account_support
+        }
     tasks = {**functions_map, **global_tasks}
     # 'amplifyuibuilder'           : list_amplifyuibuilder,
     # 'applicationcostprofiler'    : list_applicationcostprofiler,
