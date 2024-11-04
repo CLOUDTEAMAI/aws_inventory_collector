@@ -204,6 +204,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         'elb': list_elb,
         'elbv2': list_elbv2,
         'elbv2_target_group': list_elbv2_target_group,
+        'elbv2_listeners': list_elbv2_listeners,
         'elasticbeanstalk': list_elasticbeanstalk,
         'amplify': list_amplify,
         'lambdafunctions': list_lambda,
@@ -307,10 +308,6 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
     else:
         global_tasks = {}
     tasks = {**functions_map, **global_tasks}
-    # 'amplifyuibuilder'           : list_amplifyuibuilder,
-    # 'applicationcostprofiler'    : list_applicationcostprofiler,
-    # 'alexaforbusiness'         : list_alexaforbusiness,
-
     with ThreadPoolExecutor(threads) as executor:
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
