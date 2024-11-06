@@ -14,28 +14,28 @@ def main():
     and then runs parallel tasks to gather information about each mode.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'inventory').lower()
+    mode = environ.get('MODE', 'METRICS').upper()
     main_dir = path.dirname(path.abspath(__file__))
     uploads = f'{main_dir}/uploads'
     create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',
                                f'{main_dir}/logs'])
     time_generated = environ.get(
         'TIME_GENERATED_SCRIPT', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    threads = int(environ.get('THREADS_NUMBER', 4))
+    threads = int(environ.get('THREADS_NUMBER', 6))
     logger_obj = cloudteam_logger.ct_logging(f'{main_dir}/logs', 'debug')
 
     with open(f'{main_dir}/files/accounts.json', encoding="UTF-8") as file:
         load_json = load(file)
 
-    if mode == 'inventory':
+    if mode == 'INVENTORY':
         inventory_collector(uploads_directory=uploads, logger=logger_obj,
                             accounts_json=load_json, time_generated=time_generated, threads=threads)
-    elif mode in ('metric', 'metrics'):
+    elif mode == 'METRICS':
         with open(f'{main_dir}/files/metrics.json', encoding="UTF-8") as file:
             metrics_list = load(file)
         metrics_collector(uploads_directory=uploads, logger=logger_obj,
                           accounts_json=load_json, time_generated=time_generated, metrics=metrics_list, threads=threads)
-    elif mode == 'sizing':
+    elif mode == 'SIZING':
         sizing_collector(uploads_directory=uploads, logger=logger_obj,
                          accounts_json=load_json, time_generated=time_generated, threads=threads)
 
