@@ -1,5 +1,5 @@
 import json
-from os import path, mkdir
+from os import path, makedirs
 from datetime import datetime, timedelta
 from pandas import DataFrame
 
@@ -26,7 +26,7 @@ def create_folder_if_not_exist(list_dir_path):
     """
     for i in list_dir_path:
         if not path.exists(i):
-            mkdir(i)
+            makedirs(i)
 
 
 def chunk_list(data, chunk_size=499):

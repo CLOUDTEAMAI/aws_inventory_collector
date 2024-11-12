@@ -1,13 +1,26 @@
-FROM python:3.9
+# Use the python-slim-buster as the base image
+FROM python:3.10-slim-buster
 
 ENV AWS_STS_REGIONAL_ENDPOINTS="regional"
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY . .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Create MUST directories
+RUN mkdir -p /app/uploads /app/logs /app/secrets
 
-ENTRYPOINT ["python"]
+# Install PIP
+RUN python -m ensurepip --upgrade
 
-CMD ["main.py"]
+# Install Python dependencies
+RUN pip3 install --upgrade pip && \
+    pip3 install -r requirements.txt
+
+# Define the executable
+ENTRYPOINT [ "python3" ]
+
+# File to be run
+CMD [ "main.py"]

@@ -1,5 +1,109 @@
 [
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
         "label": "as_completed",
         "importPath": "concurrent.futures",
         "description": "concurrent.futures",
@@ -45,30 +149,6 @@
         "description": "concurrent.futures",
         "isExtraImport": true,
         "detail": "concurrent.futures",
-        "documentation": {}
-    },
-    {
-        "label": "Lock",
-        "importPath": "threading",
-        "description": "threading",
-        "isExtraImport": true,
-        "detail": "threading",
-        "documentation": {}
-    },
-    {
-        "label": "Lock",
-        "importPath": "threading",
-        "description": "threading",
-        "isExtraImport": true,
-        "detail": "threading",
-        "documentation": {}
-    },
-    {
-        "label": "Lock",
-        "importPath": "threading",
-        "description": "threading",
-        "isExtraImport": true,
-        "detail": "threading",
         "documentation": {}
     },
     {
@@ -89,7 +169,23 @@
         "documentation": {}
     },
     {
-        "label": "mkdir",
+        "label": "makedirs",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "environ",
         "importPath": "os",
         "description": "os",
         "isExtraImport": true,
@@ -123,6 +219,22 @@
     },
     {
         "label": "load",
+        "importPath": "json",
+        "description": "json",
+        "isExtraImport": true,
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "load",
+        "importPath": "json",
+        "description": "json",
+        "isExtraImport": true,
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "dumps",
         "importPath": "json",
         "description": "json",
         "isExtraImport": true,
@@ -4387,6 +4499,14 @@
         "documentation": {}
     },
     {
+        "label": "create_folder_if_not_exist",
+        "importPath": "utils.utils",
+        "description": "utils.utils",
+        "isExtraImport": true,
+        "detail": "utils.utils",
+        "documentation": {}
+    },
+    {
         "label": "Session",
         "importPath": "boto3",
         "description": "boto3",
@@ -4460,43 +4580,11 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "exceptions",
+        "importPath": "botocore",
+        "description": "botocore",
         "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "botocore",
         "documentation": {}
     },
     {
@@ -4508,27 +4596,11 @@
         "documentation": {}
     },
     {
-        "label": "client",
-        "importPath": "kubernetes",
-        "description": "kubernetes",
+        "label": "cloudteam_logger",
+        "importPath": "cloudteam_logger",
+        "description": "cloudteam_logger",
         "isExtraImport": true,
-        "detail": "kubernetes",
-        "documentation": {}
-    },
-    {
-        "label": "config",
-        "importPath": "kubernetes",
-        "description": "kubernetes",
-        "isExtraImport": true,
-        "detail": "kubernetes",
-        "documentation": {}
-    },
-    {
-        "label": "stream",
-        "importPath": "kubernetes.stream",
-        "description": "kubernetes.stream",
-        "isExtraImport": true,
-        "detail": "kubernetes.stream",
+        "detail": "cloudteam_logger",
         "documentation": {}
     },
     {
@@ -4548,6 +4620,22 @@
         "documentation": {}
     },
     {
+        "label": "inventory_collector",
+        "importPath": "collectors.collector_inventory",
+        "description": "collectors.collector_inventory",
+        "isExtraImport": true,
+        "detail": "collectors.collector_inventory",
+        "documentation": {}
+    },
+    {
+        "label": "metrics_collector",
+        "importPath": "collectors.collector_metrics",
+        "description": "collectors.collector_metrics",
+        "isExtraImport": true,
+        "detail": "collectors.collector_metrics",
+        "documentation": {}
+    },
+    {
         "label": "metrics_collector",
         "importPath": "collectors.collector_metrics",
         "description": "collectors.collector_metrics",
@@ -4561,6 +4649,39 @@
         "description": "collectors.collector_sizing",
         "isExtraImport": true,
         "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
+        "label": "sizing_collector",
+        "importPath": "collectors.collector_sizing",
+        "description": "collectors.collector_sizing",
+        "isExtraImport": true,
+        "detail": "collectors.collector_sizing",
+        "documentation": {}
+    },
+    {
+        "label": "billing_collector",
+        "importPath": "collectors.collector_billing",
+        "description": "collectors.collector_billing",
+        "isExtraImport": true,
+        "detail": "collectors.collector_billing",
+        "documentation": {}
+    },
+    {
+        "label": "cloudteam_servicebus",
+        "importPath": "cloudteam_servicebus",
+        "description": "cloudteam_servicebus",
+        "isExtraImport": true,
+        "detail": "cloudteam_servicebus",
+        "documentation": {}
+    },
+    {
+        "label": "billing_collector",
+        "kind": 2,
+        "importPath": "collectors.collector_billing",
+        "description": "collectors.collector_billing",
+        "peekOfCode": "def billing_collector(uploads_directory, logger, account, time_generated):\n    \"\"\"\n    The `billing_collector` function downloads specific files from an AWS S3 bucket based on certain\n    criteria and logs any errors encountered during the process.\n    :param uploads_directory: The `uploads_directory` parameter in the `billing_collector` function is a\n    directory path where the downloaded billing files will be stored. It is the location on the local\n    system where the billing files from the AWS S3 bucket will be saved after downloading\n    :param logger: The `logger` parameter in the `billing_collector` function is typically an object\n    that is used for logging messages, errors, and other information during the execution of the\n    function. It allows you to track the progress of the function, handle exceptions, and provide",
+        "detail": "collectors.collector_billing",
         "documentation": {}
     },
     {
@@ -6242,7 +6363,7 @@
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53_metrics",
         "description": "modules.Networking.Route53.route53_metrics",
-        "peekOfCode": "def route53_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('route53', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_hosted_zones(\n                Marker=next_token) if next_token else client.list_hosted_zones()",
+        "peekOfCode": "def route53_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    The function `route53_metrics` retrieves Route 53 hosted zones, collects resource utilization\n    metrics, and saves the metrics to a Parquet file.\n    :param file_path: The `file_path` parameter in the `route53_metrics` function is the file path where\n    the metrics data will be saved. It is the location where the metrics will be stored in a file,\n    typically in a specific format like Parquet\n    :param session: The `session` parameter in the `route53_metrics` function is typically an instance\n    of a boto3 session that is used to create a client for interacting with AWS services. It allows you\n    to configure credentials, region, and other settings for making API calls to AWS services like Route",
         "detail": "modules.Networking.Route53.route53_metrics",
         "documentation": {}
     },
@@ -6251,7 +6372,7 @@
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53_metrics",
         "description": "modules.Networking.Route53.route53_metrics",
-        "peekOfCode": "def route53_resolver_metrics(file_path, session, region, account, metrics, time_generated):\n    next_token = None\n    idx = 0\n    client = session.client('route53resolver', region_name=region)\n    account_id = account['account_id']\n    while True:\n        try:\n            inventory = []\n            response = client.list_resolver_endpoints(\n                NextToken=next_token) if next_token else client.list_resolver_endpoints()",
+        "peekOfCode": "def route53_resolver_metrics(file_path, session, region, account, metrics, time_generated):\n    \"\"\"\n    The function `route53_resolver_metrics` retrieves Route 53 Resolver endpoints, collects resource\n    utilization metrics, and saves the metrics to a Parquet file.\n    :param file_path: The `file_path` parameter in the `route53_resolver_metrics` function is a string\n    that represents the path where the metrics data will be saved as a file. This could be a file path\n    on the local file system or a cloud storage location, depending on where you want to store the\n    metrics data\n    :param session: The `session` parameter in the `route53_resolver_metrics` function is typically an\n    instance of a boto3 session that is used to create a client for AWS Route 53 Resolver service. This",
         "detail": "modules.Networking.Route53.route53_metrics",
         "documentation": {}
     },
@@ -6643,6 +6764,15 @@
         "documentation": {}
     },
     {
+        "label": "S3Manager",
+        "kind": 6,
+        "importPath": "modules.Storage.S3.s3",
+        "description": "modules.Storage.S3.s3",
+        "peekOfCode": "class S3Manager:\n    def __init__(self, session, bucket_name):\n        self.bucket_name = bucket_name\n        self.s3_client = session.client('s3')\n    def list_files(self, prefix=''):\n        \"\"\"\n        List files in the specified S3 bucket with an optional prefix.\n        \"\"\"\n        try:\n            files = []",
+        "detail": "modules.Storage.S3.s3",
+        "documentation": {}
+    },
+    {
         "label": "list_s3_buckets",
         "kind": 2,
         "importPath": "modules.Storage.S3.s3",
@@ -6701,7 +6831,7 @@
         "kind": 2,
         "importPath": "utils.utils",
         "description": "utils.utils",
-        "peekOfCode": "def create_folder_if_not_exist(list_dir_path):\n    \"\"\"\n    The function `create_folder_if_not_exist` checks if a list of directories exist and creates them if\n    they do not.\n    :param list_dir_path: A list of directory paths for which you want to create folders if they do not\n    already exist\n    \"\"\"\n    for i in list_dir_path:\n        if not path.exists(i):\n            mkdir(i)",
+        "peekOfCode": "def create_folder_if_not_exist(list_dir_path):\n    \"\"\"\n    The function `create_folder_if_not_exist` checks if a list of directories exist and creates them if\n    they do not.\n    :param list_dir_path: A list of directory paths for which you want to create folders if they do not\n    already exist\n    \"\"\"\n    for i in list_dir_path:\n        if not path.exists(i):\n            makedirs(i)",
         "detail": "utils.utils",
         "documentation": {}
     },
@@ -6823,12 +6953,12 @@
         "documentation": {}
     },
     {
-        "label": "list_pods_and_env_vars",
+        "label": "main",
         "kind": 2,
-        "importPath": "bdika",
-        "description": "bdika",
-        "peekOfCode": "def list_pods_and_env_vars():\n    # Load kubeconfig and initialize client\n    config.load_kube_config()\n    v1 = client.CoreV1Api()\n    # Get all namespaces\n    namespaces = v1.list_namespace()\n    for ns in namespaces.items:\n        namespace = ns.metadata.name\n        print(f\"Namespace: {namespace}\")\n        # Get all pods in the current namespace",
-        "detail": "bdika",
+        "importPath": "main-manual",
+        "description": "main-manual",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'INVENTORY').upper()\n    AUTOMATION = f'aws-{mode.lower()}-collector'\n    # try:\n    #     with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:",
+        "detail": "main-manual",
         "documentation": {}
     },
     {
@@ -6836,7 +6966,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'inventory').lower()\n    main_dir = path.dirname(path.abspath(__file__))\n    uploads = f'{main_dir}/uploads'\n    create_folder_if_not_exist([f'{main_dir}/uploads', f'{main_dir}/files',",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    try:\n        with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:\n            load_json = load(file)\n        CUSTOMER_ID = str(load_json['customer_id'])",
         "detail": "main",
         "documentation": {}
     }
