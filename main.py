@@ -1,13 +1,13 @@
 from json import load, dumps
 from os import path, environ
 from datetime import datetime
+from cloudteam_servicebus import cloudteam_servicebus
 from cloudteam_logger import cloudteam_logger
 from collectors.collector_inventory import inventory_collector
 from collectors.collector_metrics import metrics_collector
 from collectors.collector_billing import billing_collector
 from collectors.collector_sizing import sizing_collector
 from utils.utils import create_folder_if_not_exist
-from cloudteam_servicebus import cloudteam_servicebus
 
 
 def main():
@@ -47,7 +47,7 @@ def main():
     except Exception as e:
         logger_obj.error(f"Failed to connect to queue service: {e}")
         exit(1)
-    
+
     if mode == 'INVENTORY':
         inventory_collector(uploads_directory=uploads_dir, logger=logger_obj,
                             accounts_json=load_json, time_generated=time_generated, threads=threads)

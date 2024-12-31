@@ -4660,19 +4660,19 @@
         "documentation": {}
     },
     {
-        "label": "billing_collector",
-        "importPath": "collectors.collector_billing",
-        "description": "collectors.collector_billing",
-        "isExtraImport": true,
-        "detail": "collectors.collector_billing",
-        "documentation": {}
-    },
-    {
         "label": "cloudteam_servicebus",
         "importPath": "cloudteam_servicebus",
         "description": "cloudteam_servicebus",
         "isExtraImport": true,
         "detail": "cloudteam_servicebus",
+        "documentation": {}
+    },
+    {
+        "label": "billing_collector",
+        "importPath": "collectors.collector_billing",
+        "description": "collectors.collector_billing",
+        "isExtraImport": true,
+        "detail": "collectors.collector_billing",
         "documentation": {}
     },
     {
@@ -6327,7 +6327,7 @@
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53",
         "description": "modules.Networking.Route53.route53",
-        "peekOfCode": "def list_route53(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_hosted_zones(",
+        "peekOfCode": "def list_route53(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Route 53 hosted zones and saves the information to a file in Parquet\n    format.\n    :param file_path: The `file_path` parameter in the `list_route53` function is the file path where\n    the inventory data will be saved. It is the location where the Parquet file containing the Route 53\n    hosted zones information will be stored\n    :param session: The `session` parameter in the `list_route53` function is typically an instance of\n    `boto3.Session` class that represents your AWS credentials and configuration. It is used to create a\n    client for the AWS Route 53 service in the specified region",
         "detail": "modules.Networking.Route53.route53",
         "documentation": {}
     },
@@ -6336,7 +6336,16 @@
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53",
         "description": "modules.Networking.Route53.route53",
-        "peekOfCode": "def list_route53_resolver(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53resolver', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_resolver_endpoints(",
+        "peekOfCode": "def list_route53_resolver(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Route 53 Resolver endpoints and saves the information to a file in\n    Parquet format.\n    :param file_path: The `file_path` parameter is the file path where the Route 53 Resolver inventory\n    data will be saved. This should be a valid file path on your system where the data will be stored\n    :param session: The `session` parameter in the `list_route53_resolver` function is typically an\n    instance of a boto3 session that allows you to create service clients and resources for AWS\n    services. It is used to create a client for the Route 53 Resolver service in the specified region\n    :param region: The `region` parameter in the `list_route53_resolver` function is used to specify the",
+        "detail": "modules.Networking.Route53.route53",
+        "documentation": {}
+    },
+    {
+        "label": "list_route53_resolver_ipaddresses",
+        "kind": 2,
+        "importPath": "modules.Networking.Route53.route53",
+        "description": "modules.Networking.Route53.route53",
+        "peekOfCode": "def list_route53_resolver_ipaddresses(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Route 53 Resolver IP addresses for a given account and saves the\n    information to a file in Parquet format.\n    :param file_path: The `file_path` parameter is a string that represents the file path where the\n    output data will be saved\n    :param session: The `session` parameter in the `list_route53_resolver_ipaddresses` function is\n    typically an AWS session object that is used to create a client for the Route 53 Resolver service in\n    a specific region. This session object is usually created using the `boto3` library in Python and is\n    used",
         "detail": "modules.Networking.Route53.route53",
         "documentation": {}
     },
@@ -6354,7 +6363,7 @@
         "kind": 2,
         "importPath": "modules.Networking.Route53.route53",
         "description": "modules.Networking.Route53.route53",
-        "peekOfCode": "def list_route53_profiles_associations(file_path, session, region, time_generated, account):\n    next_token = None\n    idx = 0\n    client = session.client('route53profiles', region_name=region)\n    account_id = account['account_id']\n    account_name = str(account['account_name']).replace(\" \", \"_\")\n    while True:\n        try:\n            inventory = []\n            response = client.list_profile_associations(",
+        "peekOfCode": "def list_route53_profiles_associations(file_path, session, region, time_generated, account):\n    \"\"\"\n    This Python function lists Route 53 profile associations and saves the information to a file in\n    Parquet format.\n    :param file_path: The `file_path` parameter is the file path where the output data will be saved. It\n    should be a string representing the location where the data will be stored, for example,\n    \"/path/to/output/file.parquet\"\n    :param session: The `session` parameter in the `list_route53_profiles_associations` function is\n    typically an instance of a boto3 session that is used to create a client for the AWS service. It\n    allows you to make API calls to the AWS Route 53 Profiles service in the specified region",
         "detail": "modules.Networking.Route53.route53",
         "documentation": {}
     },
@@ -6957,7 +6966,7 @@
         "kind": 2,
         "importPath": "main-manual",
         "description": "main-manual",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'INVENTORY').upper()\n    AUTOMATION = f'aws-{mode.lower()}-collector'\n    # try:\n    #     with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'METRICS').upper()\n    AUTOMATION = f'aws-{mode.lower()}-collector'\n    # try:\n    #     with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:",
         "detail": "main-manual",
         "documentation": {}
     },

@@ -139,7 +139,7 @@ def list_timestream_write_tables(file_path, session, region, time_generated, acc
                 while True:
                     try:
                         resource_response = client.list_databases(
-                            NextToken=next_token, DatabaseName=resource.get('DatabaseName')) if next_token else client.list_databases(DatabaseName=resource.get('DatabaseName'))
+                            NextToken=next_token, DatabaseName=resource.get('DatabaseName')) if sub_next_token else client.list_databases(DatabaseName=resource.get('DatabaseName'))
                         for table in resource_response.get('Tables', []):
                             arn = table.get('Arn')
                             if 'CreationTime' in table:
