@@ -4797,7 +4797,7 @@
         "kind": 5,
         "importPath": "files.accountsgenerator",
         "description": "files.accountsgenerator",
-        "peekOfCode": "customer = 'sapiens-all'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
+        "peekOfCode": "customer = 'migdal'\njsons = {'accounts': []}\nwith open(f\"{os.path.dirname(os.path.abspath(__file__))}/accounts.txt\", \"r\", encoding='UTF-8') as f:\n    file = csv.reader(f)\n    next(file)\n    for row in file:\n        jsons['accounts'].append({\n            \"account_id\": row[0], \"account_role\": \"Cloudteam-FinOps\"})\n# Convert dictionary to JSON string\njson_string = json.loads(json.dumps(jsons))",
         "detail": "files.accountsgenerator",
         "documentation": {}
     },
@@ -5958,7 +5958,7 @@
         "kind": 2,
         "importPath": "modules.Management.support.support",
         "description": "modules.Management.support.support",
-        "peekOfCode": "def list_account_support(file_path, session, region, time_generated, account):\n    account_id = account['account_id']\n    account_name = str(account.get('account_name')).replace(\" \", \"_\")\n    try:\n        http_request_obj = HttpRequest(method=\"GET\", path=\"/v1/getSupportPlan\")\n        http_request_obj.headers.add(\n            \"Host\", \"service.supportplans.us-east-2.api.aws\")\n        # Create a credentials provider with the AssumeRole provider\n        credentials = session.get_credentials().get_frozen_credentials()\n        credentials_provider = AwsCredentialsProvider.new_static(",
+        "peekOfCode": "def list_account_support(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_account_support` makes a GET request to retrieve support plan information for a\n    specific AWS account and saves the response as a Parquet file.\n    :param file_path: The `file_path` parameter is a string representing the file path where the output\n    will be saved. It is the location where the function will save the data retrieved for the specified\n    account\n    :param session: The `session` parameter in the `list_account_support` function is typically an\n    instance of a session object that allows you to interact with AWS services using the AWS SDK for\n    Python (Boto3). This session object stores configuration information such as credentials, region,",
         "detail": "modules.Management.support.support",
         "documentation": {}
     },
@@ -6622,15 +6622,6 @@
     {
         "label": "list_secrets",
         "kind": 2,
-        "importPath": "modules.Security.KMS.kms",
-        "description": "modules.Security.KMS.kms",
-        "peekOfCode": "def list_secrets(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_secrets` retrieves a list of secrets from AWS Secrets Manager, processes the\n    data, and saves it as a Parquet file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on the filesystem where you want to save the data\n    extracted from the Secrets Manager\n    :param session: The `session` parameter in the `list_secrets` function is typically an instance of a\n    boto3 session that is used to create a client for AWS Secrets Manager service. It allows you to make\n    API calls to AWS services using the credentials and configuration provided in the session",
-        "detail": "modules.Security.KMS.kms",
-        "documentation": {}
-    },
-    {
-        "label": "list_secrets",
-        "kind": 2,
         "importPath": "modules.Security.Secrets.secret",
         "description": "modules.Security.Secrets.secret",
         "peekOfCode": "def list_secrets(file_path, session, region, time_generated, account):\n    \"\"\"\n    The function `list_secrets` retrieves a list of secrets from AWS Secrets Manager, processes the\n    data, and saves it as a Parquet file.\n    :param file_path: The `file_path` parameter is the path where the output file will be saved. It\n    should be a string representing the file path on the filesystem where you want to save the data\n    extracted from the Secrets Manager\n    :param session: The `session` parameter in the `list_secrets` function is typically an instance of a\n    boto3 session that is used to create a client for AWS Secrets Manager service. It allows you to make\n    API calls to AWS services using the credentials and configuration provided in the session",
@@ -6966,7 +6957,7 @@
         "kind": 2,
         "importPath": "main-manual",
         "description": "main-manual",
-        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'METRICS').upper()\n    AUTOMATION = f'aws-{mode.lower()}-collector'\n    # try:\n    #     with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:",
+        "peekOfCode": "def main():\n    \"\"\"\n    The main function reads account information from a JSON file, creates AWS sessions for each account,\n    and then runs parallel tasks to gather information about each mode.\n    \"\"\"\n    # arranging all os configs such as path of file runing or create folders if not exist\n    mode = environ.get('MODE', 'INVENTORY').upper()\n    AUTOMATION = f'aws-{mode.lower()}-collector'\n    # try:\n    #     with open('/app/secrets/account.json', encoding=\"UTF-8\") as file:",
         "detail": "main-manual",
         "documentation": {}
     },
