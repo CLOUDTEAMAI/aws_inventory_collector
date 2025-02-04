@@ -12,6 +12,8 @@ COPY . /app
 # Create MUST directories
 RUN mkdir -p /app/uploads /app/logs /app/secrets
 
+RUN apt-get update -y && apt install -y libpq-dev python3-dev gcc
+
 # Install PIP
 RUN python -m ensurepip --upgrade
 

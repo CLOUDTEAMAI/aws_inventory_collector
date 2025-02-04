@@ -30,7 +30,7 @@ def billing_collector(uploads_directory, logger, account, time_generated):
     scan_date = datetime.strptime(account.get(
         'start_date', time_generated), "%Y-%m-%d")
     session = get_aws_session(
-        account_id=account['account_id'], region='us-east-1', role_name=account['account_role'])
+        account_id=account['account_id'], region=account.get('region', 'us-east-1'), role_name=account['account_role'])
 
     s3_manager = S3Manager(session, account['bucket_name'])
     files_mapping = []

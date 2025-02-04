@@ -1,5 +1,5 @@
-from json import load, dumps
-from os import path, environ
+from json import load, loads, dumps
+from os import path, getenv
 from datetime import datetime
 from cloudteam_servicebus import cloudteam_servicebus
 from cloudteam_logger import cloudteam_logger
@@ -16,52 +16,74 @@ def main():
     and then runs parallel tasks to gather information about each mode.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    try:
-        with open('/app/secrets/account.json', encoding="UTF-8") as file:
-            load_json = load(file)
-        CUSTOMER_ID = str(load_json['customer_id'])
-    except Exception:
-        print("Error loading account.json")
-    mode = environ.get('MODE', 'METRICS').upper()
+    mode = getenv('MODE', '').upper()
     AUTOMATION = f'aws-{mode.lower()}-collector'
-    log = ""
     today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     today_file = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    DATE_YEAR_MONTH = datetime.now().strftime("%Y-%m")
     main_dir = path.dirname(path.abspath(__file__))
-    uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_ID}/{today_file}'
-    logs_dir = f'{main_dir}/logs/{AUTOMATION}/{CUSTOMER_ID}/{today_file}'
-    time_generated = environ.get(
-        'TIME_GENERATED_SCRIPT', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    threads = int(environ.get('THREADS_NUMBER', 6))
-
-    QUEUE_URI = environ.get('QUEUE_URI', '')
-    QUEUE_IDENTITY_ID = environ.get('QUEUE_IDENTITY_ID', '')
-    QUEUE_DESTINATION = environ.get("QUEUE_DESTINATION", "posti")
-
-    create_folder_if_not_exist([f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_ID}/{today_file}',
-                               f'{main_dir}/logs/{AUTOMATION}/{CUSTOMER_ID}/{today_file}'])
-    logger_obj = cloudteam_logger.ct_logging(logs_dir, 'debug')
+    ACCOUNT_FILE_PATH = getenv(
+        "ACCOUNT_FILE_PATH", "/app/secrets/data.json")
+    queue_client = None
+    CUSTOMER_ID = ""
+    CUSTOMER_NAME = ""
+    uploads_dir = ""
+    json_data = {}
     try:
-        sb = cloudteam_servicebus.ServiceBus(
-            QUEUE_URI, QUEUE_IDENTITY_ID, logger_obj)
+        with open(ACCOUNT_FILE_PATH, encoding="UTF-8") as file:
+            load_json = load(file)
+        CUSTOMER_ID = str(load_json['customer_id'])
+        print(f"CUSTOMER ID: {CUSTOMER_ID}")
+        CUSTOMER_NAME = str(load_json['customer_name'])
+        print(f"CUSTOMER NAME: {CUSTOMER_NAME}")
+        if isinstance(load_json, dict):
+            json_data["accounts"] = [load_json]
+        else:
+            json_data = load_json
+    except Exception:
+        print("Error loading account.json")
+    if mode == 'BILLING':
+        uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_NAME}/{DATE_YEAR_MONTH}'
+    else:
+        uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_NAME}/{CUSTOMER_ID}/{DATE_YEAR_MONTH}/{today_file}'
+    logs_dir = f'{main_dir}/logs/{AUTOMATION}/{CUSTOMER_NAME}/{CUSTOMER_ID}/{DATE_YEAR_MONTH}/{today_file}'
+    time_generated = getenv(
+        'TIME_GENERATED_SCRIPT', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    threads = int(getenv('THREADS_NUMBER', "6"))
+
+    QUEUE_URI = getenv('QUEUE_URI', '')
+    QUEUE_IDENTITY_ID = getenv('QUEUE_IDENTITY_ID', '')
+    QUEUE_DESTINATION = getenv("QUEUE_DESTINATION", "posti")
+
+    create_folder_if_not_exist([uploads_dir, logs_dir])
+    log = cloudteam_logger.ct_logging(logs_dir, 'debug')
+    try:
+        queue_client = cloudteam_servicebus.ServiceBus(
+            QUEUE_URI, QUEUE_IDENTITY_ID, log)
+        log.info("Connected to queue service !")
     except Exception as e:
-        logger_obj.error(f"Failed to connect to queue service: {e}")
+        log.error(f"Failed to connect to queue service: {e}")
         exit(1)
 
     if mode == 'INVENTORY':
-        inventory_collector(uploads_directory=uploads_dir, logger=logger_obj,
-                            accounts_json=load_json, time_generated=time_generated, threads=threads)
+        inventory_collector(uploads_directory=uploads_dir, logger=log,
+                            accounts_json=json_data, time_generated=time_generated, threads=threads)
     elif mode == 'METRICS':
-        with open(f'{main_dir}/files/metrics.json', encoding="UTF-8") as file:
+        metrics_file_path = f'{main_dir}/files/metrics.json' if path.exists(
+            f'{main_dir}/files/metrics.json') else path.exists(f'{main_dir}/files/default_metrics.json')
+        with open(metrics_file_path, encoding="UTF-8") as file:
             metrics_list = load(file)
-        metrics_collector(uploads_directory=uploads_dir, logger=logger_obj,
-                          accounts_json=load_json, time_generated=time_generated, metrics=metrics_list, threads=threads)
+        metrics_collector(uploads_directory=uploads_dir, logger=log,
+                          accounts_json=json_data, time_generated=time_generated, metrics=metrics_list, threads=threads)
     elif mode == 'BILLING':
-        billing_collector(uploads_directory=uploads_dir, logger=logger_obj,
-                          account=load_json, time_generated=time_generated)
+        billing_collector(uploads_directory=uploads_dir, logger=log,
+                          account=json_data, time_generated=time_generated)
     elif mode == 'SIZING':
-        sizing_collector(uploads_directory=uploads_dir, logger=logger_obj,
-                         accounts_json=load_json, time_generated=time_generated, threads=threads)
+        sizing_collector(uploads_directory=uploads_dir, logger=log,
+                         accounts_json=json_data, time_generated=time_generated, threads=threads)
+    elif mode == 'ACCOUNTS':
+        sizing_collector(uploads_directory=uploads_dir, logger=log,
+                         accounts_json=json_data, time_generated=time_generated, threads=threads)
     queue_message = {
         'timegenerated': today,
         'automation': AUTOMATION,
@@ -69,8 +91,10 @@ def main():
         'uploads_dir': uploads_dir,
         'logs_dir': logs_dir,
     }
-    sb.Send_Message(queueName=QUEUE_DESTINATION, message=str(
-        dumps(queue_message)).replace("'", '"'))
+    queue_message_json = str(dumps(queue_message)).replace("'", '"')
+    log.info(f"Sending message to queue. Payload:\n{queue_message_json}")
+    queue_client.Send_Message(
+        queueName=QUEUE_DESTINATION, message=queue_message_json)
 
 
 if __name__ == '__main__':

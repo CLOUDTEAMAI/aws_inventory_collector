@@ -4,6 +4,23 @@ from datetime import datetime, timedelta
 from pandas import DataFrame
 
 
+def month_formatter(num):
+    """
+    The function `month_formatter` formats a number representing a month to have a leading zero if it is
+    between 1 and 9.
+
+    :param num: The `num` parameter in the `month_formatter` function is an integer representing a month
+    number. The function checks if the number is between 1 and 9 (inclusive) and if so, it returns the
+    number formatted as a string with a leading zero. If the number is not in that
+    :return: The `month_formatter` function is returning a formatted string for single-digit numbers
+    between 1 and 9, adding a leading zero if necessary. If the input number is not in that range, it
+    simply returns the input number as is.
+    """
+    if 1 <= num <= 9:
+        return f"0{num}"
+    return num
+
+
 def remove_duplicates(dicts):
     seen = set()
     unique_dicts = []
