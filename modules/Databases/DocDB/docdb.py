@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_docdb_global(file_path, session, region, time_generated, account):
+def list_docdb_global(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists global clusters in Amazon DocumentDB and saves the information to a
     Parquet file.
@@ -27,7 +27,7 @@ def list_docdb_global(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('docdb', region_name=region)
+    client = session.client('docdb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -51,7 +51,7 @@ def list_docdb_global(file_path, session, region, time_generated, account):
             break
 
 
-def list_docdb(file_path, session, region, time_generated, account):
+def list_docdb(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists information about DocumentDB clusters and saves it to a Parquet file.
 
@@ -75,7 +75,7 @@ def list_docdb(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('docdb', region_name=region)
+    client = session.client('docdb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -108,7 +108,7 @@ def list_docdb(file_path, session, region, time_generated, account):
             break
 
 
-def list_docdb_instances(file_path, session, region, time_generated, account):
+def list_docdb_instances(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Amazon DocumentDB instances, extracts relevant information, and saves it
     in a Parquet file.
@@ -131,7 +131,7 @@ def list_docdb_instances(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('docdb', region_name=region)
+    client = session.client('docdb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -165,7 +165,7 @@ def list_docdb_instances(file_path, session, region, time_generated, account):
             break
 
 
-def list_docdb_cluster_snapshots(file_path, session, region, time_generated, account):
+def list_docdb_cluster_snapshots(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists DocDB cluster snapshots and saves the information to a Parquet file.
 
@@ -190,7 +190,7 @@ def list_docdb_cluster_snapshots(file_path, session, region, time_generated, acc
     """
     next_token = None
     idx = 0
-    client = session.client('docdb', region_name=region)
+    client = session.client('docdb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -220,7 +220,7 @@ def list_docdb_cluster_snapshots(file_path, session, region, time_generated, acc
             break
 
 
-def list_docdb_elastic_cluster(file_path, session, region, time_generated, account):
+def list_docdb_elastic_cluster(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists DocDB Elastic clusters, retrieves cluster information, and saves the data
     to a Parquet file.
@@ -245,7 +245,8 @@ def list_docdb_elastic_cluster(file_path, session, region, time_generated, accou
     """
     next_token = None
     idx = 0
-    client = session.client('docdb-elastic', region_name=region)
+    client = session.client(
+        'docdb-elastic', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -272,7 +273,7 @@ def list_docdb_elastic_cluster(file_path, session, region, time_generated, accou
             break
 
 
-def list_docdb_elastic_cluster_snapshots(file_path, session, region, time_generated, account):
+def list_docdb_elastic_cluster_snapshots(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists DocDB Elastic cluster snapshots and saves the information to a file in
     Parquet format.
@@ -297,7 +298,8 @@ def list_docdb_elastic_cluster_snapshots(file_path, session, region, time_genera
     """
     next_token = None
     idx = 0
-    client = session.client('docdb-elastic', region_name=region)
+    client = session.client(
+        'docdb-elastic', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

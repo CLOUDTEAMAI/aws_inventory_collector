@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_ec2_reservations(file_path, session, region, time_generated, account):
+def list_ec2_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists EC2 reservations for a specific account in a given region and saves the
     information in a Parquet file.
@@ -29,7 +29,7 @@ def list_ec2_reservations(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -57,7 +57,7 @@ def list_ec2_reservations(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_reservations(file_path, session, region, time_generated, account):
+def list_rds_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves information about reserved RDS instances and saves it in a Parquet
     file.
@@ -83,7 +83,7 @@ def list_rds_reservations(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -111,7 +111,7 @@ def list_rds_reservations(file_path, session, region, time_generated, account):
             break
 
 
-def list_opensearch_reservations(file_path, session, region, time_generated, account):
+def list_opensearch_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves OpenSearch reservations information to a file in Parquet
     format.
@@ -135,7 +135,8 @@ def list_opensearch_reservations(file_path, session, region, time_generated, acc
     """
     next_token = None
     idx = 0
-    client = session.client('opensearch', region_name=region)
+    client = session.client(
+        'opensearch', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -161,7 +162,7 @@ def list_opensearch_reservations(file_path, session, region, time_generated, acc
             break
 
 
-def list_elasticsearch_reservations(file_path, session, region, time_generated, account):
+def list_elasticsearch_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Elasticsearch reservations for a specific account in a given region and
     saves the information to a Parquet file.
@@ -186,7 +187,7 @@ def list_elasticsearch_reservations(file_path, session, region, time_generated, 
     """
     next_token = None
     idx = 0
-    client = session.client('es', region_name=region)
+    client = session.client('es', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -212,7 +213,7 @@ def list_elasticsearch_reservations(file_path, session, region, time_generated, 
             break
 
 
-def list_elasticcache_reservations(file_path, session, region, time_generated, account):
+def list_elasticcache_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about reserved cache nodes in Amazon
     ElastiCache.
@@ -236,7 +237,8 @@ def list_elasticcache_reservations(file_path, session, region, time_generated, a
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -263,7 +265,7 @@ def list_elasticcache_reservations(file_path, session, region, time_generated, a
             break
 
 
-def list_memorydb_reservations(file_path, session, region, time_generated, account):
+def list_memorydb_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about reserved nodes in MemoryDB to a file in
     Parquet format.
@@ -287,7 +289,7 @@ def list_memorydb_reservations(file_path, session, region, time_generated, accou
     """
     next_token = None
     idx = 0
-    client = session.client('memorydb', region_name=region)
+    client = session.client('memorydb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -314,7 +316,7 @@ def list_memorydb_reservations(file_path, session, region, time_generated, accou
             break
 
 
-def list_redshift_reservations(file_path, session, region, time_generated, account):
+def list_redshift_reservations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about Redshift reservations to a file in
     Parquet format.
@@ -339,7 +341,7 @@ def list_redshift_reservations(file_path, session, region, time_generated, accou
     """
     next_token = None
     idx = 0
-    client = session.client('redshift', region_name=region)
+    client = session.client('redshift', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

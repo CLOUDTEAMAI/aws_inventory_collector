@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_appflow(file_path, session, region, time_generated, account):
+def list_appflow(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and processes information about appflows, saving the data in Parquet
     format.
@@ -27,7 +27,7 @@ def list_appflow(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('appflow', region_name=region)
+    client = session.client('appflow', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

@@ -4,10 +4,10 @@ from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, g
 # needs per node - NEEDS MORE WORK
 
 
-def memorydb_metrics(file_path, session, region, account, metrics, time_generated):
+def memorydb_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     next_token = None
     idx = 0
-    client = session.client('docdb', region_name=region)
+    client = session.client('docdb', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

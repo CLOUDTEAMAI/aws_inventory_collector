@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def route53_metrics(file_path, session, region, account, metrics, time_generated):
+def route53_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     The function `route53_metrics` retrieves Route 53 hosted zones, collects resource utilization
     metrics, and saves the metrics to a Parquet file.
@@ -32,7 +32,7 @@ def route53_metrics(file_path, session, region, account, metrics, time_generated
     """
     next_token = None
     idx = 0
-    client = session.client('route53', region_name=region)
+    client = session.client('route53', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:
@@ -55,7 +55,7 @@ def route53_metrics(file_path, session, region, account, metrics, time_generated
             break
 
 
-def route53_resolver_metrics(file_path, session, region, account, metrics, time_generated):
+def route53_resolver_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     The function `route53_resolver_metrics` retrieves Route 53 Resolver endpoints, collects resource
     utilization metrics, and saves the metrics to a Parquet file.
@@ -86,7 +86,8 @@ def route53_resolver_metrics(file_path, session, region, account, metrics, time_
     """
     next_token = None
     idx = 0
-    client = session.client('route53resolver', region_name=region)
+    client = session.client(
+        'route53resolver', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

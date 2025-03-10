@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_application_autoscaling(file_path, session, region, time_generated, account):
+def list_application_autoscaling(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about scalable targets for different service
     namespaces using the Application Auto Scaling client.
@@ -27,7 +27,8 @@ def list_application_autoscaling(file_path, session, region, time_generated, acc
     idx = 0
     servicesNamespaces = ['ecs', 'elasticmapreduce', 'ec2', 'appstream', 'dynamodb', 'rds', 'sagemaker',
                           'custom-resource', 'comprehend', 'lambda', 'cassandra', 'kafka', 'elasticache', 'neptune']
-    client = session.client('application-autoscaling', region_name=region)
+    client = session.client('application-autoscaling',
+                            region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     inventory = []

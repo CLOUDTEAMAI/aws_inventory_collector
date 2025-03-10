@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-# def list_secrets(file_path, session, region, time_generated, account):
+# def list_secrets(file_path, session, region, time_generated, account, boto_config):
 #     """
 #     The function `list_secrets` retrieves a list of secrets from AWS Secrets Manager, processes the
 #     data, and saves it as a Parquet file.
@@ -25,7 +25,7 @@ from utils.utils import extract_common_info, save_as_file_parquet, generate_parq
 #     """
 #     next_token = None
 #     idx = 0
-#     client = session.client('secretsmanager', region_name=region)
+#     client = session.client('secretsmanager', region_name=region, config=boto_config)
 #     account_id = account['account_id']
 #     account_name = str(account['account_name']).replace(" ", "_")
 #     while True:

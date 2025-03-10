@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_workspaces(file_path, session, region, time_generated, account):
+def list_workspaces(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists workspaces using the AWS WorkSpaces client and saves the inventory
     information as Parquet files.
@@ -28,7 +28,8 @@ def list_workspaces(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('workspaces', region_name=region)
+    client = session.client(
+        'workspaces', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -58,7 +59,7 @@ def list_workspaces(file_path, session, region, time_generated, account):
             break
 
 
-def list_workspaces_thin_client(file_path, session, region, time_generated, account):
+def list_workspaces_thin_client(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves information about thin clients in AWS WorkSpaces and saves it as
     Parquet files.
@@ -82,7 +83,8 @@ def list_workspaces_thin_client(file_path, session, region, time_generated, acco
     """
     next_token = None
     idx = 0
-    client = session.client('workspaces-thin-client', region_name=region)
+    client = session.client('workspaces-thin-client',
+                            region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

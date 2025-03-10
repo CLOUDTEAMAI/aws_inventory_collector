@@ -7,7 +7,7 @@ from awscrt.auth import AwsCredentialsProvider, AwsSignatureType, AwsSigningAlgo
 import requests
 
 
-def list_account_support(file_path, session, region, time_generated, account):
+def list_account_support(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_account_support` makes a GET request to retrieve support plan information for a
     specific AWS account and saves the response as a Parquet file.

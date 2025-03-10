@@ -56,7 +56,7 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
                         complete_aws_account(acc),
                         threads
                     ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in account_json for region in regions_enabled(get_aws_session(account['account_id'], role_name=account['account_role'])) if get_aws_session(account['account_id'], role_name=account['account_role']) is not None
+                ): account for account in account_json for region in regions_enabled(get_aws_session(account['account_id'], role_name=account.get('account_role', 'Cloudteam-FinOps'))) if get_aws_session(account['account_id'], role_name=account.get('account_role', 'Cloudteam-FinOps')) is not None
             }
             for future in as_completed(futures_services):
                 try:

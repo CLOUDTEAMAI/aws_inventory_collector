@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_elb(file_path, session, region, time_generated, account):
+def list_elb(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Elastic Load Balancers (ELBs) and saves the information to a Parquet
     file.
@@ -22,7 +22,7 @@ def list_elb(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elb', region_name=region)
+    client = session.client('elb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -48,7 +48,7 @@ def list_elb(file_path, session, region, time_generated, account):
             break
 
 
-def list_elbv2(file_path, session, region, time_generated, account):
+def list_elbv2(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Elastic Load Balancers (ELBv2) and saves the information as Parquet
     files.
@@ -71,7 +71,7 @@ def list_elbv2(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elbv2', region_name=region)
+    client = session.client('elbv2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -97,7 +97,7 @@ def list_elbv2(file_path, session, region, time_generated, account):
             break
 
 
-def list_elbv2_target_group(file_path, session, region, time_generated, account):
+def list_elbv2_target_group(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Elastic Load Balancing target groups and saves the information to a
     Parquet file.
@@ -121,7 +121,7 @@ def list_elbv2_target_group(file_path, session, region, time_generated, account)
     """
     next_token = None
     idx = 0
-    client = session.client('elbv2', region_name=region)
+    client = session.client('elbv2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -145,7 +145,7 @@ def list_elbv2_target_group(file_path, session, region, time_generated, account)
             break
 
 
-def list_elbv2_listeners(file_path, session, region, time_generated, account):
+def list_elbv2_listeners(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves information about listeners associated with Elastic Load Balancers
     and saves the data in a Parquet file.
@@ -168,7 +168,7 @@ def list_elbv2_listeners(file_path, session, region, time_generated, account):
     next_token = None
     idx = 0
     listener_idx = 0
-    client = session.client('elbv2', region_name=region)
+    client = session.client('elbv2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

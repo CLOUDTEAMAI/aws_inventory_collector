@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_keyspaces(file_path, session, region, time_generated, account):
+def list_keyspaces(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists keyspaces using the AWS Keyspaces client and saves the inventory
     information as Parquet files.
@@ -26,7 +26,8 @@ def list_keyspaces(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('keyspaces', region_name=region)
+    client = session.client(
+        'keyspaces', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -50,7 +51,7 @@ def list_keyspaces(file_path, session, region, time_generated, account):
             break
 
 
-def list_keyspaces_tables(file_path, session, region, time_generated, account):
+def list_keyspaces_tables(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_keyspaces_tables` retrieves information about keyspaces and tables from a
     Keyspaces service and saves the data in Parquet format.
@@ -76,7 +77,8 @@ def list_keyspaces_tables(file_path, session, region, time_generated, account):
     next_token = None
     sub_next_token = None
     idx = 0
-    client = session.client('keyspaces', region_name=region)
+    client = session.client(
+        'keyspaces', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -131,11 +133,12 @@ def list_keyspaces_tables(file_path, session, region, time_generated, account):
             break
 
 
-def list_keyspaces_tables_autoscaling(file_path, session, region, time_generated, account):
+def list_keyspaces_tables_autoscaling(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     sub_next_token = None
     idx = 0
-    client = session.client('keyspaces', region_name=region)
+    client = session.client(
+        'keyspaces', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

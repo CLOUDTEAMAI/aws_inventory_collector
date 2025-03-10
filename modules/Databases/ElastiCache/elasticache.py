@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_cache(file_path, session, region, time_generated, account):
+def list_cache(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves information about cache clusters using the AWS Elasticache client and
     saves the data in Parquet format.
@@ -26,7 +26,8 @@ def list_cache(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -58,7 +59,7 @@ def list_cache(file_path, session, region, time_generated, account):
             break
 
 
-def list_cache_serverless(file_path, session, region, time_generated, account):
+def list_cache_serverless(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists and caches serverless resources using AWS Elasticache client.
 
@@ -80,7 +81,8 @@ def list_cache_serverless(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -107,7 +109,7 @@ def list_cache_serverless(file_path, session, region, time_generated, account):
             break
 
 
-def list_cache_sizing(file_path, session, region, time_generated, account):
+def list_cache_sizing(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves information about cache clusters and their node type modifications,
     saves the data as Parquet files, and handles exceptions during the process.
@@ -130,7 +132,8 @@ def list_cache_sizing(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -157,7 +160,7 @@ def list_cache_sizing(file_path, session, region, time_generated, account):
             break
 
 
-def list_cache_snapshots(file_path, session, region, time_generated, account):
+def list_cache_snapshots(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and processes cache snapshots from an AWS ElastiCache instance,
     saving the information to a Parquet file.
@@ -182,7 +185,8 @@ def list_cache_snapshots(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -218,7 +222,7 @@ def list_cache_snapshots(file_path, session, region, time_generated, account):
             break
 
 
-def list_cache_serverless_snapshots(file_path, session, region, time_generated, account):
+def list_cache_serverless_snapshots(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists and caches serverless snapshots from an Elasticache client using provided
     parameters.
@@ -244,7 +248,8 @@ def list_cache_serverless_snapshots(file_path, session, region, time_generated, 
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

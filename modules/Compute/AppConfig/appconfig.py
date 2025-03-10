@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_appconfig(file_path, session, region, time_generated, account):
+def list_appconfig(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_appconfig` retrieves a list of applications from Alexa for Business and saves the
     information in a Parquet file.
@@ -27,7 +27,8 @@ def list_appconfig(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('appconfig', region_name=region)
+    client = session.client(
+        'appconfig', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

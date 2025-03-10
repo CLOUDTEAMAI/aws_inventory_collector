@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_dynamodb(file_path, session, region, time_generated, account):
+def list_dynamodb(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_dynamo` retrieves information about DynamoDB tables and saves it to a file in
     Parquet format.
@@ -28,7 +28,7 @@ def list_dynamodb(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('dynamodb', region_name=region)
+    client = session.client('dynamodb', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -101,7 +101,7 @@ def list_dynamodb(file_path, session, region, time_generated, account):
             break
 
 
-def list_dynamodb_streams(file_path, session, region, time_generated, account):
+def list_dynamodb_streams(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_dynamodb_streams` retrieves and processes information about DynamoDB streams,
     saving the data as Parquet files.
@@ -122,7 +122,8 @@ def list_dynamodb_streams(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('dynamodbstreams', region_name=region)
+    client = session.client(
+        'dynamodbstreams', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     streams = []
@@ -168,7 +169,7 @@ def list_dynamodb_streams(file_path, session, region, time_generated, account):
                 break
 
 
-def list_dax(file_path, session, region, time_generated, account):
+def list_dax(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_dax` retrieves information about DAX clusters, formats the data, and saves it to
     a Parquet file.
@@ -187,7 +188,7 @@ def list_dax(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('dax', region_name=region)
+    client = session.client('dax', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

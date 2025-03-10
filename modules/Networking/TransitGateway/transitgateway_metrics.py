@@ -2,13 +2,14 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def transitgateway_metrics(file_path, session, region, account, metrics, time_generated):
+def transitgateway_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     next_token = None
     idx = 0
     account_id = account['account_id']
     while True:
         try:
-            client = session.client('ec2', region_name=region)
+            client = session.client(
+                'ec2', region_name=region, config=boto_config)
             inventory = []
             response = client.describe_transit_gateways(
                 NextToken=next_token) if next_token else client.describe_transit_gateways()
@@ -28,14 +29,15 @@ def transitgateway_metrics(file_path, session, region, account, metrics, time_ge
             break
 
 
-def transitgateway_attachments_metrics(file_path, session, region, account, metrics, time_generated):
+def transitgateway_attachments_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     next_token = None
     idx = 0
     account_id = account['account_id']
     while True:
         try:
             gw_idx = 0
-            client = session.client('ec2', region_name=region)
+            client = session.client(
+                'ec2', region_name=region, config=boto_config)
             inventory = []
             addons = {"type": "transitgateway"}
             addons['nodes'] = []

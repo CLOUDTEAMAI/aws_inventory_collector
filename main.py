@@ -1,4 +1,4 @@
-from json import load, loads, dumps
+from json import load, dumps
 from os import path, getenv
 from datetime import datetime
 from cloudteam_servicebus import cloudteam_servicebus
@@ -36,14 +36,14 @@ def main():
         print(f"CUSTOMER ID: {CUSTOMER_ID}")
         CUSTOMER_NAME = str(load_json['customer_name'])
         print(f"CUSTOMER NAME: {CUSTOMER_NAME}")
-        if isinstance(load_json, dict):
+        if isinstance(load_json, dict) and mode != 'BILLING':
             json_data["accounts"] = [load_json]
         else:
             json_data = load_json
-    except Exception:
-        print("Error loading account.json")
+    except Exception as e:
+        print(f"Error loading data.json. ERROR: {e}")
     if mode == 'BILLING':
-        uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_NAME}/{DATE_YEAR_MONTH}'
+        uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_NAME}/{CUSTOMER_ID}'
     else:
         uploads_dir = f'{main_dir}/uploads/{AUTOMATION}/{CUSTOMER_NAME}/{CUSTOMER_ID}/{DATE_YEAR_MONTH}/{today_file}'
     logs_dir = f'{main_dir}/logs/{AUTOMATION}/{CUSTOMER_NAME}/{CUSTOMER_ID}/{DATE_YEAR_MONTH}/{today_file}'
@@ -69,8 +69,8 @@ def main():
         inventory_collector(uploads_directory=uploads_dir, logger=log,
                             accounts_json=json_data, time_generated=time_generated, threads=threads)
     elif mode == 'METRICS':
-        metrics_file_path = f'{main_dir}/files/metrics.json' if path.exists(
-            f'{main_dir}/files/metrics.json') else path.exists(f'{main_dir}/files/default_metrics.json')
+        metrics_file_path = '/app/files/metrics.json' if path.exists(
+            '/app/files/metrics.json') else '/app/files/default_metrics.json'
         with open(metrics_file_path, encoding="UTF-8") as file:
             metrics_list = load(file)
         metrics_collector(uploads_directory=uploads_dir, logger=log,

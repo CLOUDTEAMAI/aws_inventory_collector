@@ -1,5 +1,7 @@
+from os import getenv
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from threading import Lock
+from botocore.config import Config
 from .metrics import *
 
 lock = Lock()
@@ -65,14 +67,10 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
             's3_metrics': s3_metrics
         }
     functions_map = {**functionsz_map, **global_tasks}
-    # elif region == 'us-west-2':
-    #     global_tasks = {'globalaccelerator': list_globalaccelerator}
-
-    # for namespace in metrics:
-    #     for metric in metrics[namespace]:
-    #         if metric['list_function'] in functions_map.keys():
-    #             tasks[metric['list_function']] = []
-
+    boto_config = Config(
+        connect_timeout=int(getenv("AWS_CONNECT_TIMEOUT", "30")),
+        read_timeout=int(getenv("AWS_READ_TIMEOUT", "30"))
+    )
     for namespace in metrics:
         for metric in metrics[namespace]:
             if metric['list_function'] in functions_map.keys():
@@ -93,7 +91,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
 
     with ThreadPoolExecutor() as executor:
         future_to_task = {
-            executor.submit(functions_map[name], main_dir, session, region, account, task, time_generated): name for name, task in tasks.items()
+            executor.submit(functions_map[name], main_dir, session, region, account, task, time_generated, boto_config): name for name, task in tasks.items()
         }
         for future in as_completed(future_to_task):
             task_name = future_to_task[future]
@@ -116,13 +114,13 @@ def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time
             futures_services = {}
             for account in account_json['accounts']:
                 session = get_aws_session(
-                    account['account_id'], role_name=account['account_role'])
+                    account.get('account_id'), role_name=account.get('account_role', ''))
                 if session is not None:
                     regions = regions_enabled(session)
                     for region in regions:
                         future = executor.submit(
                             lambda session=get_aws_session(
-                                account['account_id'], role_name=account['account_role'], region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
+                                account.get('account_id'), role_name=account.get('account_role', ''), region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
                                 logger_obj,
                                 main_dir,
                                 session,

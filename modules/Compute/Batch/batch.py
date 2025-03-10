@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_batch_compute(file_path, session, region, time_generated, account):
+def list_batch_compute(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function iterates through compute environments using the AWS Batch client, extracts
     common information, and saves the data as a Parquet file.
@@ -24,7 +24,7 @@ def list_batch_compute(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('batch', region_name=region)
+    client = session.client('batch', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -48,7 +48,7 @@ def list_batch_compute(file_path, session, region, time_generated, account):
             break
 
 
-def list_batch_jobs(file_path, session, region, time_generated, account):
+def list_batch_jobs(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_batch_jobs` retrieves information about job queues and jobs from AWS Batch and
     saves the data as Parquet files.
@@ -70,7 +70,7 @@ def list_batch_jobs(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('batch', region_name=region)
+    client = session.client('batch', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     job_queues = []

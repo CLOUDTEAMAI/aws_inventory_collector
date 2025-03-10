@@ -1,3 +1,4 @@
+from os import getenv
 from boto3 import Session, client
 
 
@@ -13,7 +14,7 @@ def complete_aws_account(account):
     dictionary, while the values for 'account_role' default to 'Cloudteam-FinOps' if not present in the
     input `account` dictionary. The value for 'account_name'
     """
-    return {'account_id': account['account_id'], 'account_role': account.get('account_role', 'Cloudteam-FinOps'), 'account_name': account.get('account_name', '')}
+    return {'account_id': account['account_id'], 'account_role': account.get('account_role', ''), 'account_name': account.get('account_name', '')}
 
 
 def regions_enabled(session):
@@ -65,7 +66,7 @@ def regions_enabled(session):
         return default_regions
 
 
-def get_credentials_assume_role(account_id, role_name="Cloudteam-FinOps", region='us-east-1', external_id=None):
+def get_credentials_assume_role(account_id, role_name="", region='us-east-1', external_id=None):
     """
     The function `get_credentials_assume_role` assumes an AWS IAM role in a specified account and
     returns the temporary credentials.
@@ -100,7 +101,7 @@ def get_credentials_assume_role(account_id, role_name="Cloudteam-FinOps", region
         return None
 
 
-def get_aws_session(account_id, region='us-east-1', role_name="Cloudteam-FinOps"):
+def get_aws_session(account_id, region='us-east-1', role_name=""):
     """
     This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and
     then uses those credentials to create a new `boto3` session
@@ -112,14 +113,19 @@ def get_aws_session(account_id, region='us-east-1', role_name="Cloudteam-FinOps"
         external_id:
     """
     try:
-        credentials = get_credentials_assume_role(
-            account_id, role_name, region)
+        credentials = None
+        if role_name:
+            credentials = get_credentials_assume_role(
+                account_id, role_name, region)
         if credentials is not None:
             aws_session = Session(aws_access_key_id=credentials['AccessKeyId'],
                                   aws_secret_access_key=credentials['SecretAccessKey'],
                                   aws_session_token=credentials['SessionToken'],
                                   region_name=region
                                   )
+            return aws_session
+        else:
+            aws_session = Session(region_name=region)
             return aws_session
     except Exception:
         # log.error(f"Error occurred get credentials: {e}")

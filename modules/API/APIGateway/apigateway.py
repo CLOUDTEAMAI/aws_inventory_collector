@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_apigateway(file_path, session, region, time_generated, account):
+def list_apigateway(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists API Gateway resources and saves the inventory as a Parquet file.
 
@@ -25,7 +25,8 @@ def list_apigateway(file_path, session, region, time_generated, account):
     dictionary is used to extract the
     """
     idx = 0
-    client = session.client('apigateway', region_name=region)
+    client = session.client(
+        'apigateway', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     response = client.get_rest_apis(limit=500)
@@ -42,7 +43,7 @@ def list_apigateway(file_path, session, region, time_generated, account):
                          generate_parquet_prefix(str(stack()[0][3]), region, account_id, idx))
 
 
-def list_apigatewayv2(file_path, session, region, time_generated, account):
+def list_apigatewayv2(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists API Gateway v2 resources and saves the information to a Parquet file.
 
@@ -63,7 +64,8 @@ def list_apigatewayv2(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('apigatewayv2', region_name=region)
+    client = session.client(
+        'apigatewayv2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

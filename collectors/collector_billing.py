@@ -1,7 +1,10 @@
 from datetime import datetime
+from os import getenv
+from re import search
 from threading import Lock
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from .billing import *
+from utils.utils import create_folder_if_not_exist
 
 
 def billing_collector(uploads_directory, logger, account, time_generated):
@@ -27,24 +30,33 @@ def billing_collector(uploads_directory, logger, account, time_generated):
     """
     lock = Lock()
     files = []
-    scan_date = datetime.strptime(account.get(
-        'start_date', time_generated), "%Y-%m-%d")
+    print(f"Account: {account}")
     session = get_aws_session(
-        account_id=account['account_id'], region=account.get('region', 'us-east-1'), role_name=account['account_role'])
+        account_id=account['account_id'], region=account.get('region', 'us-east-1'), role_name=account.get('account_role', 'Cloudteam-FinOps'))
 
-    s3_manager = S3Manager(session, account['bucket_name'])
+    s3_manager = S3Manager(session=session, bucket_name=account['bucket_name'])
     files_mapping = []
     # List files
     files = s3_manager.list_files()
     if files:
-        if account.get('collect_all', 'false') == 'true':
+        if account.get('collect_all', 'false') == 'true' or getenv('COLLECT_ALL', 'false') == 'true':
             for file in files:
-                if (file.endswith('.parquet') or file.endswith('.csv') or file.endswith('.csv.gz')):
+                if (file.endswith('.parquet') or file.endswith('.csv') or file.endswith('.csv.gz')) and ("cost_and_usage_data_status" not in file):
+                    file_replaced = file.replace('/', '-')
+                    new_file = file_replaced
+                    matching = search(r'year=(\d+)-month=(\d+)', file_replaced)
+                    if matching:
+                        year, month = matching.groups()
+                        month = month.zfill(2)  # Ensure two-digit month format
+                        new_file = f"{year}-{month}/{file_replaced}"
+
                     files_mapping.append({
                         "source": file,
-                        "target": f"{uploads_directory}/{file.replace('/', '-')}"
+                        "target": f"{uploads_directory}/{new_file}"
                     })
         else:
+            scan_date = datetime.strptime(account.get(
+                'start_date', time_generated), "%Y-%m-%d")
             date_info = [f'year={scan_date.year}',
                          f'month={scan_date.month}']
             date_info2 = f"{scan_date.year}{month_formatter(scan_date.month)}01-"
@@ -60,6 +72,16 @@ def billing_collector(uploads_directory, logger, account, time_generated):
                         "source": file,
                         "target": f"{uploads_directory}/{file.replace('/', '-')}"
                     })
+        sub_folders = []
+        for folder in files_mapping:
+            sub_folder_name = "/".join(folder['target'].split(
+                f"{uploads_directory}/")[-1].split("/")[:-1])
+            sub_folders.append(f"{uploads_directory}/{sub_folder_name}")
+        print(f"Subfolders to be created: \n{sub_folders}")
+        for folder in list(set(sub_folders)):
+            print(f"Creating {folder} subfolder...")
+            create_folder_if_not_exist([folder])
+            print(f"{folder} subfolder created.")
         with ThreadPoolExecutor(max_workers=5) as executor:
             future_to_url = {executor.submit(
                 s3_manager.download_file, file['source'], file['target']): file for file in files_mapping}
@@ -69,7 +91,7 @@ def billing_collector(uploads_directory, logger, account, time_generated):
                     data = future.result()
                 except Exception as e:
                     with lock:
-                        logger.error(f"ERROR (URL:{url}): {str(e)}")
+                        logger.error(f"(URL:{url}): {str(e)}")
     else:
         logger.error(
             f"Unable to list files in {account['bucket_name']} bucket")

@@ -2,9 +2,8 @@
 # from utils.utils import *
 
 
-
 # def list_auditmanager(file_path,session,region):
-#     client = session.client('auditmanager',region_name=region)
+#     client = session.client('auditmanager',region_name=region, config=boto_config)
 #     sts = session.client('sts')
 #     account_id = sts.get_caller_identity()["Account"]
 #     inventory_instances = []
@@ -17,5 +16,3 @@
 #            inventory_instances.append(inventory_object)
 #         save_as_file_parquet(inventory_instances,file_path,generate_parquet_prefix(__file__,region,account_id))
 #     return inventory_instances
-
-

@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def appflow_metrics(file_path, session, region, account, metrics, time_generated):
+def appflow_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves metrics for AppFlow resources, saves them as Parquet files, and
     handles pagination for listing flows.
@@ -35,7 +35,8 @@ def appflow_metrics(file_path, session, region, account, metrics, time_generated
     account_id = account['account_id']
     while True:
         try:
-            client = session.client('appflow', region_name=region)
+            client = session.client(
+                'appflow', region_name=region, config=boto_config)
             inventory = []
             response = client.list_flows(
                 nextToken=next_token) if next_token else client.list_flows()

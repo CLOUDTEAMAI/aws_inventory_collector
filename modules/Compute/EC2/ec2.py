@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_ec2(file_path, session, region, time_generated, account):
+def list_ec2(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_ec2` retrieves information about EC2 instances, formats the data, and saves it as
     a Parquet file.
@@ -27,7 +27,7 @@ def list_ec2(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account.get('account_name', '')).replace(" ", "_")
     while True:
@@ -76,7 +76,7 @@ def list_ec2(file_path, session, region, time_generated, account):
             break
 
 
-def list_ami(file_path, session, region, time_generated, account):
+def list_ami(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_ami` retrieves information about AMIs owned by the specified account in the given
     region and saves the data in a Parquet file.
@@ -99,7 +99,7 @@ def list_ami(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

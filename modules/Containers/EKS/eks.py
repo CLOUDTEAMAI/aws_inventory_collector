@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_eks(file_path, session, region, time_generated, account):
+def list_eks(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_eks` retrieves information about EKS clusters and saves it to a Parquet file.
 
@@ -22,7 +22,7 @@ def list_eks(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('eks', region_name=region)
+    client = session.client('eks', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

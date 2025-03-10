@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_org(file_path, session, region, time_generated, account):
+def list_org(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_org` retrieves information about an organization using the AWS Organizations API
     and saves it to a Parquet file.

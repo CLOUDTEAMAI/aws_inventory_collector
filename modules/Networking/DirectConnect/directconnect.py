@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_directconnect_connections(file_path, session, region, time_generated, account):
+def list_directconnect_connections(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about Direct Connect connections to a file in
     Parquet format.
@@ -25,7 +25,8 @@ def list_directconnect_connections(file_path, session, region, time_generated, a
     """
     next_token = None
     idx = 0
-    client = session.client('directconnect', region_name=region)
+    client = session.client(
+        'directconnect', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -52,7 +53,7 @@ def list_directconnect_connections(file_path, session, region, time_generated, a
             break
 
 
-def list_directconnect_interfaces(file_path, session, region, time_generated, account):
+def list_directconnect_interfaces(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about Direct Connect interfaces for a specified
     account and region.
@@ -78,7 +79,8 @@ def list_directconnect_interfaces(file_path, session, region, time_generated, ac
     """
     next_token = None
     idx = 0
-    client = session.client('directconnect', region_name=region)
+    client = session.client(
+        'directconnect', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

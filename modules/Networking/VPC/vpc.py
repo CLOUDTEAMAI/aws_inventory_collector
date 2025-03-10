@@ -2,10 +2,10 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_vpc(file_path, session, region, time_generated, account):
+def list_vpc(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -29,10 +29,10 @@ def list_vpc(file_path, session, region, time_generated, account):
             break
 
 
-def list_vpc_endpoint(file_path, session, region, time_generated, account):
+def list_vpc_endpoint(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -57,10 +57,10 @@ def list_vpc_endpoint(file_path, session, region, time_generated, account):
             break
 
 
-def list_vpc_endpoint_services(file_path, session, region, time_generated, account):
+def list_vpc_endpoint_services(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -85,10 +85,10 @@ def list_vpc_endpoint_services(file_path, session, region, time_generated, accou
             break
 
 
-def list_vpc_peering(file_path, session, region, time_generated, account):
+def list_vpc_peering(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -113,10 +113,11 @@ def list_vpc_peering(file_path, session, region, time_generated, account):
             break
 
 
-def list_vpclattice(file_path, session, region, time_generated, account):
+def list_vpclattice(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('vpc-lattice', region_name=region)
+    client = session.client(
+        'vpc-lattice', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

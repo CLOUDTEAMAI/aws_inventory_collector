@@ -1,5 +1,7 @@
+from os import getenv
 from concurrent.futures import as_completed, ThreadPoolExecutor
 from threading import Lock
+from botocore.config import Config
 from .inventory import *
 
 lock = Lock()
@@ -73,14 +75,14 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
                 executor.submit(
                     lambda acc=account, reg=region: parallel_executor_regional_inventory(
                         logger_obj, main_dir,
-                        get_aws_session(acc['account_id'],
-                                        reg, role_name=acc['account_role']),
+                        get_aws_session(acc.get('account_id'),
+                                        reg, role_name=acc.get('account_role', '')),
                         reg,
                         time_generated,
                         complete_aws_account(acc),
                         threads
                     ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account['account_role'])) if get_aws_session(account['account_id'], role_name=account['account_role']) is not None
+                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account.get('account_role', ''))) if get_aws_session(account['account_id'], role_name=account.get('account_role', '')) is not None
             }
             for future in as_completed(futures_services):
                 try:
@@ -269,8 +271,8 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         # 'route53_profiles': list_route53_profiles,
         # 'route53_profiles_associations': list_route53_profiles_associations,
         # 'routetable': list_routetable,
-        'wisdom': list_wisdom,
-        'voiceid': list_voiceid,
+        # 'wisdom': list_wisdom,
+        # 'voiceid': list_voiceid,
         'appstream': list_appstream,
         'transitgateway': list_transitgateway,
         'transitgatewayattachments': list_transitgateway_attachments,
@@ -309,9 +311,13 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
     else:
         global_tasks = {}
     tasks = {**functions_map, **global_tasks}
+    boto_config = Config(
+        connect_timeout=int(getenv("AWS_CONNECT_TIMEOUT", "30")),
+        read_timeout=int(getenv("AWS_READ_TIMEOUT", "30"))
+    )
     with ThreadPoolExecutor(threads) as executor:
         future_to_task = {
-            executor.submit(task, main_dir, session, region, time_generated, account): name for name, task in tasks.items()
+            executor.submit(task, main_dir, session, region, time_generated, account, boto_config): name for name, task in tasks.items()
         }
         for future in as_completed(future_to_task):
             task_name = future_to_task[future]

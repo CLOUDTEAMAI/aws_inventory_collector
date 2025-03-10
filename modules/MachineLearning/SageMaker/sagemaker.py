@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_sagemaker_cluster(file_path, session, region, time_generated, account):
+def list_sagemaker_cluster(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists SageMaker clusters, extracts common information, and saves the data as
     Parquet files.
@@ -26,7 +26,8 @@ def list_sagemaker_cluster(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -53,7 +54,7 @@ def list_sagemaker_cluster(file_path, session, region, time_generated, account):
             break
 
 
-def list_sagemaker_domain(file_path, session, region, time_generated, account):
+def list_sagemaker_domain(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists SageMaker domains, extracts common information, and saves the data as
     Parquet files.
@@ -78,7 +79,8 @@ def list_sagemaker_domain(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -102,7 +104,7 @@ def list_sagemaker_domain(file_path, session, region, time_generated, account):
             break
 
 
-def list_sagemaker_notebook_instance(file_path, session, region, time_generated, account):
+def list_sagemaker_notebook_instance(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists SageMaker notebook instances, extracts common information, and saves the
     data as a Parquet file.
@@ -125,7 +127,8 @@ def list_sagemaker_notebook_instance(file_path, session, region, time_generated,
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -149,7 +152,7 @@ def list_sagemaker_notebook_instance(file_path, session, region, time_generated,
             break
 
 
-def list_sagemaker_endpoint(file_path, session, region, time_generated, account):
+def list_sagemaker_endpoint(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_sagemaker_endpoint` retrieves and processes information about SageMaker
     endpoints, formatting the data and saving it to a Parquet file.
@@ -174,7 +177,8 @@ def list_sagemaker_endpoint(file_path, session, region, time_generated, account)
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -262,7 +266,7 @@ def list_sagemaker_endpoint(file_path, session, region, time_generated, account)
             break
 
 
-def list_sagemaker_models(file_path, session, region, time_generated, account):
+def list_sagemaker_models(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists SageMaker models, retrieves their details, and saves the information in a
     Parquet file.
@@ -285,7 +289,8 @@ def list_sagemaker_models(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -308,7 +313,7 @@ def list_sagemaker_models(file_path, session, region, time_generated, account):
             break
 
 
-def list_sagemaker_training_jobs(file_path, session, region, time_generated, account):
+def list_sagemaker_training_jobs(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists SageMaker training jobs, retrieves detailed information for each job, and
     saves the data in Parquet format.
@@ -335,7 +340,8 @@ def list_sagemaker_training_jobs(file_path, session, region, time_generated, acc
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -390,7 +396,7 @@ def list_sagemaker_training_jobs(file_path, session, region, time_generated, acc
             break
 
 
-def list_sagemaker_hpt_jobs(file_path, session, region, time_generated, account):
+def list_sagemaker_hpt_jobs(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_sagemaker_hpt_jobs` retrieves and processes information about SageMaker
     hyperparameter tuning jobs.
@@ -416,7 +422,8 @@ def list_sagemaker_hpt_jobs(file_path, session, region, time_generated, account)
     """
     next_token = None
     idx = 0
-    client = session.client('sagemaker', region_name=region)
+    client = session.client(
+        'sagemaker', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

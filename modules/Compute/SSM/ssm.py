@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_ssm(file_path, session, region, time_generated, account):
+def list_ssm(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_ssm` retrieves and saves information about SSM parameters to a Parquet file.
 
@@ -24,7 +24,7 @@ def list_ssm(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('ssm', region_name=region)
+    client = session.client('ssm', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -34,6 +34,7 @@ def list_ssm(file_path, session, region, time_generated, account):
                 NextToken=next_token) if next_token else client.describe_parameters()
             for resource in response.get('Parameters', []):
                 resource['LastModifiedDate'] = resource['LastModifiedDate'].isoformat()
+                name = ""
                 if resource.get('Name', '').startswith('/'):
                     name = resource.get('Name', '')[1:-1]
                 arn = resource.get(

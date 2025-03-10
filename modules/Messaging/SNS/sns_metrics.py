@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def sns_metrics(file_path, session, region, account, metrics, time_generated):
+def sns_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves SNS topics, collects metrics for each topic, and saves the metrics to
     a Parquet file.
@@ -34,7 +34,8 @@ def sns_metrics(file_path, session, region, account, metrics, time_generated):
     account_id = account['account_id']
     while True:
         try:
-            client = session.client('sns', region_name=region)
+            client = session.client(
+                'sns', region_name=region, config=boto_config)
             inventory = []
             response = client.list_topics(
                 NextToken=next_token) if next_token else client.list_topics()

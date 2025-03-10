@@ -29,7 +29,7 @@ def get_all_accounts_regional_sizing(logger_obj, main_dir: str, account_json: li
                         complete_aws_account(acc),
                         threads
                     ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in account_json['accounts'] for region in ['us-east-1'] if get_aws_session(account['account_id'], role_name=account['account_role']) is not None
+                ): account for account in account_json['accounts'] for region in ['us-east-1'] if get_aws_session(account['account_id'], role_name=account.get('account_role', 'Cloudteam-FinOps')) is not None
             }
             for future in as_completed(futures_services):
                 try:

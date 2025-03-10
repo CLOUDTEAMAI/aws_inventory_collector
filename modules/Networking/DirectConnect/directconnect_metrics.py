@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def dx_vif_metrics(file_path, session, region, account, metrics, time_generated):
+def dx_vif_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     The function `dx_vif_metrics` retrieves Direct Connect VIF metrics for a specified account and
     region and saves them to a file in Parquet format.
@@ -31,7 +31,8 @@ def dx_vif_metrics(file_path, session, region, account, metrics, time_generated)
     """
     next_token = None
     idx = 0
-    client = session.client('directconnect', region_name=region)
+    client = session.client(
+        'directconnect', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

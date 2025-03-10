@@ -5,7 +5,7 @@
 
 # def list_well_architect(file_path,session,region,time_generated,account):
 #     try:
-#         wa_client = session.client('wellarchitected',region_name=region)
+#         wa_client = session.client('wellarchitected',region_name=region, config=boto_config)
 #         account_id = account['account_id']
 #         account_name = str(account['account_name']).replace(" ","_")
 #         inventory_instances = []

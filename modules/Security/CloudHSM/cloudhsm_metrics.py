@@ -2,10 +2,11 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def cloudhsmv2_metrics(file_path, session, region, account, metrics, time_generated):
+def cloudhsmv2_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     next_token = None
     idx = 0
-    client = session.client('cloudhsmv2', region_name=region)
+    client = session.client(
+        'cloudhsmv2', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def rds_instances_metrics(file_path, session, region, account, metrics, time_generated):
+def rds_instances_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves metrics for RDS instances, saves them as Parquet files, and handles
     exceptions during the process.
@@ -33,7 +33,7 @@ def rds_instances_metrics(file_path, session, region, account, metrics, time_gen
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:
@@ -56,7 +56,7 @@ def rds_instances_metrics(file_path, session, region, account, metrics, time_gen
             break
 
 
-def rds_proxies_metrics(file_path, session, region, account, metrics, time_generated):
+def rds_proxies_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves metrics for RDS proxies and saves them to a Parquet file.
 
@@ -84,7 +84,7 @@ def rds_proxies_metrics(file_path, session, region, account, metrics, time_gener
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

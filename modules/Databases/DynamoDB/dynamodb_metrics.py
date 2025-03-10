@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def dynamodb_tables_metrics(file_path, session, region, account, metrics, time_generated):
+def dynamodb_tables_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This function retrieves DynamoDB table names, collects resource utilization metrics for each table,
     and saves the metrics to a Parquet file.
@@ -32,7 +32,7 @@ def dynamodb_tables_metrics(file_path, session, region, account, metrics, time_g
     """
     next_token = None
     idx = 0
-    client = session.client('dynamodb', region_name=region)
+    client = session.client('dynamodb', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

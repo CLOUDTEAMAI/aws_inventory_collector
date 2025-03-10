@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_route53(file_path, session, region, time_generated, account):
+def list_route53(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Route 53 hosted zones and saves the information to a file in Parquet
     format.
@@ -28,7 +28,7 @@ def list_route53(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('route53', region_name=region)
+    client = session.client('route53', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -52,7 +52,7 @@ def list_route53(file_path, session, region, time_generated, account):
             break
 
 
-def list_route53_resolver(file_path, session, region, time_generated, account):
+def list_route53_resolver(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Route 53 Resolver endpoints and saves the information to a file in
     Parquet format.
@@ -77,7 +77,8 @@ def list_route53_resolver(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('route53resolver', region_name=region)
+    client = session.client(
+        'route53resolver', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -101,7 +102,7 @@ def list_route53_resolver(file_path, session, region, time_generated, account):
             break
 
 
-def list_route53_resolver_ipaddresses(file_path, session, region, time_generated, account):
+def list_route53_resolver_ipaddresses(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Route 53 Resolver IP addresses for a given account and saves the
     information to a file in Parquet format.
@@ -128,7 +129,8 @@ def list_route53_resolver_ipaddresses(file_path, session, region, time_generated
     next_token = None
     sub_next_token = None
     idx = 0
-    client = session.client('route53resolver', region_name=region)
+    client = session.client(
+        'route53resolver', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -164,10 +166,11 @@ def list_route53_resolver_ipaddresses(file_path, session, region, time_generated
             break
 
 
-def list_route53_profiles(file_path, session, region, time_generated, account):
+def list_route53_profiles(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('route53profiles', region_name=region)
+    client = session.client(
+        'route53profiles', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -191,7 +194,7 @@ def list_route53_profiles(file_path, session, region, time_generated, account):
             break
 
 
-def list_route53_profiles_associations(file_path, session, region, time_generated, account):
+def list_route53_profiles_associations(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Route 53 profile associations and saves the information to a file in
     Parquet format.
@@ -217,7 +220,8 @@ def list_route53_profiles_associations(file_path, session, region, time_generate
     """
     next_token = None
     idx = 0
-    client = session.client('route53profiles', region_name=region)
+    client = session.client(
+        'route53profiles', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

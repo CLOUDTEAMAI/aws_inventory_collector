@@ -63,7 +63,7 @@ class S3Manager:
 def list_s3_buckets(file_path, session, region='us-east-1', time_generated=None, account=None):
     next_token = None
     idx = 0
-    client = session.client('s3', region_name=region)
+    client = session.client('s3', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:

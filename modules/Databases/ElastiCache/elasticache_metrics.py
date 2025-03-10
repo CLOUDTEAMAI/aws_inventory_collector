@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def elasticache_metrics(file_path, session, region, account, metrics, time_generated):
+def elasticache_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     The function `elasticache_metrics` retrieves metrics for Amazon ElastiCache clusters and saves them
     to a file.
@@ -31,7 +31,8 @@ def elasticache_metrics(file_path, session, region, account, metrics, time_gener
     """
     next_token = None
     idx = 0
-    client = session.client('elasticache', region_name=region)
+    client = session.client(
+        'elasticache', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account.get('account_name', '')).replace(" ", "_")
     while True:

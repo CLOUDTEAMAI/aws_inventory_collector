@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_emr(file_path, session, region, time_generated, account):
+def list_emr(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_emr` retrieves information about EMR clusters and saves it to a Parquet file.
 
@@ -26,7 +26,7 @@ def list_emr(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('emr', region_name=region)
+    client = session.client('emr', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -61,10 +61,10 @@ def list_emr(file_path, session, region, time_generated, account):
             break
 
 
-def list_emr_instance_group(file_path, session, region, time_generated, account):
+def list_emr_instance_group(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('emr', region_name=region)
+    client = session.client('emr', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     clusters = []
@@ -115,10 +115,11 @@ def list_emr_instance_group(file_path, session, region, time_generated, account)
                 break
 
 
-def list_emr_containers(file_path, session, region, time_generated, account):
+def list_emr_containers(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('emr-containers', region_name=region)
+    client = session.client(
+        'emr-containers', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -145,10 +146,11 @@ def list_emr_containers(file_path, session, region, time_generated, account):
             break
 
 
-def list_emr_containers_jobs(file_path, session, region, time_generated, account):
+def list_emr_containers_jobs(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('emr-containers', region_name=region)
+    client = session.client(
+        'emr-containers', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     clusters = []
@@ -192,10 +194,11 @@ def list_emr_containers_jobs(file_path, session, region, time_generated, account
                 break
 
 
-def list_emr_serverless_jobs(file_path, session, region, time_generated, account):
+def list_emr_serverless_jobs(file_path, session, region, time_generated, account, boto_config):
     next_token = None
     idx = 0
-    client = session.client('emr-serverless', region_name=region)
+    client = session.client(
+        'emr-serverless', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     clusters = []

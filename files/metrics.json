@@ -1,0 +1,1444 @@
+{
+    "CWAgent": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_cwagent_metrics",
+            "aws_dimensions_name": "all",
+            "aws_metric_name": "all",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/EC2": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_metrics",
+            "aws_dimensions_name": "InstanceId",
+            "aws_metric_name": "CPUUtilization",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_metrics",
+            "aws_dimensions_name": "InstanceId",
+            "aws_metric_name": "NetworkOut",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_metrics",
+            "aws_dimensions_name": "InstanceId",
+            "aws_metric_name": "DiskReadOps",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ec2_instances_metrics",
+            "aws_dimensions_name": "InstanceId",
+            "aws_metric_name": "DiskWriteOps",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Lambda": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "functions_metrics",
+            "aws_dimensions_name": "FunctionName",
+            "aws_metric_name": "Invocations",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "functions_metrics",
+            "aws_dimensions_name": "FunctionName",
+            "aws_metric_name": "Duration",
+            "aws_unit": "Milliseconds",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "functions_metrics",
+            "aws_dimensions_name": "FunctionName",
+            "aws_metric_name": "Errors",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/EFS": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "ClientConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "TotalIOBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_dimensions": [
+                {
+                    "StorageClass": "Total"
+                }
+            ],
+            "aws_metric_name": "StorageBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_dimensions": [
+                {
+                    "StorageClass": "Standard"
+                }
+            ],
+            "aws_metric_name": "StorageBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_dimensions": [
+                {
+                    "StorageClass": "IA"
+                }
+            ],
+            "aws_metric_name": "StorageBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "efs_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_dimensions": [
+                {
+                    "StorageClass": "Archive"
+                }
+            ],
+            "aws_metric_name": "StorageBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/FSx": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "fsx_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "DataReadOperations",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "fsx_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "DataWriteOperations",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "fsx_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "MetadataOperations",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "fsx_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "FreeDataStorageCapacity",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Minimum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "fsx_filesystem_metrics",
+            "aws_dimensions_name": "FileSystemId",
+            "aws_metric_name": "ClientConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ApiGateway": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "5XXError",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "apigateway_metrics",
+            "aws_dimensions_name": "ApiName",
+            "aws_metric_name": "4XXError",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/EBS": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeIdleTime",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeReadOps",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeWriteOps",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeReadBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ebs_volumes_metrics",
+            "aws_dimensions_name": "VolumeId",
+            "aws_metric_name": "VolumeWriteBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/DX": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dx_vif_metrics",
+            "aws_dimensions_name": "ConnectionId",
+            "aws_metric_name": "VirtualInterfacePpsIngress",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dx_vif_metrics",
+            "aws_dimensions_name": "ConnectionId",
+            "aws_metric_name": "VirtualInterfaceBpsEgress",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/AppFlow": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsStarted",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsFailed",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "appflow_metrics",
+            "aws_dimensions_name": "FlowName",
+            "aws_metric_name": "FlowExecutionsSucceeded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/DocDB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "CPUUtilization",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "DatabaseConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "docdb_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "FreeStorageSpace",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        }
+    ],
+    "AWS/SageMaker": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocations",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocation5XXErrors",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "Invocation4XXErrors",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "/aws/sagemaker/Endpoints": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sagemaker_endpoint_metrics",
+            "aws_dimensions_name": "EndpointName",
+            "aws_metric_name": "LoadedModelCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/RDS": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_proxies_metrics",
+            "aws_dimensions_name": "ProxyName",
+            "aws_metric_name": "ClientConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "DatabaseConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "CPUUtilization",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "FreeableMemory",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Minimum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "FreeStorageSpace",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "ReadIOPS",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "WriteIOPS",
+            "aws_unit": "Operations",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "SwapUsage",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "ReadThroughput",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "rds_instances_metrics",
+            "aws_dimensions_name": "DBInstanceIdentifier",
+            "aws_metric_name": "WriteThroughput",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/SQS": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sqs_metrics",
+            "aws_dimensions_name": "QueueName",
+            "aws_metric_name": "NumberOfMessagesReceived",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/SNS": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "sns_metrics",
+            "aws_dimensions_name": "TopicName",
+            "aws_metric_name": "NumberOfMessagesPublished",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/PrivateLinkEndpoints": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpcendpoint_metrics",
+            "aws_dimensions_name": "VPC Endpoint Id",
+            "aws_metric_name": "ActiveConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpcendpoint_metrics",
+            "aws_dimensions_name": "VPC Endpoint Id",
+            "aws_metric_name": "BytesProcessed",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/PrivateLinkServices": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpcendpointservices_metrics",
+            "aws_dimensions_name": "VPC Endpoint Id",
+            "aws_metric_name": "BytesProcessed",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/DynamoDB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dynamodb_tables_metrics",
+            "aws_dimensions_name": "TableName",
+            "aws_metric_name": "ProvisionedWriteCapacityUnits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dynamodb_tables_metrics",
+            "aws_dimensions_name": "TableName",
+            "aws_metric_name": "ProvisionedReadCapacityUnits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dynamodb_tables_metrics",
+            "aws_dimensions_name": "TableName",
+            "aws_metric_name": "ConsumedWriteCapacityUnits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "dynamodb_tables_metrics",
+            "aws_dimensions_name": "TableName",
+            "aws_metric_name": "ConsumedReadCapacityUnits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ElastiCache": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CacheHits",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CacheMisses",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CurrItems",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "Evictions",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CurrConnections",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "FreeableMemory",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Minimum",
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elasticache_metrics",
+            "aws_dimensions_name": "CacheClusterId",
+            "aws_metric_name": "CPUUtilization",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        }
+    ],
+    "AWS/TransitGateway": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "transitgateway_attachments_metrics",
+            "aws_dimensions_name": "TransitGateway",
+            "aws_metric_name": "BytesIn",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "transitgateway_attachments_metrics",
+            "aws_dimensions_name": "TransitGateway",
+            "aws_metric_name": "BytesOut",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/NATGateway": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "natgateway_metrics",
+            "aws_dimensions_name": "NatGatewayId",
+            "aws_metric_name": "ActiveConnectionCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "natgateway_metrics",
+            "aws_dimensions_name": "NatGatewayId",
+            "aws_metric_name": "BytesInFromDestination",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "natgateway_metrics",
+            "aws_dimensions_name": "NatGatewayId",
+            "aws_metric_name": "BytesOutToDestination",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "natgateway_metrics",
+            "aws_dimensions_name": "NatGatewayId",
+            "aws_metric_name": "BytesInFromSource",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "natgateway_metrics",
+            "aws_dimensions_name": "NatGatewayId",
+            "aws_metric_name": "BytesOutToSource",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ECR": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "ecr_metrics",
+            "aws_dimensions_name": "RepositoryName",
+            "aws_metric_name": "RepositoryPullCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/CloudHSM": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "cloudhsmv2_metrics",
+            "aws_dimensions_name": "HsmId",
+            "aws_metric_name": "HsmSessionCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum",
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Route53": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "route53_metrics",
+            "aws_dimensions_name": "HostedZoneId",
+            "aws_metric_name": "DNSQueries",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/CloudFront": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "cloudfront_metrics",
+            "aws_dimensions_name": "DistributionId",
+            "aws_metric_name": "TotalErrorRate",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "cloudfront_metrics",
+            "aws_dimensions_name": "DistributionId",
+            "aws_metric_name": "BytesDownloaded",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/S3": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "s3_metrics",
+            "aws_dimensions_name": "BucketName",
+            "aws_dimensions": [
+                {
+                    "StorageType": "AllStorageTypes"
+                }
+            ],
+            "aws_metric_name": "NumberOfObjects",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "s3_metrics",
+            "aws_dimensions_name": "BucketName",
+            "aws_dimensions": [
+                {
+                    "StorageType": "StandardStorage"
+                }
+            ],
+            "aws_metric_name": "BucketSizeBytes",
+            "aws_unit": "Bytes",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Kinesis": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "kinesis_metrics",
+            "aws_dimensions_name": "StreamName",
+            "aws_metric_name": "GetRecords.Bytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "kinesis_metrics",
+            "aws_dimensions_name": "StreamName",
+            "aws_metric_name": "GetRecords.Records",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "kinesis_metrics",
+            "aws_dimensions_name": "StreamName",
+            "aws_metric_name": "GetRecords.Success",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Firehose": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "firehose_metrics",
+            "aws_dimensions_name": "DeliveryStreamName",
+            "aws_metric_name": "DataReadFromKinesisStream.Records",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "firehose_metrics",
+            "aws_dimensions_name": "DeliveryStreamName",
+            "aws_metric_name": "DeliveryToElasticsearch.Bytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "firehose_metrics",
+            "aws_dimensions_name": "DeliveryStreamName",
+            "aws_metric_name": "DeliveryToS3.Bytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ClientVPN": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "clientvpn_metrics",
+            "aws_dimensions_name": "Endpoint",
+            "aws_metric_name": "IngressBytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "clientvpn_metrics",
+            "aws_dimensions_name": "Endpoint",
+            "aws_metric_name": "EgressBytes",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/VPN": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpn_metrics",
+            "aws_dimensions_name": "TunnelIpAddress",
+            "aws_metric_name": "TunnelDataIn",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "vpn_metrics",
+            "aws_dimensions_name": "TunnelIpAddress",
+            "aws_metric_name": "TunnelDataOut",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ELB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elb_metrics",
+            "aws_dimensions_name": "LoadBalancerName",
+            "aws_metric_name": "RequestCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/NetworkELB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_network_metrics",
+            "aws_dimensions_name": "LoadBalancer",
+            "aws_metric_name": "ConsumedLCUs",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ApplicationELB": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_application_metrics",
+            "aws_dimensions_name": "TargetGroup",
+            "aws_metric_name": "HTTPCode_Target_2XX_Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "elbv2_application_metrics",
+            "aws_dimensions_name": "TargetGroup",
+            "aws_metric_name": "HTTPCode_Target_3XX_Count",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Transfer": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "transferfamily_metrics",
+            "aws_dimensions_name": "ServerId",
+            "aws_metric_name": "BytesIn",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "transferfamily_metrics",
+            "aws_dimensions_name": "ServerId",
+            "aws_metric_name": "BytesOut",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Kafka": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "msk_nodes_metrics",
+            "aws_dimensions_name": "Cluster Name",
+            "aws_metric_name": "MemoryUsed",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "msk_nodes_metrics",
+            "aws_dimensions_name": "Cluster Name",
+            "aws_metric_name": "MessagesInPerSec",
+            "aws_unit": "Seconds",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "msk_nodes_metrics",
+            "aws_dimensions_name": "Cluster Name",
+            "aws_metric_name": "CpuIdle",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        }
+    ],
+    "AWS/AmazonMQ": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "mq_metrics",
+            "aws_dimensions_name": "Broker",
+            "aws_metric_name": "ConnectionCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "mq_metrics",
+            "aws_dimensions_name": "Broker",
+            "aws_metric_name": "MessageCount",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/NetworkFirewall": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "networkfirewall_metrics",
+            "aws_dimensions_name": "FirewallName",
+            "aws_metric_name": "ReceivedPackets",
+            "aws_dimensions": [
+                {
+                    "Engine": "Stateless"
+                }
+            ],
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "networkfirewall_metrics",
+            "aws_dimensions_name": "FirewallName",
+            "aws_metric_name": "ReceivedPackets",
+            "aws_dimensions": [
+                {
+                    "Engine": "Stateful"
+                }
+            ],
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/ES": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "opensearch_metrics",
+            "aws_dimensions_name": "DomainName",
+            "aws_metric_name": "2xx",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "opensearch_metrics",
+            "aws_dimensions_name": "DomainName",
+            "aws_metric_name": "3xx",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/Route53Resolver": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "route53_resolver_metrics",
+            "aws_dimensions_name": "EndpointId",
+            "aws_metric_name": "OutboundQueryVolume",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/DataSync": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "datasync_agents_metrics",
+            "aws_dimensions_name": "AgentId",
+            "aws_metric_name": "FilesTransferred",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/AmplifyHosting": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "amplify_metrics",
+            "aws_dimensions_name": "App",
+            "aws_metric_name": "BytesUploaded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "amplify_metrics",
+            "aws_dimensions_name": "App",
+            "aws_metric_name": "BytesDownloaded",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Sum"
+            ]
+        }
+    ],
+    "AWS/WorkSpaces": [
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "CPUUsage",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "MemoryUsage",
+            "aws_unit": "Percent",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        },
+        {
+            "days_ago": 30,
+            "granularity_seconds": 21600,
+            "list_function": "workspaces_metrics",
+            "aws_dimensions_name": "WorkspaceId",
+            "aws_metric_name": "UserConnected",
+            "aws_unit": "Count",
+            "aws_statistics": [
+                "Average",
+                "Maximum"
+            ]
+        }
+    ]
+}

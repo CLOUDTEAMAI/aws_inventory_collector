@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_rds(file_path, session, region, time_generated, account):
+def list_rds(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists RDS clusters and saves the information in a Parquet file.
 
@@ -26,7 +26,7 @@ def list_rds(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -73,7 +73,7 @@ def list_rds(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_global(file_path, session, region, time_generated, account):
+def list_rds_global(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists RDS clusters and saves the information in a Parquet file.
 
@@ -97,7 +97,7 @@ def list_rds_global(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -120,7 +120,7 @@ def list_rds_global(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_instances(file_path, session, region, time_generated, account):
+def list_rds_instances(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists RDS instances, extracts common information, and saves the data in Parquet
     format.
@@ -146,7 +146,7 @@ def list_rds_instances(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -178,7 +178,7 @@ def list_rds_instances(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_snapshots(file_path, session, region, time_generated, account):
+def list_rds_snapshots(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists RDS snapshots for a given account and region, saving the information to a
     file in Parquet format.
@@ -202,7 +202,7 @@ def list_rds_snapshots(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -232,7 +232,7 @@ def list_rds_snapshots(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_proxies(file_path, session, region, time_generated, account):
+def list_rds_proxies(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists RDS proxies, extracts common information, and saves the data as Parquet
     files.
@@ -257,7 +257,7 @@ def list_rds_proxies(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -287,7 +287,7 @@ def list_rds_proxies(file_path, session, region, time_generated, account):
             break
 
 
-def list_rds_proxy_endpoints(file_path, session, region, time_generated, account):
+def list_rds_proxy_endpoints(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function retrieves and saves information about RDS proxy endpoints to a file in Parquet
     format.
@@ -311,7 +311,7 @@ def list_rds_proxy_endpoints(file_path, session, region, time_generated, account
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -338,7 +338,7 @@ def list_rds_proxy_endpoints(file_path, session, region, time_generated, account
             break
 
 
-def list_rds_sizing(file_path, session, region, time_generated, account):
+def list_rds_sizing(file_path, session, region, time_generated, account, boto_config):
     """
     The function `list_rds_sizing` retrieves information about available RDS engine versions and
     instance options, and saves the data to a file in Parquet format.
@@ -363,7 +363,7 @@ def list_rds_sizing(file_path, session, region, time_generated, account):
     """
     next_token = None
     idx = 0
-    client = session.client('rds', region_name=region)
+    client = session.client('rds', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     engines = []

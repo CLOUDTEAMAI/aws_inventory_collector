@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import save_as_file_parquet_metrics, generate_parquet_prefix, get_resource_utilization_metric
 
 
-def vpn_metrics(file_path, session, region, account, metrics, time_generated):
+def vpn_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves VPN connection information, extracts tunnel IP addresses, fetches
     resource utilization metrics, and saves the metrics to a Parquet file.
@@ -31,7 +31,7 @@ def vpn_metrics(file_path, session, region, account, metrics, time_generated):
     """
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:
@@ -55,7 +55,7 @@ def vpn_metrics(file_path, session, region, account, metrics, time_generated):
             break
 
 
-def clientvpn_metrics(file_path, session, region, account, metrics, time_generated):
+def clientvpn_metrics(file_path, session, region, account, metrics, time_generated, boto_config):
     """
     This Python function retrieves metrics for client VPN endpoints and saves them to a Parquet file.
 
@@ -82,7 +82,7 @@ def clientvpn_metrics(file_path, session, region, account, metrics, time_generat
     """
     next_token = None
     idx = 0
-    client = session.client('ec2', region_name=region)
+    client = session.client('ec2', region_name=region, config=boto_config)
     account_id = account['account_id']
     while True:
         try:

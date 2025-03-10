@@ -2,7 +2,7 @@ from inspect import stack
 from utils.utils import extract_common_info, save_as_file_parquet, generate_parquet_prefix
 
 
-def list_timestream_influxdb_instances(file_path, session, region, time_generated, account):
+def list_timestream_influxdb_instances(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists Timestream InfluxDB instances and saves the information to a Parquet
     file.
@@ -26,7 +26,8 @@ def list_timestream_influxdb_instances(file_path, session, region, time_generate
     """
     next_token = None
     idx = 0
-    client = session.client('timestream-influxdb', region_name=region)
+    client = session.client('timestream-influxdb',
+                            region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -50,7 +51,7 @@ def list_timestream_influxdb_instances(file_path, session, region, time_generate
             break
 
 
-def list_timestream_write_databases(file_path, session, region, time_generated, account):
+def list_timestream_write_databases(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function lists databases in Amazon Timestream, extracts common information, and saves
     the inventory as Parquet files.
@@ -76,7 +77,8 @@ def list_timestream_write_databases(file_path, session, region, time_generated, 
     """
     next_token = None
     idx = 0
-    client = session.client('timestream-write', region_name=region)
+    client = session.client(
+        'timestream-write', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
@@ -104,7 +106,7 @@ def list_timestream_write_databases(file_path, session, region, time_generated, 
             break
 
 
-def list_timestream_write_tables(file_path, session, region, time_generated, account):
+def list_timestream_write_tables(file_path, session, region, time_generated, account, boto_config):
     """
     This Python function iterates through TimeStream databases and tables, extracts information, and
     saves it as a Parquet file.
@@ -127,7 +129,8 @@ def list_timestream_write_tables(file_path, session, region, time_generated, acc
     next_token = None
     sub_next_token = None
     idx = 0
-    client = session.client('timestream-write', region_name=region)
+    client = session.client(
+        'timestream-write', region_name=region, config=boto_config)
     account_id = account['account_id']
     account_name = str(account['account_name']).replace(" ", "_")
     while True:
