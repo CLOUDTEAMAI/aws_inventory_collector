@@ -1,1 +1,64 @@
-{"accounts": [{"account_id": "452732903988", "account_role": "Cloudteam-FinOps"}, {"account_id": "594252487255", "account_role": "Cloudteam-FinOps"}, {"account_id": "518435964518", "account_role": "Cloudteam-FinOps"}, {"account_id": "971422719084", "account_role": "Cloudteam-FinOps"}, {"account_id": "605753451533", "account_role": "Cloudteam-FinOps"}, {"account_id": "539836314094", "account_role": "Cloudteam-FinOps"}, {"account_id": "589240359655", "account_role": "Cloudteam-FinOps"}, {"account_id": "596296433570", "account_role": "Cloudteam-FinOps"}, {"account_id": "421959707042", "account_role": "Cloudteam-FinOps"}, {"account_id": "548348163350", "account_role": "Cloudteam-FinOps"}, {"account_id": "130983383832", "account_role": "Cloudteam-FinOps"}, {"account_id": "945436429811", "account_role": "Cloudteam-FinOps"}, {"account_id": "649292206540", "account_role": "Cloudteam-FinOps"}, {"account_id": "890926574387", "account_role": "Cloudteam-FinOps"}, {"account_id": "500770556979", "account_role": "Cloudteam-FinOps"}, {"account_id": "680099064292", "account_role": "Cloudteam-FinOps"}, {"account_id": "581771470205", "account_role": "Cloudteam-FinOps"}, {"account_id": "621487979936", "account_role": "Cloudteam-FinOps"}, {"account_id": "339712866834", "account_role": "Cloudteam-FinOps"}, {"account_id": "628821787656", "account_role": "Cloudteam-FinOps"}, {"account_id": "006868658344", "account_role": "Cloudteam-FinOps"}, {"account_id": "702853888647", "account_role": "Cloudteam-FinOps"}, {"account_id": "565276128402", "account_role": "Cloudteam-FinOps"}]}
+{
+    "accounts": [
+        {
+            "account_id": "017820689301",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "017820689386",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "590184145166",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "017820689661",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "017820689526",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "017820689815",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "017820689886",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "021891580005",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "210108153834",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "702853888647",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "876145891329",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "905418017619",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "010526242246",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "010526242084",
+            "account_role": "Cloudteam-FinOps"
+        },
+        {
+            "account_id": "010526242150",
+            "account_role": "Cloudteam-FinOps"
+        }
+    ]
+}

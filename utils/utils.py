@@ -56,7 +56,7 @@ def chunk_list(data, chunk_size=499):
 def list_az(session, region):
     try:
         inventory = []
-        client = session.client('ec2', region_name=region, config=boto_config)
+        client = session.client('ec2', region_name=region)
         response = client.describe_availability_zones()
         for zone in response['AvailabilityZones']:
             inventory.append(zone['ZoneName'])
@@ -333,7 +333,7 @@ def cw_build_metrics_queries_ready(metrics_list, granularity):
 
 def get_resource_utilization_metric(session, region, inventory, account, metrics, timegenerated, addons={}, metrics_list=[]):
     client = session.client(
-        'cloudwatch', region_name=region, config=boto_config)
+        'cloudwatch', region_name=region)
     account_id = account['account_id']
     end_time = datetime.utcnow()
     query = []

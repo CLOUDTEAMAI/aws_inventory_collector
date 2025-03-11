@@ -14,7 +14,7 @@ def main():
     and then runs parallel tasks to gather information about each mode.
     """
     # arranging all os configs such as path of file runing or create folders if not exist
-    mode = environ.get('MODE', 'INVENTORY').upper()
+    mode = environ.get('MODE', 'METRICS').upper()
     AUTOMATION = f'aws-{mode.lower()}-collector'
     main_dir = path.dirname(path.abspath(__file__))
     uploads_dir = f'{main_dir}/uploads'
