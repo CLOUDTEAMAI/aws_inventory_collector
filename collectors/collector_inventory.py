@@ -319,10 +319,10 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account, boto_config): name for name, task in tasks.items()
         }
-        for future in as_completed(future_to_task):
+        for future in as_completed(future_to_task, timeout=60):
             task_name = future_to_task[future]
             try:
-                data = future.result()
+                data = future.result(timeout=60)
                 print(f"{task_name} completed {region}, {data}")
                 del data
             except Exception as exc:
@@ -332,4 +332,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
                     logger_obj.error(
                         f'{account_id} {region} {task_name} {str(exc)}')
                 del exc
+            finally:
+                # Optional: cancel if still running (not necessary here since thread will exit eventually)
+                future.cancel()
         del future_to_task
