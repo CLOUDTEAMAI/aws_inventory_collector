@@ -315,14 +315,14 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         connect_timeout=int(getenv("AWS_CONNECT_TIMEOUT", "30")),
         read_timeout=int(getenv("AWS_READ_TIMEOUT", "30"))
     )
-    with ThreadPoolExecutor(threads) as executor:
+    with ThreadPoolExecutor(max_workers=threads) as executor:
         future_to_task = {
             executor.submit(task, main_dir, session, region, time_generated, account, boto_config): name for name, task in tasks.items()
         }
-        for future in as_completed(future_to_task, timeout=60):
+        for future in as_completed(future_to_task, timeout=45):
             task_name = future_to_task[future]
             try:
-                data = future.result(timeout=60)
+                data = future.result(timeout=45)
                 print(f"{task_name} completed {region}, {data}")
                 del data
             except Exception as exc:

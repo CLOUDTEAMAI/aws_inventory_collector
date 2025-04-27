@@ -1,0 +1,7 @@
+Dockerfile
+.travis*
+.git*
+.dockerignore
+*.parquet
+*.log
+*.csv
