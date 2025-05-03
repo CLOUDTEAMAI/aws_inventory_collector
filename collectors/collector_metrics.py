@@ -68,6 +68,7 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
         }
     functions_map = {**functionsz_map, **global_tasks}
     boto_config = Config(
+        retries={'max_attempts': 1},
         connect_timeout=int(getenv("AWS_CONNECT_TIMEOUT", "30")),
         read_timeout=int(getenv("AWS_READ_TIMEOUT", "30"))
     )

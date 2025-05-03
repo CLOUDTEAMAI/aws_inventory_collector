@@ -43,7 +43,7 @@ def create_folder_if_not_exist(list_dir_path):
     """
     for i in list_dir_path:
         if not path.exists(i):
-            makedirs(i)
+            makedirs(i, exist_ok=True)
         else:
             print(f"${i} path already exists")
 

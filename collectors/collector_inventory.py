@@ -312,6 +312,7 @@ def parallel_executor_regional_inventory(logger_obj, main_dir: str, session, reg
         global_tasks = {}
     tasks = {**functions_map, **global_tasks}
     boto_config = Config(
+        retries={'max_attempts': 1},
         connect_timeout=int(getenv("AWS_CONNECT_TIMEOUT", "30")),
         read_timeout=int(getenv("AWS_READ_TIMEOUT", "30"))
     )
