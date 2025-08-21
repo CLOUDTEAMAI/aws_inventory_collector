@@ -15,7 +15,7 @@ def main():
     The main function reads account information from a JSON file, creates AWS sessions for each account,
     and then runs parallel tasks to gather information about each mode.
     """
-    # arranging all os configs such as path of file runing or create folders if not exist
+    # arranging all os configs such as path of file running or create folders if not exist
     mode = getenv('MODE', '').upper()
     AUTOMATION = f'aws-{mode.lower()}-collector'
     today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

@@ -1,5 +1,5 @@
 # Use the python-slim-buster as the base image
-FROM python:3.10-slim-buster
+FROM python:3.10-slim-bullseye
 
 ENV AWS_STS_REGIONAL_ENDPOINTS="regional"
 

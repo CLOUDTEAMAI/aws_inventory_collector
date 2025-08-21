@@ -13,7 +13,7 @@ def main():
     The main function reads account information from a JSON file, creates AWS sessions for each account,
     and then runs parallel tasks to gather information about each mode.
     """
-    # arranging all os configs such as path of file runing or create folders if not exist
+    # arranging all os configs such as path of file running or create folders if not exist
     mode = environ.get('MODE', 'INVENTORY').upper()
     AUTOMATION = f'aws-{mode.lower()}-collector'
     main_dir = path.dirname(path.abspath(__file__))
