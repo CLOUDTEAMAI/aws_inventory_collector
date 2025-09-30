@@ -101,7 +101,7 @@ def get_credentials_assume_role(account_id, role_name="", region='us-east-1', ex
         return None
 
 
-def get_aws_session(account_id, region='us-east-1', role_name=""):
+def get_aws_session(account_id, region='us-east-1', role_name="", sso_mode=False):
     """
     This function uses the `get_credentials_assume_role` function to get temporary credentials for the specified role, and
     then uses those credentials to create a new `boto3` session
@@ -114,6 +114,9 @@ def get_aws_session(account_id, region='us-east-1', role_name=""):
     """
     try:
         credentials = None
+        if sso_mode:
+            aws_session = Session(region_name=region)
+            return aws_session
         if role_name:
             credentials = get_credentials_assume_role(
                 account_id, role_name, region)

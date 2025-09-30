@@ -7,11 +7,11 @@ from .metrics import *
 lock = Lock()
 
 
-def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4):
+def metrics_collector(uploads_directory, logger, accounts_json, time_generated, metrics, threads=4, sso_mode=False):
     # regional scraping per account
     try:
         get_all_accounts_metrics(main_dir=uploads_directory, logger_obj=logger,
-                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads)
+                                 account_json=accounts_json, time_generated=time_generated, metrics=metrics, threads=threads, sso_mode=sso_mode)
         print("Finished Collecting regional inventory")
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
@@ -109,19 +109,19 @@ def parallel_executor_inventory_metrics(logger_obj, main_dir, session, region, a
                         f'{account_id} {region} {task_name} {str(exc)}')
 
 
-def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics, threads=4):
+def get_all_accounts_metrics(logger_obj, main_dir: str, account_json: list, time_generated, metrics, threads=4, sso_mode=False):
     try:
         with ThreadPoolExecutor(max_workers=threads) as executor:
             futures_services = {}
             for account in account_json['accounts']:
                 session = get_aws_session(
-                    account.get('account_id'), role_name=account.get('account_role', ''))
+                    account.get('account_id'), role_name=account.get('account_role', ''), sso_mode=sso_mode)
                 if session is not None:
                     regions = regions_enabled(session)
                     for region in regions:
                         future = executor.submit(
                             lambda session=get_aws_session(
-                                account.get('account_id'), role_name=account.get('account_role', ''), region=region), acc=account, reg=region: parallel_executor_inventory_metrics(
+                                account.get('account_id'), role_name=account.get('account_role', ''), region=region, sso_mode=sso_mode), acc=account, reg=region: parallel_executor_inventory_metrics(
                                 logger_obj,
                                 main_dir,
                                 session,

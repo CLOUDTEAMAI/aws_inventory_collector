@@ -7,7 +7,7 @@ from .inventory import *
 lock = Lock()
 
 
-def inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4):
+def inventory_collector(uploads_directory, logger, accounts_json, time_generated, threads=4, sso_mode=False):
     """
     The function `inventory_collector` collects regional inventory data for multiple accounts using
     multithreading and logs any errors encountered.
@@ -35,13 +35,13 @@ def inventory_collector(uploads_directory, logger, accounts_json, time_generated
     # regional scraping per account
     try:
         get_all_accounts_regional_inventory(main_dir=uploads_directory, logger_obj=logger,
-                                            account_json=accounts_json, time_generated=time_generated, threads=threads)
+                                            account_json=accounts_json, time_generated=time_generated, threads=threads, sso_mode=sso_mode)
         print("Finished Collecting regional inventory")
     except Exception as ex:
         print(f"Failed to execute get_all_accounts_regional_inventory \n{ex}")
 
 
-def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4):
+def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json: list, time_generated, threads=4, sso_mode=False):
     """
     The function `get_all_accounts_regional_inventory` uses ThreadPoolExecutor to concurrently retrieve
     regional inventory data for multiple AWS accounts and regions.
@@ -76,13 +76,13 @@ def get_all_accounts_regional_inventory(logger_obj, main_dir: str, account_json:
                     lambda acc=account, reg=region: parallel_executor_regional_inventory(
                         logger_obj, main_dir,
                         get_aws_session(acc.get('account_id'),
-                                        reg, role_name=acc.get('account_role', '')),
+                                        reg, role_name=acc.get('account_role', ''), sso_mode=sso_mode),
                         reg,
                         time_generated,
                         complete_aws_account(acc),
                         threads
                     ), account, region  # Defaulting acc and reg inside lambda
-                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account.get('account_role', ''))) if get_aws_session(account['account_id'], role_name=account.get('account_role', '')) is not None
+                ): account for account in account_json['accounts'] for region in regions_enabled(get_aws_session(account['account_id'], role_name=account.get('account_role', ''), sso_mode=sso_mode)) if get_aws_session(account['account_id'], role_name=account.get('account_role', ''), sso_mode=sso_mode) is not None
             }
             for future in as_completed(futures_services):
                 try:
